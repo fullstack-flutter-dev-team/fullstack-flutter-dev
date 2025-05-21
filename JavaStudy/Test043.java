@@ -94,7 +94,7 @@ public class Test043
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		int y, m, d;		//-- 연, 월, 일
+		int y, m, d=-1;		//-- 연, 월, 일
 		
 		System.out.print("임의의 연도를 입력하세요 : ");
 		y = Integer.parseInt(br.readLine());
@@ -138,7 +138,7 @@ public class Test043
 			//default:  d=-1; break;
 		}
 		
-		System.out.println("\n>>" + y + "년 " + m + "월은 " + d + "일까지 있습니다.");
+		//System.out.println("\n>>" + y + "년 " + m + "월은 " + d + "일까지 있습니다.");
 		// 결과 출력
 		//임의의 연도를 입력하세요 : 2025
 		//임의의 월을 입력하세요 : 2
@@ -151,5 +151,36 @@ public class Test043
 
 		//2025년 5월은 31일까지 있습니다.
 		//계속하려면 아무 키나 누르십시오 . . .
+		
+		if (d!=-1)
+		{
+			System.out.println("\n>> " + y + "년 " + m + "월은 " + d + "일까지 있습니다.");
+		}
+		else
+		{
+			System.out.println("\n>> 입력 오류~!!!");
+		}
+		
+		//--출력결과
+		//임의의 연도를 입력하세요 : 2024
+		//임의의 월을 입력하세요 : 2
+
+		//>> 2024년 2월은 29일까지 있습니다.
+		//계속하려면 아무 키나 누르십시오 . . .
+		//	
+
+		//임의의 연도를 입력하세요 : 2025
+		//임의의 월을 입력하세요 : 2
+
+		//>> 2025년 2월은 28일까지 있습니다.
+		//계속하려면 아무 키나 누르십시오 . . .
+
+
+		//임의의 연도를 입력하세요 : 2025
+		//임의의 월을 입력하세요 : 27
+
+		//>> 입력 오류~!!!
+		//계속하려면 아무 키나 누르십시오 . . .
+		
 	}
 }
