@@ -1,0 +1,1 @@
+- ✨[Markdown PDF Plus](https://marketplace.visualstudio.com/items/?itemName=tom-latham.markdown-pdf-plus)
