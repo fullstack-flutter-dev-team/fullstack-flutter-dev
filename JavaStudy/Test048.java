@@ -22,6 +22,7 @@ public class Test048
 {
 	public static void main(String[] args)
 	{
+		/*
 		// 변수 선언 및 초기화
 		int nFinalNum = 100;
 		int nNum = 0, nSum = 0;
@@ -38,6 +39,32 @@ public class Test048
 				// 10의 배수
 				System.out.printf("1 ~ %d 까지의 합 : %d\n", nNum, nSum); 
 			}
+		}
+		
+		*/
+		
+		int n = 1, sum = 0;		//-- n   → 1부터 1씩 증가할 변수
+								//-- sum → 누적합을 담아낼 변수
+		
+		while (n <= 100)		//-- n → 1 2 3 ... 100 → 100번 반복
+		{
+			// 테스트(확인)
+			//System.out.println("n=" + n + ", sum=" + sum);
+			
+			sum += n;		//-- sum을 n만큼씩 증가
+			
+			// 테스트(확인)
+			//System.out.println("n=" + n + ", sum=" + sum);
+			
+			if (n%10 == 0)	//-- n이 10의 배수일 경우
+			{
+				// 출력
+				//System.out.println("n=" + n);
+				//System.out.println("sum=" + sum);
+				System.out.printf("1 ~ %d까지의 합 : %d\n", n, sum);
+			}
+			
+			n++;			//-- n을 1만큼씩 증가
 		}
 	}
 }
