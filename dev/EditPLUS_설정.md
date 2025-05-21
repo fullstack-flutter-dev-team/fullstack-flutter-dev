@@ -6,3 +6,6 @@
     - 인수에는 한글이 들어가도 Compile이 될 수 있도록 **-encoding UTF-8**을 입력한 후 ↓버튼을 클릭하여 파일이름 설정
     - 디렉토리에도 ↓버튼을 클릭하여 파일디렉토리를 클릭해 설정하고 하단에 적용버튼 클릭하면 Compile1 완료 
   - [에디트플러스(EditPlus) JAVA 컴파일 설정](https://deve1opment-story.tistory.com/14)
+### EditPlus 설정
+- [에디터플러스 - editplus 백업 파일 생기지 않게](https://gocoder.tistory.com/369)
+- [EditPlus 4.* 에서 Java 컴파일 환경 셋팅하기](https://theaside.tistory.com/13)
