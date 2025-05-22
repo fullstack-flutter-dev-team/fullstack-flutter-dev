@@ -21,30 +21,64 @@
 	
 */
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
 public class Test056
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		// 변수 선언 및 초기화
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int nIndex, nInNum, nTotalSum, nEvenSum, nOddSum;
-		nTotalSum = nEvenSum = nOddSum = 0;
-		nIndex = 1;
+		int nIndex, nInNum, nTotalSum, nEvenSum, nOddSum;	//-- while 반복문, 누적합, 짝수/홀수합 변수 선언
+		nTotalSum = nEvenSum = nOddSum = 0;					//-- 누적합, 짝수/홀수합 변수 초기화
+		nIndex = 1;											//-- while 반복문 변수 초기화
 		
 		// 사용자 입력 안내문구 출력
 		System.out.print("임의의 정수 입력 : ");
 		nInNum = Integer.parseInt(br.readLine());
 		
-		// 연산
+		// 연산 및 처리
 		if (nInNum > 0)
 		{
-			while ()
+			while (nIndex <= nInNum)
 			{
+				if (nIndex % 2 == 0)
+				{
+					// 짝수합
+					nEvenSum += nIndex;
+				} else {
+					// 홀수합
+					nOddSum += nIndex;
+				}
+				
+				// 누적합
+				nTotalSum += nIndex;
+				
+				// 테스트(확인)
+				//System.out.printf("nIndex : %d, nInNum : %d\n", nIndex, nInNum);
+				nIndex++;	//-- while 반복문 변수 +1 증가
 			}
+			
+			// 결과 출력
+			System.out.printf(">> 1에서 %d까지 정수의 합 : %d\n", nInNum, nTotalSum);
+			System.out.printf(">> 1에서 %d까지 짝수의 합 : %d\n", nInNum, nEvenSum);
+			System.out.printf(">> 1에서 %d까지 홀수의 합 : %d\n", nInNum, nOddSum);
 		} else {
 			System.out.println("입력오류~!! (1보다 큰 정수 입력)");
+			return;
 		}
-		
-		// 결과 출력
 	}
 }
+
+//--실행결과
+//	임의의 정수 입력 : 10
+//	>> 1에서 10까지 정수의 합 : 55
+//	>> 1에서 10까지 짝수의 합 : 30
+//	>> 1에서 10까지 홀수의 합 : 25
+//	계속하려면 아무 키나 누르십시오 . . .
+
+//	임의의 정수 입력 : -2
+//	입력오류~!! (1보다 큰 정수 입력)
+//	계속하려면 아무 키나 누르십시오 . . .
