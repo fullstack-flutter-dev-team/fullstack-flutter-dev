@@ -1,0 +1,9 @@
+## 자바 & Python 연동
+---
+- [java python 연동 검색](https://www.google.com/search?q=java+python+%EC%97%B0%EB%8F%99&rlz=1C1GCEU_koKR1161KR1161&oq=java+python+%EC%97%B0%EB%8F%99&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYoAEyCQgDECEYChigAdIBCDg3MzNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [Spring Boot와 Python 연동하기](https://includecoding.tistory.com/300)
+    - [Spring과 Python ProcessBuilder로 실행시 인코딩, 한글 깨짐 해결](https://includecoding.tistory.com/301)
+  - [Java와 Python 연동](https://corock.tistory.com/445)
+  - ⭐ [[JAVA] 실시간 Python 파일 실행하여 진행도 확인하기 (1) - ProcessBuilder / zt-exec](https://velog.io/@jinnnii/JAVA-Spring-%EC%97%90%EC%84%9C-Python-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0-ProcessBuilder)
+- [java python 검색](https://www.google.com/search?q=java+python&rlz=1C1GCEU_koKR1161KR1161&oq=java+python&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIGCAcQRRg80gEJMTA0NTVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [Class (java와 python비교)](https://velog.io/@tnsida315/Class-java%EC%99%80-python%EB%B9%84%EA%B5%90)
