@@ -164,7 +164,7 @@ public class Test030
 		{
 			grade = 'C';
 		}
-		else if ((fAvg >= 60)	//-- 평균이 60점 이상 70점 미만
+		else if (fAvg >= 60)	//-- 평균이 60점 이상 70점 미만
 		{
 			grade = 'D';
 		}

@@ -19,6 +19,7 @@ public class Test071
 {
 	public static void main(String[] args) throws IOException
 	{
+		// BufferedReader 인스턴스(→ 객체) 생성
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int n, s;
@@ -36,7 +37,7 @@ public class Test071
 		}
 		
 		s = 0;
-		0
+		
 		for (int i = 1; i <= n; i++)
 		{
 			s += i;

@@ -120,7 +120,7 @@ public class Test069
 		}
 		
 		*/
-			
+		// BufferedReader 인스턴스(→ 객체) 생성
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		// check~!!!

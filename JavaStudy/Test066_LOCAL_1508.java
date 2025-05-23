@@ -23,13 +23,13 @@ public class Test066
 {
 	public static void main(String[] args)
 	{
-		int i, j, k = 5;
+		int i, j, k = 7;
 		
-		for (i=1; i <= 4; i++)
+		for (i=7; i > 0; i--)
 		{
-			for (j=1; j<= 8; j++)
+			for (j=1; j<= 7; j++)
 			{
-				if ((i+j) <= 2*i+4 && (i+j)>= 6)
+				if (i > j)
 				{
 					System.out.print("★");
 					//System.out.printf("i=%d, j=%d",i, j);
@@ -41,13 +41,3 @@ public class Test066
 		}
 	}
 }
-
-/*
-    ★
-   ★★★
-  ★★★★★
- ★★★★★★★
-계속하려면 아무 키나 누르십시오 . . .
-*/
-
-
