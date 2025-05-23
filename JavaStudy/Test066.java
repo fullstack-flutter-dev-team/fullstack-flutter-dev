@@ -23,13 +23,17 @@ public class Test066
 {
 	public static void main(String[] args)
 	{
-		int i, j, k = 7;
+		int i, j, k = 5;
 		
-		for (i=7; i > 0; i--)
+		for (i=1; i <= 4; i++)
 		{
-			for (j=1; j<= 7; j++)
+			for (j=1; j<= 8; j++)
 			{
-				if (i < (j-2))
+<<<<<<< HEAD
+				if (i > j)
+=======
+				if ((i+j) <= 2*i+4 && (i+j)>= 6)
+>>>>>>> 3ab596232af247fe9fa36d510f2eed8e6bc90ad4
 				{
 					System.out.print("★");
 					//System.out.printf("i=%d, j=%d",i, j);
@@ -41,3 +45,13 @@ public class Test066
 		}
 	}
 }
+
+/*
+    ★
+   ★★★
+  ★★★★★
+ ★★★★★★★
+계속하려면 아무 키나 누르십시오 . . .
+*/
+
+
