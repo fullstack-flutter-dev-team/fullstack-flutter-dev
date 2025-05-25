@@ -29,25 +29,6 @@ public class Test068
 	public static void main(String[] args)
 	{
 		
-		/*
-		int i, j, k = 5;
-		
-		for (i=1; i <= 4; i++)
-		{
-			for (j=1; j<= 8; j++)
-			{
-				if ((i+j) <= 2*i+4 && (i+j)>= 6)
-				{
-					System.out.print("★");
-					//System.out.printf("i=%d, j=%d",i, j);
-				} else {
-					System.out.print(" ");
-				}
-			}
-			System.out.println();
-		}
-		*/
-		
 		int i, j;
 		
 		for (i = 5; i > 0; i--)
