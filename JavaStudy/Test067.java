@@ -23,24 +23,6 @@ public class Test067
 {
 	public static void main(String[] args)
 	{
-		/*
-		int i, j, k = 5;
-		for (i=7,k=1; i>3; i--,k++)
-		{
-			for (j=1; j<=8; j++)
-			{
-				if ((i+j) <= -2*k+17 && (i+j)> 8)
-				{
-					System.out.print("★");
-					//System.out.printf("i=%d, j=%d",i, j);
-				} else {
-					System.out.print(" ");
-				}
-			}
-			System.out.println();
-		}
-		*/
-		
 		
 		int i, j;
 		
@@ -56,9 +38,8 @@ public class Test067
 				}
 				
 			}
+
 			System.out.println();
-			
-			
 		}
 	
 		
