@@ -5,14 +5,15 @@
 ===================================================================*/
 
 /*
-	다중 반복문(반복문의 중첩)을 활용한 별찍기
+	■ 다중 반복문(반복문의 중첩)을 활용한 별찍기
 	
-	과제
+	○ 과제
 		다음과 같은 내용이 출력될 수 있도록
 		반복문의 중첩 구문을 작성하여 프로그램을 구현한다.
 		
 	
 	실행 예) 마름모
+	
     ★
    ★★★
   ★★★★★
@@ -29,8 +30,10 @@ public class Test068
 	public static void main(String[] args)
 	{
 				
-		int i, j;
+		// 변수 선언
+		int i, j; //-- i(행), j(열) 인덱스 변수
 		
+		// 상단 삼각형
 		for (i = 5; i > 0; i--)
 		{
 			for (j = 1; j <= 10; j++)
@@ -44,9 +47,10 @@ public class Test068
 				
 			}
 
-			System.out.println();
+			System.out.println();	//-- 개행 출력
 		}
 		
+		// 하단 역삼각형
 		for (i = 2; i<= 5; i++)
 		{
 			for (j = 1; j <= 10; j++)
@@ -60,11 +64,12 @@ public class Test068
 				
 			}
 
-			System.out.println();
+			System.out.println();	//-- 개행 출력
 		}
 	}
 }
 
+//실행 결과
 /*
 
     ★
@@ -77,7 +82,5 @@ public class Test068
    ★★★
     ★
 계속하려면 아무 키나 누르십시오 . . .
-
-
 
 */
