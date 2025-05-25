@@ -38,6 +38,9 @@ public class Test056
 		System.out.print("임의의 정수 입력 : ");
 		nInNum = Integer.parseInt(br.readLine());
 		
+		// 스트림 닫고, 리소스 반환
+		br.close();
+		
 		// 연산 처리
 		if (nInNum > 0)
 		{
