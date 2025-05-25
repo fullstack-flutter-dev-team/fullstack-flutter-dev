@@ -22,7 +22,8 @@
 public class Test066
 {
 	public static void main(String[] args)
-	{		
+	{
+			
 		int i, j;
 		
 		for (i = 5; i > 0; i--)
@@ -37,8 +38,8 @@ public class Test066
 				}
 				
 			}
+
 			System.out.println();
-			
 		}
 	}
 }

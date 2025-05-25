@@ -38,8 +38,8 @@ public class Test065
 				}
 				
 			}
+
 			System.out.println();
-			
 		}
 	}
 }

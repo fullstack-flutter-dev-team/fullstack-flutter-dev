@@ -14,15 +14,15 @@
 	
 	실행 예) 역삼각형
 			★★★★★★★
-			  ★★★★★
-				★★★
-				  ★
+			 ★★★★★
+			  ★★★
+			   ★
 */
 
 public class Test067
 {
 	public static void main(String[] args)
-	{	
+	{
 		
 		int i, j;
 		
@@ -38,9 +38,8 @@ public class Test067
 				}
 				
 			}
+
 			System.out.println();
-			
-			
 		}
 	
 		

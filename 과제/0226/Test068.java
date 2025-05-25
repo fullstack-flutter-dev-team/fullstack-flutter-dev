@@ -28,7 +28,7 @@ public class Test068
 {
 	public static void main(String[] args)
 	{
-		
+				
 		int i, j;
 		
 		for (i = 5; i > 0; i--)
@@ -43,8 +43,8 @@ public class Test068
 				}
 				
 			}
+
 			System.out.println();
-			
 		}
 		
 		for (i = 2; i<= 5; i++)
@@ -59,9 +59,8 @@ public class Test068
 				}
 				
 			}
+
 			System.out.println();
-			
-			
 		}
 	}
 }
