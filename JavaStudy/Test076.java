@@ -2,6 +2,9 @@
 	■■■ 클래스와 인스턴스 ■■■
 ===================================================================*/
 
+//『  』  →   ←  ↓  ↑ ⬛
+/*
+*/
 
 /*
 사용자로부터 임의의 정수를 입력받아
@@ -30,6 +33,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+/*
 class Hap
 {
 	//클래스 속성(glocal변수)
@@ -96,6 +100,8 @@ public class Test076
 	}
 }
 
+*/
+
 //--실행 결과
 /*
 
@@ -103,6 +109,90 @@ public class Test076
 임의의 정수 입력(1~1000) : 1050
 임의의 정수 입력(1~1000) : 100
 >> 1 ~ 100 까지의 합 : 5050
+계속하려면 아무 키나 누르십시오 . . .
+*/
+
+
+class Hap
+{
+	//주요 변수 선언(사용자이 입력값을 담아낼 변수)
+	int su;
+	
+	//입력 메서드 정의
+	void input() throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		do
+		{
+			System.out.print("임의의 정수 입력(1~1000) : ");
+			su = Integer.parseInt(br.readLine());
+		}
+		while (su < 1 || su > 1000);
+	}
+	
+	//연산 및 처리 메서드 정의
+	int calculate()
+	{
+		int result = 0;
+		
+		for (int i = 1; i <= su; i++)
+		{
+			result += i;
+		}
+		
+		return result;
+	}
+	
+	//결과 출력 메서드 정의
+	void print(int sum)
+	{
+		// >> 1 ~ 100 까지의 합 : 5050
+		System.out.printf(">> 1 ~ %d  까지의 합 : %d\n", su, sum);
+	}
+	
+}
+
+// main() 메서드를 포함하고 있는 외부의 다른 클래스
+public class Test076
+{
+	public static void main(String[] args) throws IOException
+	{
+		// Hap의 인스턴스(객체) 생성, ob는 참조변수
+		Hap ob = new Hap();
+		/*
+		new Hap().input();
+		new Hap().calculate();
+		
+		Hap ob1 = new Hap();
+		ob1.input();
+		
+		Hap ob2 = new Hap();
+		ob2.calculate();
+		*/
+		
+		// --
+		//참조변수
+		// 생성된 인스턴스를 통해 입력 메서드 호출
+		// ----------------------
+		//   참조 변수 활용
+		ob.input();
+		
+		// 생성된 인스턴스를 통해 연산 메서드 호출
+		int s = ob.calculate(); 
+		
+		// 생성된 인스턴스를 통해 출력 메서드 호출
+		ob.print(s);
+		//ob.print(ob.calculate));
+	}
+}
+
+//--실행 결과
+/*
+
+임의의 정수 입력(1~1000) : -5
+임의의 정수 입력(1~1000) : 2000
+임의의 정수 입력(1~1000) : 100
+>> 1 ~ 100  까지의 합 : 5050
 계속하려면 아무 키나 누르십시오 . . .
 
 */
