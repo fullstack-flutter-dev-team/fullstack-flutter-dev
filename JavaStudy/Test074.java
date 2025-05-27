@@ -51,6 +51,7 @@ public class 직사각형
 
 import java.util.Scanner;	// 파일내에 여러개의 클래스가 있는 경우, 최상단에 import문 삽입
 
+
 // 직사각형 클래스 설계
 //public class Rect
 class Rect
