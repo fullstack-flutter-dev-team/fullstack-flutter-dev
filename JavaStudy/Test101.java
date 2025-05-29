@@ -48,7 +48,7 @@ public class Test101
 		                                         //    (사용자 정의 메서드 호출)
 												 
 						
-		int[] copys3 = (int[])nums.clone();
+		int[] copys3 = (int[])nums.clone();      //-- 깊은 복사
 		 
 		// check~!!!!
 		// 원본 배열의 요소 수정 발생~!!!(위치 주목)
@@ -60,6 +60,7 @@ public class Test101
 			System.out.print(nums[i] + " ");
 		}
 		System.out.println();
+		//--==>> 10 2000 30 40 50 
 	
 		// copys1 배열 확인
 		for (int i = 0; i < copys1.length; i++)
@@ -67,6 +68,7 @@ public class Test101
 			System.out.print(copys1[i] + " ");
 		}
 		System.out.println();
+		//--==>> 10 2000 30 40 50 
 		
 		// copys2 배열 확인
 		for (int i = 0; i < copys2.length; i++)
@@ -74,6 +76,7 @@ public class Test101
 			System.out.print(copys2[i] + " ");
 		}
 		System.out.println();
+		//--==>> 10 20 30 40 50 
 		
 		// copys3 배열 확인
 		for (int i = 0; i < copys3.length; i++)
@@ -81,6 +84,7 @@ public class Test101
 			System.out.print(copys3[i] + " ");
 		}
 		System.out.println();
+		//--==>> 10 20 30 40 50 
 	}
 	
 	
