@@ -38,9 +38,9 @@ public class Test097
 		// 변수 선언 및 초기화
 		char ch;
 		int nRow, nCol;
-		char[][] arr;                // 다차원 배열 선언
+		char[][] arr;                // 다차원 배열 참조변수 선언
 			
-		ch = 'A';                    // 초기화
+		ch = 'A';                    // 변수 초기화(첫 문자 값)
 		nRow = nCol = 5;             // 행,열 길이 설정(5)
 		arr = new char[nRow][nCol];  // 다차원 배열 메모리 할당
 		
@@ -53,20 +53,23 @@ public class Test097
 				{
 					if (i % 2 == 0)
 					{
+						// 짝수 행(i)이면 왼쪽에서 오른쪽으로 채우고,
 						arr[i][j] = ch;
-					} else {
+					} else { 
+						// 홀수 행(i)이면 오른쪽에서 왼쪽으로 채운다.
 						arr[i][i-j] = ch;
 					}
 					
 					ch++;
 				} else {
+					// 채우지 않는 요소는 널 문자로 설정
 					arr[i][j] = '\0';
 				}
 			}
 
 		}
 		
-		// 다차원 배열 요소 전체 출력
+		// 다차원 배열 전체 요소 출력
 		for (int i = 0; i < arr.length; i++)
 		{
 			for (int j = 0; j < arr[i].length; j++)

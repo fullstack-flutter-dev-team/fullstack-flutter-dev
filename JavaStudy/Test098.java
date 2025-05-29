@@ -1,6 +1,6 @@
 /*===================================================================
 	■■■ 배열 ■■■
-	-  배열과 난수 처리(※ Random 클래스 활용)
+	-  배열과 난수 처리(※ Random 클래스 활용) ★
 ===================================================================*/
 // ※ ○ ★ 『  』 ⬛ ▣ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛
 
@@ -40,6 +40,7 @@ public class Test098
 {
 	public static void main(String[] args)
 	{
+		/*
 		//Scanner 인스턴스 생성
 		Scanner sc = new Scanner(System.in);
 		
@@ -76,7 +77,8 @@ public class Test098
 		for (int i = 0; i < arr.length; i++)
 		{
 			int temp = rd.nextInt(100);
-			arr[i] = (temp == 0) ? rd.nextInt(100) : temp;
+			//arr[i] = (temp == 0) ? rd.nextInt(100) : temp;
+			arr[i] = rd.nextInt(100) + 1;
 		}
 		
 		// 변수 초기화
@@ -101,6 +103,98 @@ public class Test098
 		//배열 전체 출력 :  15 30 25 52 16 90 98 96  6 57 26 81 84 73 26
 		//가장 큰 값 : 98, 자장 작은 값 :  6
 		//계속하려면 아무 키나 누르십시오 . . .
+		*/
 		
+		
+		//Scanner 인스턴스 생성
+		Scanner sc = new Scanner(System.in);
+		
+		// 주요 변수 선언
+		int size, nMax,nMin, nTemp; //-- 사용자의 입력값을 담아낼 변수 → 배열의 길이 결정
+		
+		System.out.print("발생시킬 난수의 갯수 입력 : ");
+		size = sc.nextInt();
+		
+		//확인(테스트)
+		//System.out.println("난수 갯수 : " + size);
+		
+		//size 변수에 담아낸 수 만큼의 방(길이)를 가진 배열 만들기
+		//즉, 배열 선언 및 메모리 할당
+		int[] arr  = new int[size];
+		
+		// 무작위 정수(난수)를 발생시키기 위해서는
+		// 난수 발생 전용 객체가 필요하다.
+		// → 『java.util.Random』 
+		Random rd = new Random();
+		//-- Random 클래스 인스턴스 생성
+		
+		
+		//배열 구성
+		//배열변수 = 값;
+		//for (int i =0; i<arr.length; i++)
+		for (int i = 0; i < size; i++)
+		{
+			//난수 발생
+			//rd.nextInt(size) -- X
+			//rd.nextInt(100);
+			//-- 0 ~ 99 증 1개 발생
+			
+			//rd.nextInt(101);
+			//-- 0 ~ 100 중 1개 발생
+			
+			//rd.nextInt(100) + 1;
+			//-- 1 ~ 100 중 1개 발생 ★★★
+			
+			arr[i] = rd.nextInt(100) + 1;
+			//       ---------------
+			//           0 ~ 99
+			//       ---------------------
+			//           1 ~ 100
+		}
+		
+		System.out.print("배열 전체 출력 : ");
+		//배열 요소 전체 출력
+		for (int i = 0; i < arr.length; i++)
+		{
+			System.out.printf("%3d", arr[i]);
+		}
+		
+		System.out.println(); //개행
+		//--실행결과
+		//발생시킬 난수의 갯수 입력 : 15
+		//1 15 14 80 53 96 41 95 63 75 14 35 59 20  5
+		//계속하려면 아무 키나 누르십시오 . . .
+		
+		//---------------------여기까지 수행하면 배열 구성 완료~!!
+		
+		//가장 큰 값, 가장 작은 값 출력~!!!
+		int max, min;           //-- 최대값, 최소값
+		max = min = arr[0];     //-- arr[0]의 값을 min에 대입하고
+		                        //   min의 값을 다시 max에 대입
+		
+		//for (int i = 0; i < arr.length; i++)
+		for (int i = 1; i < arr.length; i++)
+		{
+			if (max < arr[i])   //-- 기존 max 변수에 담겨있던 값보다 더 큰 값의 요소 발견~!!!
+			{
+				// 기존 max 의 값을 그 요소로 덮어쓰기
+				max = arr[i];
+			}
+			
+			if (min > arr[i])   //-- 기존 min 변수에 담겨있던 값보다 더 작은 값의 요소 발견~!!!
+			{
+				// 기존 min의 값을 그 요소로 덮어쓰기
+				min = arr[i];
+			}
+		}//end for-loop
+		
+		//결과 출력
+		System.out.printf("가장 큰 값 : %d, 가장 작은 값 : %d\n", max, min);
 	}
 }
+
+//--실행 결과
+//발생시킬 난수의 갯수 입력 : 20
+//배열 전체 출력 :  96 83 36 43100  5 45 72  4 96 40 94 32 18 77 98 31 48 16 79
+//가장 큰 값 : 100, 가장 작은 값 : 4
+//계속하려면 아무 키나 누르십시오 . . .
