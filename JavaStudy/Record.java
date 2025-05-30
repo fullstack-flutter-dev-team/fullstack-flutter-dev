@@ -46,25 +46,26 @@
 	/*
 		▣ 힌트:
                int[] arr = {10, 20, 30};
-			   Record ob
+			   
+			   Record ob = {new Record(), new Recored(), new Record()};
+			   Record ob = new Record[3];
+			   ob[0] = new Record();
+			   ob[1] = new Record();
+			   ob[2] = new Record();
 	*/
 	
 // 속성만 존재하는 클래스
 // 학생 1명에 대한 데이터 구성
 public class Record
 {
-	//public String strName; // 이름
-	//public int nKorScore, nEngScore, nMatScore, nTotalScore, nOrder;
-	//public double average;
-	
 	// 학생 한 면을 표현할 수 있는 속성들로 구성
 	String name;              //-- 이름
 	//int kor, eng, mat;      //-- 국어, 영어, 수학점수
-	int[] score = new int[3]; //-- score[0] → 
-	                          //-- score[1] → 
-	                          //-- score[2] → 
+	int[] score = new int[3]; //-- score[0] → 국어점수
+	                          //-- score[1] → 영어점수
+	                          //-- score[2] → 수학점수
 	int tot;                  //-- 총점
-	double avg;               //-- 평균
+	double avg;               //-- 평균 → xx.xx
 	
 	// 추가~!!
 	int rank;                 //-- 등수(석차)
