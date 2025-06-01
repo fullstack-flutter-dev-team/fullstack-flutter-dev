@@ -13,3 +13,13 @@
 - []()
 - []()
 - []()
+
+### java char '\0' mean
+- [java char '\0' mean 검색](https://www.google.com/search?q=java+char+%27%5C0%27+mean&oq=java+char+%27%5C0&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyBggCEEUYOdIBCDYwODRqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8)
+    ```
+    Java에서 '\0'은 null 문자이며, 문자열의 끝을 나타내는 데 사용되지 않습니다. 문자열의 특정 부분에 null 값을 나타내거나, char 타입 변수에 유니코드 값 0을 저장하는 데 사용될 수 있습니다. 
+    ```
+  - [java.lang 패키지(String클래스)](https://limsungju.tistory.com/163)
+  - ✨ [What's the meaning of char zero (0) in Java? [duplicate]](https://stackoverflow.com/questions/9753576/whats-the-meaning-of-char-zero-0-in-java)
+  - []()
+  - []()
