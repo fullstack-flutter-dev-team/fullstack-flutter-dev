@@ -1,3 +1,8 @@
+### JavaFX
+- ✨[JavaFX](https://openjfx.io/)
+  - [JavaFX and Visual Studio Code](https://openjfx.io/openjfx-docs/#install-javafx)
+
+
 ### YouTube
 - [생활코딩](https://www.youtube.com/@coohde/playlists)
 
