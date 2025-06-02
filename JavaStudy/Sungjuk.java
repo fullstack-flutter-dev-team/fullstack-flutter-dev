@@ -309,7 +309,8 @@ class Sungjuk
 		// 개행
 		System.out.println();
 		
-		// 석차 계산
+		// check~!!
+		// 출력 기능 수행 전에 석차 산출 메서드 호출
 		ranking();
 		
 		// 학생 한 명 당 반복 출력 구문 구성
@@ -329,7 +330,10 @@ class Sungjuk
 			// 총점, 평균 출력
 			System.out.printf("%5d", rec[i].tot);
 			System.out.printf("%8.2f", rec[i].avg);
-			System.out.printf("%3d", rec[i].rank);
+			
+			// check~!!
+			// 석차 출력 구문 추가~!!!
+			System.out.printf("%5d", rec[i].rank);
 			
 			// 개행 (석차 정보 추가를 위해 사용)
 			System.out.println();
