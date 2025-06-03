@@ -40,12 +40,9 @@
  
 */
 
-import java.util.Random;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-
 
 /*
 public class Test109
@@ -139,15 +136,15 @@ public class Test109
 	// 달력 출력
 	private void printCalendar()
 	{
-	// [ 2025년 6월 ]
-	// 일 월 화 수 목 금 토
-	// ======================
-	// 1  2  3  4  5  6  7
-	// 8  9 10 11 12 13 14
-	//15 16 17 18 18 20 21
-	//22 23 24 25 26 27 28
-	//29 30
-    //======================
+		// [ 2025년 6월 ]
+		// 일 월 화 수 목 금 토
+		// ======================
+		// 1  2  3  4  5  6  7
+		// 8  9 10 11 12 13 14
+		//15 16 17 18 18 20 21
+		//22 23 24 25 26 27 28
+		//29 30
+		//======================
 				 
 		System.out.println(); // 개행
 		System.out.printf(" [ %d년 %d월 ]\n", year, month);
