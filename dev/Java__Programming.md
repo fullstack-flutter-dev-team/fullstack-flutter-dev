@@ -2,6 +2,16 @@
 - ✨[JavaFX](https://openjfx.io/)
   - [JavaFX and Visual Studio Code](https://openjfx.io/openjfx-docs/#install-javafx)
 
+### Java 도서
+- [Do it! 자바 프로그래밍 입문 ](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=157852460&srsltid=AfmBOoo3PX-ccZxnlFY3Q_HIIx_Ym8iz7HCy_rkphJE2gpSMmoGzgANS)
+  - [유튜브](https://www.youtube.com/playlist?list=PLG7te9eYUi7typZrH4fqXvs4E22ZFn1Nj)
+  - [git](https://github.com/easyspubjava/JAVA_LAB)
+  - [git](https://github.com/CJSRKSQLDOSDPTM/java_-?tab=readme-ov-file)
+- [Do it! 자바 프로그래밍 입문 - 개정판](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=354350098)
+- [자바로 배우는 리팩토링 입문](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=120271469&srsltid=AfmBOoqR7popTH4x5iNR1qEdr8-jFqtoRiuxMhmXTeOYxY4rKzcwxBan)
+  - [git](https://github.com/gilbutITbook/006921)
+- []()
+- []()
 
 ### YouTube
 - [생활코딩](https://www.youtube.com/@coohde/playlists)
