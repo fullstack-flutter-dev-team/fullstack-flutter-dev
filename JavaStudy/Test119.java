@@ -159,15 +159,18 @@ public class Test119 extends SuperSortInt119
 	static int[] data = {7, 10, 3, 28, 7};
 	
 	@Override
-	protected void sorting(){
+	//protected abstract void sorting(){
+	protected void sorting() {
 	//public void sorting(){
 		// 선택 정렬(Test111.java)
-		for (int i = 0 ; i < data.length-1; i++)
+		for (int i = 0 ; i < dataLength()-1; i++)
 		{
-			for (int j = i+1; j < data.length; j++)
+			for (int j = i+1; j < dataLength(); j++)
 			{
-				if (compare(i, j) == 1)
+				// 크기 비교
+				if (compare(i, j) > 0)
 				{
+					// 자리 바꿈
 					swap(i,j);
 				}
 			}
@@ -187,10 +190,11 @@ public class Test119 extends SuperSortInt119
 		System.out.println(); // 개행
 		
 		//Test119 ob = new Test119();
-		//
+		//-- 에러 발생(컴파일 에러) , sorting() 메서드를 구현하지 않은 경우
 		//Test119.java:115: error: Test119 is not abstract and does not override abstract method sorting() in SuperSortInt119
 		//public class Test119 extends SuperSortInt119
 		
+		// 인스턴스 생성
 		Test119 ob = new Test119();
 		ob.sort(Test119.data);
 		

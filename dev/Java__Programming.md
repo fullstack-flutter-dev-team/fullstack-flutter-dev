@@ -15,7 +15,7 @@
   - [YouTube](https://www.youtube.com/playlist?list=PLVsNizTWUw7EmX1Y-7tB2EmsK6nu6Q10q)
   - [git 1st](https://github.com/benigndeus/ThisIsJava)
   - []()
-- []()
+- [혼자 공부하는 자바(개정판)](https://hongong.hanbit.co.kr/%ec%9e%90%eb%b0%94/)
 - []()
 - []()
 - []()
