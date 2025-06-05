@@ -1,6 +1,7 @@
 /*========================================================================
 	■■■ 클래스 고급 ■■■
-	-  상속(Inheritance)
+	- 상속(Inheritance)
+	- 메서드 오버라이딩
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯ ㄷ
 
@@ -108,6 +109,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
+// Rect116 클래스와 Circle116 클래스의 부모 클래스
 class SuperTest116
 {
 	protected double area;
@@ -121,6 +123,7 @@ class SuperTest116
 	public SuperTest116(String title)
 	{
 		System.out.println("SuperTest116... 문자열을 인자로 받은 생성자");
+		this.title = title;
 	}
 		
 	public void write()
@@ -130,6 +133,7 @@ class SuperTest116
 }
 
 
+// SuperTest116 클래스를 상속받는 자식 클래스(단일 상속)
 class Rect116 extends SuperTest116//, SuperTest115
 {
 	/*
@@ -156,11 +160,15 @@ class Rect116 extends SuperTest116//, SuperTest115
 	}	
 	
 	*/
+	
 	private int w, h;
 	
+	
+	// 자식 클래스의 사용자 정의 생성자
 	public Rect116()
 	{
-		
+		// ★ 부모 클래스의 생성자 호출 구문이 자동으로 삽입된다.
+		//super();		//-- SuperTest116(); 
 	}
 	
 	public void calc(int w, int h)
@@ -168,36 +176,129 @@ class Rect116 extends SuperTest116//, SuperTest115
 		this.w = w;
 		this.h = h;
 		area = (double)this.w * this.h;
-		write();
+		write();  // Rect116 클래스에 정의되어 있지 않으면 부모클래스의 write() 메서드 호출
 	}
 	
+	// 자바야~~ 나 이거 물려받은거 아는데 의도적으로 재정의한거다~!!!
+	// 자바 컴파일 과정에서 주서부분은 제거되므로, 어노테이션을 사용하여 jvm에 알림
+	@Override		//-- 어노테이션(annoation) - metadata  - JDK 1.5 부터 적용됨,,
 	public void write()
 	{
 		System.out.println("w : " + w + " , h : " + h);
 		System.out.println("area : " + area);
 	}
+	
+	/*
+	 ※ 메서드 재정의(메서드 오버라이딩, Method Overriding)
+			상위 클래스를 상속받은 하위 클래스에서 
+			상위 클래스에 정의된 메서드를 다시 정의하는 것으로(재정의)
+			객체 지향 프로그래밍의 특징인 다형성을 나타낸다.
+			재정의(Overriding)는 반드시 상속 관계에 있어야 하며,
+			메서드의 이름, 리턴 타입, 매개변수의 갯수나 타입이	
+			모두 완전히 일치해야 한다.
+	*/
 }
 
-
+// SuperTest116 클래스를 상속받는 자식 클래스(단일 상속)
 class Circle116 extends SuperTest116
 {
+	/*
+	protected double area;
+	
+	// ※ private 멤버는 접근 자체가 불가능~!!! → 상속 불가
+	//private String title;
+	
+	// ※ 생성자는 상속 대상에서 제외~!!!!
+	//public SuperTest116()
+	//{
+	//	System.out.println("SuperTest116... 인자 없는 생성자");
+	//}
+	
+	// ※ 생성자는 상속 대상에서 제외~!!!
+	//public SuperTest116(String title)
+	//{
+	//	System.out.println("SuperTest116... 문자열을 인자로 받은 생성자");
+	//}
+		
+	public void write()
+	{
+		System.out.println(title + " - " + area);
+	}	
+	
+	*/
+	
+	// 자식 클래스의 사용자 정의 생성자
 	public Circle116(String title)
 	{
-		
+		// ★ 부모 클래스의 생성자 호출 구문이 자동으로 삽입된다.
+		//super();		//-- SuperTest116(); 
+		super(title); // super(); //-- 자동 삽입되지 않는다.
 	}
 	
 	public void calc(int r)
 	{
 		area = r * r * 3.141592;
-		write();
+		write(); //-- 부모로 부터 상속받은 메서드를 호출
 	}
 }
 
+
+// main() 메서드를 포함하는 외부의 다른 클래스
 public class Test116
 {
 	public static void main(String[] args)
 	{
-		// Rect116 클래스 기반 인스턴스 생성
+		// Rect116 클래스(자식 클래스) 기반 인스턴스 생성
 		Rect116 ob1 = new Rect116();
+		//--==>> SuperTest116... 인자 없는 생성자
+		
+		// Circle116 클래스(자식 클래스) 기반 인스턴스 생성
+		//Circle116 ob1 = new Circle116();
+		//--==>> 에러 발생(컴파일 에러)
+		//Test116.java:252: error: constructor Circle116 in class Circle116 cannot be applied to given types;
+		//Circle116 ob1 = new Circle116();
+		//
+		//-- 현재 클래스에는
+		//   매개변수를 필요로하는 사용자 정의 생성자가 만들어져 있으며
+		//   이로 인해 default 생성자가 자동으로 삽입되지 않는 상태
+		//
+		//
+		
+		//Circle116 ob2 = new Circle116("원");
+		//--==>> SuperTest116... 인자 없는 생성자
+		
+		Circle116 ob2 = new Circle116("원");
+		// #232 삽입 후 실행 결과
+		//--==>> SuperTest116... 문자열을 인자로 받은 생성자
+		
+		ob1.calc(10, 5);
+		//--- 실행 결과
+		//w : 10 , h : 5
+		//area : 50.0
+		
+		ob2.calc(20);
+		//--==>> 원 - 1256.6368
 	}
 }
+
+
+/*
+===================================================================================================
+상위 클래스		|	하위 클래스			|	결과
+------------------------------------------------------------------------------------------------
+생성자를		| 생성자 정의 안한		| → 가능하다.
+정의하지		| 인수가 없는 생성자	| → 가능하다.
+않음			| 인수가 있는 생성자	| → 가능하다.
+------------------------------------------------------------------------------------------------
+인수가			| 생성자 정의 안함		| → 가능하다.
+없는			| 인수가 없는 생성자	| → 가능하다.
+생성자만 정의	| 인수가 있는 생성자	| → 가능하다.
+------------------------------------------------------------------------------------------------
+인수가			| 생성자 정의 안함		| → 에러 발생.
+있는			| 인수가 없는 생성자	| → 상위 클래스의 해당 생성자를 호출하지 않으면 에러 발생.
+생성자만 정의	| 인수가 있는 생성자	| → 상위 클래스의 해당 생성자를 호출하지 않으면 에러 발생.
+====================================================================================================
+
+
+
+*/
