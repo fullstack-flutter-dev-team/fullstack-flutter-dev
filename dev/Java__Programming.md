@@ -27,7 +27,7 @@
 ### KOCW
 - ✨ [자바프로그래밍 🔷 금오공과대학교](http://www.kocw.net/home/cview.do?cid=2f707a756c0c8e29)
 - [객체지향언어2 🔷 한성대](http://www.kocw.net/home/cview.do?cid=a6b0b625ed9a41ee)
-- [JAVA 프로그래밍 🔷 한성대](http://www.kocw.net/home/cview.do?cid=df718527167c1633)
+- ✨ [JAVA 프로그래밍 🔷 한성대](http://www.kocw.net/home/cview.do?cid=df718527167c1633)
 - [객체지향 프로그래밍 🔷 경기대](http://www.kocw.net/home/cview.do?cid=b1aaba8d04356c90)
 - [자바 프로그래밍 Ⅱ 🔷 안양대](http://www.kocw.net/home/cview.do?cid=3c5df9f4589c4fa9)
 - [JAVA프로그래밍1 🔷 건국대](http://www.kocw.net/home/cview.do?cid=fa17664bb8690297)
