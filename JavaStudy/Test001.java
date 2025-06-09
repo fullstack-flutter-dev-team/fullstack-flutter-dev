@@ -25,6 +25,6 @@ public class Test001
 	public static void main(String[] args)
 	{
 		System.out.println("Test");
-		System.out.println("김남일");
+		System.out.println("김한국");
 	}
 }

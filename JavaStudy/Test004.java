@@ -16,12 +16,12 @@ public class Test004
 		int age = 25;
 		char grade = 'A';
 		
-		String name = "김주형";
+		String name = "김철수";
 		
-		//String name = "이유빈";
+		//String name = "이영희";
 		//-- 스코프 영역 안에서 변수명은 식별자!!!
 		
-		//String #name = "조경진";
+		//String #name = "조영희";
 		//-- $ _ 를 제외한 다른 특수문자는
 		//	변수의 이름으로 활용할 수 없다.
 		//	그나마, 사용 가능한 이들 특수문자도
@@ -49,3 +49,11 @@ public class Test004
 		
 	}
 }
+//--실행 결과
+/*
+_tel: 01023451234
+name : 김철수
+age : 25
+_tel : 01023451234
+주소 : 강서구 마두동
+ */

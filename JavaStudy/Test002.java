@@ -10,7 +10,7 @@ public class Test002
 		
 		
 		
-		System.out.println("김남일 입니다.");
+		System.out.println("김한국 입니다.");
 		System.out.print("반갑습니다.");
 		System.out.print("화이팅 입니다.");
 		// println() 메서드와 print() 메서드는
@@ -24,6 +24,6 @@ public class Test002
 // 실행 결과
 /*
 안녕하세요.
-김남일 입니다.
+김한국 입니다.
 반갑습니다.화이팅 입니다.계속하려면 아무 키나 누르십시오 . . .
 */
