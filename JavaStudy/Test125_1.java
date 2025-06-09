@@ -67,6 +67,7 @@ class Record
 	//-------------[name]---------------------
 	public String getName()
 	{
+		//return name;
 		return this.name;
 	}
 	
@@ -74,21 +75,23 @@ class Record
 	{
 		this.name = name;
 	}
-		
+	
 	//-------------[score]---------------------
 	public int[] getScore()
 	{
+		//return score;
 		return this.score;
 	}
 	
 	public void setScore(int[] score)
 	{
 		this.score = score;
-	}
+	}			
 	
 	//-------------[tot]---------------------
 	public int getTot()
 	{
+		//return tot;
 		return this.tot;
 	}
 	
@@ -100,13 +103,14 @@ class Record
 	//-------------[avg]---------------------
 	public double getAvg()
 	{
+		//return avg;
 		return this.avg;
 	}
 	
 	public void setAvg(double avg)
 	{
 		this.avg = avg;
-	}
+	}		
 	
 }
 
@@ -134,143 +138,119 @@ class SungjukImpl implements Sungjuk
 	//-- Record클래스를 기반으로 생성되는 객체를
 	//		담을 수 있는 배열의 이름을 rec라고 하겠다.
 	
-	// public abstract void set();
-	// public abstract void input();
-	// public abstract void print();
-	
+	//???
 	@Override
 	public void set()
 	{
+		//인원 수 입력(1~10) : 11
+		//인원 수 입력(1~10) : 0
+		//인원 수 입력(1~10) : 2
+		
 		Scanner sc = new Scanner(System.in);
 		
 		do
 		{
-			System.out.print("인원 수 입력(1~10) : ");
+			System.out.print("인원 수 입력(1~10)  : ");
 			inwon = sc.nextInt();
 		}
 		while (inwon < 1 || inwon > 10);
 		
-		// 이원 수 만큼의 배열방 구성
 		rec = new Record[inwon];
+		
+		for (int i = 0; i < inwon; i++)
+		{
+			rec[i] = new Record();
+		}
+		
+		//for (Record r : rec)
+		//{
+		//	System.out.println("r : " + r.getHak());
+		//}
+		System.out.println();	//-- 개행
 	}
 	
 	@Override
 	public void input()
 	{
-		Scanner sc = new Scanner(System.in);
 		
-		//for (int i = 0; i < rec.length; i++)	//-- 인원 수(rec 배열의 길이) 만큼 반복
-		for (int i = 0; i < inwon; i++)	//-- 인원 수(rec 배열의 길이) 만큼 반복
+	
+		//1번째 학생의 학번 이름 입력(공백 구분) : 2505123 최xx
+		//국어 영어 수학 점수 입력   (공백 구분) : 90 100 85
+		
+		//2번째 학생의 학번 이름 입력(공백 구분) : 2505236 조xx
+		//국어 영어 수학 점수 입력   (공백 구분) : 90 100 85
+		Scanner sc = new Scanner(System.in);
+		int[] scoreTemp = new int[3];
+		int tot = 0;
+		double avg = 0.0;
+		
+		for (int i = 0 ; i < inwon; i++)
 		{
-			// check~!!!
-			// 학생 객체(인스턴스) 생성 → Record 객체
-			//Record ob = new Record();
-			//rec[0] = new Record();
-			rec[i] = new Record();
+			System.out.printf("%d번째 학생의 학번 이름 입력(공백 구분): ", (i+1));
+			rec[i].setHak(sc.next());
+			rec[i].setName(sc.next());
+			
+			System.out.print("국어 영어 수학 점수 입력   (공백 구분) : ");
+			scoreTemp[0] = sc.nextInt();
+			scoreTemp[1] = sc.nextInt();
+			scoreTemp[2] = sc.nextInt();
+			tot = scoreTemp[0] + scoreTemp[1] + scoreTemp[2];
+			avg = tot / 3.0;
+			
+			rec[i].setScore(scoreTemp);
+			rec[i].setTot(tot);
+			rec[i].setAvg(avg);
 			
 			System.out.println();	//-- 개행
-			System.out.printf("%d번째 학생의 학번 이름 입력(공백 구분) : ", (i+1));
-			
-			// 250123 김한국
-			// ------ ------
-			//rec[i].hak = sc.next();
-			rec[i].setHak(sc.next());	//-- 학번
-			
-			//rec[i].name = sc.next();
-			rec[i].setName(sc.next());	//-- 이름
-			
-			System.out.print("국어 영어 수학 점수 입력 (공백 구분) : ");
-			// 70 80 90
-			
-			int[] temp = new int[rec[i].getScore().length];
-			int total = 0;
-			
-			//for (int j = 0; j < 3; j++)
-			//for (int j = 0; j < rec[i].getScore().length; j++)
-			for (int j = 0; j < temp.length; j++)
-			{
-				//rec[i].score[j] = sc.nextInt();
-				temp[j] = sc.nextInt();	//-- 국,영,수학 점수
-				total += temp[j];			//-- 총점
-			}
-			
-			//rec[i].score = temp;
-			rec[i].setScore(temp);		//-- 국,영,수학 점수
-			
-			//rec[i].tot = total;
-			rec[i].setTot(total);		//-- 총점
-			
-			//rec[i].avg = total/3.0;
-			//rec[i].setAvg(total/3.0);
-			rec[i].setAvg(total/(double)temp.length);	//-- 평균
 		}
-		
-	}//close input()
+	}
+
 	
 	@Override
 	public void print()
 	{
-		System.out.println();			//-- 개행
-		for (int i = 0; i < inwon; i++)	//-- 학생 수 만큼 반복~!!!
+		//2505123	최xx	90	100	85	xxx	xxx.xx
+		//					수	수	우
+		//2250236	조xx	95	80	95	xxx	xxx.xx
+		//					수	수	우
+		int kor, eng, mat;
+		
+		System.out.println();	//--개행
+		
+		for (int i = 0; i < inwon; i++)
 		{
-			// 학생 한 명 분 출력
-			// i번째 학생
-			
-			//-- 학번, 이름 출력
-			//System.out.printf("%8s %5s", 학번, 이름);
-			//System.out.printf("%8s %5s", i번째 학생의 학번, i번째 학생의 이름);
-			//System.out.printf("%8s %5s", rec[i].hak, rec[i].name);
-			System.out.printf("%8s %5s", rec[i].getHak(), rec[i].getName());
-			
-			//-- 국어, 영어, 수학 점수 출력
-			for (int scoreTemp : rec[i].getScore())
-			{
-				System.out.printf("%6d", scoreTemp);
-			}
-			
-			//-- 총점
-			//System.out.printf("%7d", i번째 학생의 총점);
-			//System.out.printf("%7d", rec[i].tot);
-			System.out.printf("%7d", rec[i].getTot());
-			
-			//-- 평균
-			//System.out.printf("%8.2f", i번째 학생의 평균);
-			//System.out.printf("%8.2f", rec[i].avg);
-			System.out.printf("%8.2f\n\t\t", rec[i].getAvg());
-			
-			//-- "수, 우, 미, 양, 가" 출력..
-			for (int scoreTemp : rec[i].getScore())
-			{
-				System.out.printf("%5s", panjung(scoreTemp));
-			}
-			System.out.println();	//-- 개행
+			kor = rec[i].getScore()[0];
+			eng = rec[i].getScore()[1];
+			mat = rec[i].getScore()[2];
+			System.out.printf("%8s %4s %3d %3d %3d %3d %.2f\n", rec[i].getHak(), rec[i].getName(), kor, eng, mat, rec[i].getTot(), rec[i].getAvg());
+			System.out.printf("%19s%3s%3s\n", getGrade(kor), getGrade(eng), getGrade(mat));
 			
 		}
-		
-	}//close print()
-	
-	// 내부적(private)으로 등급에 대한 판정을 수행할 메서드 정의
-	private String panjung(int score)
-	{
-		String result = "가";
-		
-		if (score >= 90) {
-			result = "수";
-		} else if (score >= 80) {
-			result = "우";
-		} else if (score >= 70) {
-			result = "미";
-		} else if (score >= 60){
-			result = "양";
-		}
-		
-		return result;
 	}
 	
+	public String getGrade(int score)
+	{
+		String strGrade;
+		
+		if (score >= 90)
+		{
+			strGrade = "수";
+		} else if (score >= 80) {
+			strGrade = "우";
+		} else if (score >= 70) {
+			strGrade = "미";
+		} else if (score >= 60) {
+			strGrade = "양";
+		} else {
+			strGrade = "가";
+		}
+		
+		return strGrade;
+	}
 }
 
 // main() 메서드를 포함하는 외부의 다른 클래스
-public class Test125
+public class Test125_1
 {
 	public static void main(String[] args)
 	{
@@ -291,21 +271,3 @@ public class Test125
 	}
 	
 }
-
-//-- 실행 결과
-/*
-인원 수 입력(1~10) : 2
-
-1번째 학생의 학번 이름 입력(공백 구분) : 2501234 김한국
-국어 영어 수학 점수 입력 (공백 구분) : 90 100 85
-
-2번째 학생의 학번 이름 입력(공백 구분) : 2502345 이미국
-국어 영어 수학 점수 입력 (공백 구분) : 95 80 95
-
- 2501234   김한국    90   100    85    275   91.67
-                    수    수    우
- 2502345   이미국    95    80    95    270   90.00
-                    수    우    수
-계속하려면 아무 키나 누르십시오 . . .
-
-*/

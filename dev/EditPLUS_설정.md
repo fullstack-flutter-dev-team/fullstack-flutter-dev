@@ -17,3 +17,25 @@
 
 ### editplus java 설정파일
 - [editplus java 설정파일 검색](https://www.google.com/search?q=editplus+java+%EC%84%A4%EC%A0%95%ED%8C%8C%EC%9D%BC&newwindow=1&sca_esv=0407674a9afef7c1&rlz=1C1GCEU_koKR1161KR1161&ei=52QtaJy_Eey30-kPt6T84AQ&ved=0ahUKEwjczqjH6rONAxXs2zQHHTcSH0wQ4dUDCBA&uact=5&oq=editplus+java+%EC%84%A4%EC%A0%95%ED%8C%8C%EC%9D%BC&gs_lp=Egxnd3Mtd2l6LXNlcnAiGmVkaXRwbHVzIGphdmEg7ISk7KCV7YyM7J28MgUQIRigATIFECEYoAFIgE5QvxNYjEtwAngBkAEBmAHDAqABsCGqAQYyLTE2LjG4AQPIAQD4AQGYAgygApkUwgIKEAAYsAMY1gQYR8ICDBAhGKABGMMEGAoYKsICChAhGKABGMMEGArCAggQIRigARjDBMICCBAAGIAEGKIEwgIFEAAY7wWYAwCIBgGQBgqSBwcyLjAuOS4xoAfhK7IHBTItOS4xuAePFA&sclient=gws-wiz-serp)
+
+### editplus /* autocomplete
+- [editplus /* autocomplete 검색](https://www.google.com/search?q=editplus+%2F*+autocomplete&newwindow=1&sca_esv=3865a5c24f38e491&ei=FINGaKMGid7aug_9g8_ZBg&oq=editplus+%2F*++auto&gs_lp=Egxnd3Mtd2l6LXNlcnAiEWVkaXRwbHVzIC8qICBhdXRvKgIIATIFECEYoAEyBRAhGKABSOFMUL8qWN0_cAJ4AZABAJgBkgKgAb0LqgEDMi02uAEDyAEA-AEBmAIIoALYC8ICChAAGLADGNYEGEfCAgQQABgewgIGEAAYCBgemAMAiAYBkAYJkgcFMi4wLjagB8UUsgcDMi02uAfRC8IHBTAuNy4xyAcS&sclient=gws-wiz-serp)
+  - ⭐ ⭐ [[editplus] 에디트플러스 (EditPlus) - 자동완성기능 ★★★★★ (autocomplete)](https://homzzang.com/b/free-1578)
+    ```
+      #T=hztable
+      <table>
+      ^!
+      </table>
+    ```
+    - table 태그 자동완성 입력 방법
+      - hztable 입력 후 spacebar키 누르기
+    - 입력 결과
+      ```
+      <table>
+      ^!
+      </table>
+       ```
+    - ^! 기호 의미
+      - 커서 위치
+- []()
+- []()

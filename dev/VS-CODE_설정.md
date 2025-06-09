@@ -26,3 +26,30 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
 - [vscode 마우스 휠 확대 검색](https://www.google.com/search?q=vscode+%EB%A7%88%EC%9A%B0%EC%8A%A4+%ED%9C%A0+%ED%99%95%EB%8C%80&rlz=1C1GCEU_koKR1161KR1161&oq=vs+code+%EB%A7%88%EB%AC%B4%EC%8A%A4&gs_lcrp=EgZjaHJvbWUqCQgCEAAYDRiABDIGCAAQRRg5MgkIARAAGA0YgAQyCQgCEAAYDRiABDIJCAMQABgNGIAEMgkIBBAAGA0YgAQyCQgFEAAYDRiABDIICAYQABgNGB4yCAgHEAAYDRgeMggICBAAGA0YHjIICAkQABgNGB7SAQkxMTMzNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
   - [VSCode 코드 글자 확대 - Ctrl + Mouse Wheel 줌 세팅하기](https://kincoding.com/entry/VSCode-%EC%BD%94%EB%93%9C-%EA%B8%80%EC%9E%90-%ED%99%95%EB%8C%80-Ctrl-Mouse-Wheel-%EC%A4%8C-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0)
   - ⭐ [[VSCode] 마우스 휠 스크롤로 글자 확대/축소하기](https://hianna.tistory.com/356)
+
+### GitHub Copilot in VS Code
+- [visual studio code github copilot 검색](https://www.google.com/search?q=visual+studio+code+github+copilot&newwindow=1&sca_esv=c8eca704bf034f17&ei=SGtGaLHWPPDf2roP36ObiAU&ved=0ahUKEwixmqqUyOONAxXwr1YBHd_RBlEQ4dUDCBA&uact=5&oq=visual+studio+code+github+copilot&gs_lp=Egxnd3Mtd2l6LXNlcnAiIXZpc3VhbCBzdHVkaW8gY29kZSBnaXRodWIgY29waWxvdDIFEAAYgAQyBRAAGIAEMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHkjgLFDoCFikK3ABeAGQAQCYAb8CoAGbIqoBBjItMTcuMbgBA8gBAPgBAZgCBKAC2QXCAgoQABiwAxjWBBhHmAMAiAYBkAYKkgcFMS4wLjOgB6aWAbIHAzItM7gH1gXCBwUwLjEuM8gHEg&sclient=gws-wiz-serp)
+  - [VS Code에서 GitHub Copilot을 무료로 제공합니다](https://techcommunity.microsoft.com/blog/azuredevcommunityblog/vs-code%EC%97%90%EC%84%9C-github-copilot%EC%9D%84-%EB%AC%B4%EB%A3%8C%EB%A1%9C-%EC%A0%9C%EA%B3%B5%ED%95%A9%EB%8B%88%EB%8B%A4/4377105)
+    - ⭐ [Set up Visual Studio Code with Copilot](https://code.visualstudio.com/docs/copilot/setup-simplified)
+  - ⭐ [나만의 Visual Studio Code Copilot 지침 만들고 활용하기](https://d2.naver.com/helloworld/6615449)
+  - [[Copilot] 깃허브 코파일럿 VSCode 설치 및 사용법](https://goldenrabbit.co.kr/2024/05/02/copilot-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%BD%94%ED%8C%8C%EC%9D%BC%EB%9F%BF-vscode-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95/)
+  - [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview)
+  - []()
+  - []()
+- []()
+- []()
+- []()
+### Unknown word.cSpell
+- [Unknown word.cSpell 검색](https://www.google.com/search?q=Unknown+word.cSpell&oq=Unknown+word.cSpell&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABgeMgYIAhAAGB4yCAgDEAAYBRgeMggIBBAAGAUYHjIICAUQABgFGB4yCAgGEAAYBRgeMggIBxAAGAUYHjIICAgQABgFGB4yCAgJEAAYBRge0gEIMTAzMmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
+  - [VS Code: enable inline spell checker, but disable spell check in the "Problems" panel](https://stackoverflow.com/questions/50309834/vs-code-enable-inline-spell-checker-but-disable-spell-check-in-the-problems)
+  - ⭐ [[VSCode] Unknown word. cSpell 문제 해결방법](https://dtbb.tistory.com/21)
+    - 문제 해결방법 1  (개별 처리)
+      - 해당 단어를 클릭하면 전구 모양 아이콘이 나온는데 클릭하면 수정할 수 있는 여러 단어와 아래쪽에 Add: "단어"  to workspace settings를 클릭하면 해결
+      - 그러면 프로젝트 폴더에 .vscode/settings.json  파일이 생기고 그곳에 단어가 추가됨, 경고 나오는 단어를 계속 추가하면 해당 단어의 경고가 없어짐
+    - ⭐ 문제 해결 방법 2  (일괄 처리)
+      - .vscode/settings.json 파일에  **"cSpell.enabled": false** 로 세팅하면 일일이 단어를 추가하지 않아도 한꺼번에 스펠링 체크를 해제함
+  - []()
+  - []()
+- []()
+- []()
+- []()
