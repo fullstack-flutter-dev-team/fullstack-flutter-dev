@@ -38,7 +38,6 @@
 			 또한, 클래스와 달리 인터페이스는 다중 상속이 가능하다.
 */
 
-/*
  
 /*
  ▣ 힌트: 
@@ -46,14 +45,85 @@
  
 */
 
+interface Demo
+{
+	public static final double PI = 3.141592;
+	
+	// 인터페이스의 멤버 변수는
+	// 『static final』을 별도로 명시하지 않아도
+	// 자동으로 『static final』인 상태~!!!
+	public int a = 10;
+	
+	// 인터페이스의 메서드는 선언만 가능(정의 불가)
+	// 자동으로 『abstract』인 상태~!!!
+	//public static void print()
+	public void print();
+	//{
+	//	System.out.println("PI : " + PI);
+	//}
+}
 
+// 클래스
+//class DemoImpl
+
+//class DemoImpl extends Demo	//-- (x)
+//class DemoImpl implements Demo
+//
+// 추상 클래스 - 인터페이스(Demo)를 구현하는 추상 클래스
+//abstract class DemoImpl implements Demo
+//
+// 클래스 - 인터페이스(Demo)를 구현하는 클래스(→ print() 메서드 재정의....)
+class DemoImpl implements Demo
+{
+	public void write()
+	{
+		System.out.println("클래스에 정의된 메소드...");
+	}
+	
+	@Override
+	public void print()
+	{
+		System.out.println("인터페이스 메서드 재정의...");
+	}
+}
 
 // main() 메서드를 포함하는 외부의 다른 클래스
 public class Test121
 {
 	public static void main(String[] args)
 	{
+		//
+		//Demo obj = new Demo();	//-- 생성 불가~!!!
+		//-- 인터페이스는 인스턴스를 생성할 수 없음~!!!
+		//DemoImpl obj = new DemoImpl();
+		//-- 인터페이스를 implemts만 한 상태에서는 불가~!!!
+		//	print() 메서드를 재정의해서 abstract를 떼어낸 후 가능
 		
+		// DemoImpl obTemp = new DemoImpl();
+		// Demo ob = (Demo)obTemp;
+		// Demo ob = obTemp;	//-- (o)
 		
+		// ○ 업 캐스팅 ★★
+		// 인터페이스 객체는 상위 객체
+		Demo ob = new DemoImpl();
+		
+		//
+		ob.print();
+		//--==>> 인터페이스 메서드 재정의...
+		
+		//ob.write();	// ★
+		//--==> 에러 발생(컴파일 에러) 
+		//		Test121.java:115: error: cannot find symbol
+		
+		System.out.println(Demo.PI);	//-- static 이기 때문에....
+		//--==>> 3.141592
+
+		System.out.println(Demo.a);	//-- static 이기 때문에....
+		//--==>> 10
+		
+		//Demo.a = 10;	// ★
+		//--==>> 에러 발생(컴파일 에러)	//-- final 이기 때문에....
+		//--==>> Test121.java:125: error: cannot assign a value to final variable a
+	
 	}
 }
