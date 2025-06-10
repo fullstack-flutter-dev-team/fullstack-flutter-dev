@@ -6,6 +6,7 @@
 
 // Test130.java 파일과 비교~!!!
 /// @see [Test130.java](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/JavaStudy/Test130.java)
+/// @see [Class Object](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html)
 
 /*
 	○

@@ -4,6 +4,7 @@
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
+/// @see [Double Class](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html) 
 
 // 추가 관찰
 
@@ -16,8 +17,6 @@
 
 //import java.lang.*;
 // (→ import java.lang.Object;)
-
-import java.math.BigDecimal;
 
 // main() 메서드를 포함하는 외부의 다른 클래스
 public class Test139  // extends Object
@@ -39,12 +38,7 @@ public class Test139  // extends Object
 		System.out.println(Double.MIN_VALUE);
 		//--==>> 4.9E-324
 		
-		
-		System.out.println();
-		System.out.println("-----------------------------------");
-		System.out.println();
-		
-		
+		System.out.println("\n-----------------------------------");
 		
 		// 실수 기반의 누눗셈 연산
 		System.out.println("1 : " + (3.0 / 0));
@@ -78,10 +72,12 @@ public class Test139  // extends Object
 		System.out.println("10 : " + (0.0/0 != 0.0/0));
 		//--==>> 10 : true
 		
-		
-		//※ NaN(→ Not a Number)과 임의의 수를
-		//	크기 비교를 수행하는 『==』 연산자를 통해 비교 연산을 수행하게 되면
-		//	결과는 언제나 『flase』 를 반환한다.
+		/* ================================================
+		  ※ NaN(→ Not a Number)과 임의의 수를
+		     크기 비교를 수행하는 『==』 연산자를 통해 
+			 비교 연산을 수행하게 되면
+		     결과는 언제나 『flase』 를 반환한다.
+		================================================ */
 			
 		// [Double.isNaN()]
 		System.out.println("11 : " + Double.isNaN(0.0/0));
@@ -89,7 +85,6 @@ public class Test139  // extends Object
 		
 		System.out.println("12 : " + Double.isNaN(1.0 + 2.0));
 		//--==>> 12 : false
-		
 	
 	}
 	

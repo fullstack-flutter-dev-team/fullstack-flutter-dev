@@ -4,9 +4,12 @@
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
+/// @see [Package java.lang](https://docs.oracle.com/javase/8/docs/api/java/lang/package-summary.html) 
+/// @see [Class Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)
+/// @see [Class Character](https://docs.oracle.com/javase/8/docs/api/java/lang/Character.html)
+
 /*
-	○ Wrapper 클래스
-	
+	○ [ Wrapper 클래스 ]
 		1. 자바에서는 인어 수준에서 제공하는 기본형 데이터를 제외한
 			나머지는 클래스로 설계하여 객체 단위로 처리한다.
 			따라서 자바에서는 이러한 기본형 데이터를
@@ -24,7 +27,6 @@
 			별도의 import 과정 없이 바로 사용하는 것이 가능하며
 			기본형과 마찬가지로 Wrapper클래스도 내부 메서드를 통해
 			형 변환이 간능하고, 동등 비교와 같은 연산도 가능하다.
-		 
 		 
 		ex) java.lang.Integer 클래스
 			int 기본 자료형의 Wrapper 클래스로
@@ -61,7 +63,6 @@
 			
 			이는 JDK 1.5 이후 추가된 오토 박싱/ 오토 언박싱 이라는
 			기능으로 인해 가능해진 것이다.
-	
 */
 
 
@@ -85,7 +86,9 @@ public class Test134  // extends Object
 		
 		c = new Integer(0); //-- 객체 생성
 		
-		//※ 레퍼런스 형(참조 타입), 기본 자료형(기본 타입)은 호환되지 않는다.
+		/*=============================================================
+		  ※ 레퍼런스 형(참조 타입), 기본 자료형(기본 타입)은 호환되지 않는다.
+		 ===============================================================*/
 		
 		b = c;		//-- Integer형 데이터(객체) → int형 변수(오토 언박싱)
 		b = c.intValue(); //-- ★ 객체의 메서드를 활용하여(메서드를 호출하여) 결과값 반환(언박싱)
@@ -93,7 +96,6 @@ public class Test134  // extends Object
 		d = new Object();	//-- 객체 생성
 		System.out.println("d.toString()  : " + d.toString());
 		//--==>> d.toString()  : java.lang.Object@6d06d69c
-		
 		
 		/*
 			class Object

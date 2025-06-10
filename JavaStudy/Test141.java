@@ -70,7 +70,6 @@ public class Test141  // extends Object
 		  『kor』 문자열이 포함되어 있을까?
 		   존재하면.. 그 위치는 어디일까?
 		 ===============================*/
-
 		// seoul korea
 		// 0123456
 		System.out.println(s.indexOf("kor"));

@@ -4,6 +4,9 @@
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
+/// @see [Package java.lang](https://docs.oracle.com/javase/8/docs/api/java/lang/package-summary.html) 
+/// @see [Class Number](https://docs.oracle.com/javase/8/docs/api/java/lang/Number.html) 
+/// @see [Class Double](https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html)
 /*
 	○ 
 	
@@ -14,8 +17,6 @@
 
 //import java.lang.*;
 // (→ import java.lang.Object;)
-
-import java.math.BigDecimal;
 
 // main() 메서드를 포함하는 외부의 다른 클래스
 public class Test138  // extends Object
@@ -38,6 +39,9 @@ public class Test138  // extends Object
 		
 		print(b2);
 		print(i2);
+		//-- 실행 결과
+		//3
+		//256
 	}
 	
 	/*
@@ -96,30 +100,29 @@ public class Test138  // extends Object
 	//		System.out.println(Float.valueOf((Float)obj));
 	//		System.out.println(((Float)obj).floatValue());
 	//	}
-
 	//}
 	
-	// java.lang.Number 클래스(추상 클래스)는
-	// 모든 숫자형 Wrapper 클래스의 부모 클래스
-	// (상위 클래스, 슈퍼 클래스)이다.
-	// b2, i2 변수의 Byte, Integer 자료형이 Number에 넘어오면서
-	// 내부적으로 업캐스팅이 일어나게 된다.
+	/*============================================================
+	  java.lang.Number 클래스(추상 클래스)는
+	    모든 숫자형 Wrapper 클래스의 부모 클래스
+	    (상위 클래스, 슈퍼 클래스)이다.
+	    b2, i2 변수의 Byte, Integer 자료형이 Number에 넘어오면서
+	    내부적으로 업캐스팅이 일어나게 된다.
+	===============================================================*/
 	static void print(Number n)	// Byte → Number, Integer → Number 
 	{
 		System.out.println(n);
-		//--
+		//-- 실행 결과
 		//3
 		//256
 		
-		/*
+		/* ==========================
 		if (n instanceof Integer)
 		{
 			System.out.println(n + "은 Integer 객체");
 		} else if (n instanceof Byte) {
 			System.out.println(n + "은 Byte 객체");
 		}
-		*/
+		===============================*/
 	}
-	
-	
 }

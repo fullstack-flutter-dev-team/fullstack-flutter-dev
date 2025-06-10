@@ -5,6 +5,8 @@
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
 /// @see [Test126.java](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/JavaStudy/Test126.java)
+/// @see [Class Object](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html)
+/// @see [중첩클래스(중첩 내부클래스, 내부클래스, 로컬클래스, 익명클래스)](https://chicken-mola.tistory.com/32?category=881798)
 
 
 /*

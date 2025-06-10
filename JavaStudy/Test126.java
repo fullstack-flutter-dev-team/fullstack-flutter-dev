@@ -4,6 +4,9 @@
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
+/// @see [중첩클래스(중첩 내부클래스, 내부클래스, 로컬클래스, 익명클래스)](https://chicken-mola.tistory.com/32?category=881798)
+
+
 /* 
 	○ 중첩 클래스
 	
@@ -55,12 +58,10 @@
 				
 			/// @see [Test127.java](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/JavaStudy/Test127.java)
 			
-		4. 무명 클래스(익명 클래스, annonymous class)
-			→ 이름 없는 클래스
-			
-			- 클래스 또는 인터페이스에 대한 객체를 생성하면서 바로 클래스 또는 인터페이스를 정의하는 클래스.
-			- 정의하는 부분과 생성하는 부분이 하나로 묶여져, new 수식이 있는 곳에서 바로 클래스 또는 인터페이스를
-				정의하는 것을 의미한다.
+		4. 무명 클래스(익명 클래스, annonymous class) → 이름 없는 클래스
+		   - 클래스 또는 인터페이스에 대한 객체를 생성하면서 바로 클래스 또는 인터페이스를 정의하는 클래스.
+		   - 정의하는 부분과 생성하는 부분이 하나로 묶여져, new 수식이 있는 곳에서 바로 클래스 또는 인터페이스를
+		     정의하는 것을 의미한다.
 	
 	 
 */
@@ -74,11 +75,11 @@
 // outer clas
 class Test
 {
-	static int a = 10;							// static, class 변수
-	int b = 20;									// 인스턴스 변수
+	static int a = 10;   // static, class 변수
+	int b = 20;          // 인스턴스 변수
 	
 	// inner class
-	public static class StaticNested			// static
+	public static class StaticNested	 // static
 	{
 		int c = 30;
 		
@@ -118,12 +119,14 @@ public class Test126
 		// 외부에서... StaticNested(inner 클래스) 기반 인스턴스 생성
 		//StaticNested ob2 = new StaticNested();
 		//--==>> 에러 발생(컴파일 에러)
-		//		Test126.java:110: error: cannot find symbol
+		//       Test126.java:110: error: cannot find symbol
 		
-		// 중첩 내부 클래스(static 중첩 클래스)는 외부에서 단독으로 객체를 생성할 수 있다.
-		// 단, 위와 같은 방법으로는 객체를 생성할 수 없고,
-		// 클래스 변수 접근이나 클래스 메서드 호출과 같은 방식을 통해
-		// 접근하여 인스턴스를 생성할 수 있도록 처리해야 한다.
+		/* ==================================================================
+		   중첩 내부 클래스(static 중첩 클래스)는 외부에서 단독으로 객체를 생성할 수 있다.
+		   단, 위와 같은 방법으로는 객체를 생성할 수 없고,
+		   클래스 변수 접근이나 클래스 메서드 호출과 같은 방식을 통해
+		   접근하여 인스턴스를 생성할 수 있도록 처리해야 한다.
+		 ==================================================================== */
 		
 		// Test.a
 		

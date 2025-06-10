@@ -113,9 +113,9 @@ class Record
 // 인터페이스 → 가이드라인 활용(그대로 둔다~~)
 interface Sungjuk
 {
-	public void set();		//-- 인원 세팅
-	public void input();	//-- 데이터 입력
-	public void print();	//-- 결과 출력
+	public void set();     //-- 인원 세팅
+	public void input();   //-- 데이터 입력
+	public void print();   //-- 결과 출력
 	
 }
 
@@ -129,7 +129,7 @@ interface Sungjuk
 class SungjukImpl implements Sungjuk
 {
 	// 주요 속성 구성
-	private int inwon;			//-- 인원 수(사용자가 입력하게 될 값)
+	private int inwon;     //-- 인원 수(사용자가 입력하게 될 값)
 	private Record[] rec;
 	//-- Record클래스를 기반으로 생성되는 객체를
 	//		담을 수 있는 배열의 이름을 rec라고 하겠다.
@@ -293,7 +293,7 @@ public class Test125
 }
 
 //-- 실행 결과
-/*
+/* ===========================================================
 인원 수 입력(1~10) : 2
 
 1번째 학생의 학번 이름 입력(공백 구분) : 2501234 김한국
@@ -308,4 +308,4 @@ public class Test125
                     수    우    수
 계속하려면 아무 키나 누르십시오 . . .
 
-*/
+=========================================================== */

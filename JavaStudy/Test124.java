@@ -17,9 +17,7 @@
 		
 		클래스 implements 인터페이스
 		클래스 implements 인터페이스, 인터페이스
-		
 		--------------------------------------------------------
-		
 		인터페이스는 클래스와 달리 다중 상속이 가능하며,
 		인터페이스 자체도 상속된다.
 		
@@ -33,14 +31,13 @@
 		모든 메서드를 구현하지 않을 경우
 		추상(abstract) 클래스로 선언해야 한다.
 		
-		
 	※ 형식
 		- 인터페이스는 메서드를 선언만 하고 정의는 없다.
 		- 인터페이스를 implements할 경우 반드시 하위 클래스는
-			인터페이스의 모든 메서드를 오버라이딩(Overriding)해야 한다.
+		   인터페이스의 모든 메서드를 오버라이딩(Overriding)해야 한다.
 		- 인터페이스는 자동적으로 다음과 같이 처리된다..
-			- 멤버 변수 : public static final
-			- 메서드 : public abstract
+		   - 멤버 변수 : public static final
+		   - 메서드 : public abstract
 		- 다중 상속은 컴마(『,』)로 구분되며, 여러개의 인터페이스를 상속할 수 있다.
 		- 인터페이스끼리 상속할 경우는 『extends』키워드를 사용한다.
 		
@@ -95,7 +92,7 @@ interface CDemo extends ADemo, BDemo
 //abstract class DemoImpl implements CDemo
 //
 // 클래스 - 두 인터페이스(ADemo, BDemo)를 상속받은 인터페이스(CDemo)를 구현한 후
-//			상속받은 모든 메서드를 재정의한 클래스
+//          상속받은 모든 메서드를 재정의한 클래스
 class DemoImpl implements CDemo
 {
 	// public abstract void test();

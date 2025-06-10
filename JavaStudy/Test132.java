@@ -6,6 +6,8 @@
 
 // Test130.java 파일과 비교~!!!
 /// @see [Test130.java](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/JavaStudy/Test130.java)
+/// @see [Class Object](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html)
+/// @see [자바의 주요(중요) 클래스 - Object](https://chicken-mola.tistory.com/33)
 
 /*
 	○
@@ -17,8 +19,6 @@
 
 //import java.lang.*;
 // (→ import java.lang.Object;)
-
-
 
 class Test
 {
@@ -53,16 +53,13 @@ public class Test132  // extends Object
 		
 		System.out.println("ob1 == ob2 : " + (ob1 == ob2));
 		//--==>> ob1 == ob2 : false
-		/*
-			★★★
-			※ 객체(Object)들을 비교하는 과정에서 사용되는 『==』 비교 연산자는
-				대상 객체들의 크기를 비교하는 것이 아니라 주소를 비교한다.
-		*/
+
+		/* ================================================================
+		  ※ 객체(Object)들을 비교하는 과정에서 사용되는 『==』 비교 연산자는
+		     대상 객체들의 크기를 비교하는 것이 아니라 주소를 비교한다.
+		================================================================ */
 		
-		
-		System.out.println();
-		System.out.println("--------------------------------------");
-		System.out.println();
+		System.out.println("\n--------------------------------------");
 		
 		System.out.println("ob1              : " + ob1);
 		System.out.println("ob1.toString()   : " + ob1.toString());
@@ -76,15 +73,16 @@ public class Test132  // extends Object
 		//ob2              : Test@7852e922
 		//ob2.toString()   : Test@7852e922
 		
+		/* ==================================================================
+		[ 클래스명@해시코드(hashcode) ]
+		         -------------------
+		         자바 내부적으로 개체를 구분하기 위해(식별하기 위해) 사용하는 것
+		         메모리의 주소값으로 생각하면 절대로 안된다.
 		
-		/*
-			[ 클래스명@해시코드(hashcode) ]
-			           -------------------
-					   자바 내부적으로 개체를 구분하기 위해(식별하기 위해) 사용하는 것
-					   메모리의 주소값으로 생각하면 절대로 안된다.
-					   
-			   객체 같으면 hashcode(해시코드)가 같지만.
-		*/
+		   check~!!! (★ 중요)
+		   ※ 객체가 같으면 hashcode(해시코드)가 같지만
+		      hashcode(해시코드)가 같다고 해서 같은 객체는 아니다.
+		================================================================== */
 		
 	}
 }

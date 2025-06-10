@@ -4,6 +4,9 @@
 =========================================================================*/
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④   →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
 
+/// @see [Package java.lang](https://docs.oracle.com/javase/8/docs/api/java/lang/package-summary.html) 
+/// @see [Class Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html) 
+
 /*
 	○ 
 	
