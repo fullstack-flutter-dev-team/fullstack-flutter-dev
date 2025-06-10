@@ -67,6 +67,30 @@ public class Test135  // extends Object
 		ni = Integer.parseInt("A", 16);
 		System.out.printf("ni : %3d\n", ni);
 		//--==>> ni :  10
+		
+		sn = Integer.toBinaryString(20);
+		System.out.printf("sn : %s\n", sn);
+		//--==>> sn : 10100
+		
+		sn = Integer.toOctalString(31);
+		System.out.printf("sn : %s\n", sn);
+		//--==>> sn : 37
+		
+		sn = Integer.toHexString(31);
+		System.out.printf("sn : %s\n", sn);
+		//--==>> sn : 1f
+		
+		Integer num = new Integer(50);
+		System.out.println("num.toString() : " + num.toString());
+		//--==>> num.toString() : 50
+		
+		System.out.println("num : " + num);
+		//--==> num : 50
+		
+		int n3 = 345;
+		Integer n4 = Integer.valueOf(n3);
+		System.out.println("n4 : " + n4);
+		//--==>> n4 : 345
 	}
 	
 }

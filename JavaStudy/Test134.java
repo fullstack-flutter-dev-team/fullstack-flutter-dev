@@ -88,7 +88,7 @@ public class Test134  // extends Object
 		//※ 레퍼런스 형(참조 타입), 기본 자료형(기본 타입)은 호환되지 않는다.
 		
 		b = c;		//-- Integer형 데이터(객체) → int형 변수(오토 언박싱)
-		b = c.intValue(); //-- 객체의 메서드를 활용하여(메서드를 호출하여) 결과값 반환(언박싱)
+		b = c.intValue(); //-- ★ 객체의 메서드를 활용하여(메서드를 호출하여) 결과값 반환(언박싱)
 		
 		d = new Object();	//-- 객체 생성
 		System.out.println("d.toString()  : " + d.toString());
