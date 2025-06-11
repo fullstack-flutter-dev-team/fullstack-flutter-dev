@@ -128,7 +128,7 @@ public class Test141  // extends Object
 		
 		// seoul korea
 		// 0123456789
-		System.out.println(s.charAt(22));
+		//System.out.println(s.charAt(22));
 		//--==>> 에러 발생(런타임 에러)
 		//    Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 22
 		//     → 대상 문자열이 가지는 인덱스를 벗어난 경우....
@@ -143,6 +143,124 @@ public class Test141  // extends Object
 		//--==>> true
 		System.out.println(s.endsWith("oul"));
 		//--==>> false
+		
+		
+		System.out.println("--------------");
+		
+		/*
+		○ 대상 문자열(s)과 비교 문자열 『seoul corea』 중
+		   어떤 문자열이 더 큰가?  →  문자열에 대한 크기 비교
+		    - 두 문자열이 같다면....  → 0
+		    - 두 문자열이 다르다면... → 차이를 반환(사전식 배열)
+		*/
+		
+		// s = "seoul korea";
+		System.out.println(s.compareTo("seoul korea"));
+		//--==>> 0
+		
+		//-- 두 문자열이 같다.
+		//    즉, s와 "seoul korea" 는 같다.
+		
+		System.out.println(s.compareTo("seoul corea"));
+		//--==>> 8
+		//
+		//-- 두 문자열이 같지 않다.
+		//    즉, s와 "seoul corea" 는 같지 않다.
+		//-- c ~ k → defghijk →  8
+		
+		// 대산 문자열(s) 중 
+		// 해당 문자열을 모두 찾아 원하는 형태로 수정된 문자열 반환
+		
+		s = "우리나라 대한민국 대한독립 만세";
+		System.out.println("s : " + s);
+		//--==> s : 우리나라 대한민국 대한독립 만세
+		
+		s = s.replaceAll("대한", "자주");
+		System.out.println("s : " + s);
+		//--==>> s : 우리나라 자주민국 자주독립 만세
+		// ※ 『replaceAll』 은 JDK 1.5 이후부터 사용 가능.
+		
+		// ○ 공백 제거
+		s = s.replaceAll(" ", "");
+		System.out.println("s : " + s);
+		//--==> s : 우리나라자주민국자주독립만세
+		
+		s = "         사    랑      ";
+		System.out.println(s);
+		//--==>>          사    랑      
+
+		System.out.println("|" + s + "|");
+		//--==>> |         사    랑      |
+		
+				System.out.println("|" + s.trim() + "|");
+		//--==>> |사    랑|
+		//-- 양쪽 가장자리 공백 제거
+		
+		System.out.println("|" + s.replaceAll(" ", "") + "|");
+		//--==>> |사랑|
+		
+		System.out.println("--------------");
+		
+		// "50" → 50
+		int temp = Integer.parseInt("50");
+		//System.out.println(temp);
+		System.out.printf("%d\n", temp);
+		//--==>> 50
+		
+		// 30 → "30"
+		s = Integer.toString(30);
+		System.out.println(s);
+		System.out.printf("%s\n", s);
+		//--==> 30
+		
+		int n = 2345678;
+		System.out.printf("%d", n);
+		//--==>> 2345678
+		System.out.println("\n--------------");
+		System.out.format("%d", n);
+		//--==>> 2345678
+		
+		System.out.println("\n--------------");
+		
+		// 2345678 → "2345678"
+		s = String.format("%d", n);
+		System.out.println(s);
+		//--==>> 2345678
+		
+		System.out.println("--------------");
+		n = 6;
+		s = String.format("%d월", n);
+		System.out.println(s);
+		System.out.println(s);
+		//--==>> 6월
+		
+		System.out.println("--------------");
+		s = String.format("%.2f", 3.141592);
+		System.out.println(s);
+		//--==>> 3.14
+		
+		System.out.println("--------------");
+		s = String.format("%d + %d = %d", 10, 20, 30);
+		System.out.println(s);
+		//--==>> 10 + 20 = 30
+		
+		System.out.println("--------------");
+		s = String.format("%b",true);
+		System.out.println(s);
+		//--==>> true
+		
+		System.out.println("--------------");
+		
+		//String str = "기본,열정,배려";
+		//String[] strArr = str.split(",");
+		//        ↓         ↓
+		String[] strArr = "기본,열정,배려".split(",");
+		for (String str : strArr)
+		{
+			System.out.print(str + " ");
+		}
+		System.out.println();
+		//--==>> 기본 열정 배려 
 		
 	}
 	
