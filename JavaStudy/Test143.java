@@ -10,6 +10,13 @@
 /// @see [Test140.java](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/JavaStudy/Test140.java)
 
 /*
+
+java.lang.Object
+ ㄴ java.lang.StringBuffer
+ 
+java.lang.Object
+ ㄴ java.lang.StringBuilder
+ 
 	○StringBuffer 클래스
 	  문자열을 처리하는 클래스로 String 클래스와의 차이점은
 	  String 클래스는 내부 문자열 데이터의 수정이 불가능하지만
@@ -174,8 +181,6 @@ public class Test143  // extends Object
 		System.out.println("처리 결과 : " + sb3.toString());
 		//--==>> 처리 결과 : 한국seoulkorea우리나라대한민국
 		
-		// ※ ○ ★ 『』 ⬛ ▣ ▶ ① ② ③ ④ ⑤ ⑥ ⑦ →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯
-		
 		/* =======================================
 		   ○ 대상 문자열(sb3) 중 korea 뒤에
 		      "사랑" 이라는 문자열 추가
@@ -219,6 +224,64 @@ public class Test143  // extends Object
 		// 테스트 ⑦
 		System.out.println(sb3.insert(sb3.indexOf("korea") + "korea".length(), "사랑"));
 		//--==>> 한국seoulkorea사랑우리나라대한민국
+		
+		System.out.println("---------------------------------------------------------------------");
+		/* =======================================
+		   ○ 대상 문자열(sb3) 에서
+		      "우리나라" 문자열 삭제
+		 ======================================= */
+		//sb3.delete(14, 18);
+		//System.out.println(sb3);
+		//--==>> 한국seoulkorea사랑대한민국
+		
+		// 14
+		System.out.println(sb3.toString().indexOf("우리나라"));
+		//--==>> 14
+		
+		//System.out.println(sb3.toString().indexOf("우리나라") + 4);
+		System.out.println(sb3.toString().indexOf("우리나라") +  "우리나라".length());
+		//-==>> 18
+		
+		System.out.println("우리나라".length());
+		sb3.delete(sb3.toString().indexOf("우리나라"), sb3.toString().indexOf("우리나라") + "우리나라".length());
+		System.out.println(sb3);
+		//--===>> 한국seoulkorea사랑대한민국
+		
+		
+		System.out.println("---------------------------------------------------------------------");
+		/* =======================================
+		   ○ 대상 문자열(sb3) 에서
+		      "korea" 이후 모든 문자열 삭제(korea 포함)
+		      한국seoulkorea사랑대한민국  →  한국seoul
+		 ======================================= */
+		// 한국seoulkorea사랑대한민국
+		//  01 23456789012345678901
+		//sb3.delete(7, 18);
+		//System.out.println(sb3);
+		//--==>> 한국seoul
+		
+		System.out.println(sb3.toString());
+		//--==>> 한국seoulkorea사랑대한민국
+		System.out.println(sb3.toString().length());
+		//--==>> 18
+		
+		sb3.delete(sb3.toString().indexOf("korea"), sb3.toString().length());
+		System.out.println(sb3);
+		//--==>> 한국seoul
+		
+		// 버퍼 크기 다시 확인
+		System.out.println("버퍼 크기 : " + sb3.capacity());
+		//--==>> 버퍼 크기 : 34
+		
+		/* ==================================================
+		   버퍼 크기 조절
+		   →  현재 문자열을 담아둘 수 있는 버퍼의 크기로...
+		   trimToSize();
+		 ================================================== */
+		sb3.trimToSize();
+		// 버퍼 크기 조절 이후 버퍼 크기 다시 확인
+		System.out.println("버퍼 크기 : " + sb3.capacity());
+		//--===>> 버퍼 크기 : 7
 	}
 	
 }
