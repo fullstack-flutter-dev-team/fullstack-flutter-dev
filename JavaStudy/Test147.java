@@ -23,11 +23,11 @@ java.lang.Object
  
   ○ Calendar 클래스 객체(인스턴스)를 생성할 수 있는 방법
       1. Calendar ob1 = Calendar.getInstance();
-	  2. Calendar ob2 = new GregorianCalendar();
-	  3. GregorianCalendar ob3 = new GregorianCalendar();
-	  
-	  (※ GregorianCalendar : Calendar 클래스의 하위 클래스)
-	       → [그레고리력](https://ko.wikipedia.org/wiki/%EA%B7%B8%EB%A0%88%EA%B3%A0%EB%A6%AC%EB%A0%A5)
+      2. Calendar ob2 = new GregorianCalendar();
+      3. GregorianCalendar ob3 = new GregorianCalendar();
+  
+  (※ GregorianCalendar : Calendar 클래스의 하위 클래스)
+     → [그레고리력](https://ko.wikipedia.org/wiki/%EA%B7%B8%EB%A0%88%EA%B3%A0%EB%A6%AC%EB%A0%A5)
 */
 
 

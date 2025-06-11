@@ -44,12 +44,12 @@ import java.io.IOException;
 class Record
 {
 	// 주요 속성 구성
-	private String hak, name;		//-- 학번, 이름
-	//private int kor, eng, mat;	//-- 국어, 영어, 수학 점수
+	private String hak, name;       //-- 학번, 이름
+	//private int kor, eng, mat;    //-- 국어, 영어, 수학 점수
 	private int[] score = new int[3];
 	
-	private int tot;				//-- 총점
-	private double avg;				//-- 평균
+	private int tot;                //-- 총점
+	private double avg;             //-- 평균
 	
 	// getter / setter 구성
 	//-------------[hak]---------------------
@@ -117,9 +117,9 @@ class Record
 // 인터페이스 → 가이드라인 활용(그대로 둔다~~)
 interface Sungjuk
 {
-	public void set();		//-- 인원 세팅
-	public void input();	//-- 데이터 입력
-	public void print();	//-- 결과 출력
+	public void set();     //-- 인원 세팅
+	public void input();   //-- 데이터 입력
+	public void print();   //-- 결과 출력
 	
 }
 
@@ -136,7 +136,7 @@ class SungjukImpl implements Sungjuk
 	private int inwon;			//-- 인원 수(사용자가 입력하게 될 값)
 	private Record[] rec;
 	//-- Record클래스를 기반으로 생성되는 객체를
-	//		담을 수 있는 배열의 이름을 rec라고 하겠다.
+	//   담을 수 있는 배열의 이름을 rec라고 하겠다.
 	
 	//???
 	@Override

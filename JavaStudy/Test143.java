@@ -17,23 +17,23 @@ java.lang.Object
 java.lang.Object
  ㄴ java.lang.StringBuilder
  
-	○StringBuffer 클래스
-	  문자열을 처리하는 클래스로 String 클래스와의 차이점은
-	  String 클래스는 내부 문자열 데이터의 수정이 불가능하지만
-	  StringBuffer 클래스는 문자열을 사용할 때
-	  내부 문자열을 실행 단계에서 변경할 수 있다는 것이다.
-	
-	  즉, StringBuffer 객체는 가변적인 길이를 가지므로
-	  객체를 생성하는 시점에서 미리 그 크기나 값을 지정하거나
-	  실행 시점에 버퍼의 크기를 바꿀 수 있는 기능을 제공한다.
-	
-	  또한, JDK 1.5 이후부터는
-	  문자열을 처리하는 StringBuilder 라는 클래스로 제공한다.
-	  StringBuilder 클래스의 기능은 StringBuffer 클래스와 동일하지만
-	  가장 큰 차이점은 multi-thread unsafe 라는 점이다.
-	  즉, Synchronization 이 없기 때문에
-	  StringBuffer 보다 빠르며 동시성(동기화) 문제가 없다면
-	  StringBuilder 를 사용하는 것이 성능을 향상시킬 수 있다.
+    ○ StringBuffer 클래스
+       문자열을 처리하는 클래스로 String 클래스와의 차이점은
+       String 클래스는 내부 문자열 데이터의 수정이 불가능하지만
+       StringBuffer 클래스는 문자열을 사용할 때
+       내부 문자열을 실행 단계에서 변경할 수 있다는 것이다.
+
+       즉, StringBuffer 객체는 가변적인 길이를 가지므로
+       객체를 생성하는 시점에서 미리 그 크기나 값을 지정하거나
+       실행 시점에 버퍼의 크기를 바꿀 수 있는 기능을 제공한다.
+
+       또한, JDK 1.5 이후부터는
+       문자열을 처리하는 StringBuilder 라는 클래스로 제공한다.
+       StringBuilder 클래스의 기능은 StringBuffer 클래스와 동일하지만
+       가장 큰 차이점은 multi-thread unsafe 라는 점이다.
+       즉, Synchronization 이 없기 때문에
+       StringBuffer 보다 빠르며 동시성(동기화) 문제가 없다면
+       StringBuilder 를 사용하는 것이 성능을 향상시킬 수 있다.
   
    ※ 버퍼(임시 저장공간) : 임시로 데이터를 저장하는 공간을 만들어 놓은 것으로 간주
    ※ multi-thread unsafe : 멀티 스레드 환경에서 데이터 보장이 안 됨
