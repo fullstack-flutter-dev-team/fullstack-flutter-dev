@@ -19,3 +19,9 @@
 - []()
 - []()
 - []()
+
+### 자바용 TensorFlow
+- [자바용 TensorFlow](https://www.tensorflow.org/jvm?hl=ko)
+- [tensorflow](https://github.com/tensorflow) / [java](https://github.com/tensorflow/java)
+- [TensorFlow 자바 설치](https://www.tensorflow.org/install/lang_java?hl=ko)
+- [TensorFlow](https://www.tensorflow.org/?hl=ko)
