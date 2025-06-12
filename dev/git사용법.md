@@ -35,3 +35,9 @@
   - []()
   - []()
   - []()
+
+### Git commit --amend
+- [Git commit --amend 검색](https://www.google.com/search?q=Git+commit+--amend&newwindow=1&sca_esv=f5357ae72790bb1e&ei=159KaP-hA_fh2roPg6DviAk&oq=git+change+commit+message+visual+studio+code&gs_lp=Egxnd3Mtd2l6LXNlcnAiLGdpdCBjaGFuZ2UgY29tbWl0IG1lc3NhZ2UgdmlzdWFsIHN0dWRpbyBjb2RlKgIIATIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYR0idIlDzBFiWF3ACeAGQAQCYAZoDoAGaA6oBAzQtMbgBAcgBAPgBAZgCA6ACpgPCAgQQABgewgIIEAAYgAQYogSYAwCIBgGQBgqSBwUyLjQtMaAH-QOyBwM0LTG4B54DwgcFMC4yLjHIBwk&sclient=gws-wiz-serp)
+  - ⭐ [[Git] git commit --amend로 마지막 커밋 수정하기](https://seosh817.tistory.com/291)
+- []()
+- []()
