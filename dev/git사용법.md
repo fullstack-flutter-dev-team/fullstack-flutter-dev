@@ -28,7 +28,7 @@
   - ⭐⭐[초보자를 위한 GitHub Blog 만들기 - 1](https://wlqmffl0102.github.io/posts/Making-Git-blogs-for-beginners-1/)
   - [Github 블로그를 포기하고 티스토리로 옮긴 이유 (장, 단점)](https://tentasys.tistory.com/4)
   - [GitHub 블로그 만들기](https://wikidocs.net/278085)
-  - [GitHub 블로그 만들기](https://velog.io/@jbourbaki/GitHub-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+  - ⭐[GitHub 블로그 만들기](https://velog.io/@jbourbaki/GitHub-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
   - [국내외 기술 개발 블로그들](https://github.com/seongkyu-lim/TechBlogs)
   - []()
   - []()
