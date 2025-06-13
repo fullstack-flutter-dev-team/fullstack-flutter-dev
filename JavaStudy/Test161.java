@@ -51,6 +51,7 @@ public class Test161  // extends Object
 		Stack<String> st = new Stack<String>();
 		
 		System.out.println("capacity : " + st.capacity());
+		//--==>> capacity : 10
 		
 		// st 라는 Stack 자료구조에 데이터(colors) 담기
 		//st = colors; //--(x)
@@ -96,17 +97,20 @@ public class Test161  // extends Object
 		
 		st.push("보라");
 		
-		//print(st);
+		print(st);
+
 		
 		// 출력 메서드 호출
 		popStack(st);
 		
 		
-		//print(st);
+		print(st);
 		
 
 		
 		System.out.println("capacity : " + st.capacity());
+		//--==>> capacity : 10
+	
 	}
 	
 	// 출력 메서드
@@ -122,11 +126,13 @@ public class Test161  // extends Object
 	
 	private void print(Stack<String> st)
 	{
-		int i = 0;
-		while (!st.isEmpty())
+		int i;
+		int nStackSize = st.size();
+		i = nStackSize-1;
+		while (i > 0)
 		{
 			//System.out.printf("%d - %s\n", i, st.get(i));
-			System.out.printf("%d - %s\n", i, st.elementAt(i++));
+			System.out.printf("%d - %s\n", i, st.elementAt(i--));
 		}
 	}
 	

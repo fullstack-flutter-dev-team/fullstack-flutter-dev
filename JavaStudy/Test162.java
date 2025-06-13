@@ -35,16 +35,6 @@
 */
 
 
-/*
-
-*/
-
-/*
-
-*/
-
-
-
 // package default;
 
 //import java.lang.*;
@@ -125,7 +115,7 @@ public class Test162  // extends Object
 		//	}
 		//}
 		//System.out.println();
-		//--
+		//-- 실행 결과
 		//요소-2 : 1
 		//요소-2 : 2
 		//요소-2 : 3
@@ -141,13 +131,13 @@ public class Test162  // extends Object
 			} else {
 				System.out.println("요소-3 : " + val);
 			}
-		}		
-		
-// ※ ○ ★ 『』 ⬛ ▣ ▶ ▼ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
-// →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
-		
-		
+		}
+		//-- 실행 결과
+		//요소-3 : 1
+		//요소-3 : 2
+		//요소-3 : 3
+		//요소-3 : 4
+
 	}
-	
 	
 }
