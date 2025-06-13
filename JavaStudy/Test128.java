@@ -10,7 +10,10 @@
 
 
 /*
-	
+InnerOuterTest$InnerNested.class
+InnerOuterTest.class
+Test128.class
+
 */
 
 // outer 클래스

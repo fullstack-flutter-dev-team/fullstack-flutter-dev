@@ -69,10 +69,51 @@ public class Test152  // extends Object
 {
 	public static void main(String[] args)
 	{
+		/*
 		// 인스턴스 생성
 		Game obj = new Game();
 		// 스므고개 시작
 		obj.startGame();
+		*/
+		
+		
+		Random rd = new Random();
+		Scanner sc = new Scanner(System.in);
+		
+		int val = rd.nextInt(100) + 1; // 0~99 → 1~100
+		int input;
+		int cnt = 0;
+		
+		// 테스트(확인)
+		//System.out.println("답 : " + val);
+		// 답 : 52
+		// 답 : 9
+		
+		System.out.println("스무고개 10회(1~100)");
+		
+		do
+		{
+			System.out.print("input : ");
+			input = sc.nextInt();
+			
+			if (val > input) {
+				System.out.printf("%d보다 큽니다.", input);
+			} else if (val < input) {
+				System.out.printf("%d보다 작습니다.", input);
+			}
+			
+			cnt++;
+		}
+		while (input != val && cnt < 10);
+		
+		System.out.println("val = " + val);
+		if (input != val)
+		{
+			System.out.println("실패했습니다.");
+		} else {
+			System.out.println("count = " + cnt);
+		}
+		
 	}
 }
 

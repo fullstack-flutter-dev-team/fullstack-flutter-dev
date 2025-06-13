@@ -8,6 +8,10 @@
 
 
 /* 
+Test126.class
+Test.class
+Test$StaticNested.class
+
 	○ 중첩 클래스
 	
 		중첩 클래스란 클래스 안에 다른 클래스가 설계되어 있는 형태로
