@@ -11,6 +11,8 @@
 	  ==[Javac 인수(E)]==▶ javac -encoding UTF-8 $(FileName)
 */
 
+/// @see [Class String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#compareTo-java.lang.String-)
+/// @see [equalsIgnoreCase(String anotherString)](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#equalsIgnoreCase-java.lang.String-)
 
 /// @see [Class System](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html)
 /// @see [exit(int status)](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#exit-int-)
@@ -25,6 +27,9 @@
 ---------------------------------------
 java.lang.Object
   ㄴjava.lang.System
+
+java.lang.Object
+  ㄴjava.lang.String
 
 java.lang.Object
   ㄴjava.util.AbstractCollection<E>
@@ -207,8 +212,8 @@ java.lang.Object
 
 import java.util.Vector;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.IOException;
 
 
 
