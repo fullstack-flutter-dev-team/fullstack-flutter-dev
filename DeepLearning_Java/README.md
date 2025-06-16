@@ -31,3 +31,6 @@
 
 ### [langchain4j](https://github.com/langchain4j)
 - [awesome-langchain4j](https://github.com/langchain4j/awesome-langchain4j)
+
+
+### [Deeplearning4j](https://deeplearning4j.konduit.ai/deeplearning4j/tutorials/language-processing)
