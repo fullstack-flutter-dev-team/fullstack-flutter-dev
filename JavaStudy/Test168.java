@@ -153,21 +153,52 @@ public class Test168  // extends Object
 		  이름 : 김한국-3, 나이 : 49세
 		*/
 		
+		// ①
 		for (UserData obj : v)
 		{
-			System.out.printf("이름 : %3s , 나이 : %2d세\n",obj.getName(), obj.getAge());
+			System.out.printf("이름 : %3s , 나이 : %2d세\n", obj.getName(), obj.getAge());
 		}
 		//-- 실행 결과
 		//이름 : 김한국-1 , 나이 :  3세
 		//이름 : 김한국-2 , 나이 : 17세
 		//이름 : 김한국-3 , 나이 : 49세
 		
+		System.out.println("--[2]---");
+		// ②
+		for (int i = 0; i < v.size(); i++)
+		{
+			System.out.printf("이름 : %4s, 나이 : %2d세 \n", v.elementAt(i).getName(), v.elementAt(i).getAge());
+		}
+		System.out.println();
+		//-- 실행 결과
+		//이름 : 김한국-1, 나이 :  3세 
+		//이름 : 김한국-2, 나이 : 17세 
+		//이름 : 김한국-3, 나이 : 49세 
 		
+		System.out.println("--[3]---");
+		// ③
+		for (int i = 0; i < v.size(); i++)
+		{
+			System.out.printf("이름 : %4s, 나이 : %2d세 \n", v.get(i).getName(), v.get(i).getAge());
+		}
+		System.out.println();
+		//-- 실행 결과
+		//이름 : 김한국-1, 나이 :  3세 
+		//이름 : 김한국-2, 나이 : 17세 
+		//이름 : 김한국-3, 나이 : 49세 
 		
-// ※ ○ ★ 『』 ⬛ ▣ ▶ ▼ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
-// →  ←  ↓  …  ： ↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
-
-
+		System.out.println("--[4]---");
+		// ④
+		for (Object temp : v)   // Object obj = v.get(0); //-- Up_Casting
+		{
+			//  ((UserData)temp).getName(); //-- Down_Casting
+			System.out.printf("이름: %4s , 나이: %d세 \n", ((UserData)temp).getName(), ((UserData)temp).getAge());
+		}
+		//--실행결과
+		//이름: 김한국-1 , 나이: 3세 
+		//이름: 김한국-2 , 나이: 17세 
+		//이름: 김한국-3 , 나이: 49세 
+		
 	}
 
 
