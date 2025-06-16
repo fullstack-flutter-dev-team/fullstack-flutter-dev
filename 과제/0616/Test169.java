@@ -239,7 +239,7 @@ public class Test169  // extends Object
 		
 		// BufferedReader 인스턴스 생성
 		br = new BufferedReader(new InputStreamReader(System.in));
-			
+		
 		// 사용자 입력 값 초기화
 		sel = 1;
 		con = "Y";
@@ -271,7 +271,7 @@ public class Test169  // extends Object
 	}
 	
 	// 메뉴 선택 메서드
-	public static void menuSelect() throws IOException, NumberFormatException
+	public static void menuSelect()
 	{
 		/*
 		 >> 메뉴 선택(1~6) : 6
@@ -293,9 +293,11 @@ public class Test169  // extends Object
 				System.out.println();
 			}
 			while (sel < 1 || sel > 6);
-		}
-		catch (NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
+			sel = -1;
+			System.out.print("\n메뉴 선택 오류~!!!\n\n");
+			return;
+		} catch (IOException e) {
 			sel = -1;
 			System.out.print("\n메뉴 선택 오류~!!!\n\n");
 			return;
@@ -331,13 +333,13 @@ public class Test169  // extends Object
 	public static void addElement() throws IOException
 	{
 		/*
-         1번째 요소 입력 : xxx
-         1번째 요소 입력 성공~!!!
-         >> 요소 입력 계속(Y/N) : y
+		 1번째 요소 입력 : xxx
+		 1번째 요소 입력 성공~!!!
+		 >> 요소 입력 계속(Y/N) : y
 		*/
 		
 		boolean isSuccess = false;
-		char chYN =  'n';
+		String strYN ="N";
 		
 		do
 		{
@@ -348,12 +350,11 @@ public class Test169  // extends Object
 			{
 				System.out.printf("%d번째 요소 입력 성공~!!!\n", vt.size());
 				System.out.print(">> 요소 입력 계속(Y/N) : ");
-				chYN = (char)System.in.read();
+				strYN = br.readLine();
 				isSuccess = false;
-				br.skip(2);
 			}
 		}
-		while (chYN == 'y' || chYN == 'Y');
+		while (strYN.equalsIgnoreCase("y"));
 		
 		System.out.println();
 	}
@@ -475,8 +476,6 @@ public class Test169  // extends Object
 	// main() 메서드 → 완료
 	public static void main(String[] args) throws IOException
 	{
-		int count = 2;
-		// 
 		do
 		{
 			menuDisp();
