@@ -1,6 +1,6 @@
 /*========================================================================
 	■■■ 컬렉션 (Collection) ■■■
-	-  Enumeration 과 Iterator 인터페이스
+	- List 인터페이스, Interface Iterator<E>
 =========================================================================*/
 
 // ※ ○ ★ 『』 ⬛ ▣ ▶ ▼ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
@@ -18,12 +18,16 @@
 /// @see [next()](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#next--)
 /// @see [remove()](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html#remove--)
 
+/// @see [Interface ListIterator<E>](https://docs.oracle.com/javase/8/docs/api/java/util/ListIterator.html)
 /*
 java.util
     ㄴInterface Enumeration<E>
  
 java.util
     ㄴInterface Iterator<E>
+
+java.util
+    ㄴInterface ListIterator<E>
 
 java.util
   ㄴInterface List<E>
@@ -68,6 +72,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 
 // main() 메서드를 포함하는 외부의 다른 클래스
@@ -151,7 +156,11 @@ public class Test171  // extends Object
 			System.out.print(str + " ");
 		}
 		System.out.println();
-		//--==>> 서울 부산 인천 대구 광주 대전 울산 세종 
+		//-- 실행 결과
+		/*
+		     전체 출력
+		     서울 부산 인천 대구 광주 대전 울산 세종 
+		*/
 		
 		for (int idx = 0 ; idx < list.size(); idx++)
 		{
@@ -169,6 +178,82 @@ public class Test171  // extends Object
 		System.out.println();
 		//--==>> 서울 부산 인천 대구 광주 대전 울산 세종 
 		
+		
+		//-- 6월 17일(화), 오전
+		// list 의 전체 요소 역순 출력
+		System.out.println("\n역순 출력...①");
+		for (int idx = list.size()-1; idx>=0; idx--)
+		{
+			System.out.print(list.get(idx) + " ");
+		}
+		System.out.println();
+		//-- 실행 결과
+		/*
+		  역순 출력...①
+		  세종 울산 대전 광주 대구 인천 부산 서울 
+		*/
+		
+		// list 의 전체 요소 출력
+		System.out.println("\n전체 출력...②");
+		for (String str : list)
+		{
+			System.out.print(str + " ");
+		}
+		System.out.println();
+		//-- 실행 결과
+		/*
+		   전체 출력...②
+		  서울 부산 인천 대구 광주 대전 울산 세종 
+		*/
+		
+		System.out.println("----[list의 전체 요소 출력 ③ , Iterator]------");
+		// list의 전체 요소 출력
+		System.out.println("\n전체 출력...③");
+		Iterator<String> it2 = list.iterator();
+		while (it2.hasNext())
+		{
+			System.out.print(it2.next() + " ");
+		}
+		System.out.println();
+		//-- 실행 결과
+		/*
+		  전체 출력...③
+		  서울 부산 인천 대구 광주 대전 울산 세종 	     
+		*/
+		
+		
+		// list의 전체 요소 출력
+		System.out.println("\n전체 출력...④");
+		ListIterator<String> it3 = list.listIterator();
+		while (it3.hasNext())
+		{
+			System.out.print(it3.next() + " ");
+		}
+		System.out.println();
+		//-- 실행 결과
+		/*
+		  전체 출력...④
+		  서울 부산 인천 대구 광주 대전 울산 세종     
+		*/
+		
+		// list 의 전체 요소 역순 출력
+		System.out.println("\n역순 출력...②");
+		while (it3.hasPrevious())
+		{
+			String str = it3.previous();
+			System.out.print(str + " ");
+		}
+		System.out.println();
+		//-- 실행 결과
+		/*
+		  역순 출력...②
+		  세종 울산 대전 광주 대구 인천 부산 서울     
+		*/
+		
+	
+
+// ※ ○ ★ 『』 ⬛ ▣ ▶ ▼ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩
+// →  ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦	
 	}
 	
 }
