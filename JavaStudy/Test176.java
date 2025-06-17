@@ -105,5 +105,88 @@ public class Test176  // extends Object
 		}
 		System.out.println();
 		//--==>> 김한국-1 전화번호 : 010-1111-5678
+		
+		// Hashtable 자료구조 ht에...
+		// key 가 존재하는지의 여부 확인
+		// → containsKey()
+		String findName2 = "김한국-3";
+		if (ht.containsKey(findName2))
+		{
+			System.out.println(findName2 + " 데이터가 존재합니다.");
+		} else {
+			System.out.println(findName2 + " 데이터가 존재하지 않습니다.");
+		}
+		//-- 실행 결과
+		//--==>> 김한국-3 데이터가 존재합니다.
+		
+		// Hashtable 자료구조 ht에...
+		// value 가 존재하는지의 여부 확인
+		// → contains();
+		String findTel1 = "010-1111-5678";
+		if (ht.contains(findTel1))
+		{
+			System.out.println(findTel1 + " 데이터가 존재합니다.");
+		} else {
+			System.out.println(findTel1 + " 데이터가 존재하지 않습니다.");
+		}
+		//--==>> 010-1111-5678 데이터가 존재합니다.
+		
+		// Hashtable 자료구조 ht 에서...
+		// 『김한국-3』 데이터 삭제
+		//  → remove()
+		
+		// ※ 『remove()』 메서드는 인자값으로 key 를 넘겨받지만
+		// 이때, key 만 삭제되는 것이 아니다.
+		// 해당 key와 연결되어 있는(매핑되어 있는) value도 함께 삭제(remove) 된다.
+		
+		ht.remove("김한국-3");
+		if (ht.containsKey("김한국-3"))
+		{
+			System.out.println(findName2 + " 데이터가 존재합니다.");
+		} else {
+			System.out.println(findName2 + " 데이터가 존재하지 않습니다.");
+		}
+		//--==>> 김한국-3 데이터가 존재하지 않습니다.
+		
+		if (ht.contains("010-3333-5678"))
+		{
+			System.out.println("010-3333-5678" + " 데이터가 존재합니다.");
+		} else {
+			System.out.println("010-3333-5678" + " 데이터가 존재하지 않습니다.");
+		}
+		//--==>> 010-3333-5678 데이터가 존재하지 않습니다.
+		
+		// ※ null 관련 추가 관찰
+		//ht.put(null, null);    //-- key, value 가 null
+		//--==>> Exception in thread "main" java.lang.NullPointerException
+		
+		//ht.put("한국", null);  //-- value 가 null
+		//--==>> Exception in thread "main" java.lang.NullPointerException
+		
+		//ht.put(null, "010-3333-5678"); //-- key 가 null
+		//--==>> Exception in thread "main" java.lang.NullPointerException
+		
+		// ※ 중복된 key  입력
+		ht.put("김한국-1", "011-1234-5678");
+		
+		// 테스트(확인)
+		System.out.println(ht.get("김한국-1"));
+		//--==>> 011-1234-5678
+		//-- 중복된 key를 활용하여 데이터를 입력할 경우
+		//   기존 "010-1111-5678" 에서 "011-1234-5678"로 변경이 되었음을 학인
+		//   (  → 덮어쓰기 개념)
+		
+		// 중복된 value 입력
+		ht.put("도우너", "011-1234-5678"); //-- 김한국-1 전화번호
+
+		// 테스트(확인)
+		System.out.println(ht.get("김한국-1"));
+		System.out.println();
+		//--==>> 011-1234-5678
+		
+		// 테스트(확인)
+		System.out.println(ht.get("도우너"));
+		System.out.println();
+		//--==>> 011-1234-5678
 	}
 }
