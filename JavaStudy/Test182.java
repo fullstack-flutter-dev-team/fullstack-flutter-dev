@@ -9,22 +9,10 @@
 
 // Reader Write 실습
 
-/// @see [Class System](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html)
-/// @see [err](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#err)
-/// @see [in](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#in)
-/// @see [read()](https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html#read--)
-/// @see []()
-/// @see []()
-/// @see []()
-
-/// @see [out](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#out)
-/// @see [close()](https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#close--)
-/// @see [flush()](https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#flush--)
-/// @see [write(int b)](https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#write-int-)
-/// @see []()
-/// @see []()
-/// @see []()
-/// @see []()
+/// @see [Class InputStreamReader](https://docs.oracle.com/javase/8/docs/api/java/io/InputStreamReader.html)
+/// @see [Class OutputStreamWriter](https://docs.oracle.com/javase/8/docs/api/java/io/OutputStreamWriter.html)
+/// @see [Class Reader](https://docs.oracle.com/javase/8/docs/api/java/io/Reader.html)
+/// @see [Class Writer](https://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
 
 
 /*
