@@ -41,3 +41,10 @@
   - ⭐ [[Git] git commit --amend로 마지막 커밋 수정하기](https://seosh817.tistory.com/291)
 - []()
 - []()
+
+
+### 형상관리 git
+- [형상관리 git 검색](https://www.google.com/search?q=%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC+git&oq=%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC+git&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRhB0gEINTg5NGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
+- [협업을 위한 Git 형상관리 및 전략](https://velog.io/@jha0402/%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-Git-%ED%98%95%EC%83%81%EA%B4%80%EB%A6%AC-%EB%B0%8F-%EC%A0%84%EB%9E%B5)
+- [[Git] 형상관리 시스템과 Git, Github에 대해 알아보자](https://j1mmyson.github.io/posts/AboutGit/)
+- [[git] git이란? (형상관리, 정의, 장단점, 설치)](https://velog.io/@lazysia/git-git)
