@@ -47,7 +47,17 @@
   - ✨ [What's the meaning of char zero (0) in Java? [duplicate]](https://stackoverflow.com/questions/9753576/whats-the-meaning-of-char-zero-0-in-java)
   - []()
   - []()
-  - 
+
+### java clear console
+- [java clear console 검색](https://www.google.com/search?q=java+clear+console&oq=java+clear+console&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBggGEAAYHjIGCAcQABgeMgYICBAAGB4yBggJEAAYHtIBCDc1OTFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - ✨ [How to clear the console using Java?](https://stackoverflow.com/questions/2979383/how-to-clear-the-console-using-java)
+  - []()
+  - []()
+- []()
+- []()
+- []()
+
+
 ### ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 ---
 

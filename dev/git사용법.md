@@ -33,6 +33,11 @@
   - []()
   - []()
   - []()
+
+### github organizer fork enable
+  - [github organizer fork enable 검색](https://www.google.com/search?q=github+organizer+fork+enable&oq=github+organizer+fork+enable&gs_lcrp=EgZjaHJvbWUyCAgAEEUYFRg5MgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKAB0gEJMTk1MzlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+    - [[GitHub] Organization의 개인에게 fork 권한 주는 방법](https://stirringdev.tistory.com/10)
+  - []()
   - []()
   - []()
 
