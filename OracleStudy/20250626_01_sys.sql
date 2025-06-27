@@ -272,6 +272,21 @@ KNI	CREATE SESSION	NO
 KNI	CREATE TABLE	NO
 */
 
+/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
+--==========[ 6월 27일(금) ]=========================
+SELECT USER
+FROM DUAL;
+--==>>SYS
+
+/*
+  ▣ 생성된 오라클 사용자 계정(KNI)에 테이블스페이스(TBS_EDUA)에서
+     사용할 수 있는 공간(할당량) 크기 지정 → 무제한(UNLIMITED)
+*/
+ALTER USER KNI
+QUOTA UNLIMITED ON TBS_EDUA;
+--==>> User KNI이(가) 변경되었습니다.
+
+
 
 
 --### ※ ○ ★ 『』 ? ▣ ▶ ▼ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →  ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
