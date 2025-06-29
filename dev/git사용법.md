@@ -2,7 +2,7 @@
 - [git 설정 검색](https://www.google.com/search?q=git+%EC%84%A4%EC%A0%95&rlz=1C1GCEU_koKR1161KR1161&oq=git+%EC%84%A4%EC%A0%95&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIKCAEQABixAxiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ3OTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
   - ✨ [깃(Git) & 깃허브(GitHub)](https://wikidocs.net/book/14452)
     - [1.4. Git 설정 파일 (.gitconfig) 관리](https://wikidocs.net/277236)
-  - []()
+  - [깃(git),  깃허브(github), 소스트리(sourcetree) 설치하기](https://m.blog.naver.com/libralim/223511700938)
   - []()
   - []()
   - []()
@@ -30,8 +30,8 @@
   - [GitHub 블로그 만들기](https://wikidocs.net/278085)
   - ⭐[GitHub 블로그 만들기](https://velog.io/@jbourbaki/GitHub-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
   - [국내외 기술 개발 블로그들](https://github.com/seongkyu-lim/TechBlogs)
-  - []()
-  - []()
+  - [쉽고 빠르게 수준 급의 GitHub 블로그 만들기 - jekyll remote theme으로](https://dreamgonfly.github.io/blog/jekyll-remote-theme/)
+  - ⭐ [Jekyll 테마를 이용해 GitHub 블로그 만들기](https://pioneergu.github.io/posts/jekyll-theme-make/)
   - []()
 
 ### github organizer fork enable

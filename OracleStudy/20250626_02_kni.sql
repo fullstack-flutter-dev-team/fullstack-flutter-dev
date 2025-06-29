@@ -1,28 +1,28 @@
---¢Ã Á¢¼ÓµÈ »ç¿ëÀÚ È®ÀÎ
+--â–£ ì ‘ì†ëœ ì‚¬ìš©ìž í™•ì¸
 SELECT USER
 FROM DUAL;
 --==>> KNI
 
---¢Ã Å×ÀÌºí »ý¼º
--- Å×ÀÌºí¸í : TBL_ORAUSERTEST
---CREATE TABLE Å×ÀÌºí¸í;
---CREATE USER À¯Àú¸í;
+--â–£ í…Œì´ë¸” ìƒì„±
+-- í…Œì´ë¸”ëª… : TBL_ORAUSERTEST
+--CREATE TABLE í…Œì´ë¸”ëª…;
+--CREATE USER ìœ ì €ëª…;
 /*
 CREATE TABLE TBL_ORAUSERTEST
 (
-  NO     ¼ýÀÚÇü
-, NAME   ¹®ÀÚÇü
+  NO     ìˆ«ìží˜•
+, NAME   ë¬¸ìží˜•
 );
 */
 CREATE TABLE TBL_ORAUSERTEST
 (
-  NO     NUMBER(2)      -- ¼ýÀÚ Å¸ÀÔÀ¸·Î -99 ~ 99
-, NAME   VARCHAR2(30)   -- ¹®ÀÚ Å¸ÀÔÀ¸·Î 30 BYTE ±îÁö ¼ö¿ë
+  NO     NUMBER(2)      -- ìˆ«ìž íƒ€ìž…ìœ¼ë¡œ -99 ~ 99
+, NAME   VARCHAR2(30)   -- ë¬¸ìž íƒ€ìž…ìœ¼ë¡œ 30 BYTE ê¹Œì§€ ìˆ˜ìš©
 );
---==>> ¿¡·¯ ¹ß»ý
+--==>> ì—ëŸ¬ ë°œìƒ
 /*
-¿À·ù º¸°í -
-ORA-01031: insufficient privileges (¡æ ±ÇÇÑ ºÒÃæºÐ)
+ì˜¤ë¥˜ ë³´ê³  -
+ORA-01031: insufficient privileges (â†’ ê¶Œí•œ ë¶ˆì¶©ë¶„)
 01031. 00000 -  "insufficient privileges"
 *Cause:    An attempt was made to perform a database operation without
            the necessary privileges.
@@ -31,22 +31,22 @@ ORA-01031: insufficient privileges (¡æ ±ÇÇÑ ºÒÃæºÐ)
 */
 
 /*
-    ¢Ã ÇöÀç KNI °èÁ¤Àº CREATE SESSION ±ÇÇÑ¸¸ °®°í ÀÖÀ¸¸ç
-       Å×ÀÌºíÀ» »ý¼ºÇÒ ¼ö ÀÖ´Â ±ÇÇÑÀº °®°íÀÖÁö ¾ÊÀº »óÅÂÀÌ´Ù.
-       ±×·¯¹Ç·Î, ÀÌ °èÁ¤À» ÅëÇØ Å×ÀÌºíÀ» »ý¼ºÇÏ±â À§ÇØ¼­´Â 
-       °ü¸®ÀÚ·ÎºÎÅÍ Å×ÀÌºí »ý¼º ±ÇÇÑÀ» ºÎ¿©¹Þ¾Æ¾ß ÇÑ´Ù.
+    â–£ í˜„ìž¬ KNI ê³„ì •ì€ CREATE SESSION ê¶Œí•œë§Œ ê°–ê³  ìžˆìœ¼ë©°
+       í…Œì´ë¸”ì„ ìƒì„±í•  ìˆ˜ ìžˆëŠ” ê¶Œí•œì€ ê°–ê³ ìžˆì§€ ì•Šì€ ìƒíƒœì´ë‹¤.
+       ê·¸ëŸ¬ë¯€ë¡œ, ì´ ê³„ì •ì„ í†µí•´ í…Œì´ë¸”ì„ ìƒì„±í•˜ê¸° ìœ„í•´ì„œëŠ” 
+       ê´€ë¦¬ìžë¡œë¶€í„° í…Œì´ë¸” ìƒì„± ê¶Œí•œì„ ë¶€ì—¬ë°›ì•„ì•¼ í•œë‹¤.
 */
      
 
---¢Ã °ü¸®ÀÚ(SYS)·Î ºÎÅÍ Å×ÀÌºí »ý¼º ±ÇÇÑÀ» ºÎ¿©¹ÞÀº ÈÄ ´Ù½Ã Å×ÀÌºí »ý¼º  
+--â–£ ê´€ë¦¬ìž(SYS)ë¡œ ë¶€í„° í…Œì´ë¸” ìƒì„± ê¶Œí•œì„ ë¶€ì—¬ë°›ì€ í›„ ë‹¤ì‹œ í…Œì´ë¸” ìƒì„±  
 CREATE TABLE TBL_ORAUSERTEST
 (
-  NO     NUMBER(2)      -- ¼ýÀÚ Å¸ÀÔÀ¸·Î -99 ~ 99
-, NAME   VARCHAR2(30)   -- ¹®ÀÚ Å¸ÀÔÀ¸·Î 30 BYTE ±îÁö ¼ö¿ë
+  NO     NUMBER(2)      -- ìˆ«ìž íƒ€ìž…ìœ¼ë¡œ -99 ~ 99
+, NAME   VARCHAR2(30)   -- ë¬¸ìž íƒ€ìž…ìœ¼ë¡œ 30 BYTE ê¹Œì§€ ìˆ˜ìš©
 );
---==>> ¿¡·¯ ¹ß»ý
+--==>> ì—ëŸ¬ ë°œìƒ
 /*
-    ¿À·ù º¸°í -
+    ì˜¤ë¥˜ ë³´ê³  -
     ORA-01950: no privileges on tablespace 'TBS_EDUA'
     01950. 00000 -  "no privileges on tablespace '%s'"
     *Cause:    User does not have privileges to allocate an extent in the
@@ -56,40 +56,40 @@ CREATE TABLE TBL_ORAUSERTEST
 */
 
 /*
-  ¢Ã Å×ÀÌºí »ý¼º ±ÇÇÑ(CREATE TABLE) ±îÁö ºÎ¿©¹ÞÀº »óÈ²ÀÌÁö¸¸
-     KNI »ç¿ëÀÚ °èÁ¤ÀÇ ±âº» Å×ÀÌºí½ºÆäÀÌ½º(DEFAULT TABLESPACE : TBS_EDUA)¿¡ ´ëÇÑ 
-     »ç¿ë ±ÇÇÑ(ÇÒ´ç·®)À» ºÎ¿©¹ÞÁö ¸øÇÑ »óÅÂ.
-     ±×·¯¹Ç·Î, ÀÌ Å×ÀÌºí½ºÆäÀÌ½º¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Â ±ÇÇÑÀÌ ¾ø´Ù´Â
-     ¿¡·¯¸Þ¼¼Áö¸¦ ¿À¶óÅ¬ÀÌ Ãâ·ÂÇØÁÖ°í ÀÖ´Â »óÇ×.
+  â–£ í…Œì´ë¸” ìƒì„± ê¶Œí•œ(CREATE TABLE) ê¹Œì§€ ë¶€ì—¬ë°›ì€ ìƒí™©ì´ì§€ë§Œ
+     KNI ì‚¬ìš©ìž ê³„ì •ì˜ ê¸°ë³¸ í…Œì´ë¸”ìŠ¤íŽ˜ì´ìŠ¤(DEFAULT TABLESPACE : TBS_EDUA)ì— ëŒ€í•œ 
+     ì‚¬ìš© ê¶Œí•œ(í• ë‹¹ëŸ‰)ì„ ë¶€ì—¬ë°›ì§€ ëª»í•œ ìƒíƒœ.
+     ê·¸ëŸ¬ë¯€ë¡œ, ì´ í…Œì´ë¸”ìŠ¤íŽ˜ì´ìŠ¤ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ê¶Œí•œì´ ì—†ë‹¤ëŠ”
+     ì—ëŸ¬ë©”ì„¸ì§€ë¥¼ ì˜¤ë¼í´ì´ ì¶œë ¥í•´ì£¼ê³  ìžˆëŠ” ìƒí•­.
 
 */
 
--- ¼­¹ö¿ë ¿î¿µÃ¼Á¦ : ÇÒ´ç·®
+-- ì„œë²„ìš© ìš´ì˜ì²´ì œ : í• ë‹¹ëŸ‰
 
-/*¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å¡å*/
---==========[ 6¿ù 27ÀÏ(±Ý) ]=========================
+/*â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼â–¼*/
+--==========[ 6ì›” 27ì¼(ê¸ˆ) ]=========================
 SELECT USER
 FROM DUAL;
 --==>> KNI
 
 
 /*
-  ¢Ã °ü¸®ÀÚ(SYS)·Î ºÎÅÍ Å×ÀÌºí½ºÆäÀÌ½º(TBS_EDUA)¿¡ ´ëÇÑ ÇÒ´ç·®À» ºÎ¿©¹ÞÀº ÀÌÈÄ
-      ´Ù½Ã Å×ÀÌºí »ý¼º  
+  â–£ ê´€ë¦¬ìž(SYS)ë¡œ ë¶€í„° í…Œì´ë¸”ìŠ¤íŽ˜ì´ìŠ¤(TBS_EDUA)ì— ëŒ€í•œ í• ë‹¹ëŸ‰ì„ ë¶€ì—¬ë°›ì€ ì´í›„
+      ë‹¤ì‹œ í…Œì´ë¸” ìƒì„±  
 */
 CREATE TABLE TBL_ORAUSERTEST
 (
-  NO     NUMBER(2)      -- ¼ýÀÚ Å¸ÀÔÀ¸·Î -99 ~ 99
-, NAME   VARCHAR2(30)   -- ¹®ÀÚ Å¸ÀÔÀ¸·Î 30 BYTE ±îÁö ¼ö¿ë
+  NO     NUMBER(2)      -- ìˆ«ìž íƒ€ìž…ìœ¼ë¡œ -99 ~ 99
+, NAME   VARCHAR2(30)   -- ë¬¸ìž íƒ€ìž…ìœ¼ë¡œ 30 BYTE ê¹Œì§€ ìˆ˜ìš©
 );
---==>>Table TBL_ORAUSERTESTÀÌ(°¡) »ý¼ºµÇ¾ú½À´Ï´Ù.
+--==>>Table TBL_ORAUSERTESTì´(ê°€) ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.
 
---¡Ø ÀÚ½Å¿¡°Ô ºÎ¿©µÈ ÇÒ´ç·® Á¶È¸
+--â€» ìžì‹ ì—ê²Œ ë¶€ì—¬ëœ í• ë‹¹ëŸ‰ ì¡°íšŒ
 SELECT *
-FROM USER_TS_QUOTAS;  -- ºä
+FROM USER_TS_QUOTAS;  -- ë·°
 --==>>  TBS_EDUA	65536	-1	8	-1	NO
 --                         ----    ---
---                          -1 Àº ¹«Á¦ÇÑÀ» ÀÇ¹ÌÇÔ
+--                          -1 ì€ ë¬´ì œí•œì„ ì˜ë¯¸í•¨
 
 
 
@@ -99,4 +99,4 @@ FROM USER_TS_QUOTAS;  -- ºä
 
 
 
---### ¡Ø ¡Û ¡Ú ¡º¡» ? ¢Ã ¢º ¡å ¨ç ¨è ¨é ¨ê ¨ë ¨ì ¨í ¨î ¨ï ¨ð  ¡æ  ¡ç  ¡é  ¡¦  £º ¨¬¡è /* */  ¦¡ ¦­ ¦°¦¸ ¦¤¦¥ £Ü
+--### â€» â—‹ â˜… ã€Žã€ ? â–£ â–¶ â–¼ â‘  â‘¡ â‘¢ â‘£ â‘¤ â‘¥ â‘¦ â‘§ â‘¨ â‘©  â†’  â†  â†“  â€¦  ï¼š Âºâ†‘ /* */  â”€ â”ƒ â”›â”¯ â”â”˜ ï¿¦

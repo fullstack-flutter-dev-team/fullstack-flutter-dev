@@ -1,0 +1,27 @@
+### [Gradle](https://gradle.org/releases/)
+- ⭐ [[Gradle] Windows에서 Gradle 설치 및 사용법](https://chocolithm.tistory.com/entry/Gradle-Windows-Gradle-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95)
+- ⭐ [Gradle 이해하기: 초보자를 위한 완벽한 가이드](https://hmdev.vercel.app/Gradle-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0:-%EC%B4%88%EB%B3%B4%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%99%84%EB%B2%BD%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C#2ab841e1728c436b8fb6a18dd3fa1c6d)
+  - Gradle 사용법
+    - gradle init
+  - 폴더 구조
+    - app : main 프로젝트
+    - app/src : 소스코드 위치
+    - app/build.gradle : main 프로젝트의 빌드 명세서
+    - gradle/wrapper : Gradle이 설치되지 않은 경우 자동으로 설치해주는 도구
+    - gradle/libs.versions.toml : 의존하는 버전 정보
+    - gradlew : Gradle이 로컬 컴퓨터에 설치되지 않은 경우 자동으로 설치하여 실행하는 도구 (Linux/Unix용)
+    - gradlew.bat : Gradle이 로컬 컴퓨터에 설치되지 않은 경우 자동으로 설치하여 실행하는 도구 (Windows용)
+    - settings.gradle : Gradle 메인 설정
+    - .gitattributes : Git 보조 설정 파일
+    - .gitignore : Git ignore 정보
+  - 빌드 및 실행
+    - gradle build
+    - gradle run
+    - gradle -q run
+
+- ⭐ [3. gradle 설치](https://wikidocs.net/190866)
+- [[Gradle] 그래들 활용해서 간단한 java 애플리케이션 만들기](https://greedy0110.tistory.com/160)
+- [Gradle file system watching: 동작방식 및 사용법](https://hojongs.github.io/posts/gradle-file-system-watching/)
+- []()
+- []()
+- []()

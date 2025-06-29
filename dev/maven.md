@@ -14,7 +14,7 @@
 - [IDE를 이용하지 않고 javac, java, jar 명령어 사용해보기](https://velog.io/@hochang/IDE%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EA%B3%A0-javac-java-jar-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0)
 - [에디트 플러스 자바 컴파일/실행 설정하기](https://jason-moon.tistory.com/17)
 - [Java - jSon 라이브러리 다운로드](https://blog.naver.com/dnfvm679/221285912201)
-- []()
+- [Maven 입문 | Java 응용 프로그램 개발 | maven-jar-plugin 실행 가능한 Jar 생성](https://www.devkuma.com/docs/maven/maven-jar-plugin-%EC%8B%A4%ED%96%89-%EA%B0%80%EB%8A%A5%ED%95%9C-jar-%EC%83%9D%EC%84%B1/)
 - []()
 - []()
 - []()

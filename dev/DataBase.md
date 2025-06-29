@@ -1,13 +1,23 @@
+### ✨✨✨ Live SQL](https://livesql.oracle.com/next/)
+- []()
+
 ### KOCW
 - ✨[데이터베이스 관리론 🔷 국민대](http://www.kocw.net/home/cview.do?cid=c107a8da0f2ee8fe)
 - [데이터베이스 및 웹을 사용한 프로그래밍 기초🔷 금오공대](http://www.kocw.net/home/cview.do?oracle scott 계정 활성화cid=d149dffc5c1354e6)
+- ✨✨ [오라클 프로그래밍🔷 안양대](http://www.kocw.net/home/cview.do?cid=7988e1d76a28da60)
 - ✨ [DATABASE & BIG DATA🔷 중양대](http://www.kocw.net/home/cview.do?cid=78f1c8beaa66c986&ar=link_openapi)
-- [오라클 프로그래밍](http://www.kocw.net/home/cview.do?cid=7988e1d76a28da60)
+- []()
+
+### 도서
+- [혼자 공부하는 SQL](https://www.hanbit.co.kr/store/books/look.php?p_code=B6846155853)
 - []()
 - []()
 - []()
 - []()
 
+### 블로그
+- [[Oracle] 데이터베이스(Database)](https://continua-conatus.tistory.com/271)
+- [1강 오라클 데이터베이스 개념과 구조](https://doltae.tistory.com/334)
 
 ### oracle scott 계정 활성화
 - [oracle scott 계정 활성화 검색](https://www.google.com/search?q=oracle+scott+%EA%B3%84%EC%A0%95+%ED%99%9C%EC%84%B1%ED%99%94&oq=oracle+scott+&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIGCAcQABgeMgYICBAAGB4yBggJEAAYHtIBCDkyMDhqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
@@ -19,7 +29,7 @@
 - []()
 - []()
 - []()
-- 
+
 ### ORA SQL DEVELOPER 단축키
 - [ORA SQL DEVELOPER 단축키 검색](https://www.google.com/search?q=ORA+SQL+DEVELOPER+%EB%8B%A8%EC%B6%95%ED%82%A4&oq=ORA+SQL+DEVELOPER+%EB%8B%A8%EC%B6%95%ED%82%A4&gs_lcrp=EgZjaHJvbWUyCAgAEEUYFRg5MgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKAB0gEJMTQ2NTZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
   - [오라클SQL Developer 단축키 40가지](https://knowhowbox.co.kr/%EC%98%A4%EB%9D%BC%ED%81%B4sql-developer-%EB%8B%A8%EC%B6%95%ED%82%A4-40%EA%B0%80%EC%A7%80/)

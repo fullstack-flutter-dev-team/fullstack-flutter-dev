@@ -57,6 +57,38 @@
 - []()
 - []()
 
+### java gradle json
+- [java gradle json 검색](https://www.google.com/search?q=java+gradle+json&oq=java+gradle+json&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDUwMjJqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8)
+  - [JSON Object를 JAVA에서 사용하기. Gradle 설정 변경 방법](https://doraemin.tistory.com/14)
+  - [[Spring] Java에서 JSON Object 사용하기](https://velog.io/@k_moonj/Spring-Java%EC%97%90%EC%84%9C-JSON-Objectt-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+  - []()
+  - []()
+- []()
+
+### java gradle gson
+- [java gradle gson 검색](https://www.google.com/search?q=java+gradle+gson&newwindow=1&sca_esv=e0bc15583df30733&sxsrf=AE3TifO16rxwSGpMPqD3CzRfAtK5ATzCVA%3A1751214366861&ei=HmlhaKSmNLGX0-kPoOOTcA&ved=0ahUKEwikrYzyhZeOAxWxyzQHHaDxBA4Q4dUDCBA&uact=5&oq=java+gradle+gson&gs_lp=Egxnd3Mtd2l6LXNlcnAiEGphdmEgZ3JhZGxlIGdzb24yBhAAGAgYHjIGEAAYCBgeMgUQABjvBTIIEAAYgAQYogQyCBAAGKIEGIkFMgUQABjvBUiaFlCwEVjKFHAEeAGQAQCYAZ8BoAHtBKoBAzAuNLgBA8gBAPgBAZgCCKACmAXCAgoQABiwAxjWBBhHwgIFEAAYgATCAgQQABgemAMAiAYBkAYKkgcDNC40oAfMEbIHAzAuNLgH_gTCBwUwLjEuN8gHJA&sclient=gws-wiz-serp)
+  - ⭐ [(JAVA) Gson라이브러리](https://velog.io/@tjdalsrnjs10/JAVA-Gson%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)
+  - [google]/ [gson](https://github.com/google/gson)
+  - ⭐ [[Java] Gson 라이브러리 사용법 및 예제 ( Json 생성, 변환 )](https://hianna.tistory.com/629)
+  - [[JAVA] Gson 라이브러리를 사용한 JSON 데이터 처리](https://tychejin.tistory.com/136)
+  - []()
+  - []()
+- []()
+- []()
+- []()
+
+### java python 연동
+- [java python 연동 검색](https://www.google.com/search?q=java+python+%EC%97%B0%EB%8F%99&oq=java+python+&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyBggCEEUYOzIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRhBMgYIBxBFGEHSAQg5MjM4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+  - [[Python] Java와 Python 연동](https://corock.tistory.com/445)
+  - [ProcessBuilder Java 쉘 명령어, 스크립트 실행](https://karla.tistory.com/459)
+  - [LibraryJava ProcessBuilder와 Process API](https://bigdown.tistory.com/entry/Java-ProcessBuilder%EC%99%80-Process-API)
+  - [Java에서 외부 프로그램 실행하기 (zt-exec)](https://backend-jaamong.tistory.com/172)
+  - ⭐ [Java ProcessBuilder, Process - 자바로 외부 프로세스 제어하기](https://whdrns2013.github.io/java/20230605_001_processbuilder_process/)
+  - []()
+  - []()
+  - []()
+- []()
+- []()
 
 ### ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 ---
