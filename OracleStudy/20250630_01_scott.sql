@@ -645,9 +645,9 @@ FROM DUAL;
 --WHERE 1981년 9월 28일 이후;
 
 
-SELECT ENAME 사원명, JOB 직종명, HIREDATE 입사일
-FROM TBL_EMP
-WHERE HIREDATE 가 1981년 9월 28일 이후(해당일 포함);
+--SELECT ENAME 사원명, JOB 직종명, HIREDATE 입사일
+--FROM TBL_EMP
+--WHERE HIREDATE 가 1981년 9월 28일 이후(해당일 포함);
 
 -- ※ 오라클에서는 날짜 데이터의 크기 비교가 가능하다.
 --    오라클에서 날짜 데이터에 대한 크기 비교 시
@@ -782,6 +782,7 @@ WHERE ENAME BETWEEN 'C' AND 'S';
 --    단, 문자형일 경우 아스키코드 순서를 따르기 때문에(사전식 배열)
 --    대문자가 앞쪽에 위치하고, 소문자가 뒤쪽에 위치하며
 --    BETWEEN ⓐ AND ⓑ 는 쿼리문이 수행되는 시점에서
+--    오라클 내부적으로 부등호 연산자의 형태로 바뀌어 처리된다.
 SELECT EMPNO, ENAME, JOB, SAL
 FROM TBL_EMP
 WHERE ENAME BETWEEN 'C' AND 's';
@@ -900,8 +901,9 @@ WHERE JOB = ANY('SALESMAN', 'CLERK');   -- cf.『=ALL』
 --     하지만, 맨 위의 커리문이 가장 빠르게 처리된다.
 --     물론, 메모리에 대한 내용이 아니라 CPU 에 대한 내용이므로
 --     이 부분까지 감안하여 쿼리문의 내용을 구분하여 구성하는 일은 많지 않다.
---      → 『』 『』
-
+--      → 『IN』 『=ANY』는 같은 연산자 효과를 가진다.
+--         모두 내부적으로 『OR』구조로 변경되어 연산 처리된다.
+ 
 -------------------------------------------------------------------------------------------------
 -- ※ 추가 실습 환경 구성을 위한 테이블 생성
 --     테이블 명 : TBL_SAWON
@@ -1132,6 +1134,16 @@ WHERE SANAME LIKE '_이%';
 
 --▣ TBL_SAWON 테이블에서 이름에 『이』라는 글자가 하나라도 포함되어 있으면 그 사원의
 --   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+----------------------------------------------------------------
+--SELECT 사원명, 주민번호, 입사일, 급여
+--FROM TBL_SAWON
+--WHERE 이름에 『이』라는 글자가 하나라도 포함;
+
+--SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+--FROM TBL_SAWON
+--WHERE 이름에 『이』라는 글자가 하나라도 포함;
+
+
 SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
 FROM TBL_SAWON
 WHERE SANAME LIKE '%이%';
@@ -1141,6 +1153,373 @@ WHERE SANAME LIKE '%이%';
 이이경	7506171234567	1997-03-10	4000
 미노이	9704252234567	2007-12-10	2000
 */
+
+--▣ TBL_SAWON 테이블에서 이름에 『이』라는 글자가 연속으로 두 번 포함되어 있으면 그 사원의
+--   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+-----------------------------------------------------------------------
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE SANAME LIKE '%이이%';
+/*
+이이경	7506171234567	1997-03-10	4000
+*/
+
+--▣ TBL_SAWON 테이블에서 이름에 『이』라는 글자가 연속적이지 않더라도 두 번 포함되어 있으면 그 사원의
+--   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+-----------------------------------------------------------------------
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE SANAME LIKE '%이이%' OR
+      SANAME LIKE '%이%이%';
+/*
+이상이	8512161234567	1988-08-16	3000
+이이경	7506171234567	1997-03-10	4000
+*/
+
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE SANAME LIKE '%이%이%';
+/*
+이상이	8512161234567	1988-08-16	3000
+이이경	7506171234567	1997-03-10	4000
+*/
+
+--▣ TBL_SAWON 테이블에서 성씨가 『선』씨인 사원의 ◀◀◀◀◀ 불가능
+--   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+-----------------------------------------------------------------------
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE SANAME LIKE '선%';
+/*
+선우선	7905082234567	1998-08-16	2000 ◀◀◀◀◀ 불가능
+선동열	7012181234567	1990-10-10	3000
+선우용녀	7005132234567	1998-08-16	1000 ◀◀◀◀◀ 불가능
+*/
+
+--▣ TBL_SAWON 테이블에서 성씨가 『남』씨인 사원의    ◀◀◀◀◀ 불가능
+--   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+-----------------------------------------------------------------------
+-- ※ 데이터베이스 설계 시 성과 이름을 분리해서 처리해야 할 ★★★★★
+--    업무 계획이 있다면(지금 당장은 아니더라도..)
+--    테이블에서 성 컬럼과 이름 컬럼을 분리해서 구성해야 함
+
+
+--▣ TBL_SAWON 테이블에서 남자 직원들의 
+--   사원명, 주민번호, 입사일, 급여 항목을 조회한다.
+-----------------------------------------------------------------------
+--SELECT 사원명, 주민번호, 입사일, 급여
+--FROM TBL_SAWON
+--WHERE 남자 직원들;
+
+
+--SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+--FROM TBL_SAWON
+--WHERE 성별이 남성;
+
+--SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+--FROM TBL_SAWON
+--WHERE 주민번호 7번째 자리 1개가 1
+--      주민번호 7번째 자리 1개가 3;
+
+--SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+--FROM TBL_SAWON
+--WHERE 주민번호 7번째 자리 1개가 1 OR
+--      주민번호 7번째 자리 1개가 3;
+      
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE JUBUN LIKE '______1______' OR
+      JUBUN LIKE '______3______';
+/*
+김한국-1	0004161234543	2011-01-03	3000
+김한국-2	0406201234543	2017-11-05	3000
+김한국-3	0004191234543	2011-01-03	3000
+이상이	    8512161234567	1988-08-16	3000
+이이경	    7506171234567	1997-03-10	4000
+선동열	    7012181234567	1990-10-10	3000
+남희석	    7502201234567	1998-08-14	1000
+김훈	    8502071234567	1999-10-10	2000
+*/
+
+      
+SELECT SANAME 사원명, JUBUN 주민번호, HIREDATE 입사일, SAL 급여
+FROM TBL_SAWON
+WHERE 
+   JUBUN LIKE '______1%' OR
+   JUBUN LIKE '______3%' OR
+   JUBUN LIKE '______5%' OR
+   JUBUN LIKE '______7%' OR
+   JUBUN LIKE '______9%';
+/*
+김한국-1	0004161234543	2011-01-03	3000
+김한국-2	0406201234543	2017-11-05	3000
+김한국-3	0004191234543	2011-01-03	3000
+이상이	    8512161234567	1988-08-16	3000
+이이경	    7506171234567	1997-03-10	4000
+선동열	    7012181234567	1990-10-10	3000
+남희석	    7502201234567	1998-08-14	1000
+김훈	    8502071234567	1999-10-10	2000
+*/
+
+DESC TBL_SAWON;
+/*
+이름       널? 유형           
+-------- -- ------------ 
+SANO        NUMBER(4)    
+SANAME      VARCHAR2(30) 
+JUBUN       CHAR(13)     
+HIREDATE    DATE         
+SAL         NUMBER(10) 
+*/
+
+--▣ 실습 테이블 생성
+--   테이블 명 : TBL_WATCH
+CREATE TABLE TBL_WATCH
+( WATCH_NAME    VARCHAR2(20)
+, BIGO          VARCHAR2(100)
+);
+--==>> Table TBL_WATCH이(가) 생성되었습니다.
+
+--▣ 데이터 입력
+INSERT INTO TBL_WATCH(WATCH_NAME, BIGO)
+VALUES('금시계', '순금 99.99% 함유된 최고급 시계');
+--==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_WATCH(WATCH_NAME, BIGO)
+VALUES('은시계', '고객 만족도 99.99점을 획득한 시계');
+--==>> 1 행 이(가) 삽입되었습니다.
+
+
+SELECT *
+FROM TBL_WATCH;
+/*
+금시계	순금 99.99% 함유된 최고급 시계
+은시계	고객 만족도 99.99점을 획득한 시계
+*/
+
+--▣ 커밋
+COMMIT;
+--==>> 커밋 완료.
+
+
+--▣ SCOTT 소유의 테이블 조회
+SELECT *
+FROM TAB;
+
+
+--▣ TBL_WATCH 테이블의 BIGO(비고) 컬럼에
+--     『99.99%』 라는 글자가 들어있는 행(레코드)을 조회한다.
+SELECT *
+FROM TBL_WATCH
+WHERE BIGO LIKE '%99.99%';
+/*
+금시계	순금 99.99% 함유된 최고급 시계
+은시계	고객 만족도 99.99점을 획득한 시계
+*/
+
+SELECT *
+FROM TBL_WATCH
+WHERE BIGO LIKE '%99.99%%';
+/*
+금시계	순금 99.99% 함유된 최고급 시계
+은시계	고객 만족도 99.99점을 획득한 시계
+*/
+
+SELECT *
+FROM TBL_WATCH
+WHERE BIGO LIKE '%99.99\%%' ESCAPE '\';
+/*
+금시계	순금 99.99% 함유된 최고급 시계
+*/
+
+-- ※ ESCAPE 로 정한 문자의 다음 한 글자는 와일드 카드에서 탈출시키도록 처리하는 구문
+--      『ESCAPE '\'』
+--      일반적으로 키워드 아닌, 연산자 아닌, 사용 빈도가 낮은 특수문자(특수기호)를 사용.
+
+
+
+
+-- ▣▣▣ COMMIT / ROLLBACK ▣▣▣ --
+-- 파일 저장 방식과 유사....(메모리 상 데이터와 파일 데이터는 다를 수 있음..)
+-- COMMIT 하기 전에는 메모리 상에 데이터가 존재
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+*/
+
+--▣ 데이터 입력
+INSERT INTO TBL_DEPT VALUES(50, '개발부', '서울');
+--==>> 1 행 이(가) 삽입되었습니다.
+
+
+--▣ 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	    서울    ◀◀◀ 이 데이터는 TBL_DEPT 테이블이 저장되어 있는  ★★★★
+                               하드디스크상에 물리적으로 적용되어 저장된 것이 아니라 ★★★
+                               메모리(RAM) 상에 입력된 것이다. ★★★★★
+*/
+
+--▣ 롤백
+ROLLBACK;
+--==>> 롤백 완료.
+
+
+--▣ 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+*/
+-- 50	개발부	    서울
+-- 에 대한 데이터가 소실되었음을 확인(존재하지 않음)
+
+--▣ 다시 데이터 입력
+INSERT INTO TBL_DEPT VALUES(50, '개발부', '서울');
+--==>> 1 행 이(가) 삽입되었습니다.
+
+--▣ 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	    서울     ◀◀◀◀◀◀◀◀◀◀◀◀◀◀
+*/
+
+-- ▶▶ 메모리 상에 입력된 이 데이터를 실제 하드디스크상에 물리적으로 저장하기 위해서는
+--      COMMIT 을 수행해야 한다.
+
+
+--▣ 커밋
+COMMIT;
+--==>> 커밋 완료.
+
+
+--▣ 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	    서울      ◀◀◀◀◀◀◀◀◀◀◀◀◀◀
+*/
+
+
+--▣ 롤백
+ROLLBACK;
+--==>> 롤백 완료.
+
+
+--▣ 롤백 이후 다시 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	    서울      ◀◀◀◀◀◀◀◀◀◀◀◀◀◀◀◀◀
+*/
+
+-- ※ 롤백(ROLLBACK) 을 수행했음에도 불구하고
+--    50	개발부	    서울
+--    해당 데이터는 소실되지 않았음을 확인
+
+
+-- ※ COMMIT 을 실행한 이후로 DML구문(INSERT, UPDATE, DELETE 등)을 통해
+--    변경된 데이터만 취소할 수 있는 것일 뿐
+--    DML(INSERT, UPDATE, DELETE 등) 명령을 사용한 후 COMMIT 하고나서 
+--    ROLLBACK을 실행해봐야....이전 상태로 되돌릴 수 없다.(아무 소용이 없다.)
+
+--▣ 데이터 수정(TBL_DEPT)
+UPDATE TBL_DEPT      ------------------- ①
+SET DNAME = '연구부', LOC = '경기' ----- ③
+WHERE DEPTNO = 50;    ------------------ ②
+--===>>> 1 행 이(가) 업데이트되었습니다.
+
+--▣ 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	    CHICAGO
+40	OPERATIONS	BOSTON
+50	연구부	    경기
+*/
+
+--▣ 롤백
+ROLLBACK;
+--==>> 롤백 완료.
+
+
+--▣ 롤백 이후 다시 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	서울
+*/
+--- ▶▶ 수정(UPDATE)을 수행하기 이전 상태로 복원되었음을 확인~!!!
+
+--▣ 데이터 삭제
+SELECT *
+FROM TBL_DEPT
+WHERE DEPTNO = 50;
+--==>> 50	개발부	서울 
+ 
+DELETE
+FROM TBL_DEPT
+WHERE DEPTNO = 50;
+--==>> 1 행 이(가) 삭제되었습니다.
+
+--▣ 삭제 후 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	CHICAGO
+40	OPERATIONS	BOSTON
+*/
+
+--▣ 롤백
+ROLLBACK;
+--==>> 롤백 완료.
+
+
+--▣ 롤백 이후 다시 확인
+SELECT *
+FROM TBL_DEPT;
+/*
+10	ACCOUNTING	NEW YORK
+20	RESEARCH	DALLAS
+30	SALES	CHICAGO
+40	OPERATIONS	BOSTON
+50	개발부	서울
+*/
+-- ▶▶ 삭제(DELETE) 구문을 수행하기 이전 상태로 복원되었음을 확인~!!!
+
 
 
 -- ### --▣ ※ ○ ★ 『』 ? ▣ ◀▶ ▼ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →  ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
