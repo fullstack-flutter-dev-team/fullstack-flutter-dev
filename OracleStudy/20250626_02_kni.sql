@@ -87,8 +87,8 @@ CREATE TABLE TBL_ORAUSERTEST
 --※ 자신에게 부여된 할당량 조회
 SELECT *
 FROM USER_TS_QUOTAS;  -- 뷰
---==>>  TBS_EDUA	65536	-1	8	-1	NO
---                         ----    ---
+--==>>  TBS_EDUA    65536  -1    8    -1    NO
+--                        ----        ---
 --                          -1 은 무제한을 의미함
 
 
