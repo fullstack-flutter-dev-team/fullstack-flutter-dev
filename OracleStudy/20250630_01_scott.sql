@@ -126,8 +126,6 @@ FROM TBL_EMP;
 -- ==>> 25/06/30
 --==>> 2025-06-30 09:50:06
 
-
-
 --▣ 현재 날짜 및 시간을 반환하는 함수
 SELECT SYSDATE, CURRENT_DATE, LOCALTIMESTAMP
 FROM DUAL;
@@ -341,7 +339,7 @@ SELECT *
 FROM TBL_EMP;
 
 
-
+--▣
 -- SMITH's 입사일은 1980-12-17 이다. 그리고 급여는 800 이다.
 -- ALLEN's 입사일은 1981-02-20 이다. 그리고 급여는 1600 이다.
 --                          ：
@@ -777,12 +775,12 @@ WHERE ENAME BETWEEN 'C' AND 'S';
 7934	MILLER	CLERK	1300
 */
 
-
 -- ※ BETWEEN ⓐ AND ⓑ  는 날짜형, 숫자형, 문자형 데이터 모두를 대상으로 사용할 수 있다.
 --    단, 문자형일 경우 아스키코드 순서를 따르기 때문에(사전식 배열)
 --    대문자가 앞쪽에 위치하고, 소문자가 뒤쪽에 위치하며
 --    BETWEEN ⓐ AND ⓑ 는 쿼리문이 수행되는 시점에서
 --    오라클 내부적으로 부등호 연산자의 형태로 바뀌어 처리된다.
+
 SELECT EMPNO, ENAME, JOB, SAL
 FROM TBL_EMP
 WHERE ENAME BETWEEN 'C' AND 's';
@@ -901,8 +899,8 @@ WHERE JOB = ANY('SALESMAN', 'CLERK');   -- cf.『=ALL』
 --     하지만, 맨 위의 커리문이 가장 빠르게 처리된다.
 --     물론, 메모리에 대한 내용이 아니라 CPU 에 대한 내용이므로
 --     이 부분까지 감안하여 쿼리문의 내용을 구분하여 구성하는 일은 많지 않다.
---      → 『IN』 『=ANY』는 같은 연산자 효과를 가진다.
---         모두 내부적으로 『OR』구조로 변경되어 연산 처리된다.
+--      → 『IN』 『= ANY』는 같은 연산자 효과를 가진다.
+--          모두 내부적으로 『OR』구조로 변경되어 연산 처리된다.
  
 -------------------------------------------------------------------------------------------------
 -- ※ 추가 실습 환경 구성을 위한 테이블 생성
@@ -989,6 +987,8 @@ FROM TBL_SAWON;
 --▣ 커밋
 COMMIT;
 --==>> 커밋 완료.
+
+
 --▣ TBL_SAWON 테이블에서 김한국-1 사원의 정보를 모두 조회한다.
 SELECT *
 FROM TBL_SAWON
@@ -1333,13 +1333,14 @@ WHERE BIGO LIKE '%99.99\%%' ESCAPE '\';
 */
 
 -- ※ ESCAPE 로 정한 문자의 다음 한 글자는 와일드 카드에서 탈출시키도록 처리하는 구문
---      『ESCAPE '\'』
---      일반적으로 키워드 아닌, 연산자 아닌, 사용 빈도가 낮은 특수문자(특수기호)를 사용.
+--    『ESCAPE '\'』
+--    일반적으로 키워드 아닌, 연산자 아닌, 사용 빈도가 낮은 특수문자(특수기호)를 사용.
 
 
 
-
+-------------------------------------
 -- ▣▣▣ COMMIT / ROLLBACK ▣▣▣ --
+-------------------------------------
 -- 파일 저장 방식과 유사....(메모리 상 데이터와 파일 데이터는 다를 수 있음..)
 -- COMMIT 하기 전에는 메모리 상에 데이터가 존재
 SELECT *
@@ -1442,11 +1443,10 @@ FROM TBL_DEPT;
 --    50	개발부	    서울
 --    해당 데이터는 소실되지 않았음을 확인
 
-
 -- ※ COMMIT 을 실행한 이후로 DML구문(INSERT, UPDATE, DELETE 등)을 통해
 --    변경된 데이터만 취소할 수 있는 것일 뿐
 --    DML(INSERT, UPDATE, DELETE 등) 명령을 사용한 후 COMMIT 하고나서 
---    ROLLBACK을 실행해봐야....이전 상태로 되돌릴 수 없다.(아무 소용이 없다.)
+--    ROLLBACK을 실행해봐야.... 이전 상태로 되돌릴 수 없다.(아무 소용이 없다.)
 
 --▣ 데이터 수정(TBL_DEPT)
 UPDATE TBL_DEPT      ------------------- ①
@@ -1520,7 +1520,382 @@ FROM TBL_DEPT;
 */
 -- ▶▶ 삭제(DELETE) 구문을 수행하기 이전 상태로 복원되었음을 확인~!!!
 
+--------------------------------------------------------------------------
+-- ★★★★ SELECT 파싱 순서 ★★★★★★
+--SELECT          ----- ⑤
+--FROM            ----- ①
+--WHERE           ----- ② 
+--GROUP BY        ----- ③ 
+--HAVING          ----- ④ 
+--ORDER BY        ----- ⑥
 
+
+-------------------------------------
+-- ▣▣▣ 정렬(ORDER BY) 절 ▣▣▣ --
+-------------------------------------
+-- 리소스 소모량이 많으므로 사용시 검토 요망....
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP;
+/*
+7369	20	CLERK	     800	9600
+7499	30	SALESMAN	1600	19500
+7521	30	SALESMAN	1250	15500
+7566	20	MANAGER	    2975	35700
+7654	30	SALESMAN	1250	16400
+7698	30	MANAGER	    2850	34200
+7782	10	MANAGER	    2450	29400
+7788	20	ANALYST	    3000	36000
+7839	10	PRESIDENT	5000	60000
+7844	30	SALESMAN	1500	18000
+7876	20	CLERK	    1100	13200
+7900	30	CLERK	     950	11400
+7902	20	ANALYST	    3000	36000
+7934	10	CLERK	    1300	15600
+*/
+
+
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY DEPTNO ASC;   -- DEPTNO → 부서번호 기준 정렬
+                       -- ASC    → 오름차순 정렬 
+/*
+EMPNO  DEPTNO JOB      SAL        연봉
+----   ----  ------    -----   ------
+7782	10	MANAGER	    2450	29400
+7839	10	PRESIDENT	5000	60000
+7934	10	CLERK	    1300	15600
+7566	20	MANAGER	    2975	35700
+7902	20	ANALYST	    3000	36000
+7876	20	CLERK	    1100	13200
+7369	20	CLERK	     800	9600
+7788	20	ANALYST	    3000	36000
+7521	30	SALESMAN	1250	15500
+7844	30	SALESMAN	1500	18000
+7499	30	SALESMAN	1600	19500
+7900	30	CLERK	     950	11400
+7698	30	MANAGER	    2850	34200
+7654	30	SALESMAN	1250	16400
+*/
+
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY DEPTNO;   -- DEPTNO → 부서번호 기준 정렬  ★★
+                   -- ASC    → 오름차순 정렬   → 생략 가능~!!! ★★
+/*  
+EMPNO  DEPTNO JOB      SAL        연봉
+----   ----  ------    -----   ------
+7782	10	MANAGER	    2450	29400
+7839	10	PRESIDENT	5000	60000
+7934	10	CLERK	    1300	15600
+7566	20	MANAGER	    2975	35700
+7902	20	ANALYST	    3000	36000
+7876	20	CLERK	    1100	13200
+7369	20	CLERK	     800	9600
+7788	20	ANALYST	    3000	36000
+7521	30	SALESMAN	1250	15500
+7844	30	SALESMAN	1500	18000
+7499	30	SALESMAN	1600	19500
+7900	30	CLERK	     950	11400
+7698	30	MANAGER	    2850	34200
+7654	30	SALESMAN	1250	16400
+*/
+
+
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY DEPTNO DESC;   -- DEPTNO → 부서번호 기준 정렬 ★★★
+                        -- DESC   → 내림차순 정렬   → 생략 불가~!!! ★★
+/*
+EMPNO  DEPTNO JOB      SAL        연봉
+----   ----  ------    -----   ------
+7698	30	MANAGER	    2850	34200
+7844	30	SALESMAN	1500	18000
+7499	30	SALESMAN	1600	19500
+7654	30	SALESMAN	1250	16400
+7521	30	SALESMAN	1250	15500
+7900	30	CLERK	     950	11400
+7788	20	ANALYST	    3000	36000
+7566	20	MANAGER	    2975	35700
+7369	20	CLERK	     800	9600
+7876	20	CLERK	    1100	13200
+7902	20	ANALYST	    3000	36000
+7839	10	PRESIDENT	5000	60000
+7934	10	CLERK	    1300	15600
+7782	10	MANAGER	    2450	29400
+*/            
+                   
+                   
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY SAL DESC;  -- SAL    → 급여 기준 정렬 ★★★
+                    -- DESC   → 내림차순 정렬   → 생략 불가~!!! ★★
+/*
+EMPNO  DEPTNO JOB      SAL        연봉
+----   ----  ------    -----   ------
+7839	10	PRESIDENT	5000	60000
+7902	20	ANALYST	    3000	36000
+7788	20	ANALYST	    3000	36000
+7566	20	MANAGER	    2975	35700
+7698	30	MANAGER	    2850	34200
+7782	10	MANAGER	    2450	29400
+7499	30	SALESMAN	1600	19500
+7844	30	SALESMAN	1500	18000
+7934	10	CLERK	    1300	15600
+7521	30	SALESMAN	1250	15500
+7654	30	SALESMAN	1250	16400
+7876	20	CLERK	    1100	13200
+7900	30	CLERK	     950	11400
+7369	20	CLERK	     800	 9600
+*/                     
+    
+SELECT EMPNO "사원번호", DEPTNO "부서번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY 연봉 DESC;  -- 연봉   → 연봉 기준 정렬 ★★★
+                     -- DESC   → 내림차순 정렬   → 생략 불가~!!! ★★
+
+/*
+EMPNO  DEPTNO JOB      SAL        연봉
+----   ----  ------    -----   ------
+7839	10	PRESIDENT	5000	60000
+7902	20	ANALYST	    3000	36000
+7788	20	ANALYST	    3000	36000
+7566	20	MANAGER	    2975	35700
+7698	30	MANAGER	    2850	34200
+7782	10	MANAGER	    2450	29400
+7499	30	SALESMAN	1600	19500
+7844	30	SALESMAN	1500	18000
+7654	30	SALESMAN	1250	16400
+7934	10	CLERK	    1300	15600
+7521	30	SALESMAN	1250	15500
+7876	20	CLERK	    1100	13200
+7900	30	CLERK	     950	11400
+7369	20	CLERK	     800	 9600
+*/
+-- ※ ORDER BY 절보다 SELECT 절이 먼저 처리되기 때문에
+--    테이블의 컬럼명 대신 SELECT 절에서 부여한 ALIAS(별칭)을
+--    ORDER BY 절에서 사용해도 문제가 발생하지 않는다.(가능하다.)
+    
+SELECT EMPNO "사원번호", DEPTNO "부서 번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY 부서 번호 DESC;  -- 부서 번호   → 부서 번호 기준 정렬 ★★★
+                          -- DESC   → 내림차순 정렬   → 생략 불가~!!! ★★
+/*
+ORA-00933: SQL command not properly ended
+00933. 00000 -  "SQL command not properly ended"
+*Cause:    
+*Action:
+1,684행, 124열에서 오류 발생
+*/
+
+SELECT EMPNO "사원번호", DEPTNO "부서 번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY "부서 번호" DESC;  -- "부서 번호"   → "부서 번호" 기준 정렬 ★★★
+                            -- DESC   → 내림차순 정렬   → 생략 불가~!!! ★★
+/*
+7698	30	MANAGER	    2850	34200
+7844	30	SALESMAN	1500	18000
+7499	30	SALESMAN	1600	19500
+7654	30	SALESMAN	1250	16400
+7521	30	SALESMAN	1250	15500
+7900	30	CLERK	     950	11400
+7788	20	ANALYST	    3000	36000
+7566	20	MANAGER	    2975	35700
+7369	20	CLERK	     800	9600
+7876	20	CLERK	    1100	13200
+7902	20	ANALYST	    3000	36000
+7839	10	PRESIDENT	5000	60000
+7934	10	CLERK	    1300	15600
+7782	10	MANAGER	    2450	29400
+*/                          
+  
+SELECT EMPNO "사원번호", DEPTNO "부서 번호", JOB "직종", SAL "급여"
+       , SAL*12 + NVL(COMM, 0) "연봉"
+FROM TBL_EMP
+ORDER BY 2;  -- DEPTNO ASC
+/*
+7782	10	MANAGER	    2450	29400
+7839	10	PRESIDENT	5000	60000
+7934	10	CLERK	    1300	15600
+7566	20	MANAGER	    2975	35700
+7902	20	ANALYST	    3000	36000
+7876	20	CLERK	    1100	13200
+7369	20	CLERK	     800	9600
+7788	20	ANALYST	    3000	36000
+7521	30	SALESMAN	1250	15500
+7844	30	SALESMAN	1500	18000
+7499	30	SALESMAN	1600	19500
+7900	30	CLERK	     950	11400
+7698	30	MANAGER	    2850	34200
+7654	30	SALESMAN	1250	16400
+*/                     
+      
+-- ※ TBL_EMP 테이블이 갖고있는 테이블의 고유한 컬럼 순서가 아니라
+--    SELECT 절에서 처리되는 과정에서 두 번째 컬럼(즉, DEPTNO)을 기준으로
+--    정렬이 되는 것을 확인
+--    컬럼 인덱스는 0부터가 아니고, 1부터
+--    ASC 생략된 상태 → 오름차순 정렬되는 것을 확인
+
+SELECT ENAME, DEPTNO, JOB, SAL
+FROM TBL_EMP
+ORDER BY 2, 4;  -- DEPTNO  기준 1차 정렬, SAL기준 2차 정렬 ASC
+/*
+MILLER	10	CLERK	    1300
+CLARK	10	MANAGER	    2450
+KING	10	PRESIDENT	5000
+SMITH	20	CLERK	     800
+ADAMS	20	CLERK	    1100
+JONES	20	MANAGER	    2975
+SCOTT	20	ANALYST   	3000
+FORD	20	ANALYST	    3000
+JAMES	30	CLERK	     950
+MARTIN	30	SALESMAN	1250
+WARD	30	SALESMAN	1250
+TURNER	30	SALESMAN	1500
+ALLEN	30	SALESMAN	1600
+BLAKE	30	MANAGER	    2850
+*/
+
+SELECT ENAME, DEPTNO, JOB, SAL
+FROM TBL_EMP
+ORDER BY 2, 3, 4 DESC;  
+-- ① DEPTNO 기준 오름차순 정렬
+-- ② JOB 기준 오름차순 정렬
+-- ③ SAL 기준 내림차순 정렬
+/*
+ENAME  DEPTNO  JOB     SAL
+------  ---- -------  ------
+MILLER	10	CLERK	    1300
+CLARK	10	MANAGER	    2450
+KING	10	PRESIDENT	5000
+SCOTT	20	ANALYST	    3000
+FORD	20	ANALYST	    3000
+ADAMS	20	CLERK	    1100
+SMITH	20	CLERK	     800
+JONES	20	MANAGER	    2975
+JAMES	30	CLERK	     950
+BLAKE	30	MANAGER  	2850
+ALLEN	30	SALESMAN	1600
+TURNER	30	SALESMAN	1500
+MARTIN	30	SALESMAN	1250
+WARD	30	SALESMAN	1250
+*/
+
+--------------------------------------------------------------------
+--▣ CONCAT() →  문자열 결합 함수
+SELECT '김한국-1', '김한국-2'
+     , '김한국-1' || '김한국-2'  "COL-1"
+     , CONCAT('김한국-1' , '김한국-2')  "COL-2"
+FROM DUAL;
+--==>> 김한국-1	김한국-2	김한국-1김한국-2	김한국-1김한국-2
+
+
+SELECT ENAME || JOB "COL-1"
+     , CONCAT(ENAME, JOB) "COL-2"
+FROM TBL_EMP;
+/*
+SMITHCLERK	    SMITHCLERK
+ALLENSALESMAN	ALLENSALESMAN
+WARDSALESMAN	WARDSALESMAN
+JONESMANAGER	JONESMANAGER
+MARTINSALESMAN	MARTINSALESMAN
+BLAKEMANAGER	BLAKEMANAGER
+CLARKMANAGER	CLARKMANAGER
+SCOTTANALYST	SCOTTANALYST
+KINGPRESIDENT	KINGPRESIDENT
+TURNERSALESMAN	TURNERSALESMAN
+ADAMSCLERK	     ADAMSCLERK
+JAMESCLERK	    JAMESCLERK
+FORDANALYST	     FORDANALYST
+MILLERCLERK	     MILLERCLERK
+*/
+
+SELECT ENAME || JOB  || DEMPTNO "COL-1" 
+     , CONCAT(ENAME, JOB, DEPTNO) "COL-2"
+FROM TBL_EMP;
+--==>> 에러 발생
+/*
+ORA-00909: invalid number of arguments
+00909. 00000 -  "invalid number of arguments"
+*Cause:    
+*Action:
+1,817행, 8열에서 오류 발생
+*/
+--▶ 2개의 문자열을 셜합시켜주는 기능을 가진 함수
+--   오로지 2개만 결합 시킬 수 있다.
+
+SELECT ENAME || JOB  || DEPTNO "COL-1" 
+     , CONCAT(ENAME, CONCAT(JOB, DEPTNO)) "COL-2"
+FROM TBL_EMP;
+/*
+SMITHCLERK	    SMITHCLERK
+ALLENSALESMAN	ALLENSALESMAN
+WARDSALESMAN	WARDSALESMAN
+JONESMANAGER	JONESMANAGER
+MARTINSALESMAN	MARTINSALESMAN
+BLAKEMANAGER	BLAKEMANAGER
+CLARKMANAGER	CLARKMANAGER
+SCOTTANALYST	SCOTTANALYST
+KINGPRESIDENT	KINGPRESIDENT
+TURNERSALESMAN	TURNERSALESMAN
+ADAMSCLERK	     ADAMSCLERK
+JAMESCLERK	    JAMESCLERK
+FORDANALYST	     FORDANALYST
+MILLERCLERK	     MILLERCLERK
+*/
+--▶▶ 내부적으로 형 변환이 일어나며 결합을 수행하게 된다.
+-- CONCAT() 은 문자 타입과 문자 타입을 대상으로 결합을 수행하는 함수이지만,
+-- 내부적으로 숫자나 날짜를 문자 타입으로 바꾸어주는 과정이 포함되어 있다.
+
+
+/*
+
+cf. JAVA 의 String.substring()
+
+   obj.substring()
+   ---
+    ┃
+   문자열.substring(n, m);  → 문자열 추출
+                  ---------
+                   n 부터 m-1 까지(0부터 시작하는 인덱스 적용)
+
+*/
+--▣ SUBSTR() 갯수 기반 / SUBSTRB() 바이트 기반 → 문자열 추출 함수
+SELECT ENAME "COL-1"
+    , SUBSTR(ENAME, 1, 2) "COL-2"
+    , SUBSTR(ENAME, 2, 2) "COL-3"
+    , SUBSTR(ENAME, 3, 2) "COL-4"
+    , SUBSTR(ENAME, 2) "COL-5"
+FROM TBL_EMP;
+/*
+  문자열을 추출하는 기능을 가진 함수
+  첫 번째 파라미터 값은 대산 문자열(추출의 대상)
+  두 번째 파라미터 값은 추출을 시작하는 위치(단, 인덱스는 1부터 시작)
+  세 번째 파라미터 값은 추출할 문자열의 갯수(생략 시... 시작 위치부터 끝까지)
+*/
+/*
+SMITH	SM	MI	IT	MITH
+ALLEN	AL	LL	LE	LLEN
+WARD	WA	AR	RD	ARD
+JONES	JO	ON	NE	ONES
+MARTIN	MA	AR	RT	ARTIN
+BLAKE	BL	LA	AK	LAKE
+CLARK	CL	LA	AR	LARK
+SCOTT	SC	CO	OT	COTT
+KING	KI	IN	NG	ING
+TURNER	TU	UR	RN	URNER
+ADAMS	AD	DA	AM	DAMS
+JAMES	JA	AM	ME	AMES
+FORD	FO	OR	RD	ORD
+MILLER	MI	IL	LL	ILLER
+*/
 
 -- ### --▣ ※ ○ ★ 『』 ? ▣ ◀▶ ▼ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →  ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
