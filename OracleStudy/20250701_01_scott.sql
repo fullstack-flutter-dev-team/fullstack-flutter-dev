@@ -676,10 +676,27 @@ SELECT SYSDATE "COL1"                                       -- 2025-07-01
      , LAST_DAY(TO_DATE('2020-02-12', 'YYYY-MM-DD')) "COL4" -- 2020-02-29
 FROM DUAL;
 
-
-
 SELECT *
 FROM DUAL;
+
+--▣ 오늘부로... 김한국이가.... 군대에 또 끌려(?) 간다.
+--   복무기간은 22개월로 한다.
+--   1. 전역 일자를 구한다.
+SELECT SYSDATE "COL1"
+     , ADD_MONTHS(SYSDATE, 1) "COL2"
+     , ADD_MONTHS(SYSDATE, 22) "전역 일자"
+FROM DUAL;
+--   2. 하루 꼬박꼬박 3끼 식사를 해야 한다고 가정하면,
+--      김한국이 몇 끼를 먹어야 집에 보내줄까??....
+SELECT SYSDATE "COL1"
+     , ADD_MONTHS(SYSDATE, 1) "COL2"
+     , ADD_MONTHS(SYSDATE, 22) "전역 일자"
+     , TO_DATE(ADD_MONTHS(SYSDATE, 22)) - TO_DATE(SYSDATE, 'YYYY-MM-DD') "일수"
+     , TO_NUMBER(TO_DATE(ADD_MONTHS(SYSDATE, 22)) - TO_DATE(SYSDATE, 'YYYY-MM-DD'))*3 "식사 수"
+FROM DUAL;
+
+
+
 -- ### --▣ ※ ○ ★ 『』 ? ▣ ◀▶ ▼ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →  ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 --/*================[ 7월 XX일(금) ]========================*/
