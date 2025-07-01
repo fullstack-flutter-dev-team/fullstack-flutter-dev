@@ -22,6 +22,11 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
   - ⭐ [**문제해결 : 한글 입력 시 마지막 글자가 2번 생기는 오류**](https://velog.io/@nuyhes/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0-%ED%95%9C%EA%B8%80-%EC%9E%85%EB%A0%A5-%EC%8B%9C-%EB%A7%88%EC%A7%80%EB%A7%89-%EA%B8%80%EC%9E%90%EA%B0%80-2%EB%B2%88-%EC%83%9D%EA%B8%B0%EB%8A%94-%EC%98%A4%EB%A5%98)
 - []()
 
+### vs code 가이드 선 보이기
+- [vs code 가이드 선 보이기 검색](https://www.google.com/search?q=vs+code+%EA%B0%80%EC%9D%B4%EB%93%9C+%EC%84%A0+%EB%B3%B4%EC%9D%B4%EA%B8%B0&newwindow=1&sca_esv=8ff83a0cf2859f3b&ei=Z1RjaImnDd2C2roPk8-8gAg&oq=VS+CODE++%EA%B0%80%EC%9D%B4%EB%93%9C+%EC%84%A0+&gs_lp=Egxnd3Mtd2l6LXNlcnAiF1ZTIENPREUgIOqwgOydtOuTnCDshKAgKgIIADIJECEYoAEYChgqMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKSP0wUK0EWLckcAF4AZABAZgBnAKgAbwXqgEGMi4wLjExuAEDyAEA-AEBmAILoAK5EcICChAAGLADGNYEGEfCAgoQABiABBhDGIoFwgIFEAAYgATCAgcQABiABBgNwgIIEAAYCBgNGB7CAgUQABjvBcICCBAAGIAEGKIEwgIGEAAYDRgemAMAiAYBkAYHkgcFMy4wLjigB6Y5sgcFMi4wLji4B7YRwgcFMS42LjTIBxs&sclient=gws-wiz-serp)
+- ⭐⭐ [[VS Code] 코드 길이 가이드선 표시하기](https://ldne.tistory.com/460)
+- []()
+
 ### vscode 마우스 휠 확대
 - [vscode 마우스 휠 확대 검색](https://www.google.com/search?q=vscode+%EB%A7%88%EC%9A%B0%EC%8A%A4+%ED%9C%A0+%ED%99%95%EB%8C%80&rlz=1C1GCEU_koKR1161KR1161&oq=vs+code+%EB%A7%88%EB%AC%B4%EC%8A%A4&gs_lcrp=EgZjaHJvbWUqCQgCEAAYDRiABDIGCAAQRRg5MgkIARAAGA0YgAQyCQgCEAAYDRiABDIJCAMQABgNGIAEMgkIBBAAGA0YgAQyCQgFEAAYDRiABDIICAYQABgNGB4yCAgHEAAYDRgeMggICBAAGA0YHjIICAkQABgNGB7SAQkxMTMzNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
   - [VSCode 코드 글자 확대 - Ctrl + Mouse Wheel 줌 세팅하기](https://kincoding.com/entry/VSCode-%EC%BD%94%EB%93%9C-%EA%B8%80%EC%9E%90-%ED%99%95%EB%8C%80-Ctrl-Mouse-Wheel-%EC%A4%8C-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0)

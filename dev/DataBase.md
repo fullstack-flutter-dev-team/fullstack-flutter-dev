@@ -45,9 +45,11 @@
     - 줄 번호로 이동 (Go to Line): Ctrl + G
   - [[Oracle SQL Developer] 단축키(코드편집기) - 한줄 복사하기, 삭제하기](https://withthisclue.tistory.com/entry/Oracle-SQL-Developer-%EB%8B%A8%EC%B6%95%ED%82%A4%EC%BD%94%EB%93%9C%ED%8E%B8%EC%A7%91%EA%B8%B0-%ED%95%9C%EC%A4%84-%EB%B3%B5%EC%82%AC%ED%95%98%EA%B8%B0-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0)
   - []()
-  - []()
-  - []()
-  - []()
+  - [SQL DEVELOPER 공백 보이기 검색](https://www.google.com/search?q=SQL+DEVELOPER+%EA%B3%B5%EB%B0%B1+%EB%B3%B4%EC%9D%B4%EA%B8%B0&oq=SQL+DEVELOPER+%EA%B3%B5%EB%B0%B1+%EB%B3%B4%EC%9D%B4%EA%B8%B0&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigAdIBCTE0MDc0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+    - [[SQL Developer] 공백 표시](https://hothoony.tistory.com/758)
+    - ✨✨ [ORACLE SQL DEVELOPER 단축키](https://blog.naver.com/kaiz00/221616018855)
+    - []()
+    - []()
   - []()
 
 - []()
