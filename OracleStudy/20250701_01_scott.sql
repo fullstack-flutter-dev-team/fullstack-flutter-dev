@@ -15,11 +15,11 @@ WHERE
   OR SUBSTR(JUBUN,7,1) = '4'
 ORDER BY SAL DESC;
 /*
-1005....아이유....9302022234567....3000
-1007....미노이....9704252234567....2000
-1008....선우선....7905082234567....2000
-1011....선우용녀..7005132234567....1000
-1012....남궁선....0202204234567....1000
+1005    아이유    9302022234567    3000
+1007    미노이    9704252234567    2000
+1008    선우선    7905082234567    2000
+1011    선우용녀  7005132234567    1000
+1012    남궁선    0202204234567    1000
 */
 
 
@@ -29,11 +29,11 @@ WHERE
      SUBSTR(JUBUN,7,1) IN ('2', '4')
 ORDER BY SAL DESC;
 /*
-1005....아이유....9302022234567....3000
-1007....미노이....9704252234567....2000
-1008....선우선....7905082234567....2000
-1011....선우용녀..7005132234567....1000
-1012....남궁선....0202204234567....1000
+1005    아이유    9302022234567   3000
+1007    미노이    9704252234567   2000
+1008    선우선    7905082234567   2000
+1011    선우용녀  7005132234567   1000
+1012    남궁선    0202204234567   1000
 */
 
 
@@ -44,27 +44,27 @@ SELECT ENAME "COL1"
      , LENGTHB(ENAME) "COL3"
 FROM TBL_EMP;
 /*
-SMITH.. ..5....5
-ALLEN.. ..5....5
-WARD...  .4....4
-JONES.. ..5....5
-MARTIN....6....6
-BLAKE... .5....5
-CLARK.. ..5....5
-SCOTT... .5....5
-KING...  .4....4
-TURNER....6....6
-ADAMS... .5....5
-JAMES.. ..5....5
-FORD....  4....4
-MILLER....6....6
+SMITH     5     5
+ALLEN     5     5
+WARD      4     4
+JONES     5     5
+MARTIN    6     6
+BLAKE     5     5
+CLARK     5     5
+SCOTT     5     5
+KING      4     4
+TURNER    6     6
+ADAMS     5     5
+JAMES     5     5
+FORD      4     4
+MILLER    6     6
 */
 
 --SELECT '김한국' "COL1"
    , LENGTH('김한국') "COL2"
    , LENGTHB('김한국') "COL3"
 FROM DUAL;
-==>> 김한국....3....9
+==>> 김한국    3    9
 
 --▣ 확인
 SELECT *
@@ -72,26 +72,26 @@ FROM NLS_DATABASE_PARAMETERS;
 /*
 PARAMETER                   VALUE
 -------------              ---------
-NLS_LANGUAGE...           .AMERICAN
-NLS_TERRITORY...          .AMERICA
-NLS_CURRENCY.      .     ..$
-NLS_ISO_CURRENCY....       AMERICA
-NLS_NUMERIC_CHARACTERS.....,
-NLS_CHARACTERSET...       .AL32UTF8
-NLS_CALENDAR....           GREGORIAN
-NLS_DATE_FORMAT....        DD-MON-RR
-NLS_DATE_LANGUAGE...      .AMERICAN
-NLS_SORT...               .BINARY
-NLS_TIME_FORMAT... .       HH.MI.SSXFF AM
-NLS_TIMESTAMP_FORMAT..   ..DD-MON-RR HH.MI.SSXFF AM
-NLS_TIME_TZ_FORMAT....     HH.MI.SSXFF AM TZR
-NLS_TIMESTAMP_TZ_FORMAT....DD-MON-RR HH.MI.SSXFF AM TZR
-NLS_DUAL_CURRENCY....      $
-NLS_COMP....               BINARY
-NLS_LENGTH_SEMANTICS... .  BYTE
-NLS_NCHAR_CONV_EXCP.    ...FALSE
-NLS_NCHAR_CHARACTERSET.. ..AL16UTF16
-NLS_RDBMS_VERSION     . ...11.2.0.2.0
+NLS_LANGUAGE               AMERICAN
+NLS_TERRITORY              AMERICA
+NLS_CURRENCY               $
+NLS_ISO_CURRENCY           AMERICA
+NLS_NUMERIC_CHARACTERS     ,
+NLS_CHARACTERSET           AL32UTF8
+NLS_CALENDAR               GREGORIAN
+NLS_DATE_FORMAT            DD-MON-RR
+NLS_DATE_LANGUAGE          AMERICAN
+NLS_SORT                   BINARY
+NLS_TIME_FORMAT            HH.MI.SSXFF AM
+NLS_TIMESTAMP_FORMAT       DD-MON-RR HH.MI.SSXFF AM
+NLS_TIME_TZ_FORMAT         HH.MI.SSXFF AM TZR
+NLS_TIMESTAMP_TZ_FORMAT    DD-MON-RR HH.MI.SSXFF AM TZR
+NLS_DUAL_CURRENCY          $
+NLS_COMP                   BINARY
+NLS_LENGTH_SEMANTICS       BYTE
+NLS_NCHAR_CONV_EXCP        FALSE
+NLS_NCHAR_CHARACTERSET     AL16UTF16
+NLS_RDBMS_VERSION          11.2.0.2.0
 */
 
 -- ※ 한글 데이터를 처리할 경우
@@ -109,10 +109,10 @@ SELECT 'ORACLE ORAHOME BIORA' "COL1"
      -- 스캔을 2부터 시작했기 때문에, 두 번째 'ORA'만 발견하고 세 번째 'ORA'를 발견하지 못했으므로
      -- 인덱스를 찾지 못해서 0을 출력한 것이다.
 FROM DUAL;
---===>> ORACLE ORAHOME BIORA....1....8....8....8....18....0
+--===>> ORACLE ORAHOME BIORA    1    8    8    8    18    0
 
 /*
-  -- 첫 번째 파라미터 값에 해당하는 문자열에서..(대상 문자열, TARGET)
+  -- 첫 번째 파라미터 값에 해당하는 문자열에서  (대상 문자열, TARGET)
   -- 두 번째 파라미터 값을 통해 넘겨준 문자열이 등장하는 위치를 찾아라~!!!
   -- 세 번째 파라미터 값은 찾기 시작하는(즉, 스캔을 시작하는) 위치
   -- 네 번째 파라미터 값은 몇 번째 등장하는 값을 찾을 것인지에 대한 설정 → (1일 경우 생략 가능)
@@ -126,7 +126,7 @@ SELECT '나의오라클 집으로오라 합니다' "COL1"
 FROM DUAL;
 -- 네 번째 파라미터(마지막 파라미터)를 생략한 형태로 사용~!!!  → 1
 --> 마지막 파라미터 값을 생략한 형태로 사용 → 마지막 파라미터 → 1
---==>> 나의오라클 집으로오라 합니다....3....3....10....0
+--==>> 나의오라클 집으로오라 합니다    3    3    10    0
      
 --▣ REVERSE()
 -- 대상 문자열(매개변수)을 거꾸로 반환한다. (→ 단, 한글은 제외 - 사용 불가)
@@ -135,7 +135,7 @@ SELECT 'ORACLE' "COL1"
     , REVERSE('ORACLE') "COL2"
     , REVERSE('오라클') "COL3"
 FROM DUAL;
---==>> ORACLE....ELCARO....���
+--==>> ORACLE    ELCARO    ���
 
 
 --▣ 실습 테이블 생성
@@ -162,15 +162,15 @@ INSERT INTO TBL_FILES VALUES(8, 'C:\ORACLESTUDY\20250701_01_SCOTT.SQL');
 --▣ 확인
 SELECT *
 FROM TBL_FILES;
-/*
-1....C:\AAA\BBB\CCC\SALES.DOC
-2....C:\AAA\PANMAE.XLSX
-3....D:\RESEARCH.PPT
-4....C:\DOCUMENTS\STUDY.HWP
-5....C:\DOCUMENTS\TEMP\SIST\TEST.PNG
-6....D:\SHARE\F\EXAMPLE.JPG
-7....C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF
-8....C:\ORACLESTUDY\20250701_01_SCOTT.SQL
+/*       
+1       C:\AAA\BBB\CCC\SALES.DOC
+2       C:\AAA\PANMAE.XLSX
+3       D:\RESEARCH.PPT
+4       C:\DOCUMENTS\STUDY.HWP
+5       C:\DOCUMENTS\TEMP\SIST\TEST.PNG
+6       D:\SHARE\F\EXAMPLE.JPG
+7       C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF
+8       C:\ORACLESTUDY\20250701_01_SCOTT.SQL
 */
 
 
@@ -184,14 +184,14 @@ FROM TBL_FILES;
 /*
 파일번호          파일명
 -------   --------------------
-  1...     .C:\AAA\BBB\CCC\SALES.DOC
-  2...     .C:\AAA\PANMAE.XLSX
-  3...     .D:\RESEARCH.PPT
-  4...     .C:\DOCUMENTS\STUDY.HWP
-  5...     .C:\DOCUMENTS\TEMP\SIST\TEST.PNG
-  6...     .D:\SHARE\F\EXAMPLE.JPG
-  7...     .C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF
-  8...     .C:\ORACLESTUDY\20250701_01_SCOTT.SQL
+  1         C:\AAA\BBB\CCC\SALES.DOC
+  2         C:\AAA\PANMAE.XLSX
+  3         D:\RESEARCH.PPT
+  4         C:\DOCUMENTS\STUDY.HWP
+  5         C:\DOCUMENTS\TEMP\SIST\TEST.PNG
+  6         D:\SHARE\F\EXAMPLE.JPG
+  7         C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF
+  8         C:\ORACLESTUDY\20250701_01_SCOTT.SQL
 */
 
 
@@ -199,14 +199,14 @@ FROM TBL_FILES;
 /*
 파일번호          파일명
 -------   --------------------
-  1...     .SALES.DOC
-  2...     .PANMAE.XLSX
-  3...     .RESEARCH.PPT
-  4...     .STUDY.HWP
-  5...     .TEST.PNG
-  6...     .EXAMPLE.JPG
-  7...     .ORACLE.PDF
-  8...     .20250701_01_SCOTT.SQL
+  1            SALES.DOC
+  2            PANMAE.XLSX
+  3            RESEARCH.PPT
+  4            STUDY.HWP
+  5            TEST.PNG
+  6            EXAMPLE.JPG
+  7            ORACLE.PDF
+  8            20250701_01_SCOTT.SQL
 */
 --▣ TBL_FILES 테입블을 대상으로
 --   위와 같이 조회될 수 있도록 쿼리문을 구성한다.
@@ -233,15 +233,15 @@ SELECT
    , REVERSE(FILENAME) "거꾸로경로포함파일명"
 FROM TBL_FILES;
 /*
-1....C:\AAA\BBB\CCC\SALES.DOC...       .COD.SELAS\CCC\BBB\AAA\:C
-2....C:\AAA\PANMAE.XLSX....             XSLX.EAMNAP\AAA\:C
-3....D:\RESEARCH.PPT....                TPP.HCRAESER\:D
-4....C:\DOCUMENTS\STUDY.HWP....         PWH.YDUTS\STNEMUCOD\:C
-5....C:\DOCUMENTS\TEMP\SIST\TEST.PNG....GNP.TSET\TSIS\PMET\STNEMUCOD\:C
-6....D:\SHARE\F\EXAMPLE.JPG....         GPJ.ELPMAXE\F\ERAHS\:D
-7....C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF....FDP.ELCARO\10705202\TCEJORP\FSSALC\RESU\:C
-8....C:\ORACLESTUDY\20250701_01_SCOTT.SQL....LQS.TTOCS_10_10705202\YDUTSELCARO\:C
-*/
+1     C:\AAA\BBB\CCC\SALES.DOC                      COD.SELAS\CCC\BBB\AAA\:C
+2     C:\AAA\PANMAE.XLSX                           XSLX.EAMNAP\AAA\:C
+3     D:\RESEARCH.PPT                               TPP.HCRAESER\:D
+4     C:\DOCUMENTS\STUDY.HWP                        PWH.YDUTS\STNEMUCOD\:C
+5     C:\DOCUMENTS\TEMP\SIST\TEST.PNG               GNP.TSET\TSIS\PMET\STNEMUCOD\:C
+6     D:\SHARE\F\EXAMPLE.JPG                        GPJ.ELPMAXE\F\ERAHS\:D
+7     C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF    FDP.ELCARO\10705202\TCEJORP\FSSALC\RESU\:C
+8     C:\ORACLESTUDY\20250701_01_SCOTT.SQL          LQS.TTOCS_10_10705202\YDUTSELCARO\:C
+*/     
 -->> 최초 등장한 '\' 의 위치 직전까지 추출한 예상 결과
 
 SELECT 
@@ -268,14 +268,14 @@ FROM TBL_FILES;
 /*
 파일번호    경로포함파일명                                      거꾸로파일명
 -------    -----------------------                        -------------------
-  1.      ...C:\AAA\BBB\CCC\SALES.DOC..                           .. COD.SELAS
-  2.      ...C:\AAA\PANMAE.XLSX...      .                          XSLX.EAMNAP
-  3.      ...D:\RESEARCH.PPT....                                  TPP.HCRAESER
-  4.      ...C:\DOCUMENTS\STUDY.HWP....                              PWH.YDUTS
-  5.      ...C:\DOCUMENTS\TEMP\SIST\TEST.PNG....                      GNP.TSET
-  6.      ...D:\SHARE\F\EXAMPLE.JPG....                            GPJ.ELPMAXE
-  7.      ...C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF....         FDP.ELCARO
-  8.      ...C:\ORACLESTUDY\20250701_01_SCOTT.SQL..    ..LQS.TTOCS_10_10705202
+  1         C:\AAA\BBB\CCC\SALES.DOC                               COD.SELAS
+  2         C:\AAA\PANMAE.XLSX                                   XSLX.EAMNAP
+  3         D:\RESEARCH.PPT                                     TPP.HCRAESER
+  4         C:\DOCUMENTS\STUDY.HWP                                  PWH.YDUTS
+  5         C:\DOCUMENTS\TEMP\SIST\TEST.PNG                          GNP.TSET
+  6         D:\SHARE\F\EXAMPLE.JPG                                GPJ.ELPMAXE
+  7         C:\USER\CLASSF\PROJECT\20250701\ORACLE.PDF             FDP.ELCARO
+  8         C:\ORACLESTUDY\20250701_01_SCOTT.SQL        LQS.TTOCS_10_10705202
 */
 
 
@@ -285,14 +285,14 @@ FROM TBL_FILES;
 /*
 파일번호         파일명
 -------     -----------------------
-1...          .SALES.DOC
-2...          .PANMAE.XLSX
-3...          .RESEARCH.PPT
-4...          .STUDY.HWP
-5...          .TEST.PNG
-6...          .EXAMPLE.JPG
-7...          .ORACLE.PDF
-8...          .20250701_01_SCOTT.SQL
+1              SALES.DOC
+2              PANMAE.XLSX
+3              RESEARCH.PPT
+4              STUDY.HWP
+5              TEST.PNG
+6              EXAMPLE.JPG
+7              ORACLE.PDF
+8              20250701_01_SCOTT.SQL
 */
 
 
@@ -303,14 +303,14 @@ FROM TBL_FILES;
 /*
 파일번호         파일명
 -------     -----------------------
-   1.     ...SALES.DOC
-   2.     ...PANMAE.XLSX
-   3.     ...RESEARCH.PPT
-   4.     ...STUDY.HWP
-   5.     ...TEST.PNG
-   6.     ...EXAMPLE.JPG
-   7.     ...ORACLE.PDF
-   8.     ...20250701_01_SCOTT.SQL
+   1         SALES.DOC
+   2         PANMAE.XLSX
+   3         RESEARCH.PPT
+   4         STUDY.HWP
+   5         TEST.PNG
+   6         EXAMPLE.JPG
+   7         ORACLE.PDF
+   8         20250701_01_SCOTT.SQL
 */
 
 --▣ LPAD()
@@ -318,10 +318,10 @@ FROM TBL_FILES;
 SELECT 'ORACLE' "COL1"
      , LPAD('ORACLE', 10, '*') "COL2"
 FROM DUAL;
---==>> ORACLE....****ORACLE
+--==>> ORACLE   .****ORACLE
 
--- ① 10 Byte 공간을 확보한다.               → 두 번째 파라미터 값에 의해...
--- ② 확보한 공간에 'ORACLE' 문자열을 담는다.→ 첫 번째 파라미터 값에 의해...
+-- ① 10 Byte 공간을 확보한다.               → 두 번째 파라미터 값에 의해   
+-- ② 확보한 공간에 'ORACLE' 문자열을 담는다.→ 첫 번째 파라미터 값에 의해   
 -- ③ 남아있는 Byte 공간(4Byte)을 왼쪽부터 세 번째 파라미터 값으로 채운다.
 -- ④ 이렇게 구성된 최종 결과값을 반환한다.
 
@@ -330,17 +330,17 @@ FROM DUAL;
 SELECT 'ORACLE' "COL1"
      , RPAD('ORACLE', 10, '*') "COL2"
 FROM DUAL;
---==>> ORACLE....ORACLE****
+--==>> ORACLE    ORACLE****
 
--- ① 10 Byte 공간을 확보한다.               → 두 번째 파라미터 값에 의해...
--- ② 확보한 공간에 'ORACLE' 문자열을 담는다.→ 첫 번째 파라미터 값에 의해...
+-- ① 10 Byte 공간을 확보한다.               → 두 번째 파라미터 값에 의해   
+-- ② 확보한 공간에 'ORACLE' 문자열을 담는다.→ 첫 번째 파라미터 값에 의해   
 -- ③ 남아있는 Byte 공간(4Byte)을 오른쪽부터 세 번째 파라미터 값으로 채운다.
 -- ④ 이렇게 구성된 최종 결과값을 반환한다.
 
---▣ LTRIM()  - 손톱깍기를 연상....
+--▣ LTRIM()  - 손톱깍기를 연상    
 ---- 첫 번째 파라미터 값에 해당하는 문자열을 대상으로
 ---- 왼쪽부터 연속적으로 등장하는 두 번째 파라미터 값에서 지정한 글자와
----- 같은 글자가 등장할 경우 이를 제거한 결과를 반환한다.
+---- 같은 글자가 등장할 경우 이를 제거한 결과를 반환한다 
 ---- 단, 완성형으로 처리되지 않는다.
 SELECT 'ORAORAORACLEORACLE' "COL1"   -- 오라 오라 오라클 오라클
       , LTRIM('ORAORAORACLEORACLE', 'ORA') "COL2"
@@ -351,7 +351,7 @@ SELECT 'ORAORAORACLEORACLE' "COL1"   -- 오라 오라 오라클 오라클
       , LTRIM('             ORARACLEORACLE') "COL7"
       -- 왼쪽 공백 제거 함수로 활용(두 번째 파라미터 값을 생략할 수 있다.)
 FROM DUAL;
---==>> ORAORAORACLEORACLE....CLEORACLE....CLEORACLE....oRAORACLEORACLE.... RACLEORACLE....ORARACLEORACLE....ORARACLEORACLE
+--==>> ORAORAORACLEORACLE    CLEORACLE    CLEORACLE    oRAORACLEORACLE     RACLEORACLE    ORARACLEORACLE    ORARACLEORACLE
 
 
 --▣ RTRIM()
@@ -368,7 +368,7 @@ SELECT 'ORAORAORACLEORACLE' "COL1"   -- 오라 오라 오라클 오라클
       , RTRIM('ORARACLEORACLE       ') "COL7"
       -- 오른쪽 공백 제거 함수로 활용(두 번째 파라미터 값을 생략할 수 있다.)
 FROM DUAL;
---==>> ORAORAORACLEORACLE....ORAORAORACLEORACLE....AAAORAORAORACLEORACLE....ORAoRAORACLEORACLE....ORA RACLEORACLE....ORARACLEORACLE....ORARACLEORACLE
+--==>> ORAORAORACLEORACLE    ORAORAORACLEORACLE    AAAORAORAORACLEORACLE    ORAoRAORACLEORACLE    ORA RACLEORACLE    ORARACLEORACLE    ORARACLEORACLE
 
 -- 박을 마주쳤을 때, 두 번째 매개변수에 속하는 글자가 아니므로 그 때 trim을 멈춘다.
 SELECT LTRIM('김이신이김김이이신김김김이김이김박이김신', '김신이') "COL1"
@@ -415,7 +415,7 @@ FROM DUAL;
       , ROUND(48.674, -2) "COL8" -- 0
       , ROUND(48.674, -3) "COL9" -- 0
 FROM DUAL;
---==>> 48.768....48.68....48.67....48.7....49....49....50....0....0
+--==>> 48.768    48.68    48.67    48.7    49    49    50    0    0
 
 
  --▣ TRUNC()  절삭을 처리해 주는 함수
@@ -531,7 +531,7 @@ SELECT SYSDATE "COL1"          -- 2025-07-01 12:14:30 → 현재
 FROM DUAL;
 
 
---▣ 현재 시간과... 현재 시간 기준 1일 2시간 3분 4초 후를 조회하는 쿼리문을 구성한다.
+--▣ 현재 시간과    현재 시간 기준 1일 2시간 3분 4초 후를 조회하는 쿼리문을 구성한다.
 
 /*
 --------------------     -----------------------------
@@ -679,7 +679,7 @@ FROM DUAL;
 SELECT *
 FROM DUAL;
 
---▣ 오늘부로... 김한국이가.... 군대에 또 끌려(?) 간다.
+--▣ 오늘부로    김한국이가     군대에 또 끌려(?) 간다.
 --   복무기간은 22개월로 한다.
 --   1. 전역 일자를 구한다.
 SELECT SYSDATE "COL1"
@@ -691,7 +691,7 @@ FROM DUAL;
 */
 
 --   2. 하루 꼬박꼬박 3끼 식사를 해야 한다고 가정하면,
---      김한국이 몇 끼를 먹어야 집에 보내줄까??....
+--      김한국이 몇 끼를 먹어야 집에 보내줄까??    
 --      복무기간 * 3
 --      --------
 --       (전역일자 - 현재일자)
@@ -718,8 +718,8 @@ FROM DUAL;
 */
 
 
---▣ 현재 날짜 및 시간을 기준으로...
---   수료일(2025-11-05 18:00:00) 까지 남은 기간을..
+--▣ 현재 날짜 및 시간을 기준으로   
+--   수료일(2025-11-05 18:00:00) 까지 남은 기간을  
 --   다음과 같은 형태로 조회할 수 있도록 쿼리문을 구성한다.
 /*
 -----------------------------------------------------------------------------
@@ -733,13 +733,13 @@ FROM DUAL;
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 --==>> Session이(가) 변경되었습니다.
 
---▣ 『1일 2시간 3분 4초』 를 ... 『초』 로 환산하면...
+--▣ 『1일 2시간 3분 4초』 를     『초』 로 환산하면   
 SELECT  (1*24*60*60 + 60*60*2 + 60*3 + 4) "초"
 FROM DUAL;
 --==>> 93784
 
 
--- 『93784초』를 ... 다시.『일, 시간, 분, 초』로 환산하면...
+-- 『93784초』를     다시 『일, 시간, 분, 초』로 환산하면   
 SELECT TRUNC(TRUNC(TRUNC(93784/60)/60)/24) "일"
      , MOD(TRUNC(TRUNC(93784/60)/60),24)"시간"
      , TRUNC(93784/60) - TRUNC(TRUNC(93784/60)/60)*60 "분"
@@ -747,7 +747,7 @@ SELECT TRUNC(TRUNC(TRUNC(93784/60)/60)/24) "일"
 FROM DUAL;
 --==>> 1    2    3    4
 
--- 『93784초』를 ... 다시.『일, 시간, 분, 초』로 환산하면...
+-- 『93784초』를     다시 『일, 시간, 분, 초』로 환산하면   
 SELECT TRUNC(TRUNC(TRUNC(93784/60)/60)/24) "일"
      , MOD(TRUNC(TRUNC(93784/60)/60), 24)"시간"
      , MOD(TRUNC(93784/60), 60) "분"
@@ -779,7 +779,7 @@ FROM DUAL;
 --==>> 10980823.99999999999999999999999999999997
 
 
--- 『수료일까지 남은 전체 초』를 ... 다시.『일, 시간, 분, 초』로 환산하면...
+-- 『수료일까지 남은 전체 초』를     다시 『일, 시간, 분, 초』로 환산하면   
 SELECT TRUNC(TRUNC(TRUNC(93784/60)/60)/24) "일"
      , MOD(TRUNC(TRUNC(93784/60)/60), 24)"시간"
      , MOD(TRUNC(93784/60), 60) "분"
@@ -827,7 +827,7 @@ SELECT SYSDATE "현재시각"
 FROM DUAL;
 
 
--- COPILOT 자동완성....
+-- COPILOT 자동완성    
 SELECT SYSDATE "현재시각"
      , TO_DATE('2025-11-05 18:00:00', 'YYYY-MM-DD HH24:MI:SS') "수료일"
      , TRUNC(TO_DATE('2025-11-05 18:00:00', 'YYYY-MM-DD HH24:MI:SS') - SYSDATE) "일"
@@ -843,8 +843,8 @@ FROM DUAL;
 
 
 
---▣ 현재 날짜 및 시간을 기준으로...
---   본인이 태어나서 현재까지...
+--▣ 현재 날짜 및 시간을 기준으로   
+--   본인이 태어나서 현재까지   
 --   얼마만큼의 일, 시간, 분, 초를 살고있는지
 --   다음과 같은 형태로 조회할 수 있도록 쿼리문을 구성한다.
 /*
