@@ -770,8 +770,570 @@ HAVING  SUM(SAL) < 10000
 */
 
 
+--※ 그룹 함수는 2-LEVEL 까지 중첩해서 사용할 수 있다.
+--- 이마저도 MS-SQL 은 불가능하다.
+SELECT MAX(SUM(SAL)) "결과확인"
+FROM EMP
+GROUP BY DEPTNO;
+/*
+    결과확인
+----------
+     10875
+*/
 
--- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
+--※ RANK()
+---- DENSE_RANK()
+---- → ORACLE 9i 부터 적용....MS-SQL 2005 부터 적용...
+
+
+--※  위와 같이 하위 버전에서 RANK() 나 DENSE_RANK() 를 사용할 수 없기 때문에
+---- 이를 대체하여 연산을 수행할 수 있는 방법을 강구해야 한다.
+
+-- 예를 들어, 급여의 순위를 구해야 하는 상황이라면...
+--- 해당 사원의 급여보다 더 큰 급여 값이 몇 개인지 확인한 후
+--- 그 확인한 숫자에 +1 을 추가 연산해주면 그것이 곧 등수가 된다.
+---
+
+SELECT ENAME, SAL, EMPNO
+FROM EMP;
+
+-- SMITH 사원의 급여 등수
+SELECT COUNT(*) + 1 "SMITH의 급여 등수"
+FROM EMP
+WHERE SAL > 800; --- SMITH의 급여
+/*
+SMITH의 급여 등수
+------------
+          14
+*/
+
+SELECT ENAME "사원명", SAL "급여", (1) "급여등수"
+FROM EMP;
+
+--※ 상관 서브 쿼리(서브 상관 쿼리)
+----  메인 쿼리에 있는 테이블의 컬럼이
+----  서브 커리의 조건절(WHERE절, HAVING절)에 사용되는 경우
+----  이 쿼리문을 상관 서브 쿼리(서브 상관 쿼리)라고 부른다.
+
+SELECT ENAME "사원명", SAL "급여", (SELECT COUNT(*) + 1
+                                    FROM EMP E2
+                                    WHERE E2.SAL > E1.SAL) "급여등수"
+FROM EMP E1
+ORDER BY 3;
+/*
+사원명                급여       급여등수
+---------- ---------- ----------
+SMITH             800         14
+ALLEN            1600          7
+WARD             1250         10
+JONES            2975          4
+MARTIN           1250         10
+BLAKE            2850          5
+CLARK            2450          6
+SCOTT            3000          2
+KING             5000          1
+TURNER           1500          8
+ADAMS            1100         12
+JAMES             950         13
+FORD             3000          2
+MILLER           1300          9
+*/
+
+--▣ EMP 테이블을 대상으로
+--- 사원명, 급여, 부서번호, 부서내급여등수, 전체급여등수 항목을 조회한다.
+--- 단, RANK() 함수를 사용하지 않고, 서브 상관 쿼리를 활용할 수 있도록 한다.
+
+-----------------[ 강사님 풀이 - START ] ------------------------------
+-- SELECT 사원명, 급여, 부서번호, 부서내급여등수, 전체급여등수
+-- FROM EMP;
+
+-- SELECT ENAME 사원명, SAL 급여, DEPTNO 부서번호
+-- , (100) 부서내급여등수
+-- , (1) 전체급여등수
+-- FROM EMP;
+
+-- SELECT ENAME 사원명, SAL 급여, DEPTNO 부서번호
+-- , (100) 부서내급여등수
+-- , (SELECT COUNT(*) + 1
+--     FROM EMP E2
+--     WHERE E2.SAL > E1.SAL) 전체급여등수
+-- FROM EMP E1
+-- ORDER BY E1.DEPTNO, E1.SAL DESC;
+
+-- 부서내 급여등수
+SELECT ENAME "사원명"
+   , DDEPTNO
+   , SAL "급여", (SELECT COUNT(*) + 1
+                FROM EMP E2
+                WHERE E2.SAL > E1.SAL
+                  AND E2.DEPTNO = E1.DEPTNO) "부서내 급여등수"
+FROM EMP E1
+GROUP BY DEPTNO
+ORDER BY 3;
+
+SELECT ENAME 사원명, SAL 급여, DEPTNO 부서번호
+, (100) 부서내급여등수
+, (SELECT COUNT(*) + 1
+    FROM EMP E2
+    WHERE E2.SAL > E1.SAL) 전체급여등수
+FROM EMP E1
+ORDER BY E1.DEPTNO, E1.SAL DESC;
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+-----------------[ 실습 - START ] ----------------------------
+SELECT E1.ENAME "사원명"
+    , E1.SAL "급여"
+    , E1.DEPTNO "부서번호"
+    , (SELECT COUNT(E3.DEPTNO) + 1
+        FROM EMP E3
+        WHERE E3.SAL > E1.SAL AND E1.DEPTNO = E3.DEPTNO) "부서내급여등수"
+    , (SELECT COUNT(*) + 1
+        FROM EMP E2
+        WHERE E2.SAL > E1.SAL) "전체급여등수"
+FROM EMP E1
+ORDER BY 3, 4;
+/*
+사원명       급여    부서번호     부서내급여등수  전체급여등수
+-------  -------- ----------    -----------      --------
+KING         5000         10           1               1
+CLARK        2450         10           2               6
+MILLER       1300         10           3               9
+SCOTT        3000         20           1               2
+FORD         3000         20           1               2
+JONES        2975         20           3               4
+ADAMS        1100         20           4              12
+SMITH         800         20           5              14
+BLAKE        2850         30           1               5
+ALLEN        1600         30           2               7
+TURNER       1500         30           3               8
+MARTIN       1250         30           4              10
+WARD         1250         30           4              10
+JAMES         950         30           6              13
+*/
+-----------------[ 실습 - END ] ------------------------------
+
+
+--▣ EMP 테이블을 대상으로 다음과 같이 조회될 수 있도록 쿼리문을 구성한다.
+/*
+--------------------------------------------------------------------
+사원명  부서번호  입사일  급여   부서내입사별 급여누적(→ 부서 내에서 입사일자별로 급여가 누적된 상황 확인)
+--------------------------------------------------------------------
+CLARK     10   09/06/81  2450    2450
+KING      10   17/11/81  5000    7450
+MILLER    10   23/01/82  1300    8750
+SMITH     20   17/12/80   800     800
+JONES     20   02/04/81  2975    3775
+FORD      20   03/12/81  3000    6775
+SCOTT     20   13/07/87  3000   10875
+--------------------------------------------------------------------
+*/
+
+-----------------[ 강사님 풀이 - START ] ------------------------------
+
+-- SELECT ENAME "사원명", DEPTNO "부서번호", HIREDATE "입사일", SAL "급여", (100) "부서내입사별급여누적"
+-- FROM EMP;
+
+
+-- SELECT ENAME "사원명", DEPTNO "부서번호", HIREDATE "입사일", SAL "급여"
+--          , (SELECT SUM(E2.SAL)
+--             FROM EMP E2
+--             WHERE E2.DEPTNO = E1.DEPTNO) "부서내입사별급여누적"
+-- FROM EMP E1
+-- ORDER BY 2,3;
+
+
+SELECT ENAME "사원명", DEPTNO "부서번호", HIREDATE "입사일", SAL "급여"
+         , (SELECT SUM(E2.SAL)
+            FROM EMP E2
+            WHERE E2.DEPTNO = E1.DEPTNO
+              AND E2.HIREDATE <= E1.HIREDATE) "부서내입사별급여누적"
+FROM EMP E1
+ORDER BY 2,3;
+/*
+
+사원명       부서번호    입사일      급여 부서내입사별급여누적
+---------- ---------- -------- ---------- ----------
+CLARK              10 09/06/81       2450       2450
+KING               10 17/11/81       5000       7450
+MILLER             10 23/01/82       1300       8750
+SMITH              20 17/12/80        800        800
+JONES              20 02/04/81       2975       3775
+FORD               20 03/12/81       3000       6775
+SCOTT              20 13/07/87       3000      10875
+ADAMS              20 13/07/87       1100      10875
+ALLEN              30 20/02/81       1600       1600
+WARD               30 22/02/81       1250       2850
+BLAKE              30 01/05/81       2850       5700
+TURNER             30 08/09/81       1500       7200
+MARTIN             30 28/09/81       1250       8450
+JAMES              30 03/12/81        950       9400
+*/
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+-----------------[ 실습 - START ] ----------------------------
+-- SELECT ENAME "사원명"
+--      , DEPTNO "부서번호"
+--      , HIREDATE "입사일"
+--      , SAL "급여" 
+--      , (11) "부서내입사별급여누적"
+-- FROM EMP
+-- ORDER BY DEPTNO, HIREDATE;
+
+SELECT ENAME "사원명"
+     , DEPTNO "부서번호"
+     , HIREDATE "입사일"
+     , SAL "급여" 
+     , (SELECT SUM(E2.SAL)
+        FROM EMP E2
+        WHERE E2.HIREDATE <= E1.HIREDATE 
+          AND E1.DEPTNO = E2.DEPTNO ) "부서내입사별급여누적"
+FROM EMP E1
+ORDER BY DEPTNO, HIREDATE;
+/*
+사원명        부서번호 입사일         급여 부서내입사별급여누적
+---------- ---------- -------- ---------- ----------
+CLARK              10 09/06/81       2450       2450
+KING               10 17/11/81       5000       7450
+MILLER             10 23/01/82       1300       8750
+SMITH              20 17/12/80        800        800
+JONES              20 02/04/81       2975       3775
+FORD               20 03/12/81       3000       6775
+SCOTT              20 13/07/87       3000      10875
+ADAMS              20 13/07/87       1100      10875
+ALLEN              30 20/02/81       1600       1600
+WARD               30 22/02/81       1250       2850
+BLAKE              30 01/05/81       2850       5700
+TURNER             30 08/09/81       1500       7200
+MARTIN             30 28/09/81       1250       8450
+JAMES              30 03/12/81        950       9400
+*/
+-----------------[ 실습 - END ] ------------------------------
+
+
+--▣ TBL_EMP 테이블에서 입사한 사원의 수가 제일 많았을 때의
+---  입사년월과 인원수를 조회할 수 있도록 쿼리문을 구성한다.
+/*
+----------------------------
+입사년월                인원수
+----------------------------
+2025-07                  5
+----------------------------
+*/
+
+-----------------[ 실습 - START ] ----------------------------
+SELECT *
+FROM TBL_EMP
+ORDER BY HIREDATE;
+
+SELECT  
+T."인원수" "인원수"
+FROM
+(
+    SELECT --TO_CHAR(HIREDATE,'YYYY-MM') "입사일", 
+    MAX(COUNT(*)) "인원수"
+    FROM TBL_EMP
+    GROUP BY HIREDATE
+) T
+/*
+
+       인원수
+----------
+         5
+*/
+
+SELECT (E1.HIREDATE) "입사일"
+, COUNT(*) "카운트"
+-- ,  "인원수"
+FROM TBL_EMP E1
+GROUP BY E1.HIREDATE
+HAVING COUNT(*) = (
+    SELECT MAX(COUNT(*))
+    FROM TBL_EMP E2
+    GROUP BY E2.HIREDATE
+)
+/*
+입사일        카운트
+-------- ----------
+02/07/25         5
+*/
+
+-----------------[ 실습 - END ] ------------------------------
+
+
+-----------------[ 강사님 풀이 - START ] ------------------------------
+
+SELECT ENAME, HIREDATE
+FROM TBL_EMP
+ORDER BY 2;
+/*
+ENAME      HIREDATE
+---------- --------
+SMITH      17/12/80
+ALLEN      20/02/81
+WARD       22/02/81
+JONES      02/04/81
+BLAKE      01/05/81
+CLARK      09/06/81
+TURNER     08/09/81
+MARTIN     28/09/81
+KING       17/11/81
+FORD       03/12/81
+JAMES      03/12/81
+MILLER     23/01/82
+SCOTT      13/07/87
+ADAMS      13/07/87
+퀸가비     02/07/25
+아이유     02/07/25
+김선호     02/07/25
+아만다     02/07/25
+권지용     02/07/25
+*/
+
+SELECT TO_CHAR(HIREDATE, 'YYYY-MM') "입사년월"
+     , COUNT(*) "인원수"
+FROM TBL_EMP
+GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM')
+ORDER BY 2;
+/*
+입사년월     인원수
+------- ----------
+1980-12          1
+1981-11          1
+1982-01          1
+1981-05          1
+1981-04          1
+1981-06          1
+1981-09          2
+1981-12          2
+1981-02          2
+1987-07          2
+2025-07          5
+*/
+
+SELECT TO_CHAR(HIREDATE, 'YYYY-MM') "입사년월"
+     , COUNT(*) "인원수"
+FROM TBL_EMP
+GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM')
+HAVING COUNT(*) = 5
+ORDER BY 2;
+/*
+입사년월     인원수
+------- ----------
+2025-07          5
+*/
+
+SELECT TO_CHAR(HIREDATE, 'YYYY-MM') "입사년월"
+     , COUNT(*) "인원수"
+FROM TBL_EMP
+GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM')
+HAVING COUNT(*) = 5
+ORDER BY 2;
+/*
+입사년월      인원수
+------- ----------
+2025-07          5
+*/
+
+SELECT MAX(COUNT(*)) "인원수"
+FROM TBL_EMP
+GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM');
+/*
+   인원수
+----------
+         5
+*/
+
+SELECT TO_CHAR(HIREDATE, 'YYYY-MM') "입사년월"
+     , COUNT(*) "인원수"
+FROM TBL_EMP
+GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM')
+HAVING COUNT(*) = (
+    SELECT MAX(COUNT(*)) "인원수"
+    FROM TBL_EMP
+    GROUP BY TO_CHAR(HIREDATE, 'YYYY-MM')
+)
+ORDER BY 2;
+
+/*
+입사년월      인원수
+-------  ----------
+2025-07          5
+*/
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+
+--▣▣▣  ROW_NUMBER() ▣▣▣--
+SELECT ROW_NUMBER() OVER (ORDER BY SAL desc) "관찰(ROW_NUMBER)"
+       , ENAME "사원명", SAL 급여, HIREDATE "입사일"
+FROM EMP;
+/*
+관찰(ROW_NUMBER) 사원명        급여     입사일     
+-------------- ---------- ----------  --------
+      1          KING         5000     17/11/81
+      2          FORD         3000     03/12/81
+      3          SCOTT        3000     13/07/87
+      4          JONES        2975     02/04/81
+      5          BLAKE        2850     01/05/81
+      6          CLARK        2450     09/06/81
+      7          ALLEN        1600     20/02/81
+      8          TURNER       1500     08/09/81
+      9          MILLER       1300     23/01/82
+     10          WARD         1250     22/02/81
+     11          MARTIN       1250     28/09/81
+     12          ADAMS        1100     13/07/87
+     13          JAMES         950     03/12/81
+     14          SMITH         800     17/12/80
+*/
+
+ --※ 게시판의 게시물 번호를
+ --- SEQUENCE 나 IDENTITY 를 사용하게 되면
+ --- 특정 게시물을 삭제했을 경우, 삭제한 게시물의 자리에
+ --- 다음 번호를 가진 게시물이 등록되는 상황이 발생하게 된다.
+ --- 이는, 보안 측면에서나.....미관상... 바람직하지 않는 상황일 수 있기 때문에
+ --- ROW_NUMBER() 의 사용을 고려해볼 수 있다.
+ --- 관리의 목적으로 사용할 때는 SEQUENCE나 IDENTITY 를 사용하지만
+ --- 단순히 게시물을 목록화하여 사용자에게 리스트 형식으로 보여줄 때는
+ --- 사용하지 않는 것이 좋다.
+
+
+DROP TABLE TBL_AAA;
+-- ==>> Table TBL_AAA이(가) 삭제되었습니다.
+
+--※ 관찰
+--- 테이블 생성
+CREATE TABLE TBL_AAA
+(
+     NO    NUMBER
+   , NAME  VARCHAR2(40)
+   , GRADE CHAR 
+)
+-- ==>> Table TBL_AAA이(가) 생성되었습니다.
+
+-- 데이터 입력
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (1, '김한국', 'A');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (2, '김한일', 'B');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (3, '김한이', 'A');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (4, '김한삼', 'C');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (5, '김한사', 'B');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (6, '김한오', 'B');
+INSERT INTO TBL_AAA(NO, NAME, GRADE) VALUES (7, '김한칠', 'B');
+-- ==>> 1 행 이(가) 삽입되었습니다. * 7
+
+
+-- 확인
+SELECT *
+FROM TBL_AAA;
+/*
+      NO NAME                                     G
+---------- ---------------------------------------- -
+         1 김한국                                   A
+         2 김한일                                   B
+         3 김한이                                   A
+         4 김한삼                                   C
+         5 김한사                                   B
+         6 김한오                                   B
+         7 김한칠                                   B
+*/
+
+-- 커밋
+COMMIT;
+-- ==>> 커밋 완료.
+
+UPDATE TBL_AAA
+SET GRADE = 'A'
+WHERE NO = 6;
+-- ==>> 1 행 이(가) 업데이트되었습니다.
+
+-- 확인
+SELECT *
+FROM TBL_AAA;
+/*
+   NO NAME       G
+----- ---------- -
+    1 김한국     A
+    2 김한일     B
+    3 김한이     A
+    4 김한삼     C
+    5 김한사     B
+    6 김한오     A
+    7 김한칠     B
+*/
+
+--▣ SEQUENCE 생성 (시퀀스, 주문번호)
+--- →  사전적인 의미 : 1.(일련의) 연속적인 사건들 2.(사건, 행동 등의) 순서
+CREATE SEQUENCE SEQ_BOARD   -- 시퀀스 기본 생성 구문(MSSQL 의 IDENTITY와 동일한 개념)
+START WITH 1                -- 시작값
+INCREMENT BY 1              -- 증가값
+NOMAXVALUE                  -- 최대값 제한 없음
+NOCACHE;                     -- 캐시 사용 안함(없음)
+-- ==>> Sequence SEQ_BOARD이(가) 생성되었습니다.
+
+
+--▣ 테이블 생성
+--- 테이블명 : TBL_BOARD
+CREATE TABLE TBL_BOARD            -- TBL_BOARD 이름의 테이블 생성 →  게시판
+( NO        NUMBER                --  게시물 번호      X
+, TITLE     VARCHAR2(50)          --  게시물 제목      ○
+, CONTENTS  VARCHAR2(2000)        --  게시물 내용      ○
+, NAME      VARCHAR2(20)          --  게시물 작성자    ▲
+, PW        VARCHAR2(20)          --  게시물 패스워드  ▲
+, CREATED   DATE DEFAULT SYSDATE  --  게시물 작성일    X
+);
+-- ==>> Table TBL_BOARD이(가) 생성되었습니다.
+
+
+--▣ 데이터 입력 →  게시판에 게시물 작성
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '피곤하다', '근데 곧 끝나네..아쉽다.', '김한국-1', 'java006$', DEFAULT);
+-- VALUES(SEQ_BOARD.NEXTVAL, '피곤하다', '근데 곧 끝나네..아쉽다.', '김한국-1', 'java006$', SYSDATE);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '건강관리', '다들 건강 잘 챙기도록 합시다.', '김한국-2', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '오늘은', '점심은 먹었고, 저녁은 뭐먹지?', '김한국-3', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '날씨가', '날씨가 점점 더워지네', '김한국-1', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '수업 끝나고', '집에 가서 존윅이나 볼까', '김한국-4', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '외롭다', '짝꿍 없이 혼자 있어 외롭다.', '김한국-5', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+INSERT INTO TBL_BOARD(NO, TITLE, CONTENTS, NAME, PW, CREATED)
+VALUES(SEQ_BOARD.NEXTVAL, '장래희망', '저는 무럭무럭 자라서 킬러가 되꺼예요.', '김한국-4', 'java006$', DEFAULT);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+--▣ 확인
+SELECT *
+FROM TBL_BOARD;
+/*
+       NO TITLE            CONTENTS                               NAME             PW              CREATED   
+---------- ------------   ------------------------------------ ---------------- --------------- ----------
+         1 피곤하다         근데 곧 끝나네..아쉽다.                 김한국-1         java006$        2025-07-03
+         2 건강관리         다들 건강 잘 챙기도록 합시다.           김한국-2         java006$        2025-07-03
+         3 오늘은           점심은 먹었고, 저녁은 뭐먹지?           김한국-3         java006$        2025-07-03
+         4 날씨가           날씨가 점점 더워지네                    김한국-1         java006$        2025-07-03
+         5 수업 끝나고      집에 가서 존윅이나 볼까                 김한국-4         java006$        2025-07-03
+         6 외롭다           짝꿍 없이 혼자 있어 외롭다.             김한국-5         java006$        2025-07-03
+         7 장래희망         저는 무럭무럭 자라서 킬러가 되꺼예요.    김한국-4         java006$        2025-07-03
+*/
+
+
+--▣ 커밋
+COMMIT;
+-- ==>> 커밋 완료.
+
+-- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
 --/*================[ 7월 XX일(금) ]========================*/
 
