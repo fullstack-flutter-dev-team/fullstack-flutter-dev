@@ -965,8 +965,6 @@ SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') -- 2025-07-01
      , TO_CHAR(SYSDATE, 'Q')          -- 3, 분기
 FROM DUAL;
 
-
-
 --▣ EXTRACT() 함수
 -- EXTRACT() 함수는 날짜나 숫자에서 특정한 부분을 추출하는 함수이다.
 SELECT TO_CHAR(SYSDATE, 'YYYY') 
@@ -1016,7 +1014,6 @@ FROM DUAL;
 2025-07-01 17:37:13    
 2026-09-04 21:42:19
 */
-
 
 
 --▣▣▣ CASE 구문(조건문, 분기문)  ▣▣▣---
