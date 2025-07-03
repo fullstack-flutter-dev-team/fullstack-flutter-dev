@@ -1045,8 +1045,6 @@ SELECT CASE 1+1 WHEN 2 THEN '1+1=2'
 FROM DUAL;
 --==>> 1+1=2
 
-
-
 --▣ DECODE() 함수
 -- DECODE() 함수는 특정한 값을 기준으로 조건을 검사하고, 그에 따라
 -- 대응하는 값을 반환하는 함수이다.
@@ -1057,7 +1055,6 @@ FROM DUAL;
 SELECT DECODE(5-2, 1, '5-2=1', 2, '5-2=2', 3,  '5-2=3', '5-2는 몰라요') "결과확인"
 FROM DUAL;
 --==>> 5-2=3
-
 
 SELECT CASE WHEN 1+1=2 THEN '1+1=2' 
             WHEN 1+2=5 THEN '1+2=5'
