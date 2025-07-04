@@ -155,6 +155,44 @@ ORDER BY E.FIRST_NAME;
 --  직원들의 데이터를 다음과 같이 조회할 수 있도록 쿼리문을 구성한다.
 --  FIRST_NAME, LAST_NAME, JOB_TITLE, DEPARTMENT_NAME, CITY, COUNTRY_NAME, REGINON_NAME
 
+-----------------[ 강사님 풀이 - START ] ------------------------------
+
+-- 형식-1 (SQL 1992 CODE)
+SELECT E.FIRST_NAME, E.LAST_NAME, J.JOB_TITLE, D.DEPARTMENT_NAME, L.CITY, C.COUNTRY_NAME,R.REGION_NAME
+FROM EMPLOYEES E, DEPARTMENTS D, JOBS J, LOCATIONS L, COUNTRIES C, REGIONS R
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID(+) -- EMPLOYEES 테이블이 주인공 테이블
+  AND E.JOB_ID = J.JOB_ID
+  AND D.LOCATION_ID = L.LOCATION_ID
+  AND L.COUNTRY_ID = C.COUNTRY_ID
+  AND C.REGION_ID = R.REGION_ID;
+--   ==>> 106개 행이 선택되었습니다. --- (X)
+
+SELECT E.FIRST_NAME, E.LAST_NAME, J.JOB_TITLE, D.DEPARTMENT_NAME, L.CITY, C.COUNTRY_NAME,R.REGION_NAME
+FROM EMPLOYEES E, DEPARTMENTS D, JOBS J, LOCATIONS L, COUNTRIES C, REGIONS R
+WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID(+) -- EMPLOYEES 테이블이 주인공 테이블
+  AND E.JOB_ID = J.JOB_ID
+  AND D.LOCATION_ID = L.LOCATION_ID(+)
+  AND L.COUNTRY_ID = C.COUNTRY_ID(+)
+  AND C.REGION_ID = R.REGION_ID(+);
+-- ==>> 107개 행이 선택되었습니다. -----(O)
+
+-- 형식-2 (SQL 1999 CODE)
+SELECT E.FIRST_NAME, E.LAST_NAME, J.JOB_TITLE, D.DEPARTMENT_NAME, L.CITY, C.COUNTRY_NAME,R.REGION_NAME
+FROM EMPLOYEES E LEFT JOIN DEPARTMENTS D
+ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+      JOIN JOBS J
+        ON E.JOB_ID = J.JOB_ID
+            LEFT JOIN LOCATIONS L
+                   ON D.LOCATION_ID = L.LOCATION_ID
+                        LEFT JOIN COUNTRIES C
+                               ON L.COUNTRY_ID = C.COUNTRY_ID
+                                        LEFT JOIN REGIONS R
+                                               ON C.REGION_ID = R.REGION_ID;
+-- ==>> 107개 행이 선택되었습니다. -----(O)
+
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+
 -----------------[ 실습 - START ] ----------------------------
 DESC EMPLOYEES;
 /*

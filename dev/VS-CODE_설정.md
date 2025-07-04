@@ -58,3 +58,12 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
 - []()
 - []()
 - []()
+
+### visual studio code oracle sql developer
+- [visual studio code oracle sql developer 검색](https://www.google.com/search?q=visual+studio+code+oracle+sql+developer&newwindow=1&sca_esv=34818ba099183b4b&ei=vxpnaM6xI_7h2roPjbKn0Aw&start=20&sa=N&sstk=Ac65TH6gK9j01vRMSlLt8YxY36u4Nwrp-qVikDyS4uuuY2r9u6a5GbEo0FEypfaHyrxbA1vwgtH9HNB8i_yHhjVNPryyGfPFEXbTWtaKJ37NaIUUVRIZm6UWzOhQFQ2EmZk_&ved=2ahUKEwiOjZf_86GOAxX-sFYBHQ3ZCco4ChDy0wN6BAgKEAc&biw=1135&bih=1197&dpr=0.8)
+  - [oracle](https://github.com/oracle) / [sql-developer-vscode](https://github.com/oracle/sql-developer-vscode)
+  - [Vs Code를 이용해서 작업환경 구축 및 샘플 데이터 생성.](https://blog.allres.co.kr/Board/Detail/1025/ORACLE)
+  - []()
+  - []()
+- []()
+- []()
