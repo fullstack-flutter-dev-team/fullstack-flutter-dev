@@ -30,12 +30,11 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.tensorflow/tensorflow
     implementation("org.tensorflow:tensorflow:1.15.0")
+    // compile group: 'org.tensorflow', name: 'tensorflow-core-platform', version: '0.3.3'
+    implementation("org.tensorflow:tensorflow-core-platform:0.3.3")
 
     // https://mvnrepository.com/artifact/org.deeplearning4j/deeplearning4j-core
-    // implementation("org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1")
-    // compile group: 'org.tensorflow', name: 'tensorflow-core-platform', version: '0.3.3'
-    implementation("org.tensorflow:tensorflow:1.15.0")
-    implementation("org.tensorflow:tensorflow-core-platform:0.3.3")
+    implementation("org.deeplearning4j:deeplearning4j-core:1.0.0-M2.1")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
