@@ -22,6 +22,6 @@
 - ⭐ [3. gradle 설치](https://wikidocs.net/190866)
 - [[Gradle] 그래들 활용해서 간단한 java 애플리케이션 만들기](https://greedy0110.tistory.com/160)
 - [Gradle file system watching: 동작방식 및 사용법](https://hojongs.github.io/posts/gradle-file-system-watching/)
-- []()
-- []()
+- ⭐ [Gradle 기본사용법](https://velog.io/@franc/Gradle-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95)
+- [[Java] Gradle로 java 시작하기](https://blog.naver.com/sssang97/222071209017)
 - []()
