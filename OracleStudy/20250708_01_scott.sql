@@ -10,7 +10,7 @@ SCOTT
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 -- ==>> Session이(가) 변경되었습니다.
 
---▣ INTERSECT /MINUS ( 교집합 / 차집합)
+--▣ INTERSECT / MINUS ( 교집합 / 차집합)
 
 -- TBL_JUMUNBACKUP 테이블과 TBL_JUMUN 테이블에서
 -- 제품코드와 주문량의 값이 똑같은 행만 추출하고자 한다.
