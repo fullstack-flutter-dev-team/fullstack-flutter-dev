@@ -198,10 +198,138 @@ INSERT INTO JOBS2(JOB_ID, JOB_TITLE, MIN_SALARY, MAX_SALARY) VALUES ('PR_REP', '
 
 --▣ 커밋
 COMMIT;
-
-
-
 -------------------------------[JOBS - END]---------------------------------------
+
+
+
+
+-------------------------------[SEQUENCE - START]---------------------------------------
+--▣ HR 소유의 전체시퀀스 조회
+SELECT * 
+FROM USER_SEQUENCES;
+/* 
+
+SEQUENCE_NAME         MIN_VALUE  MAX_VALUE INCREMENT_BY C O CACHE_SIZE LAST_NUMBER
+-------------------- ---------- ---------- ------------ - - ---------- -----------
+DEPARTMENTS_SEQ               1       9990           10 N N          0         280
+EMPLOYEES_SEQ                 1 1.0000E+28            1 N N          0         207
+LOCATIONS_SEQ                 1       9900          100 N N          0        3300
+SEQ_BOARD                     1 1.0000E+28            1 N N          0           5
+ */
+
+--▣ 
+DESC DEPARTMENTS_SEQ;
+DESC EMPLOYEES_SEQ;
+DESC LOCATIONS_SEQ;
+
+SELECT LOCATIONS_SEQ.CURRVAL
+FROM DUAL;
+
+
+--▣ LOCATIONS2_SEQ
+CREATE SEQUENCE LOCATIONS2_SEQ
+INCREMENT BY 100    -- 증가값 100
+START WITH 1000     -- 시작값 1000
+MAXVALUE 9900       -- 최대값 9900
+MINVALUE 1          --  최소값 1
+NOCACHE             -- 캐쉬 메모리 사용 X
+NOORDER             -- DEFAULT (순서 보장 여부 지정)
+NOCYCLE ;           -- DEFAULT (순환안함,  최대값 / 최소값 도달 시, 에러 발생)
+
+--▣ DEPARTMENTS2_SEQ
+CREATE SEQUENCE DEPARTMENTS2_SEQ
+INCREMENT BY 10    -- 증가값 10
+START WITH 10      -- 시작값 10
+MAXVALUE 9900      -- 최대값 9900
+MINVALUE 1         --  최소값 1
+NOCACHE            -- 캐쉬 사용 X
+NOORDER            -- DEFAULT (순서 보장 여부 지정)
+NOCYCLE ;          -- DEFAULT (순환안함,  최대값 / 최소값 도달 시, 에러 발생)
+
+
+--▣ EMPLOYEES2_SEQ
+CREATE SEQUENCE EMPLOYEES2_SEQ   
+START WITH 100         -- 시작값 100
+INCREMENT BY 1         -- 증가값 1
+MINVALUE 1             -- 최소값 1
+NOMAXVALUE             -- 최대값 제한 없음(1.0000E+28)
+NOCACHE                -- 캐쉬 사용 X
+NOORDER                -- DEFAULT (순서 보장 여부 지정)
+NOCYCLE ;              -- DEFAULT (순환안함,  최대값 / 최소값 도달 시, 에러 발생)
+
+--▣ 롤백
+ROLLBACK;
+
+--▣ 커밋
+COMMIT;
+
+--▣ SEQUENCE 변경
+-- ALTER SEQUENCE 시퀀스명
+-- START WITH 100          -- 시작값 100
+-- INCREMENT BY 1          -- 증가값 1
+-- MINVALUE 1              -- 최소값 1
+-- NOMAXVALUE              -- 최대값 제한 없음(1.0000E+28)
+-- NOCACHE                 -- 캐쉬 사용 X
+-- NOORDER                 -- DEFAULT (순서 보장 여부 지정)
+-- NOCYCLE ;               -- DEFAULT (순환안함,  최대값 / 최소값 도달 시, 에러 발생)
+
+
+CREATE SEQUENCE TEST_SEQ2 
+START WITH 100             -- 시작값 100
+INCREMENT BY 1             -- 증가숫자 1
+MINVALUE 1                 -- 최소값 1
+NOMAXVALUE                 -- 최대값 제한 없음(1.0000E+28)
+NOCACHE                    -- 캐쉬 사용 X
+NOORDER                    -- DEFAULT (순서 보장 여부 지정)
+NOCYCLE ;                  -- DEFAULT (순환안함,  최대값 / 최소값 도달 시, 에러 발생)
+
+
+SELECT TEST_SEQ
+FROM DUAL;
+
+
+SELECT TEST_SEQ2.NEXTVAL
+FROM DUAL;
+
+SELECT TEST_SEQ2.CURRVAL
+FROM DUAL;
+
+ALTER SEQUENCE TEST_SEQ
+INCREMENT BY 100;
+
+ALTER SEQUENCE TEST_SEQ
+NOCACHE;
+
+SELECT * 
+FROM USER_SEQUENCES;
+
+SELECT *
+FROM LOCATIONS;
+
+SELECT *
+FROM DEPARTMENTS;
+
+SELECT *
+FROM EMPLOYEES;
+-------------------------------[SEQUENCE - END]---------------------------------------
+
+
+
+
+
+-------------------------------[SEQUENCE - START]---------------------------------------
+SELECT * FROM USER_INDEXES WHERE TABLE_NAME = 'EMPLOYEES';
+
+SELECT I.TABLESPACE_NAME,I.TABLE_NAME,I.INDEX_NAME, I.BLEVEL,
+       DECODE(SIGN(NVL(I.BLEVEL,99)-3),1,DECODE(NVL(I.BLEVEL,99),99,'?','Rebuild'),'Check') CNF
+FROM   USER_INDEXES I
+WHERE   I.BLEVEL > 4
+ORDER BY I.BLEVEL DESC;
+
+-------------------------------[SEQUENCE - END]---------------------------------------
+
+-------------------------------[SEQUENCE - START]---------------------------------------
+-------------------------------[SEQUENCE - END]---------------------------------------
 
 
 -------------------------------------------------------------------------------
