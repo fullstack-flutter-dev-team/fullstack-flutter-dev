@@ -13,11 +13,39 @@ SCOTT
 -- 
 SET SERVEROUTPUT ON;
 
+-- ※참고
+/*
+1. INSERT, UPDATE, DELETE, (MERGE)
+--==>> DML 구문이다. (DATA MANIPULATION LANGUAGE)
+--COMMIT / ROLLBACK 이 필요하다
 
---※ 참고
 
--- 1.
+2. CREATE, DROP, ALTER, (TRUNCATE)
+--===>> DDL(DATA DEFINITION LANGUAGE)
+-- 실행하면 자동으로 COMMIT 된다.
 
+3. GRANT , REVOKE
+--==>> DCL (DATA CONTROL LANGUGAE)
+-- 실행하면 자동으로 COMMIT 된다.
+
+4. COMMT, ROLLBACK
+--===>> TCL(TRANSACTION CONTROL LANGUAGE)
+
+-- 정적인 PL/SQL 문 → DML문, TCL 문만 사용 가능하다.
+-- 동적인 PL/SQL 문 → DML문, DDL, DCL, TCL 문 사용 가능하다. 
+
+※ 정적 SQL(정적PL/SQL)
+기본적으로 사용하는 SQL 구문과 PL/SQL 구문 안에 SQL 구문을 직접 삽입하는 방법
+--> 작성이 쉽고 성능이 좋다.
+
+※ 동적 SQL(동적PL/SQL) ▶ EXECUTE IMMEDIATE
+-- 완성되지 않는 SQL 구문을 기반으로
+   실행 중 변경 가능한 문자열 변수 또는 문자열 상수를 통해
+   SQL 구문을 동적으로 완성하여 실행하는 방법.
+   사전에 정의되지 않는 SQL 을 실행할 때 완성, 확정하여  실행할 수 있다,
+   DML, TCL 외에도 DDL, DCL, TCL 사용이 가능하다. 
+
+*/
 
 --▣▣▣ PROCEDURE(프로시저) ▣▣▣--
 /*
@@ -54,9 +82,7 @@ SET SERVEROUTPUT ON;
      EXEC[UTE] 프로시저명[(인수1, 인수2)]
 */
 
-
 --▣ INSERT 프로시저
-
 -- 실습 테이블 생성  →  『20250714_02_scott.sql』 파일 참조 
 -- 테이블명 : TBL_STUDENTS
 -- 테이블명 : TBL_IDPW
@@ -300,7 +326,6 @@ END;
 -----------------[ 실습 - END ] ------------------------------
 
 
-
 --▣ TBL_STUDENTS 테이블에서 
 -- 전화번호와 주소 데이터를 변경하는(수정하는) 프로시저를 작성한다.
 -- 단, ID와 PW 가 일치하는 경우에는 변경(/수정)을 진행할 수 있도록 처리한다.
@@ -392,9 +417,235 @@ BEGIN
       COMMIT;
 END;
 -- ==>> Procedure PRC_STUDENTS_UPDATE이(가) 컴파일되었습니다.
-
-
 -----------------[ 실습 - END ] ------------------------------
+
+DESC TBL_INSABACKUP;
+/* 
+이름       널?       유형           
+-------- -------- ------------ 
+NUM      NOT NULL NUMBER(5)    
+NAME     NOT NULL VARCHAR2(20) 
+SSN      NOT NULL VARCHAR2(14) 
+IBSADATE NOT NULL DATE         
+CITY              VARCHAR2(10) 
+TEL               VARCHAR2(15) 
+BUSEO    NOT NULL VARCHAR2(15) 
+JIKWI    NOT NULL VARCHAR2(15) 
+BASICPAY NOT NULL NUMBER(10)   
+SUDANG   NOT NULL NUMBER(10)   
+*/
+
+--▣ TBL_INSABACKUP 테이블을 대상으로 신규 데이터 입력 프로시저를 작성한다.
+--   NUM, NMAE, SSN, IBSADATE, CITY, TEL, BUSEO, JIKWI, BASICPAY, SUDANG
+--   구조를 갖고 있는 대상 테이블에 데이터 입력 시
+--   NUM 항목(사원번호)의 값은
+--   기존 부여된 사원번호 마지막 번호의 그 다음 번호를
+--   자동으로 입력 처리할 수 있는 프로시저로 구성한다.
+-- 프로시저명 : PRC_INSA_INSERT
+/* 
+실행 예)
+PRC_INSA_INSERT('김한국', '941006-1234567', SYSDATE, '서울', '010-4567-7564', '영업부', '대리', 10000,10000);
+*/
+
+-----------------[ 강사님 풀이 - START ] ------------------------------
+CREATE OR REPLACE PROCEDURE PRC_INSA_INSERT
+( V_NAME        IN TBL_INSABACKUP.NAME%TYPE
+, V_SSN         IN TBL_INSABACKUP.SSN%TYPE
+, V_IBSADATE    IN TBL_INSABACKUP.IBSADATE%TYPE
+, V_CITY        IN TBL_INSABACKUP.CITY%TYPE
+, V_TEL         IN TBL_INSABACKUP.TEL%TYPE
+, V_BUSEO       IN TBL_INSABACKUP.BUSEO%TYPE
+, V_JIKWI       IN TBL_INSABACKUP.JIKWI%TYPE
+, V_BASICPAY    IN TBL_INSABACKUP.BASICPAY%TYPE
+, V_SUDANG      IN TBL_INSABACKUP.SUDANG%TYPE
+)
+IS
+      -- INSERT 쿼리문 수행에 필요한 주요 변수 선언
+      V_NUM TBL_INSABACKUP.NUM%TYPE;
+BEGIN
+      DBMS_OUTPUT.PUT_LINE('>>>SQLCODE: ' + SQLCODE);
+      SELECT MAX(NUM) + 1 INTO V_NUM FROM TBL_INSABACKUP;
+      
+      -- TBL_INSABACKUP 테이블에 데이터 입력
+      INSERT INTO TBL_INSABACKUP(NUM     
+                               , NAME    
+                               , SSN     
+                               , IBSADATE
+                               , CITY    
+                               , TEL     
+                               , BUSEO   
+                               , JIKWI   
+                               , BASICPAY
+                               , SUDANG)
+      VALUES(V_NUM     
+           , V_NAME    
+           , V_SSN     
+           , V_IBSADATE
+           , V_CITY    
+           , V_TEL     
+           , V_BUSEO   
+           , V_JIKWI   
+           , V_BASICPAY
+           , V_SUDANG);
+
+      DBMS_OUTPUT.PUT_LINE('>>>SQLERRM: ' + SQLERRM);
+
+      -- 커밋
+      COMMIT;
+END;
+-- ==> Procedure PRC_INSA_INSERT이(가) 컴파일되었습니다.
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+PRC_INSA_INSERT('김한국', '941006-1234567', SYSDATE, '서울', '010-4567-7564', '영업부', '대리', 500000,500000);
+
+--▣ 실습 테이블 생성 -> [20250714_02_scott.sql] 참조
+-- 테이블명 : TBL_상품
+-- 테이블명 : TBL_입고
+--   TBL_상품, TBL_입고 테이블을 대상으로
+--   TBL_입고 테이블에 데이터 입력 시(즉, 입고 이벤트 발생 시)
+--   TBL_상품 테이블의 해당 상품에 대한 재고수량이 함께 변동될 수 있는 기능을 가진
+--   프로시저를 작성한다.
+--   단, 이 과정에서 입고 번호는 자동 증가 처리한다. (시퀀스 사용 안함)
+--   TBL_입고 테이블 구성 컬럼은
+--   입고번호, 상품코드, 입고일자, 입고수량, 입고단가 이며
+--   프로시저 호출을 통해 전달할 파라미터는 상품코드, 입고수량, 입고단가 이다.
+--   프로시저명 : PRC_입고_INSERT(상품코드, 입고수량, 입고단가)
+/* 
+실행 예)
+EXEC PRC_입고_INSERT('HOO1', 10, 1000);
+
+ → 이 프로시저 호출로 처리되는 업무 ⓐ
+H001 홈런볼 1500 10
+
+ → 이 프로시저 호출로 처리되는 업무 ⓑ
+1 H001 2025-07-14 10 1000
+ */
+-----------------[ 강사님 풀이 - START ] ------------------------------
+-- ① INSERT → TBL_입고
+--    INSERT INTO TBL_입고(입고번호, 상품코드, 입고일자, 입고수량, 입고단가)
+--    VALUES(1, 'H001', SYSDATE, 20, 1000);
+-- ② UPDATE → TBL_상품
+--    UPDATE TBL_상품
+--    SET 재고수량 = 기존재고수량 + 입고수량      -- CHECK~!!!
+--    WHERE 상품코드 = 'H001';
+CREATE OR REPLACE PROCEDURE PRC_입고_INSERT
+( V_상품코드    IN TBL_입고.상품코드%TYPE
+, V_입고수량    IN TBL_입고.입고수량%TYPE
+, V_입고단가    IN TBL_입고.입고단가%TYPE
+)
+IS
+      -- 선언부
+      -- 아래의 쿼리문을 수행하기 위해 필요한 데이터 변수로 추가 선언
+       V_입고번호  TBL_입고.입고번호%TYPE;
+BEGIN
+      -- 실행부
+      -- 선언한 변수에 값 담아내기
+      -- SELECT 쿼리문 수행 → 입고번호 확인
+      SELECT NVL(MAX(입고번호), 0) INTO V_입고번호
+      FROM TBL_입고;
+      
+      -- 쿼리문 구성
+      -- ① INSERT → TBL_입고
+      INSERT INTO TBL_입고(입고번호, 상품코드, 입고수량, 입고단가)
+      VALUES((V_입고번호+1), V_상품코드, V_입고수량, V_입고단가);
+      
+      -- ② UPDATE → TBL_상품
+      UPDATE TBL_상품
+      SET 재고수량 = 재고수량 + V_입고수량      -- CHECK~!!!
+      WHERE 상품코드 = V_상품코드;
+
+      -- 커밋
+      COMMIT;
+
+      -- 예외 처리
+      EXCEPTION
+            WHEN OTHERS THEN ROLLBACK;
+END;
+-- ==>> Procedure PRC_입고_INSERT이(가) 컴파일되었습니다.
+-----------------[ 강사님 풀이 - END ] --------------------------------
+
+
+--▣▣▣ 프로시저 내에서의 예외 처리 ▣▣▣--
+--▣ TBL_MEMBER 테이블에 데이터를 입력하는 프로시저를 생성
+--   단, 이 프로시저를 통해 데이터를 입력할 경우
+--   CITY(지역) 항목에 '서울', '경기', '대전'만 입력이 가능하도록 구성한다.
+--   이 지역 외의 다른 지역을 프로시저 호출을 통해 입력하려는 경우
+--   (즉, 유효하지 않은 데이터 입력을 시도하려는 경우)
+--   예외에 대한 처리를 하려고 한다.
+--   프로시저명 : PRC_MEMBER_INSERT(이름, 전화번호, 지역)
+
+/*
+실행 예)
+      EXEC PRC_MEMBER_INSERT('박범구', '010-1111-1111', '서울');
+      --> 데이터 입력 ○
+
+      EXEC PRC_MEMBER_INSERT('김한국', '010-2222-2222', '부산');
+      --> 데이터 입력 Ⅹ
+*/
+
+
+CREATE OR REPLACE PROCEDURE PRC_MEMBER_INSERT
+( V_NAME    IN TBL_MEMBER.NAME%TYPE
+, V_TEL     IN TBL_MEMBER.TEL%TYPE
+, V_CITY    IN TBL_MEMBER.CITY%TYPE
+)
+IS
+    -- 실행 영역의 쿼리문 수행을 위해 필요한 변수 추가 선언
+    V_NUM   TBL_MEMBER.NUM%TYPE;
+    
+    -- 사용자 정의 예외를 변수처럼 선언하여, IF문에서 처리하자.
+    -- USER_DEFINE_ERROR는 '예외타입'이다.
+
+    -- 사용자 정의 예외에 대한 변수 선언 CHECK~!!!
+    USER_DEFINE_ERROR   EXCEPTION;
+BEGIN
+    -- 프로시저를 통해 입력 액션 처리를 정상적으로 진행해야 할 데이터인지 아닌지의 여부를
+    -- 가장 먼저 확인할 수 있도록 해당 위치에 코드 구성
+
+    -- 매개변수로 입력받은 값(V_CITY)이, 서울, 경기, 대전 중 어느 하나도 아닐 경우.
+    IF (V_CITY NOT IN ('서울', '경기', '대전'))
+        -- 예외 발생    CHECK~!!!
+        -- *[RAISE] : 일으키다, 발생시키다.
+        -- 서울, 경기, 대전이 아닐 경우 USER_DEFINE_ERROR를 발생시킬 것이다.
+        -- 예외를 일으키는 구문은 항상 COMMIT보다 먼저 작성하자.
+        
+        THEN RAISE USER_DEFINE_ERROR;
+    END IF;
+      
+    -- 선언한 변수에 값 담아내기
+    SELECT NVL(MAX(NUM), 0) INTO V_NUM
+    FROM TBL_MEMBER;
+      
+    -- 쿼리문 구성 → INSERT
+    INSERT INTO TBL_MEMBER(NUM, NAME, TEL, CITY)
+    VALUES(V_NUM + 1, V_NAME, V_TEL, V_CITY);
+      
+    -- 예외 처리 구문
+    -- 오류가, USER_DEFINE_ERROR라면...
+    -- 오라클 내장 에러 함수를 호출한다.
+    -- 2만 1번부터 유저가 부여할 수 있는 에러 번호이다.
+    
+    -- ★★ 예외처리 [JAVA]의 TRY~CATCH 와 유사함.
+    EXCEPTION
+        WHEN USER_DEFINE_ERROR
+            -- THEN RAISE_APPLICATION_ERROR(에러코드(-20000 ~ -20999), '서울, 경기, 에러내용기술);
+            THEN RAISE_APPLICATION_ERROR(-20001, '서울, 경기, 대전만 입력이 가능합니다.');
+                ROLLBACK;
+                -- 잘못된 데이터를 입력했으므로, 롤백한다!
+
+        -- 우리가 규정한 에러 : USER_DEFINE_ERROR가 아닌 것이 발생할 수도 있다!
+        -- 기타 다른 예외가 발생하면...
+        WHEN OTHERS 
+            THEN ROLLBACK;  -- 롤백만 해라~!!
+
+        -- 사용자 정의 예외를 여러 개 지정해서
+        -- 각 에러의 경우에 따라 다른 안내 메시지가 출력되도록 처리할 수도 있겠다.
+
+    -- 커밋
+    COMMIT;
+
+END;
+-- ==>> Procedure PRC_MEMBER_INSERT이(가) 컴파일되었습니다.
 
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/

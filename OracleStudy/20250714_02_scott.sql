@@ -253,6 +253,267 @@ SELECT *
 FROM TBL_INSABACKUP;
 
 
+DESC TBL_INSABACKUP;
+/* 
+이름       널?       유형           
+-------- -------- ------------ 
+NUM      NOT NULL NUMBER(5)    
+NAME     NOT NULL VARCHAR2(20) 
+SSN      NOT NULL VARCHAR2(14) 
+IBSADATE NOT NULL DATE         
+CITY              VARCHAR2(10) 
+TEL               VARCHAR2(15) 
+BUSEO    NOT NULL VARCHAR2(15) 
+JIKWI    NOT NULL VARCHAR2(15) 
+BASICPAY NOT NULL NUMBER(10)   
+SUDANG   NOT NULL NUMBER(10)   
+*/
+
+SELECT MAX(NUM)+1
+FROM TBL_INSABACKUP;
+
+
+SELECT COUNT(*)
+FROM TBL_INSABACKUP;
+/* 
+ COUNT(*)
+----------
+        60
+*/
+
+
+--▣ 생성한 프로시저(PRC_INSA_INSERT)가 제대로 작동하는지의 여부 확인
+-- → 프로시저 호출
+PRC_INSA_INSERT('김한국', '971006-1234567', SYSDATE, '서울', '010-4567-7564', '영업부', '대리', 500000,50000);
+
+
+--▣ 실습 테이블 생성
+-- 테이블 명: TBL_상품 
+--한글로 만들지만 실무에서 절대 이렇게 하지말자 실습을 위한 테이블
+CREATE TABLE TBL_상품
+( 상품코드      VARCHAR2(20)
+, 상품명        VARCHAR2(100)
+, 소비자가격    NUMBER
+, 재고수량      NUMBER  DEFAULT 0 --(NULL이면 아무리 더해져도 NULL 이므로)
+, CONSTRAINT 상품_상품코드_PK PRIMARY KEY(상품코드)
+);
+-- ==>> Table TBL_상품이(가) 생성되었습니다.
+
+--▣ 실습 테이블 생성(TBL_입고)
+-- TBL_입고 테이블의 입고번호를 기본키(PK) 제약조건 설정
+-- TBL_입고 테이블의 상품코드는 TBL_상품 테이블의 상품코드를
+-- 참조할 수 있도록 외래키(FK) 제약조건 설정
+CREATE TABLE TBL_입고
+( 입고번호  NUMBER
+, 상품코드  VARCHAR2(20)
+, 입고일자  DATE DEFAULT SYSDATE
+, 입고수량  NUMBER
+, 입고단가  NUMBER
+, CONSTRAINT 입고_입고번호_PK PRIMARY KEY(입고번호)
+, CONSTRAINT 입고_상품코드_FK FOREIGN KEY(상품코드) REFERENCES TBL_상품(상품코드)
+);
+-- ==>> Table TBL_입고이(가) 생성되었습니다.
+
+--▣ 데이터 입력 → TBL_상품 → 상품 등록
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H001', '홈런볼', 1500);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H002', '새우깡', 1200);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H003', '스윙칩', 1000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H004', '치토스', 1100);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H005', '포카칩', 2000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H006', '감자깡', 1000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('H007', '고래밥', 1800);
+
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C001', '오레오', 2000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C002', '빼빼로', 1800);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C003', '초코칩', 1800);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C004', '에이스', 1700);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C005', '다이제', 2500);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C006', '아이비', 1300);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('C007', '아이비', 1300);
+
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E001', '마이쮸', 1000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E002', '엠엔엠', 1100);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E003', '아이셔', 1100);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E004', '비틀즈', 1200);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E005', '아폴로', 1000);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E006', '하리보', 1500);
+INSERT INTO TBL_상품(상품코드, 상품명, 소비자가격) VALUES('E007', '새콜당', 1400);
+-- ==>> 1 행 이(가) 삽입되었습니다. X 21회
+
+-- 커밋
+COMMIT;
+
+SELECT *
+FROM TBL_상품;
+
+SELECT COUNT(*)
+FROM TBL_상품;
+
+
+SELECT *
+FROM TBL_입고;
+-- ==>> 선택된 행 없음
+
+SELECT COUNT(*)
+FROM TBL_입고;
+/* 
+  COUNT(*)
+----------
+         0
+*/
+
+
+SELECT MAX(입고번호) "결과확인"
+FRO TBL_입고;
+-- ==>> (null)
+
+SELECT NVL(MAX(입고번호), 0) "결과확인"
+FRO TBL_입고;
+-- ==>> 0
+
+SELECT MAX(NVL(입고번호, 0) "결과확인"
+FRO TBL_입고;
+-- ==>> (null)
+
+EXEC PRC_입고_INSERT('H001', 10, 1000);
+
+SELECT *
+FROM TBL_상품;
+/* 
+상품코드                 상품명          소비자가격     재고수량
+-------------------- ----------------- ---------- ----------
+H001                 홈런볼                  1500         10
+ */
+
+SELECT COUNT(*)
+FROM TBL_입고;
+/* 
+  COUNT(*)
+----------
+         1
+*/
+
+SELECT *
+FROM TBL_입고;
+/* 
+      입고번호 상품코드                 입고일자             입고수량       입고단가
+---------- -------------------- ---------- ---------- ----------
+         1 H001                 2025-07-14         10       1000
+ */
+
+
+EXEC PRC_입고_INSERT('H001', 10, 1200);
+
+SELECT *
+FROM TBL_상품;
+/* 
+21개 행이 선택되었습니다. 
+
+
+PL/SQL 프로시저가 성공적으로 완료되었습니다.
+
+
+상품코드                 상품명          소비자가격    재고수량
+-------------------- ----------------- ---------- ----------
+H001                 홈런볼                  1500         20
+ */
+
+EXEC PRC_입고_INSERT('H002', 10, 1200);
+-- ==> PL/SQL 프로시저가 성공적으로 완료되었습니다.
+
+EXEC PRC_입고_INSERT('H001', 10, 1000);
+EXEC PRC_입고_INSERT('H002', 20, 1000);
+EXEC PRC_입고_INSERT('H003', 30, 1000);
+EXEC PRC_입고_INSERT('H004', 10, 1000);
+EXEC PRC_입고_INSERT('H005', 20, 1000);
+
+EXEC PRC_입고_INSERT('C001', 10, 1000);
+EXEC PRC_입고_INSERT('C002', 20, 1000);
+EXEC PRC_입고_INSERT('C003', 30, 1000);
+EXEC PRC_입고_INSERT('C004', 10, 1000);
+EXEC PRC_입고_INSERT('C005', 20, 1000);
+
+EXEC PRC_입고_INSERT('E001', 10, 1000);
+EXEC PRC_입고_INSERT('E002', 20, 1000);
+EXEC PRC_입고_INSERT('E003', 30, 1000);
+EXEC PRC_입고_INSERT('E004', 10, 1000);
+EXEC PRC_입고_INSERT('E005', 20, 1000);
+-- ==> PL/SQL 프로시저가 성공적으로 완료되었습니다. x 15
+
+
+SELECT COUNT(*)
+FROM TBL_입고;
+
+
+SELECT *
+FROM TBL_상품;
+/* 
+
+상품코드               상품명       소비자가격   재고수량
+-------------------- ---------   ---------- ----------
+H001                 홈런볼            1500         30
+H002                 새우깡            1200         30
+H003                 스윙칩            1000         30
+H004                 치토스            1100         10
+H005                 포카칩            2000         20
+H006                 감자깡            1000          0
+H007                 고래밥            1800          0
+C001                 오레오            2000         10
+C002                 빼빼로            1800         20
+C003                 초코칩            1800         30
+C004                 에이스            1700         10
+C005                 다이제            2500         20
+C006                 아이비            1300          0
+C007                 아이비            1300          0
+E001                 마이쮸            1000         10
+E002                 엠엔엠            1100         20
+E003                 아이셔            1100         30
+E004                 비틀즈            1200         10
+E005                 아폴로            1000         20
+E006                 하리보            1500          0
+E007                 새콜당            1400          0
+
+21개 행이 선택되었습니다. 
+*/
+
+
+--▣▣▣ 프로시저 내에서의 예외 처리 ▣▣▣--
+--▣ 실습 테이블 생성(TBL_MEMBER)
+-- CITY에 입력할 수 있는 데이터는, 
+-- 경기, 대전과 같은 특정 값만 입력이 가능하도록 하려고 하는 것.
+CREATE TABLE TBL_MEMBER
+( NUM       NUMBER
+, NAME      VARCHAR2(30)
+, TEL       VARCHAR2(60)
+, CITY      VARCHAR2(60)
+, CONSTRAINT MEMBER_NUM_PK PRIMARY KEY (NUM)
+);
+--==>> Table TBL_MEMBER이(가) 생성되었습니다.
+
+
+--▣ 생성한 프로시저(PRC_MEMBER_INSERT)가 제대로 작동하는지의 여부 확인
+-- → 프로시저 호출
+EXEC PRC_MEMBER_INSERT('김한국', '010-1111-2222', '서울');
+-- ==>> PL/SQL 프로시저가 성공적으로 완료되었습니다.
+EXEC PRC_MEMBER_INSERT('김한일', '010-1111-2222', '경기');
+-- ==>> PL/SQL 프로시저가 성공적으로 완료되었습니다.
+EXEC PRC_MEMBER_INSERT('김한이', '010-1111-2222', '인천');
+-- ==>> ORA-20001: 서울, 경기, 대전만 입력이 가능합니다.
+EXEC PRC_MEMBER_INSERT('김한삼', '010-1111-2222', '충남');
+-- ==>> ORA-20001: 서울, 경기, 대전만 입력이 가능합니다.
+EXEC PRC_MEMBER_INSERT('김한칠', '010-1111-2222', '대전');
+-- ==>> PL/SQL 프로시저가 성공적으로 완료되었습니다.
+
+SELECT *
+FROM TBL_MEMBER;
+/* 
+ NUM NAME     TEL                 CITY    
+---- -------- ------------------- --------
+   1 김한국   010-1111-2222       서울    
+   2 김한일   010-1111-2222       경기    
+   3 김한칠   010-1111-2222       대전    
+ */
+
 
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
