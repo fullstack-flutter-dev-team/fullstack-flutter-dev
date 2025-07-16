@@ -528,12 +528,11 @@ VALUES(3,'이이상','010-3331-1331');
 
 UPDATE TBL_TEST1
 SET NAME = '최하나'
-WHERE ID='1';
+WHERE ID=1;
 -- ==>> 1 행 이(가) 업데이트되었습니다.
 
 UPDATE TBL_TEST1
 SET NAME = '최한국'
-WHERE ID='1';
 WHERE ID=2;
 -- ==>> 1 행 이(가) 업데이트되었습니다.
 
