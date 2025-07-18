@@ -2880,10 +2880,7 @@ GROUP BY ROLLUP(CITY);
 */
 
 -- 73. 기본급(BASICPAY)이 평균 이하인 사원 조회. (이름, 기본급). AVG() 함수. 서브쿼리.
-SELECT NAME "이름", BASICPAY "기본급"
-FROM TBL_INSA
-WHERE BASICPAY <= (SELECT AVG(BASICPAY) 
-                   FROM TBL_INSA);
+1
 /* 
 이름                          기본급
 -------------------- ----------
@@ -2924,12 +2921,11 @@ WHERE BASICPAY <= (SELECT AVG(BASICPAY)
 33개 행이 선택되었습니다. 
  */
 
-74. 기본급 상위 10%만 조회. (이름, 기본급)
--- SELECT NAME "이름", BASICPAY "기본급"
--- FROM TBL_INSA
--- WHERE BASICPAY <= (SELECT AVG(BASICPAY) 
---                    FROM TBL_INSA);
-
+-- 74. 기본급 상위 10%만 조회. (이름, 기본급)
+SELECT NAME "이름", BASICPAY "기본급"
+FROM TBL_INSA
+WHERE BASICPAY <= (SELECT AVG(BASICPAY) 
+                   FROM TBL_INSA);
 
 -- 75. 기본급 순위가 5순위까지만 조회. (모든 정보)
 SELECT T.*
@@ -3324,7 +3320,16 @@ GROUP BY CITY;
  */
 
 
-92. 지역별 인원수 순위 조회하되 5순위까지만 출력.
+-- 92. 지역별 인원수 순위 조회하되 5순위까지만 출력.
+SELECT *
+FROM
+(
+      SELECT CITY "지역명", COUNT(*) "인원", DENSE_RANK() OVER (ORDER BY COUNT(*) DESC) "순위"
+      FROM TBL_INSA
+      GROUP BY CITY
+) T
+WHERE T.순위 <= 5;
+
 
 93. 이름, 부서, 출신도, 기본급, 수당, 기본급+수당, 세금, 실수령액 조회
     단, 세금: 총급여가 250만원 이상이면 2%, 200만원 이상이면 1%, 나머지 0.
@@ -3335,10 +3340,17 @@ GROUP BY CITY;
     150~200만원  - B등급
     150만원 미만 - C등급
 
-95. 기본급+수당이 가장 많은 사람의 이름, 기본급+수당 조회.
-    MAX() 함수, 하위 쿼리 이용.
-
-
+-- 95. 기본급+수당이 가장 많은 사람의 이름, 기본급+수당 조회.
+--     MAX() 함수, 하위 쿼리 이용.
+SELECT NAME "이름", (BASICPAY + SUDANG) "기본급+수당"
+FROM TBL_INSA
+WHERE (BASICPAY+SUDANG) = (SELECT MAX(BASICPAY+SUDANG)
+                           FROM TBL_INSA)
+/* 
+이름                  기본급+수당
+-------------------- ----------
+홍길동                  2810000
+*/
 ----------------------------------------------------------------------------
 
 

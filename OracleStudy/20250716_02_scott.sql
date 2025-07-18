@@ -7,6 +7,9 @@ USER
 SCOTT
 */
 
+--※ 영역 관련 세션 설정 변경
+ALTER SESSION SET NLS_TERRITORY = "KOREA";
+
 -- ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 -- ==>> Session이(가) 변경되었습니다.
 
