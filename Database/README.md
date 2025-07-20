@@ -2,6 +2,7 @@
 - [vscode erd 검색](https://www.google.com/search?q=vscode+erd&oq=vscode+erd&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDM1NDVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
   - [간편한 VSCode ERD 도구, ERD Editor](https://intboom.tistory.com/12)
   - [ERD Editor - ERD 툴 추천, vscode로 ERD 만들기](https://leeeeeyeon-dev.tistory.com/79)
+  - [vscode로 ERD 만들기 (feat. ERD Editor)](https://developshrimp.com/entry/ERD-%ED%88%B4-%EC%B6%94%EC%B2%9C-vscode%EB%A1%9C-ERD-%EB%A7%8C%EB%93%A4%EA%B8%B0-feat-ERD-Editor)
 --- 
 - [Oracle_semi_proj](https://docs.google.com/spreadsheets/d/1T4FQ70LXv51KIOugIxvuWmYOx8IZwL1jcIi9s9u_bgM/edit?gid=0#gid=0)
 - [ERDCloud](https://www.erdcloud.com/)
@@ -19,3 +20,7 @@
 - [성적처리_시스템_erd.drawio](https://app.diagrams.net/?libs=general;er#G1Id6G-dNvF-WT1cCxtLb9mV_bw0BGZWA0#{"pageId"%3A"R2lEEEUBdFMjLlhIrx00"})
 - [erd.drawio.png](https://app.diagrams.net/?splash=0#G1Id6G-dNvF-WT1cCxtLb9mV_bw0BGZWA0)
 - [[Oracle DB(오라클)/#DB 구성]](https://velog.io/@apzl79/Oracle-DB오라클DB-구성)
+- []()
+- []()
+- []()
+- []()

@@ -1,0 +1,13 @@
+### python django oracle
+- [python django oracle 검색](https://www.google.com/search?q=python+django+oracle&oq=python+django+oracle&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDg3NjVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [Django 파이썬 장고 DB 연결](https://developernew.tistory.com/224)
+  - [Django 장고 프레임워크 설치 및 기본 세팅](https://developernew.tistory.com/219)
+  - [Windows 환경 Django Oracle 연동하는 방법](https://myjamong.tistory.com/288)
+- [django 설치 검색](https://www.google.com/search?q=django+%EC%84%A4%EC%B9%98&oq=django+%EC%84%A4%EC%B9%98&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg9MgYIAhBFGD0yBggDEEUYQTIGCAQQRRhBMgYIBRBFGEHSAQg0Mjg4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+  - [윈도우즈에 Django 설치하기](https://docs.djangoproject.com/ko/4.0/howto/windows/)
+- [vscode run django 검색](https://www.google.com/search?q=vscode+run+django&oq=vscode+run+django&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDg3ODNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [2. Django - vscode로 Django 프로젝트 만들기](https://woong-garden.tistory.com/entry/2-Django-vscode%EB%A1%9C-Django-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+- [vscode activate anaconda env 검색](https://www.google.com/search?q=vscode+activate+anaconda+env&oq=vscode+activate+anaconda+env&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDkxNzFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [Visual Studio Code에서 conda 환경 사용하기](https://m.blog.naver.com/hankrah/221813093799)
+- [0부터 시작하는 Django 공부 - DB 연동 & Model 만들기 & Data 조회](https://velog.io/@lijahong/0%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-Django-%EA%B3%B5%EB%B6%80-DB-%EC%97%B0%EB%8F%99-Model-%EB%A7%8C%EB%93%A4%EA%B8%B0-Data-%EC%A1%B0%ED%9A%8C)
+- []()
