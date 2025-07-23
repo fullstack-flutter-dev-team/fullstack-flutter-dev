@@ -4,7 +4,7 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -100,
+    "scrollTop": -600,
     "scrollLeft": 0,
     "zoomLevel": 0.97,
     "show": 431,
@@ -2837,7 +2837,7 @@
         "comment": "과정코드",
         "dataType": "NUMBER(8)",
         "default": "",
-        "options": 0,
+        "options": 8,
         "ui": {
           "keys": 2,
           "widthName": 78,
@@ -2846,7 +2846,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1753277792001,
+          "updateAt": 1753284298363,
           "createAt": 1753074766079
         }
       },
@@ -5106,7 +5106,7 @@
         "id": "LHT6jAn7HO34i0N77e4Gr",
         "identification": false,
         "relationshipType": 16,
-        "startRelationshipType": 1,
+        "startRelationshipType": 2,
         "start": {
           "tableId": "sKKeTrR6VFyxBFzvd1qQ0",
           "columnIds": [
