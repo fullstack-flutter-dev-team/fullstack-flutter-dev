@@ -1,3 +1,6 @@
+-- ▣ 테이블 삭제
+-- DROP TABLE TBL_SUBJECT;
+
 -- ▣ 테이블 생성
 CREATE TABLE TBL_SUBJECT
 (
@@ -13,5 +16,3 @@ COMMENT ON COLUMN TBL_SUBJECT.SUBJ_CODE IS '과목코드';
 COMMENT ON COLUMN TBL_SUBJECT.SUBJ_NAME IS '과목명';
 -- ==>> Comment이(가) 생성되었습니다.
 
--- ▣ 테이블 삭제
--- DROP TABLE TBL_SUBJECT;

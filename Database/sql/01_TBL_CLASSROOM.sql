@@ -1,3 +1,7 @@
+
+-- ▣ 테이블 삭제
+-- DROP TABLE TBL_CLASSROOM;
+
 -- ▣ 테이블 생성
 CREATE TABLE TBL_CLASSROOM
 (  
@@ -12,7 +16,3 @@ COMMENT ON TABLE TBL_CLASSROOM IS '강의실리스트 정적_테이블';
 COMMENT ON COLUMN TBL_CLASSROOM.CR_CODE IS '강의실코드';
 COMMENT ON COLUMN TBL_CLASSROOM.CR_INFO IS '강의실정보';
 -- ==>> Comment이(가) 생성되었습니다.
-
-
--- ▣ 테이블 삭제
--- DROP TABLE TBL_CLASSROOM;

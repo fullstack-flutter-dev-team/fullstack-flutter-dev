@@ -1,3 +1,6 @@
+-- ▣ 테이블 삭제
+-- DROP TABLE TBL_TEXTBOOK;
+
 -- ▣ 테이블 생성
 CREATE TABLE TBL_TEXTBOOK
 (
@@ -18,6 +21,3 @@ COMMENT ON COLUMN TBL_TEXTBOOK.TB_WRITER IS '저자';
 COMMENT ON COLUMN TBL_TEXTBOOK.TB_PUB_YEAR IS '발생년도';
 -- ==>> Comment이(가) 생성되었습니다.
 
-
--- ▣ 테이블 삭제
--- DROP TABLE TBL_TEXTBOOK;

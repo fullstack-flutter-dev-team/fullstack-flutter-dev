@@ -1,3 +1,6 @@
+-- ▣ 테이블 삭제
+-- DROP TABLE TBL_DROUP_OUT_STATUS;
+
 -- ▣ 테이블 생성
 CREATE TABLE TBL_DROUP_OUT_STATUS
 (
@@ -14,8 +17,5 @@ COMMENT ON COLUMN TBL_DROUP_OUT_STATUS.DOS_CODE IS '중도탈락상태코드';
 COMMENT ON COLUMN TBL_DROUP_OUT_STATUS.DOS_INFO IS '중도탈락상세';
 -- ==>> Comment이(가) 생성되었습니다.
 
-
--- ▣ 테이블 삭제
--- DROP TABLE TBL_DROUP_OUT_STATUS;
 
 
