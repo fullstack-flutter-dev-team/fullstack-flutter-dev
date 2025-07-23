@@ -23,5 +23,26 @@ COMMENT ON COLUMN TBL_REG_COURSE.REG_DATE IS '수강등록일자';
 -- ==>> Comment이(가) 생성되었습니다.
 
 
-
+------------------[제약조건 추가]---------------------------
 -- ▣ 제약조건(외래키) 추가
+ALTER TABLE TBL_REG_COURSE
+  ADD CONSTRAINT FK_STUDENT_TO_REG_COURSE
+    FOREIGN KEY (STUDENT_ID)
+    REFERENCES TBL_STUDENT (STUDENT_ID);
+--  ==>> Table TBL_REG_COURSE이(가) 변경되었습니다.
+
+
+ALTER TABLE TBL_REG_COURSE
+  ADD CONSTRAINT FK_OCU_TO_REG_COURSE
+    FOREIGN KEY (OCU_ID)
+    REFERENCES TBL_OFFERED_CURRICULUM (OCU_ID);
+-- ==>> Table TBL_REG_COURSE이(가) 변경되었습니다.
+
+
+------------------[제약조건 삭제]---------------------------
+-- ▣ 제약조건(외래키) 삭제
+-- ALTER TABLE TBL_REG_COURSE
+--   DROP CONSTRAINT FK_STUDENT_TO_REG_COURSE;
+
+-- ALTER TABLE TBL_REG_COURSE
+--   DROP CONSTRAINT FK_OCU_TO_REG_COURSE;

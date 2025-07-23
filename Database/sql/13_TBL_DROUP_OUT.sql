@@ -21,3 +21,26 @@ COMMENT ON COLUMN TBL_DROUP_OUT.RC_ID IS '수강등록ID';
 COMMENT ON COLUMN TBL_DROUP_OUT.DOS_CODE IS '중도탈락상태코드';
 COMMENT ON COLUMN TBL_DROUP_OUT.DO_DATE IS '중도탈락일자';
 -- ==>> Comment이(가) 생성되었습니다.
+
+------------------[제약조건 추가]---------------------------
+-- ▣ 제약조건(외래키) 추가
+ALTER TABLE TBL_DROUP_OUT
+  ADD CONSTRAINT FK_DROUP_OUT_STATUS_TO_DO
+    FOREIGN KEY (DOS_CODE)
+    REFERENCES TBL_DROUP_OUT_STATUS (DOS_CODE);
+-- ==>> Table TBL_DROUP_OUT이(가) 변경되었습니다.
+
+
+ALTER TABLE TBL_DROUP_OUT
+  ADD CONSTRAINT FK_REG_COURSE_TO_DO
+    FOREIGN KEY (RC_ID)
+    REFERENCES TBL_REG_COURSE (RC_ID);
+-- ==>> Table TBL_DROUP_OUT이(가) 변경되었습니다.
+
+------------------[제약조건 삭제]---------------------------
+-- ▣ 제약조건(외래키) 삭제
+-- ALTER TABLE TBL_DROUP_OUT
+--   DROP CONSTRAINT FK_DROUP_OUT_STATUS_TO_DO;
+
+-- ALTER TABLE TBL_DROUP_OUT
+--   DROP CONSTRAINT FK_REG_COURSE_TO_DO;

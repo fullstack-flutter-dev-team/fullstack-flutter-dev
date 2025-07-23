@@ -28,3 +28,26 @@ COMMENT ON COLUMN TBL_SCORE.OCO_ID IS '개설과목ID';
 COMMENT ON COLUMN TBL_SCORE.REG_DATE IS '성적등록일자';
 
 -- ==>> Comment이(가) 생성되었습니다.
+
+
+------------------[제약조건 추가]---------------------------
+-- ▣ 제약조건(외래키) 추가
+ALTER TABLE TBL_SCORE
+  ADD CONSTRAINT FK_OFFERED_COURSE_TO_SCORE
+    FOREIGN KEY (OCO_ID)
+    REFERENCES TBL_OFFERED_COURSE (OCO_ID);
+-- ==>> Table TBL_SCORE이(가) 변경되었습니다.
+
+ALTER TABLE TBL_SCORE
+  ADD CONSTRAINT FK_REG_COURSE_TO_SCORE
+    FOREIGN KEY (RC_ID)
+    REFERENCES TBL_REG_COURSE (RC_ID);
+-- ==>> Table TBL_SCORE이(가) 변경되었습니다.
+
+------------------[제약조건 삭제]---------------------------
+-- ▣ 제약조건(외래키) 삭제
+-- ALTER TABLE TBL_SCORE
+--   DROP CONSTRAINT FK_OFFERED_COURSE_TO_SCORE;
+
+-- ALTER TABLE TBL_SCORE
+--   DROP CONSTRAINT FK_REG_COURSE_TO_SCORE;
