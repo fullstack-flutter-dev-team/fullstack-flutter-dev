@@ -823,3 +823,8 @@ VALUES (SEQ_OCU.NEXTVAL, TO_DATE('2025-07-23', 'YYYY-MM-DD'), TO_DATE('2026-01-0
 INSERT INTO TBL_OFFERED_CURRICULUM (OCU_ID, OCU_SDATE, OCU_EDATE, OCU_SESSION, OCU_STUD_MAX, CURRIC_CODE, CR_CODE) 
 VALUES (SEQ_OCU.NEXTVAL, TO_DATE('2025-08-24', 'YYYY-MM-DD'), TO_DATE('2026-03-09', 'YYYY-MM-DD'), 1, 20, 80000003, 85000014);
 ----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-- ▣ 커밋
+COMMIT;

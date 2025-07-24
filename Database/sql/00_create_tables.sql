@@ -1,5 +1,8 @@
-
 -------------------------------------------------------------------
+--▣ 접속된 사용자 확인
+SELECT USER
+FROM DUAL;
+
 -------------------------------------------
 --- [1] ---- [TBL_CLASSROOM]
 -- ▣ 테이블 생성
@@ -304,9 +307,9 @@ CREATE TABLE TBL_OFFERED_COURSE
   OCO_ID         NUMBER(8) NOT NULL
 , OCO_SDATE      DATE      NOT NULL
 , OCO_EDATE      DATE      NOT NULL
-, OCO_WGT_WT     NUMBER(2) DEFAULT 35 NOT NULL
-, OCO_WGT_PT     NUMBER(2) DEFAULT 35 NOT NULL
-, OCO_WGT_ATTEND NUMBER(2) DEFAULT 30 NOT NULL
+, OCO_WGT_WT     NUMBER(3) DEFAULT 35 NOT NULL
+, OCO_WGT_PT     NUMBER(3) DEFAULT 35 NOT NULL
+, OCO_WGT_ATTEND NUMBER(3) DEFAULT 30 NOT NULL
 , OCU_ID         NUMBER(8) NOT NULL
 , SUBJ_CODE      NUMBER(8) NOT NULL
 , TB_CODE        NUMBER(8) NOT NULL
@@ -488,3 +491,6 @@ CREATE SEQUENCE SEQ_DO
        NOCACHE
        NOORDER;
 ---------------------------------------------------------------------------------
+
+-- ▣ 커밋
+COMMIT;
