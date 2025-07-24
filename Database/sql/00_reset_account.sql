@@ -63,7 +63,7 @@ DROP USER  MIRACLE CASCADE ;
 
 -- ▣ 생성된 오라클 사용자 계정()에 서버 접속이 가능할 수 있도록
 --    『CREATE SESSION』권한 부여 → SYS 가...
-GRANT CREATE SESSION TO miracle;
+-- GRANT CREATE SESSION TO miracle;
 --==>> Grant을(를) 성공했습니다.
 
 -- ▣  생성된 오라클 사용자 계정(KNI)을 통해 테이블을 생성하는 과정에서 에러 발생
@@ -79,7 +79,7 @@ GRANT CREATE SESSION TO miracle;
 --==>> miracle    CREATE SESSION    NO
 
 -- ▣  생성된 오라클 사용자 계정()에 테이블 생성이 가능할 수 있도록 CREATE TABLE 권한 부여
-GRANT CREATE TABLE TO miracle;
+-- GRANT CREATE TABLE TO miracle;
 --==>> Grant을(를) 성공했습니다.
 
 -- SELECT *
@@ -112,3 +112,12 @@ GRANT CONNECT, RESOURCE TO miracle;
 -- ALTER USER miracle
 -- QUOTA UNLIMITED ON TBS_EDUA;
 -- ==>> User MIRACLE이(가) 변경되었습니다.
+
+-- ▣ 생성된 오라클 사용자 계정()에 서버 접속이 가능할 수 있도록
+--    『CREATE SESSION』권한 부여 → SYS 가...
+GRANT CREATE SESSION TO miracle;
+--==>> Grant을(를) 성공했습니다.
+
+-- ▣  생성된 오라클 사용자 계정()에 테이블 생성이 가능할 수 있도록 CREATE TABLE 권한 부여
+GRANT CREATE TABLE TO miracle;
+--==>> Grant을(를) 성공했습니다.
