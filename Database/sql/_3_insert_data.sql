@@ -897,6 +897,23 @@ VALUES (SEQ_OC.NEXTVAL, TO_DATE('2025-08-24', 'YYYY-MM-DD'), TO_DATE('2025-09-24
 
 
 ----------------------------------------------------------
+--- [11] ---- [TBL_REG_COURSE][과정등록]
+-- ▣ 데이터 입력
+INSERT INTO TBL_REG_COURSE (RC_ID, STUDENT_ID, OCU_ID) VALUES (SEQ_RC.NEXTVAL, 20000002, 30000002);
+INSERT INTO TBL_REG_COURSE (RC_ID, STUDENT_ID, OCU_ID) VALUES (SEQ_RC.NEXTVAL, 20000003, 30000002);
+INSERT INTO TBL_REG_COURSE (RC_ID, STUDENT_ID, OCU_ID) VALUES (SEQ_RC.NEXTVAL, 20000004, 30000002);
+INSERT INTO TBL_REG_COURSE (RC_ID, STUDENT_ID, OCU_ID) VALUES (SEQ_RC.NEXTVAL, 20000005, 30000002);
+---------------------------------------------------------
+--- [12] ---- [TBL_SCORE][성적]
+-- ▣ 데이터 입력
+
+
+---------------------------------------------------------
+--- [13] ---- [TBL_DROUP_OUT][중도탈락]
+-- ▣ 데이터 입력
+INSERT INTO TBL_DROUP_OUT(DO_ID, RC_ID, DOS_CODE) 
+VALUES (SEQ_DO.NEXTVAL, 50000003, 84000003);
+
 
 ---------------------------------------------------------
 -- 커밋
