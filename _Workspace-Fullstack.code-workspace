@@ -11,6 +11,12 @@
 		"java.debug.settings.onBuildFailureProceed": true,
 		"java.project.sourcePaths": [
 			"fullstack-flutter-dev_github/Database/src"
+		],
+		"java.compile.nullAnalysis.mode": "automatic"
+	},
+	"extensions": {
+		"recommendations": [
+			"oracle.sql-developer"
 		]
 	}
 }
