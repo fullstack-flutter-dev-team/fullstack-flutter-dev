@@ -93,9 +93,12 @@ KNI    CREATE TABLE       NO
 -------------------------------------------------------------------------------
 -- ▣ 사용자 계정 생성 및 계정 정보 저장
 -- CREATE USER miracle IDENTIFIED BY quantum;
+-- CREATE USER miracle IDENTIFIED BY quantum
+-- DEFAULT TABLESPACE TBS_EDUA;
+
 CREATE USER miracle IDENTIFIED BY quantum
-DEFAULT TABLESPACE TBS_EDUA;
--- ==>> User miracle(가) 생성되었습니다.
+DEFAULT TABLESPACE users		--default tablespace 지정
+temporary TABLESPACE temp;		--temporary tablespace 지정
 
 -- ▣ CONNECT는 DB 접속 권한을, RESOURCE는 공간 사용 권한을 부여
 GRANT CONNECT, RESOURCE TO miracle;

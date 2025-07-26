@@ -5,28 +5,40 @@ FROM DUAL;
 -- ==>> Session이(가) 변경되었습니다.
 
 SET SERVEROUTPUT ON;
+
 -----------------------------
 CREATE OR REPLACE PROCEDURE proc_student_login
 ( P_ID IN VARCHAR2
 , P_PW IN VARCHAR2
-, R_MSG OUT VARCHAR2
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
 )
 IS
-    STATUS VARCHAR2(100):= 2;
+    STATUS NUMBER(8):= -1;
 BEGIN
-    -- 기본 ID/PW : LECTURE_ID/SSN 끝 7자
+    R_DATA := NULL;
+    R_MSG := TO_CHAR(STATUS);
+
+    -- 기본 ID/PW : STUDENT_ID/SSN 끝 7자
     -- NEW ID/PW : LOGIN_ID/LOGIN_PW
-    SELECT NVL2((SELECT  NAME FROM TBL_STUDENT WHERE  NAME = P_ID OR LOGIN_ID = P_ID), '0', '-1')  INTO STATUS
+    SELECT NVL((SELECT  STUDENT_ID FROM TBL_STUDENT WHERE  NAME = P_ID OR LOGIN_ID = P_ID), -1)  INTO STATUS
       FROM DUAL;     
-    IF STATUS = -1 THEN
-        -- R_MSG := '아이디가 존재하지 않습니다.';
-        R_MSG := '-1';
-    ELSE -- 아이디가 조회된경우
-        SELECT NVL2((SELECT NAME FROM TBL_STUDENT
+    IF STATUS != -1 THEN
+        R_DATA := NULL;
+        R_MSG := TO_CHAR(STATUS);
+        SELECT NVL((SELECT STUDENT_ID FROM TBL_STUDENT
                            WHERE (NAME = P_ID AND SUBSTR(SSN, 8) = P_PW )
-                            OR (LOGIN_ID = P_ID AND LOGIN_PW = P_PW)), '0', '-2') INTO R_MSG
-           FROM DUAL;
-    END IF;  
+                            OR (LOGIN_ID = P_ID AND LOGIN_PW = P_PW)), -2) INTO STATUS
+        FROM DUAL;
+
+        IF STATUS = -2 THEN
+            R_DATA := NULL;
+            R_MSG :=  TO_CHAR(STATUS);
+        ELSE
+            R_DATA := LPAD(STATUS, 8, '0');
+            R_MSG := '0';
+        END IF;
+    END IF;
 END;
 
 ----------------------------------------------
@@ -44,19 +56,25 @@ WHERE STUDENT_ID = 20000004;
 COMMIT;
 
 -- 실행
+variable r_data varchar2(300);
 variable r_msg varchar2(300);
-exec proc_student_login('방박위','1718684',:r_msg);
+exec proc_student_login('왕춘나','1903972', :r_data, :r_msg);
+PRINT r_data;
 PRINT r_msg;
 
-exec proc_student_login('Miracle','@#world',:r_msg);
+exec proc_student_login('Miracle','1903972', :r_data, :r_msg);
+PRINT r_data;
 PRINT r_msg;
 
-exec proc_student_login('방박위','@#world',:r_msg);
+exec proc_student_login('Miracle','@#world', :r_data, :r_msg);
+PRINT r_data;
 PRINT r_msg;
 
-exec proc_student_login('Miracle','1718684',:r_msg);
+exec proc_student_login('world','1718684', :r_data, :r_msg);
+PRINT r_data;
 PRINT r_msg;
-----------------------------------------------
+
+----------------------------
 SELECT *
 FROM TBL_STUDENT
 WHERE STUDENT_ID = 20000004;
