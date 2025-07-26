@@ -6,7 +6,7 @@ FROM DUAL;
 
 SET SERVEROUTPUT ON;
 
-----------------[login]-------------
+----------------[login_ADMIN_ID]-------------
 CREATE OR REPLACE procedure proc_admin_login
 ( P_ID IN VARCHAR2
 , P_PW IN VARCHAR2
@@ -29,10 +29,40 @@ BEGIN
            FROM DUAL;
     END IF;  
 END;
+----------------[login_NAME]-------------
+CREATE OR REPLACE procedure proc_admin_login
+( P_ID IN VARCHAR2
+, P_PW IN VARCHAR2
+, R_MSG OUT VARCHAR2
+)
+IS
+    STATUS VARCHAR2(100):= 2;
+BEGIN
+    -- 기본 ID/PW : ADMIN_ID/SSN 끝 7자
+    -- NEW ID/PW : LOGIN_ID/LOGIN_PW
+    SELECT NVL2((SELECT  NAME FROM TBL_ADMIN WHERE  NAME=P_ID OR LOGIN_ID = P_ID), '0', '-1')  INTO STATUS
+      FROM DUAL;     
+    IF STATUS = -1 THEN
+        -- R_MSG := '아이디가 존재하지 않습니다.';
+        R_MSG := '-1';
+    ELSE -- 아이디가 조회된경우
+        SELECT NVL2((SELECT NAME FROM TBL_ADMIN
+                           WHERE (NAME = P_ID AND SUBSTR(SSN, 8) = P_PW )
+                            OR (LOGIN_ID = P_ID AND LOGIN_PW = P_PW)), '0', '-2') INTO R_MSG
+           FROM DUAL;
+    END IF;  
+END;
 
+----------------------------------------------
 ----------------------------------------------
 -- 실행
 variable r_msg varchar2(300);
+exec proc_admin_login('명이충','1264931', :r_msg);
+PRINT r_msg;
+
+exec proc_admin_login('명이충','WORld', :r_msg);
+PRINT r_msg;
+
 exec proc_admin_login('QUANTUM','WORld', :r_msg);
 PRINT r_msg;
 ----------------------------------------------
