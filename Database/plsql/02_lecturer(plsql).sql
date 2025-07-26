@@ -5,6 +5,8 @@ FROM DUAL;
 -- ==>> Session이(가) 변경되었습니다.
 
 SET SERVEROUTPUT ON;
+
+
 -----------------------------
 CREATE OR REPLACE PROCEDURE proc_lecturer_login
 ( P_ID IN VARCHAR2
