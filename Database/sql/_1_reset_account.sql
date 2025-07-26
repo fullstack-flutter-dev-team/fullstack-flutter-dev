@@ -121,9 +121,10 @@ GRANT CONNECT, RESOURCE TO miracle;
 GRANT CREATE SESSION TO miracle;
 --==>> Grant을(를) 성공했습니다.
 
--- ▣  생성된 오라클 사용자 계정()에 테이블 생성이 가능할 수 있도록 CREATE TABLE 권한 부여
+-- ▣  생성된 오라클 사용자 계정()에 테이블/뷰 생성이 가능할 수 있도록 CREATE TABLE/VIEW 권한 부여
 GRANT CREATE TABLE TO miracle;
---==>> Grant을(를) 성공했습니다.
+GRANT CREATE VIEW TO miracle;
+GRANT CREATE PROCEDURE TO miracle;
 
 -- ▣ 커밋
 COMMIT;
