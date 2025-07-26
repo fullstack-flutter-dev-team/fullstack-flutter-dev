@@ -4,8 +4,8 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -426.6667,
-    "scrollLeft": -493.3333,
+    "scrollTop": 0,
+    "scrollLeft": -600,
     "zoomLevel": 1,
     "show": 431,
     "database": 8,
@@ -336,7 +336,7 @@
       },
       "bwEfK5nW4C6J5G295iN3Y": {
         "id": "bwEfK5nW4C6J5G295iN3Y",
-        "name": "TBL_DROUP_OUT",
+        "name": "TBL_DROP_OUT",
         "comment": "중도탈락",
         "columnIds": [
           "k4_1FII6EEg43scw2VUmZ",
@@ -367,12 +367,12 @@
           "x": 1161.2766,
           "y": 119.4823,
           "zIndex": 308,
-          "widthName": 94,
+          "widthName": 86,
           "widthComment": 60,
           "color": "#C14FC7"
         },
         "meta": {
-          "updateAt": 1753277658207,
+          "updateAt": 1753570726248,
           "createAt": 1752947433181
         }
       },
@@ -459,7 +459,7 @@
       },
       "3AoEAVuIB-11Ha3YbsOrx": {
         "id": "3AoEAVuIB-11Ha3YbsOrx",
-        "name": "TBL_DROUP_OUT_STATUS",
+        "name": "TBL_DROP_OUT_STATUS",
         "comment": "중도탈락상태_정적_테이블",
         "columnIds": [
           "qSEVRFpuorLONhS5shgel",
@@ -474,12 +474,12 @@
           "x": 1446.1112,
           "y": 276.7109,
           "zIndex": 535,
-          "widthName": 138,
+          "widthName": 130,
           "widthComment": 144,
           "color": "#00E2FF"
         },
         "meta": {
-          "updateAt": 1753250124184,
+          "updateAt": 1753570732233,
           "createAt": 1753056948946
         }
       },
