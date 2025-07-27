@@ -5,7 +5,7 @@ import java.util.Random;
 public class GenSSN {
     
     public static String getSSN() {
-        int nGeneration = 1; // 1 : 장년(교수) , 2 : 중년(관리자), 3 : 청년(수강생)
+        int nGeneration = 3; // 1 : 장년(교수) , 2 : 중년(관리자), 3 : 청년(수강생)
         Random rand = new Random();
         Calendar cal = Calendar.getInstance();
         // cal.setTimeInMillis(rand.nextLong());
