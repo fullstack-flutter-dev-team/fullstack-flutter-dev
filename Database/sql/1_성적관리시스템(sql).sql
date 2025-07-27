@@ -598,6 +598,7 @@ CREATE SEQUENCE MIRACLE.SEQ_DO
 -- ▣ 커밋
 COMMIT;
 
+------------------------------------------------------------------------------------------
 -----------------------[MIRACLE 계정으로 실행]--------------------------------------------
 --▣ 접속된 사용자 확인
 SELECT USER
@@ -1689,6 +1690,39 @@ VALUES (MIRACLE.SEQ_OCU.NEXTVAL, TO_DATE('2025-05-23', 'YYYY-MM-DD'), TO_DATE('2
 INSERT INTO MIRACLE.TBL_OFFERED_CURRICULUM (OCU_ID, OCU_SDATE, OCU_EDATE, OCU_SESSION, OCU_STUD_MAX, CURRIC_CODE, CR_CODE) 
 VALUES (MIRACLE.SEQ_OCU.NEXTVAL, TO_DATE('2025-08-24', 'YYYY-MM-DD'), TO_DATE('2026-03-09', 'YYYY-MM-DD'), 1, 20, 80000002, 85000014);
 
+-- ▣ 개설과정 조회
+SELECT *
+FROM 
+(
+  SELECT *
+  FROM 
+  (
+    SELECT *
+    FROM 
+    (
+      SELECT *
+      FROM 
+      (
+          SELECT *
+          FROM
+          (
+            SELECT *
+            FROM TBL_OFFERED_COURSE OC JOIN TBL_OFFERED_CURRICULUM OCU
+            USING(OCU_ID)
+          ) T
+          -- WHERE T.CURRIC_CODE = 80000002
+      ) T2 JOIN TBL_SUBJECT S
+      USING(SUBJ_CODE)
+    ) T3 JOIN TBL_TEXTBOOK TB
+    USING(TB_CODE)
+  ) T4 JOIN TBL_LECTURER L
+  USING(LECTURER_ID)
+) T5 JOIN TBL_CURRICULUM CURRIC
+USING(CURRIC_CODE)
+-- WHERE T5.OCU_ID = 30000003
+WHERE LECTURER_ID = 10000003   
+ORDER BY T5.SUBJ_CODE;
+
 ----------------------------------------------------------
 --- [10] ---- [TBL_OFFERED_COURSE][개설과목]
 -- ▣ 데이터 입력
@@ -1967,6 +2001,27 @@ INSERT INTO MIRACLE.TBL_SCORE (SCORE_ID, SCORE_WT, SCORE_PT, SCORE_ATTEND, RC_ID
 -- WHERE OCU_ID = 30000003
 -- --   AND STUDENT_ID =  20000017 
 -- ORDER BY STUDENT_ID;
+
+--- 수강한 과목 성적 리스트
+SELECT *
+FROM 
+(
+  SELECT *
+  FROM 
+  (
+    SELECT *
+    FROM 
+    (
+      SELECT *
+      FROM TBL_SCORE SC JOIN TBL_OFFERED_COURSE OC
+      USING(OCO_ID)
+    ) T1 JOIN TBL_SUBJECT SUBJ
+    USING(SUBJ_CODE)
+  ) T2 JOIN TBL_REG_COURSE RC
+  USING(RC_ID)
+) T3 JOIN TBL_STUDENT STUD
+USING(STUDENT_ID)
+WHERE STUDENT_ID = 20000018;
 ---------------------------------------------------------
 --- [13] ---- [TBL_DROP_OUT][중도탈락]
 -- ▣ 데이터 입력
@@ -1981,6 +2036,26 @@ INSERT INTO MIRACLE.TBL_DROP_OUT(DO_ID, RC_ID, DOS_CODE, DO_DATE) VALUES (MIRACL
 --[OCU_ID = 30000003][2회차]
 INSERT INTO MIRACLE.TBL_DROP_OUT(DO_ID, RC_ID, DOS_CODE, DO_DATE) VALUES (MIRACLE.SEQ_DO.NEXTVAL, 50000021, 84000005, TO_DATE('2025-06-29', 'YYYY-MM-DD'));
 
+-----[수강리스트-중도탈락 정보확인]
+SELECT *
+FROM 
+(
+  SELECT *
+  FROM
+  (
+    SELECT *
+    FROM 
+    (
+      SELECT *
+      FROM TBL_REG_COURSE RC JOIN  TBL_STUDENT STU
+      USING(STUDENT_ID)
+    ) T JOIN TBL_OFFERED_CURRICULUM OCU
+    USING(OCU_ID)
+  ) T2 left JOIN TBL_DROP_OUT
+  USING(RC_ID) 
+) T3 LEFT JOIN TBL_DROP_OUT_STATUS
+USING(DOS_CODE);
+-- WHERE OCU_ID = 30000003;
 ---------------------------------------------------------
 -- 커밋
 COMMIT;
