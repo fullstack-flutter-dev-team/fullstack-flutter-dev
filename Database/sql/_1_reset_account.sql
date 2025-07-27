@@ -43,6 +43,7 @@ C:\TESTORADATA\TBS_EUDA01.DBF                   5    TBS_EDUA      4194304      
 */
 
 -- 계정삭제
+-- ALTER SESSION SET DDL_LOCK_TIMEOUT = 30; -- Waits for 30 seconds
 DROP USER  MIRACLE CASCADE ;
 
 -- ▣ 오라클 사용자 계정 생성

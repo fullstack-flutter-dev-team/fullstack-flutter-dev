@@ -42,12 +42,17 @@ BEGIN
 END;
 
 ----------------------------------------------
+SELECT *
+FROM TBL_ADMIN
+WHERE ADMIN_ID = 3;
+----------------------------------------------
 UPDATE TBL_ADMIN
 SET LOGIN_ID = 'QUANTUM', LOGIN_PW = 'WORld'
 WHERE ADMIN_ID = 3;
---------------------------------------
+----------------------------------------------
 -- 커밋
 COMMIT;
+
 
 --------------------------------------
 -- 실행
@@ -70,16 +75,6 @@ PRINT r_data;
 PRINT r_msg;
 ----------------------------------------------
 
-SELECT *
-FROM TBL_ADMIN
-WHERE ADMIN_ID = 3;
-----------------------------------------------
-UPDATE TBL_ADMIN
-SET LOGIN_ID = 'QUANTUM', LOGIN_PW = 'WORld'
-WHERE ADMIN_ID = 3;
-----------------------------------------------
--- 커밋
-COMMIT;
 
 
 -----------------[select lecturer]---------------------------
