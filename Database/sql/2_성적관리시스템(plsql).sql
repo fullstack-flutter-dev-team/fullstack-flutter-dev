@@ -437,7 +437,215 @@ BEGIN
 
 END;
 
+----------------------[과정명 리스트 조회]-------------------------------------------
+CREATE OR REPLACE PROCEDURE PROC_GET_CURRICULUM_CODELIST (
+    C_CURRICULUM_CODELIST   OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN C_CURRICULUM_CODELIST FOR 
+    SELECT * FROM MIRACLE.TBL_CURRICULUM ORDER BY CURRIC_NAME ASC;
+END;
 
+------------------[과정명 코드 추가]----------
+CREATE OR REPLACE PROCEDURE PROC_ADD_CURRICULUM_CODE
+( 
+  P_CURRIC_NAME IN MIRACLE.TBL_CURRICULUM.CURRIC_NAME%TYPE
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM MIRACLE.TBL_CURRICULUM WHERE CURRIC_NAME = P_CURRIC_NAME;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 등록된 과정코드입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '과정코드를 등록 완료!';
+        INSERT INTO MIRACLE.TBL_CURRICULUM (CURRIC_CODE, CURRIC_NAME) 
+        VALUES (SEQ_CURRICULUM.NEXTVAL, P_CURRIC_NAME);
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '과정코드 등록에 실패 했습니다.';
+END;
+
+----------------------[강의실 리스트 조회]-------------------------------------------
+CREATE OR REPLACE PROCEDURE PROC_GET_CLASSROOM_CODELIST (
+    C_CLASSROOM_CODELIST   OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN C_CLASSROOM_CODELIST FOR 
+    SELECT * FROM MIRACLE.TBL_CLASSROOM ORDER BY CR_INFO ASC;
+END;
+
+-----------------------[강의실 코드 추가-----
+CREATE OR REPLACE PROCEDURE PROC_ADD_CLASSROOM_CODE
+( 
+  P_CLASSROOM_INFO IN MIRACLE.TBL_CLASSROOM.CR_INFO%TYPE
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM MIRACLE.TBL_CLASSROOM WHERE CR_INFO = P_CLASSROOM_INFO;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 등록된 강의실 코드입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '강의실 코드 등록 완료!';
+        INSERT INTO MIRACLE.TBL_CLASSROOM (CR_CODE, CR_INFO) 
+        VALUES (SEQ_CURRICULUM.NEXTVAL, P_CLASSROOM_INFO);
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '강의실 코드 등록에 실패!!';
+END;
+
+
+----------------------[과정명 리스트 조회]-------------------------------------------
+CREATE OR REPLACE PROCEDURE PROC_GET_CURRICULUM_CODELIST (
+    C_CURRICULUM_CODELIST   OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN C_CURRICULUM_CODELIST FOR 
+    SELECT * FROM MIRACLE.TBL_CURRICULUM ORDER BY CURRIC_NAME ASC;
+END;
+
+------------------[과정명 코드 추가]----------
+CREATE OR REPLACE PROCEDURE PROC_ADD_CURRICULUM_CODE
+( 
+  P_CURRIC_NAME IN MIRACLE.TBL_CURRICULUM.CURRIC_NAME%TYPE
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM MIRACLE.TBL_CURRICULUM WHERE CURRIC_NAME = P_CURRIC_NAME;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 등록된 과정코드입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '과정코드를 등록 완료!';
+        INSERT INTO MIRACLE.TBL_CURRICULUM (CURRIC_CODE, CURRIC_NAME) 
+        VALUES (SEQ_CURRICULUM.NEXTVAL, P_CURRIC_NAME);
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '과정코드 등록에 실패 했습니다.';
+END;
+
+----------------------[강의실 리스트 조회]-------------------------------------------
+CREATE OR REPLACE PROCEDURE PROC_GET_CLASSROOM_CODELIST (
+    C_CLASSROOM_CODELIST   OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN C_CLASSROOM_CODELIST FOR 
+    SELECT * FROM MIRACLE.TBL_CLASSROOM ORDER BY CR_INFO ASC;
+END;
+
+-----------------------[강의실 코드 추가-----
+CREATE OR REPLACE PROCEDURE PROC_ADD_CLASSROOM_CODE
+( 
+  P_CLASSROOM_INFO IN MIRACLE.TBL_CLASSROOM.CR_INFO%TYPE
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM MIRACLE.TBL_CLASSROOM WHERE CR_INFO = P_CLASSROOM_INFO;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 등록된 강의실 코드입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '강의실 코드 등록 완료!';
+        INSERT INTO MIRACLE.TBL_CLASSROOM (CR_CODE, CR_INFO) 
+        VALUES (SEQ_CLASSROOM.NEXTVAL, P_CLASSROOM_INFO);
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '강의실 코드 등록에 실패!!';
+END;
+
+-----------------[개설과정 등록]-------------------------------------------------------------
+--- [9] ---- [TBL_OFFERED_CURRICULUM][개설과정]
+CREATE OR REPLACE PROCEDURE PROC_ADD_OCU
+( 
+  P_OCU_SDATE IN VARCHAR2
+, P_OCU_EDATE IN VARCHAR2
+, P_OCU_SESSION IN MIRACLE.TBL_OFFERED_CURRICULUM.OCU_SESSION%TYPE
+, P_OCU_STUD_MAX IN MIRACLE.TBL_OFFERED_CURRICULUM.OCU_STUD_MAX%TYPE
+, P_CURRIC_CODE IN MIRACLE.TBL_OFFERED_CURRICULUM.CURRIC_CODE%TYPE
+, P_CR_CODE IN MIRACLE.TBL_OFFERED_CURRICULUM.CR_CODE%TYPE
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+    N_OCU_SDATE NUMBER(10):= 0;
+    N_OCU_EDATE NUMBER(10):= 0;
+BEGIN
+
+    N_OCU_SDATE :=  LENGTH(TRIM(P_OCU_SDATE));
+    N_OCU_EDATE :=  LENGTH(TRIM(P_OCU_EDATE));
+
+    SELECT COUNT(*) INTO STATUS 
+    FROM MIRACLE.TBL_OFFERED_CURRICULUM 
+    WHERE OCU_SESSION = P_OCU_SESSION AND CURRIC_CODE = P_CURRIC_CODE;
+
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 등록된 과정입니다.';
+    ELSIF N_OCU_SDATE != 10 THEN
+        R_DATA := -2;
+        R_MSG  := '과정 시작일 오류!';
+    ELSIF N_OCU_EDATE != 10 THEN
+        R_DATA := -3;
+        R_MSG  := '과정 종료일 오류!';
+    ELSE 
+        INSERT INTO MIRACLE.TBL_OFFERED_CURRICULUM (OCU_ID, OCU_SDATE, OCU_EDATE, OCU_SESSION, OCU_STUD_MAX, CURRIC_CODE, CR_CODE) 
+        VALUES (MIRACLE.SEQ_OCU.NEXTVAL
+            , TO_DATE(P_OCU_SDATE, 'YYYY-MM-DD')
+            , TO_DATE(P_OCU_EDATE, 'YYYY-MM-DD')
+            , P_OCU_SESSION
+            , P_OCU_STUD_MAX
+            , P_CURRIC_CODE
+            , P_CR_CODE);
+        
+        COMMIT;
+        R_DATA := 0;
+        R_MSG  := '과정 등록 완료!!';
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN
+                R_DATA := -1;
+                R_MSG  := '과정 등록에 실패했습니다.';
+END;
 ---------------------------------------------------------------------------------
 -- 커밋
 COMMIT;
