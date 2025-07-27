@@ -35,7 +35,7 @@ BEGIN
             R_DATA := NULL;
             R_MSG :=  TO_CHAR(STATUS);
         ELSE
-            R_DATA := LPAD(STATUS, 8, '0');
+            R_DATA := TO_CHAR(STATUS);
             R_MSG := '0';
         END IF;
     END IF;    
@@ -44,11 +44,11 @@ END;
 ----------------------------------------------
 SELECT *
 FROM TBL_ADMIN
-WHERE ADMIN_ID = 3;
+WHERE ADMIN_ID = 90000002;
 ----------------------------------------------
 UPDATE TBL_ADMIN
 SET LOGIN_ID = 'QUANTUM', LOGIN_PW = 'WORld'
-WHERE ADMIN_ID = 3;
+WHERE ADMIN_ID = 90000002;
 ----------------------------------------------
 -- 커밋
 COMMIT;
@@ -77,7 +77,7 @@ PRINT r_msg;
 
 
 
------------------[select lecturer]---------------------------
+-----------------[SELECT ADMIN]---------------------------
 CREATE OR REPLACE PROCEDURE proc_admin_select (
     -- P_USER_CD           VARCHAR2,
     C_ADMIN   OUT SYS_REFCURSOR
@@ -97,7 +97,7 @@ VAR rc REFCURSOR;
 EXEC proc_admin_select(:rc);
 PRINT rc;
 
------------------[select lecturer]---------------------------
+-----------------[SELECT LECTURER]---------------------------
 CREATE OR REPLACE PROCEDURE proc_lecturer_select (
     -- P_USER_CD           VARCHAR2,
     C_LECTURER   OUT SYS_REFCURSOR
@@ -141,12 +141,162 @@ VAR rc REFCURSOR;
 EXEC proc_student_select(:rc);
 PRINT rc;
 
+
 ------------------------------------------------------------------------------
 -- 커밋
 COMMIT;
 ------------------------------------------------------------------------------
 
 
+-----------------[관리자 로그인ID 등록 : 로그인ID 중복체크]-------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_admin_reg_login_id_chk
+( 
+  P_LOGIN_ID_NEW IN VARCHAR2
+-- , P_PW IN VARCHAR2
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM TBL_ADMIN WHERE LOGIN_ID = P_LOGIN_ID_NEW;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 사용중인 ID 입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '사용 가능한 ID 입니다.';
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '이미 사용중인 ID 입니다.';
+END;
+-------------------------------------------------------------
+-- 실행
+variable r_data varchar2(300);
+variable r_msg varchar2(300);
+-- exec proc_admin_reg_login_id_chk('BlueSee', :r_data, :r_msg);
+exec proc_admin_reg_login_id_chk('QUANTUM', :r_data, :r_msg);
+PRINT r_data;
+PRINT r_msg;
+
+SELECT *
+FROM TBL_ADMIN
+WHERE ADMIN_ID = 90000007 ;
+
+------------------------------------------------------------------------------
+-- 커밋
+COMMIT;
+------------------------------------------------------------------------------
+-----------------[교수자 로그인ID 등록 : 로그인ID 중복체크]-------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_lecturer_reg_login_id_chk
+( 
+  P_LOGIN_ID_NEW IN VARCHAR2
+-- , P_PW IN VARCHAR2
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM TBL_LECTURER WHERE LOGIN_ID = P_LOGIN_ID_NEW;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 사용중인 ID 입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '사용 가능한 ID 입니다.';
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '이미 사용중인 ID 입니다.';
+END;
+-------------------------------------------------------------
+-- 실행
+variable r_data varchar2(300);
+variable r_msg varchar2(300);
+exec proc_lecturer_reg_login_id_chk('BlueSee', :r_data, :r_msg);
+-- exec proc_lecturer_reg_login_id_chk('BuleSKY', :r_data, :r_msg);
+PRINT r_data;
+PRINT r_msg;
+
+
+
+SELECT *
+FROM TBL_LECTURER
+WHERE LOGIN_ID IS NOT NULL;
+WHERE LECTURER_ID = 90000007 ;
+
+------------------------------------------------------------------------------
+-- 커밋
+COMMIT;
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+-----------------[교수자 로그인ID 등록 : 로그인ID 중복체크]-------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE proc_student_reg_login_id_chk
+( 
+  P_LOGIN_ID_NEW IN VARCHAR2
+-- , P_PW IN VARCHAR2
+, R_DATA OUT VARCHAR2
+, R_MSG  OUT VARCHAR2
+)
+IS
+    STATUS NUMBER(8):= -1;
+BEGIN
+   
+    SELECT count(*) INTO STATUS FROM TBL_STUDENT WHERE LOGIN_ID = P_LOGIN_ID_NEW;
+    
+    IF STATUS > 0 THEN
+        R_DATA := -1;
+        R_MSG  := '이미 사용중인 ID 입니다.';
+    ELSE 
+        R_DATA := 0;
+        R_MSG  := '사용 가능한 ID 입니다.';
+    END IF;
+
+    EXCEPTION
+        WHEN OTHERS 
+            THEN R_MSG  := '이미 사용중인 ID 입니다.';
+END;
+-------------------------------------------------------------
+-- 실행
+variable r_data varchar2(300);
+variable r_msg varchar2(300);
+exec proc_student_reg_login_id_chk('BlueSee', :r_data, :r_msg);
+-- exec proc_student_reg_login_id_chk('BuleSKY', :r_data, :r_msg);
+-- exec proc_student_reg_login_id_chk('Quantum', :r_data, :r_msg);
+PRINT r_data;
+PRINT r_msg;
+----------------
+UPDATE MIRACLE.TBL_STUDENT
+SET LOGIN_ID = 'Quantum', LOGIN_PW = '@world76'
+WHERE STUDENT_ID = 20000090 ;
+
+
+SELECT *
+FROM TBL_STUDENT
+WHERE LOGIN_ID IS NOT NULL;
+WHERE LECTURER_ID = 90000007 ;
+
+------------------------------------------------------------------------------
+-- 커밋
+COMMIT;
+
+------------------------------------------------------------------------------
+
+
+
+SELECT *
+FROM TBL_LECTURER
+WHERE LOGIN_ID IS NOT NULL;
+WHERE LECTURER_ID = 90000007 ;
 
 CREATE OR REPLACE PROCEDURE PRC_출고_INSERT
 ( V_상품코드   IN TBL_상품.상품코드%TYPE

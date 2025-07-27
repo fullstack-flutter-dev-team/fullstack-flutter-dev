@@ -105,13 +105,13 @@ WHERE OCU_ID = 3000003;
 
 -----[수강리스트-중도탈락 정보확인]
 
-SELECT NAME
+SELECT *
 FROM 
 (
   SELECT *
   FROM
   (
-    SELECT STU*
+    SELECT *
     FROM 
     (
       SELECT *
