@@ -1,5 +1,52 @@
 SELECT USER
 FROM DUAL;
+/* 
+USER
+------------------------------
+MIRACLE
+*/
+
+-----------------------------[주민번호 유효성 검사]----------------------------------------------------------
+CREATE OR REPLACE FUNCTION FUNC_IS_SSN_VALID
+( 
+    IN_JUMIN_NO IN VARCHAR2
+) RETURN INTEGER
+  IS       
+    SSN VARCHAR2(13);  
+    SSN_CHECK_BIT VARCHAR2(12) := '234567892345'; --검증값   
+    TOTAL_SUM NUMBER := 0;
+    VALID_CHECK_RESULT NUMBER := 0;
+    OUT_RETURN INTEGER := 0;  
+  BEGIN
+    SSN := REPLACE(TRIM(IN_JUMIN_NO), '-', '');
+    
+    FOR i IN 1..12
+    LOOP
+       TOTAL_SUM := TOTAL_SUM  
+                 + TO_NUMBER(SUBSTR(SSN, i, 1)) 
+                 * TO_NUMBER(SUBSTR(SSN_CHECK_BIT, i, 1));
+    END LOOP; 
+    
+    IF TO_NUMBER(SUBSTR(SSN, 7, 1)) IN (5, 6, 7, 8) THEN 
+        --외국인
+        VALID_CHECK_RESULT := MOD(13 - (MOD(TOTAL_SUM, 11)), 10);
+    ELSE 
+        --내국인
+        VALID_CHECK_RESULT := MOD(11 - (MOD(TOTAL_SUM, 11)), 10);
+    END IF; 
+    
+    IF TO_NUMBER(SUBSTR(SSN, 13, 1)) = VALID_CHECK_RESULT THEN        
+        OUT_RETURN := 0;
+    ELSE
+        OUT_RETURN := -1;
+    END IF;    
+ 
+    RETURN OUT_RETURN;
+    
+    EXCEPTION
+        WHEN OTHERS THEN RETURN -1;
+ 
+  END;
 
 -------------------------[관리자 등록]----------------------------------------------------
 --- [6] ---- [TBL_ADMIN][관리자]
@@ -25,7 +72,7 @@ BEGIN
     ELSIF (LENGTH(P_NAME) > 16) THEN
         R_DATA := -2;
         R_MSG  := '이름은 한글 최대 8자(영문 16자) 입니다.';
-    ELSIF FUNC_IS_JUMIN_VALID(P_SSN) = -1 THEN
+    ELSIF FUNC_IS_SSN_VALID(P_SSN) = -1 THEN
         R_DATA := -3;
         R_MSG  := '주민번호 유효성 검사에 실패했습니다.';
     ELSE 
@@ -46,7 +93,6 @@ END;
 -------------------------[수강생 등록]----------------------------------------------------
 --- [7] ---- [TBL_STUDENT][학생]
 -- ▣ 데이터 입력
--- INSERT INTO MIRACLE.TBL_STUDENT (STUDENT_ID, NAME, SSN) VALUES (MIRACLE.SEQ_STUDENT.NEXTVAL, '장율후', '930616-1347348');
 CREATE OR REPLACE PROCEDURE PROC_ADD_STUDENT
 ( 
   P_NAME IN MIRACLE.TBL_ADMIN.NAME%TYPE
@@ -66,7 +112,7 @@ BEGIN
     ELSIF (LENGTH(P_NAME) > 16) THEN
         R_DATA := -2;
         R_MSG  := '이름은 한글 최대 8자(영문 16자) 입니다.';
-    ELSIF FUNC_IS_JUMIN_VALID(P_SSN) = -1 THEN
+    ELSIF FUNC_IS_SSN_VALID(P_SSN) = -1 THEN
         R_DATA := -3;
         R_MSG  := '주민번호 유효성 검사에 실패했습니다.';
     ELSE 
@@ -88,8 +134,6 @@ END;
 -------------------------[교수자 등록]----------------------------------------------------
 --- [8] ---- [TBL_LECTURER][교수자]
 -- ▣ 데이터 입력
--- INSERT INTO MIRACLE.TBL_LECTURER (LECTURER_ID, NAME, SSN) VALUES (MIRACLE.SEQ_LECTURER.NEXTVAL, '서탁중', '960510-1385356');
-
 CREATE OR REPLACE PROCEDURE PROC_ADD_LECTURER
 ( 
   P_NAME IN MIRACLE.TBL_LECTURER.NAME%TYPE
@@ -109,7 +153,7 @@ BEGIN
     ELSIF (LENGTH(P_NAME) > 16) THEN
         R_DATA := -2;
         R_MSG  := '이름은 한글 최대 8자(영문 16자) 입니다.';
-    ELSIF FUNC_IS_JUMIN_VALID(P_SSN) = -1 THEN
+    ELSIF FUNC_IS_SSN_VALID(P_SSN) = -1 THEN
         R_DATA := -3;
         R_MSG  := '주민번호 유효성 검사에 실패했습니다.';
     ELSE 

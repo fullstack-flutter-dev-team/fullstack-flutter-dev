@@ -598,6 +598,7 @@ CREATE SEQUENCE MIRACLE.SEQ_DO
 -- ▣ 커밋
 COMMIT;
 
+-----------------------[테스트 데이터 입력]-------------------------------------------------------------------
 -----------------------[MIRACLE 계정으로 실행]--------------------------------------------
 --▣ 접속된 사용자 확인
 SELECT USER
@@ -1689,6 +1690,7 @@ VALUES (MIRACLE.SEQ_OCU.NEXTVAL, TO_DATE('2025-05-23', 'YYYY-MM-DD'), TO_DATE('2
 INSERT INTO MIRACLE.TBL_OFFERED_CURRICULUM (OCU_ID, OCU_SDATE, OCU_EDATE, OCU_SESSION, OCU_STUD_MAX, CURRIC_CODE, CR_CODE) 
 VALUES (MIRACLE.SEQ_OCU.NEXTVAL, TO_DATE('2025-08-24', 'YYYY-MM-DD'), TO_DATE('2026-03-09', 'YYYY-MM-DD'), 1, 20, 80000002, 85000014);
 
+
 ----------------------------------------------------------
 --- [10] ---- [TBL_OFFERED_COURSE][개설과목]
 -- ▣ 데이터 입력
@@ -1956,17 +1958,6 @@ INSERT INTO MIRACLE.TBL_SCORE (SCORE_ID, SCORE_WT, SCORE_PT, SCORE_ATTEND, RC_ID
 -- INSERT INTO MIRACLE.TBL_SCORE (SCORE_ID, SCORE_WT, SCORE_PT, SCORE_ATTEND, RC_ID, OCO_ID, REG_DATE) VALUES (MIRACLE.SEQ_SCORE.NEXTVAL, 90,  80,  70, 50000038, 40000003, TO_DATE('2025-07-25', 'YYYY-MM-DD'));
 -- INSERT INTO MIRACLE.TBL_SCORE (SCORE_ID, SCORE_WT, SCORE_PT, SCORE_ATTEND, RC_ID, OCO_ID) VALUES (MIRACLE.SEQ_SCORE.NEXTVAL, 80, 60, 100, 50000017, 40000002);
 
--- SELECT *
--- FROM 
--- (
---     SELECT *
---     FROM TBL_REG_COURSE RC JOIN TBL_OFFERED_CURRICULUM
---     USING(OCU_ID)
--- ) T1 LEFT JOIN TBL_OFFERED_COURSE OC
--- USING(OCU_ID)
--- WHERE OCU_ID = 30000003
--- --   AND STUDENT_ID =  20000017 
--- ORDER BY STUDENT_ID;
 ---------------------------------------------------------
 --- [13] ---- [TBL_DROP_OUT][중도탈락]
 -- ▣ 데이터 입력
@@ -1980,6 +1971,7 @@ INSERT INTO MIRACLE.TBL_DROP_OUT(DO_ID, RC_ID, DOS_CODE, DO_DATE) VALUES (MIRACL
 
 --[OCU_ID = 30000003][2회차]
 INSERT INTO MIRACLE.TBL_DROP_OUT(DO_ID, RC_ID, DOS_CODE, DO_DATE) VALUES (MIRACLE.SEQ_DO.NEXTVAL, 50000021, 84000005, TO_DATE('2025-06-29', 'YYYY-MM-DD'));
+----------------------------------------------------------
 
 ---------------------------------------------------------
 -- 커밋
