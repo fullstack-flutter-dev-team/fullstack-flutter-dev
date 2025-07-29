@@ -1,37 +1,37 @@
-/** =========================
- *   DBConn.java
+/**
  * 
- *  =========================
  */
-
 package com.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * @author sist
+ *
+ */
 public class DBConn
 {
+    public static final String JDBC_CLASS = "oracle.jdbc.driver.OracleDriver";
+    public static final String JDBC_URL = "jdbc:oracle:thin:@211.238.142.174:1521:xe";
+    
     public static Connection dbConn;
     
     public static Connection getConnection()
     {
         if (dbConn == null)
         {
-            try
-            {
-                String url = "jdbc:oracle:thin:@211.238.142.174:1521:xe";
+            try {
+                String url = JDBC_URL;
                 String user = "scott";
-                String password   = "tiger";
-                
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                
+                String password = "tiger";
+                Class.forName(DBConn.JDBC_CLASS);
                 dbConn = DriverManager.getConnection(url, user, password);
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println(e.toString());
             }
         }
-        
+
         return dbConn;
     }
 
@@ -40,7 +40,7 @@ public class DBConn
         if (dbConn == null)
         {
             try {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Class.forName(DBConn.JDBC_CLASS);
                 dbConn = DriverManager.getConnection(url, user, password);
             } catch (Exception e) {
                 System.out.println(e.toString());
@@ -57,15 +57,15 @@ public class DBConn
             try {
                 if (!dbConn.isClosed())
                 {
-                    dbConn.close();
+                    dbConn.close();;
                 }
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
+
         }
-
-        dbConn = null; 
-
+        
+        dbConn = null;
     }
 
 }

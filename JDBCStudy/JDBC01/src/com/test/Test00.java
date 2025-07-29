@@ -6,6 +6,7 @@
 package com.test;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import com.util.DBConn;
 
@@ -15,12 +16,19 @@ public class Test00
         Connection conn = DBConn.getConnection();
         //-- getConnection() 메서드를 통해 연결 수행
 
-        if (!conn.isClosed())
-        {
-            System.out.println("데이터베이스 연결 성공~!!!");
-        } else {
-            System.out.println("데이터베이스 연결 실패 ㅠㅠ");
-        }
+        try
+		{
+			if (!conn.isClosed())
+			{
+			    System.out.println("데이터베이스 연결 성공~!!!");
+			} else {
+			    System.out.println("데이터베이스 연결 실패 ㅠㅠ");
+			}
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         DBConn.close();
         //-- close() 메서드를 통해 연결 종료

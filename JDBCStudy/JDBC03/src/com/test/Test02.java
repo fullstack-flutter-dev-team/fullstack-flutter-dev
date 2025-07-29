@@ -34,7 +34,7 @@
          프로시저나 함수를 호출할 수 있도록 처리해주는 객체
 
     4. 생성된 작업 객체가 수행하는 작업
-       executeUpdate()  or executeQuery()
+       『executeUpdate()』  or 『executeQuery()』
  */
 
 /* 
@@ -71,13 +71,9 @@ import com.util.DBConn;
  */
 public class Test02
 {
-
-    /**
-     * @param args
-     */
-    public static void main(String[] args)
-    {
-        int nSid, nResult;
+   public void runTest01()
+   {
+      int nSid, nResult;
         String name;
         String tel;
         String sql;
@@ -92,41 +88,103 @@ public class Test02
         }
 
         try {
-           Statement stmt = conn.createStatement();
-           Scanner sc = new Scanner(System.in);
+            Statement stmt = conn.createStatement();
+            Scanner sc = new Scanner(System.in);
 
-           while (true) { 
-              System.out.print("번호를 입력하세요(-1  종료) : ");
-              iCommand = sc.nextInt(); 
-              if (iCommand == -1) {
+            while (true) { 
+               System.out.print("번호를 입력하세요(-1  종료) : ");
+               iCommand = sc.nextInt(); 
+               if (iCommand == -1) {
                   System.out.println(">> 데이터베이스 연결 닫힘~!!!");
                   System.out.println(">> 프로그램 종료됨~!!!");
-                  DBConn.close();
                   break;
-              }
+               }
 
-              System.out.print("이름을 입력하세요 : ");
-              name = sc.next();
-              System.out.print("전화번호를 입력하세요 : ");
-              tel = sc.next();
-              if (iCommand != -1) {
-                 sql = "INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(" + iCommand + ", \'" + name + "\', \'" + tel + "\')";
-                 nResult = stmt.executeUpdate(sql);
+               System.out.print("이름을 입력하세요 : ");
+               name = sc.next();
+               System.out.print("전화번호를 입력하세요 : ");
+               tel = sc.next();
+               if (iCommand != -1) {
+                  sql = "INSERT INTO TBL_MEMBER(SID, NAME, TEL) VALUES(" + iCommand + ", \'" + name + "\', \'" + tel + "\')";
+                  nResult = stmt.executeUpdate(sql);
                //   System.out.println(sql);
                   if (nResult > 0) {
                      System.out.println(">> 데이터베이스 연결 성공~!!!");
                      System.out.println(">> 회원 정보가 입력되었습니다~!!!");
                   }
-              }
-           };
+               }
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
             DBConn.close();
         }
+   }
 
+   public void runTest02()
+   {
+      // 강사님 풀이
+      Scanner sc = new Scanner(System.in);
+      Connection conn = DBConn.getConnection();
 
-        
+      do { 
+         System.out.print("번호를 입력하세요(-1 종료) : ");
+         int sid = sc.nextInt();
+
+         // 반복문을 깨뜨리는 조건 구성
+         if (sid == -1)
+         {
+            break;
+         }
+
+         System.out.print("이름을 입력하세요 : ");
+         String name = sc.next();
+         System.out.print("전화번호를 입력하세요 : ");
+         String tel = sc.next();
+
+         if (conn != null) {
+            System.out.println(">> 데이터베이스 연결 성공~!!!");
+
+            try {
+                // 작업 객체 생성
+                Statement stmt = conn.createStatement();
+
+                // 쿼리문 준비
+                // sql = "INSERT INTO TBL_MEMBER(SID, NAME , TEL) VALUES(1, '김한국', '010-1234-5678')";
+                String sql = String.format("INSERT INTO TBL_MEMBER(SID, NAME , TEL) VALUES(%d, '%s', '%s')", sid, name, tel);
+
+                // 데이터베이스로부터 질의 결과를 가져와야 하는 경우
+                //   -> executeQuery() 메서드 사용
+                // 특정 내용을 데이터베이스에 적용(insert, update, delete) 하는 경우
+                //   -> executeUpdate(sql) 메서드 사용
+                
+                int result = stmt.executeUpdate(sql);
+                if (result > 0)
+                {
+               System.out.println(">> 회원 정보가 입력되었습니다~!!!");
+                }
+            } catch (Exception e) {
+               System.out.println(e.toString());
+            }
+         }
+
+          
+      } while (true);
+
+      DBConn.close();
+      System.out.println(">> 데이터베이스 연결 닫힘~!!!");
+      System.out.println(">> 프로그램 종료됨~!!!\n");
+
+      sc.close();
+   }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+        Test02 obj = new Test02();
+      //   obj.runTest01();
+        obj.runTest02();
     }
-
 }
