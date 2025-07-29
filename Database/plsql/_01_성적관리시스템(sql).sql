@@ -12,8 +12,8 @@ SYS
 DROP USER  MIRACLE CASCADE ;
 
 CREATE USER miracle IDENTIFIED BY quantum
-DEFAULT TABLESPACE users		--default tablespace 지정
-temporary TABLESPACE temp;		--temporary tablespace 지정
+DEFAULT TABLESPACE users        --default tablespace 지정
+temporary TABLESPACE temp;      --temporary tablespace 지정
 
 -- ▣ CONNECT는 DB 접속 권한을, RESOURCE는 공간 사용 권한을 부여
 GRANT CONNECT, RESOURCE TO miracle;
@@ -106,13 +106,13 @@ COMMENT ON COLUMN MIRACLE.TBL_SUBJECT.SUBJ_NAME IS '과목명';
 
 -- ▣ 시퀀스 추가
 CREATE SEQUENCE MIRACLE.SEQ_SUBJECT
-       INCREMENT BY 1
-       START WITH 73000001
-       MINVALUE 73000001
-       MAXVALUE 74000000
-       NOCYCLE
-       NOCACHE
-       NOORDER;
+  INCREMENT BY 1
+  START WITH 73000001
+  MINVALUE 73000001
+  MAXVALUE 74000000
+  NOCYCLE
+  NOCACHE
+  NOORDER;
 
 -------------------------------------------
 --- [4] ---- [TBL_TEXTBOOK]
