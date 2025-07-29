@@ -33,7 +33,10 @@
 ### vscode oracle sql extension
 - [vscode oracle sql extension 검색](https://www.google.com/search?q=vscode+oracle+sql+extension&oq=VSCODE+ORACLE+E&gs_lcrp=EgZjaHJvbWUqCAgDEAAYCBgeMgcIABAAGIAEMgYIARBFGDkyBggCEAAYHjIICAMQABgIGB4yCAgEEAAYCBgeMggIBRAAGAgYHjIHCAYQABjvBTIKCAcQABiABBiiBDIKCAgQABiABBiiBDIICAkQABgIGB7SAQg3NDg3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
   - ✨ [[VSCode] Oracle SQL Developer Extension for VSCode 둘러보기](https://jong-bae.tistory.com/105)
-- []()
+  - ⭐⭐ [Error Activating SQL Developer for vscode](https://forums.oracle.com/ords/apexds/post/error-activating-sql-developer-for-vscode-0376)
+    ```
+    I've deleted the “%APPDATA%\DBTools\connections\LvdFCWVeLJahhliyd39lJg\” folder and created a new connection, and this works fine.
+    ```
 ### ORA SQL DEVELOPER 단축키
 - [ORA SQL DEVELOPER 단축키 검색](https://www.google.com/search?q=ORA+SQL+DEVELOPER+%EB%8B%A8%EC%B6%95%ED%82%A4&oq=ORA+SQL+DEVELOPER+%EB%8B%A8%EC%B6%95%ED%82%A4&gs_lcrp=EgZjaHJvbWUyCAgAEEUYFRg5MgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKAB0gEJMTQ2NTZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
   - [오라클SQL Developer 단축키 40가지](https://knowhowbox.co.kr/%EC%98%A4%EB%9D%BC%ED%81%B4sql-developer-%EB%8B%A8%EC%B6%95%ED%82%A4-40%EA%B0%80%EC%A7%80/)
