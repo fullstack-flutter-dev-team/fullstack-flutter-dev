@@ -1,6 +1,6 @@
 ### ▣▣▣ DAO DTO VO ▣▣▣
 
---▣ DAO(Data Access Object)
+- ▣ DAO(Data Access Object)
     데이터에 접근을 목적으로 하는 객체.
     리소스를 매우 크게 소모하는 커넥션 객체를 하나만 두고
     여러 사용자가 DAO 인터페이스
@@ -12,7 +12,7 @@
     - INSERT, UPDATE, DELETE, SELECT 등 데이터 액션 처리를 주 목적으로 한다.
     
 
---▣ DTO(Data Transfer Object)
+- ▣ DTO(Data Transfer Object)
     데이터가 포함된 객체를 특정 시스템에서 다른 시스템으로 전달하는 작업을 수행하는(처리하는) 객체.
     메서드 호출 횟수를 줄이기 위해 데이터을 담고 있는 객체이다. 
     즉, 데이터를 하나의 객체로 관리할 목적으로 만들어 둔 클래스의 객체를 의미한다.
@@ -22,7 +22,7 @@
     - 하나의 레코드는 빈즈 클래스 하나로 매핀된다.
     - 데이터베이스의 컬럼은 멤버 변수로 매핑된다.
 
---▣ VO(Value Object)
+- ▣ VO(Value Object)
     Value Object 는 관계형 데이터베이스의 레코드에 대응하는 자바 클래스.
     형태는 DB 레코드를 구성하는 필드들을 Value Object의 Attribute로 하고
     해당 변수에 접근할 수 있는 setter, getter 메소드의 조합으로 형성된 클래스.

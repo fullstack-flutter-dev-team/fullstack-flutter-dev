@@ -95,6 +95,11 @@ FROM TBL_MEMBER;
 --○ 커밋
 COMMIT;
 
+
+DELETE FROM TBL_MEMBER;
+DROP SEQUENCE MEMBER_SEQ;
+COMMIT;
+
 --○ 시퀀스 생성
 CREATE SEQUENCE MEMBER_SEQ
 NOCACHE;
@@ -123,7 +128,17 @@ FROM TBL_MEMBER;
 ------------
 --         1
 
-
-
 --○ 한 줄 구성 
 SELECT COUNT(*) AS COUNT FROM TBL_MEMBER;
+
+--○ 전체 리스트 조회 쿼리문 구성
+SELECT SID, NAME, TEL
+FROM TBL_MEMBER
+ORDER BY SID;
+
+--○ 한 줄 구성  
+SELECT SID, NAME, TEL FROM TBL_MEMBER ORDER BY SID;
+/*       SID NAME                 TEL                                               
+---------- -------------------- --------------------------------------------------
+         1 김한국               010-1234-5678   
+*/

@@ -1,0 +1,77 @@
+SELECT USER FROM DUAL;
+
+/* 
+
+USER
+------------------------------
+SCOTT
+*/
+
+--O 실습 테이블 생성
+-- 테이블명 : TBL_SCORE
+CREATE TABLE TBL_SCORE
+( SID NUMBER
+, NAME VARCHAR2(20)
+, KOR NUMBER(3)
+, ENG NUMBER(3)
+, MAT NUMBER(3)
+);
+-- ==>> Table TBL_SCORE이(가) 생성되었습니다.
+
+--O 제약조건 추가
+ALTER TABLE TBL_SCORE
+ADD CONSTRAINT SCORE_SID_PK PRIMARY KEY (SID);
+-- ==>> Table TBL_SCORE이(가) 생성되었습니다.
+
+ALTER TABLE TBL_SCORE
+ADD (
+     CONSTRAINT SCORE_KOR_CK CHECK(KOR BETWEEN 0 AND 100)
+    ,CONSTRAINT SCORE_ENG_CK CHECK(ENG BETWEEN 0 AND 100)
+    ,CONSTRAINT SCORE_MAT_CK CHECK(MAT BETWEEN 0 AND 100)
+);
+-- ==>> Table TBL_SCORE이(가) 생성되었습니다.
+
+--O 시퀀스 생성
+-- 시퀀스명 : SCORESEQ
+CREATE SEQUENCE SCORESEQ
+NOCACHE;
+-- ==>> Sequence SCORESEQ이(가) 생성되었습니다.
+
+--O 데이터 입력 쿼리문 구성
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT)
+VALUES(SCORESEQ.nextval, '도우너', 90, 80, 70);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+--O 한 줄 구성
+INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) VALUES(SCORESEQ.nextval, '도우너', 90, 80, 70);
+
+
+--O 확인
+SELECT *
+FROM TBL_SCORE;
+
+--O 전체 인원 수 조회
+SELECT COUNT(*) AS COUNT
+FROM TBL_SCORE;
+
+--O 한 줄 구성
+SELECT COUNT(*) AS COUNT FROM TBL_SCORE;
+
+DROP SEQUENCE SCORESEQ
+DELETE FROM TBL_SCORE;
+
+--O 커밋
+COMMIT;
+
+
+--O 전체 리스트 조회 쿼리문 구성
+-- 번호, 이름, 국어점수, 영어점수, 수학점수, 총점, 평균
+SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, round((KOR+ENG+MAT)/3, 1) AS AVG
+FROM TBL_SCORE
+ORDER BY SID ASC;
+
+select 1.37, round(1.37, 1), TRUNC(1.37, 1)
+from dual;
+
+--O 한 줄 구성
+SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, round((KOR+ENG+MAT)/3, 1) AS AVG FROM TBL_SCORE ORDER BY SID ASC;
