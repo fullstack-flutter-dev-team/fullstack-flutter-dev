@@ -10,7 +10,9 @@
 	"settings": {
 		"java.debug.settings.onBuildFailureProceed": true,
 		"java.project.sourcePaths": [
-			"fullstack-flutter-dev_github/JDBCStudy/JDBC07"
+			"fullstack-flutter-dev_github/JDBCStudy/JDBC08/src/com/test",
+			"fullstack-flutter-dev_github/JDBCStudy/JDBC07",
+			"fullstack-flutter-dev_github/JDBCStudy"
 		],
 		"java.compile.nullAnalysis.mode": "automatic"
 	},
