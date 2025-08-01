@@ -63,7 +63,7 @@ public class EmpDAO
         ArrayList<EmpViewDTO> result = new ArrayList<>();
         String sql;
         StringBuilder sb = new StringBuilder()
-                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
+                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, TO_CHAR(E.IBSADATE,'YYYY-MM-DD') AS IBSADATE")
                     .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
                     .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
                     .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")
@@ -280,7 +280,7 @@ public class EmpDAO
         ArrayList<EmpViewDTO> result = new ArrayList<>();
         String sql;
         StringBuilder sb = new StringBuilder()
-                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
+                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, TO_CHAR(E.IBSADATE, 'YYYY-MM-DD') AS IBSADATE")
                     .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
                     .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
                     .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")

@@ -1,0 +1,76 @@
+SELECT USER FROM DUAL;
+/* 
+USER
+------------------------------
+SCOTT
+*/
+
+
+DELETE
+FROM TBL_MEMBER;
+
+
+-- 커밋
+COMMIT;
+
+
+-- 기존 시퀀스 제거
+DROP SEQUENCE MEMBERSEQ;
+
+
+-- 시퀀스 생성
+CREATE SEQUENCE MEMBERSEQ
+NOCACHE;
+
+
+
+-- TBL_MEMBER 테이블에 데이터를 입력하기위한 프로시저 작성
+-- 프로시저명 : PRC_MEMBERINSERT
+
+CREATE OR REPLACE PROCEDURE PRC_MEMBERINSERT
+(
+  VNAME IN TBL_MEMBER.NAME%TYPE
+, VTEL IN TBL_MEMBER.TEL%TYPE
+)
+
+IS
+BEGIN
+    INSERT INTO TBL_MEMBER(SID, NAME, TEL)
+    VALUES(MEMBERSEQ.NEXTVAL, VNAME, VTEL);
+
+    COMMIT;
+END;
+
+
+EXEC PRC_MEMBERINSERT('홍길동', '010-1234-1234');
+
+
+-- 확인
+SELECT *
+FROM TBL_MEMBER;
+
+-----------------------------------
+
+
+-- TBL_MEMBER 테이블의 데이터 출력하기 위한 프로시저 작성
+-- 프로시저명 : PRC_MEMBERSELECT
+CREATE OR REPLACE PROCEDURE PRC_MEMBERSELECT
+(
+    P_RESULT OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN P_RESULT FOR
+        SELECT SID, NAME, TEL
+        FROM TBL_MEMBER
+        ORDER BY SID;
+        --CLOSE P_RESULT  -- (x)
+END;
+-- ==>> Procedure PRC_MEMBERSELECT이(가) 컴파일되었습니다.
+
+-- 커밋
+commit;
+
+variable rc refcursor;
+EXECUTE PRC_MEMBERSELECT(:rc);
+print rc;

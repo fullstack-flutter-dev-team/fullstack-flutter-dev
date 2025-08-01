@@ -4,6 +4,7 @@
  */
 package com.test;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,8 +27,8 @@ public class EmpProcess
         dao = new EmpDAO();
     }
 
-    // 지역/부서/직위 조회
-    public void setExtraInfo()
+    // 지역/부서/직위 조회 -> xxx/xxxx/xxx/ 형태의 문자열로 재가공
+    public void setExtraInfo() throws SQLException
     {
         try {
             // 데이터베이스 연결
@@ -56,19 +57,19 @@ public class EmpProcess
             // System.out.println(strJikwiList);
             // System.out.println(strBuseoList);
 
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
 
     // 1. 직원 입력
-    public void empInsert()
+    public void empInsert() throws SQLException
     {
         try {
             // 기본사항 조회 및 변수 설정
             setExtraInfo();
-            System.out.println(strBuseoList.contains("개발"));
 
             // 변수 선언
             int result = 0;
@@ -90,7 +91,7 @@ public class EmpProcess
             System.out.print("이름 : ");
             strName = sc.next();
             
-            System.out.print("주민등록번호 입력(YYYYMMDD-NNNNNNN) : ");
+            System.out.print("주민등록번호 입력(YYMMDD-NNNNNNN) : ");
             strSsn = sc.next();
 
             System.out.print("입사일(YYYY-MM-DD) : ");
@@ -158,45 +159,47 @@ public class EmpProcess
             if (result > 0) {
                 System.out.println(">> 직원 정보 입력 완료~!!!");
             }
-  
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
 
     // 지역ID 조회
-    public int getCityId(String cityLoc)
+    public int getCityId(String cityLoc) throws SQLException
     {
         int result = 0;
         try {
              // 데이터베이스 연결
             dao.connection();
             result = dao.getCityIdByLoc(cityLoc);
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
         return result;
     }
 
     // 부서ID 조회
-    public int getBuseoId(String buseoName)
+    public int getBuseoId(String buseoName) throws SQLException
     {
         int result = 0;
         try {
              // 데이터베이스 연결
             dao.connection();
             result = dao.getBuseoIdByName(buseoName);
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
         return result;
     }
 
     // 직위ID 조회
-    public int getJikwiId(String jikwiName)
+    public int getJikwiId(String jikwiName) throws SQLException
     {
         int result = 0;
         
@@ -204,15 +207,16 @@ public class EmpProcess
              // 데이터베이스 연결
             dao.connection();
             result = dao.getJikwiIdByName(jikwiName);
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
         return result;
     }
 
     // 2. 사원 전체 출력
-    public void empSelectAll()
+    public void empSelectAll() throws SQLException
     {
         try {
             // 정렬 기준열 선택
@@ -234,29 +238,30 @@ public class EmpProcess
     
             System.out.println();
             System.out.println("전체 직원수 : " + dao.empList(nSubMenu).size());
-            System.out.println("----------------------------------------------");
-            System.out.println("사원번호 사원명 주민번호  입사일  지역  전화번호  부서명 직위  수당 급여");
-            System.out.println("----------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------------------------");
+            System.out.println("사원번호  사원명       주민번호       입사일       지역      전화번호     부서명  직위    수당      급여");
+            System.out.println("------------------------------------------------------------------------------------------------------------");
             dao.empList(nSubMenu);
             for (EmpViewDTO dto : dao.empList(nSubMenu))
             {
-                System.out.printf("%3d %5s  %14s %16s %6s %14s %6s %6s %d  %d\n"
-                                , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
-                                , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
-                                , dto.getJikwiName(), dto.getSudang(), dto.getPay()
+                System.out.printf("%4d     %4s   %15s  %10s    %3s  %14s  %3s  %3s  %8d  %8d\n"
+                , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
+                , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
+                , dto.getJikwiName(), dto.getSudang(), dto.getPay()
                 );
                 
             }
-            System.out.println("----------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------------------------");
 
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
     
     // 3. 사원 검색 출력
-    public void empSearch()
+    public void empSearch() throws SQLException
     {
          try {
             // 검색할 이름 입력
@@ -292,32 +297,33 @@ public class EmpProcess
             {
                 // 직원조회 결과 
                 System.out.printf("\n검색 인원 : %d명\n", arrayList.size());
-                System.out.println("----------------------------------------------");
-                System.out.println("사원번호 사원명 주민번호  입사일  지역  전화번호  부서명 직위  수당 급여");
-                System.out.println("----------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
+                System.out.println("사원번호  사원명       주민번호       입사일       지역      전화번호     부서명  직위    수당      급여");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
                 for (EmpViewDTO dto : dao.empSearchList(nSubMenu, strValue))
                 {
-                    System.out.printf("%3d %5s  %14s %16s %6s %14s %6s %6s %d  %d\n"
-                                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
-                                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
-                                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
+                    System.out.printf("%4d     %4s   %15s  %10s    %3s  %14s  %3s  %3s  %8d  %8d\n"
+                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
+                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
+                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
                     );
                 }
-                System.out.println("----------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
             } else {
 
                 // 해당 이름을 가진 학생을 찾지 못했다.
                 System.out.println("\n>> 검색 결과가 존재하지 않습니다.");
             }
 
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
 
     // 4. 직원 정보 변경
-    public void empUpdate()
+    public void empUpdate() throws SQLException
     {
         try {
             // 기본사항 조회 및 변수 설정
@@ -344,24 +350,24 @@ public class EmpProcess
             if (!arrayList.isEmpty())
             {     
                 // 변경할 직원의 기존정보 조회
-                System.out.println("-------------------------------------------------------------------");
-                System.out.println("사원번호 사원명 주민번호  입사일  지역  전화번호  부서명 직위  수당 급여");
-                System.out.println("-------------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
+                System.out.println("사원번호  사원명       주민번호       입사일       지역      전화번호     부서명  직위    수당      급여");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
                 for (EmpViewDTO dto : dao.empSearchList(1, strEmpId))
                 {
-                    System.out.printf("%3d %5s  %14s %16s %6s %14s %6s %6s %d  %d\n"
-                                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
-                                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
-                                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
+                    System.out.printf("%4d     %4s   %15s  %10s    %3s  %14s  %3s  %3s  %8d  %8d\n"
+                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
+                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
+                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
                     );
                     
                 }
-                System.out.println("----------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
                 System.out.println("직원 정보 입력 ------------------");
                 System.out.print("이름 : ");
                 strName = sc.next();
                 
-                System.out.print("주민등록번호 입력(YYYYMMDD-NNNNNNN) : ");
+                System.out.print("주민등록번호 입력(YYMMDD-NNNNNNN) : ");
                 strSsn = sc.next();
 
                 System.out.print("입사일(YYYY-MM-DD) : ");
@@ -414,6 +420,7 @@ public class EmpProcess
                 System.out.print("수당 : ");
                 nSudang = sc.nextInt();
 
+                empDTO.setEmpId(Integer.parseInt(strEmpId));
                 empDTO.setEmpName(strName);
                 empDTO.setSsn(strSsn);
                 empDTO.setIbsaDate(strIbsaDate);
@@ -432,15 +439,15 @@ public class EmpProcess
             } else {
                 System.out.println("\n>> 수정 대상이 존재하지 않습니다~!!!");
             }
-
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
 
     // 5. 직원 삭제
-    public void empDelete()
+    public void empDelete() throws SQLException
     {
         try {
             // 삭제할 학번 입력
@@ -454,24 +461,24 @@ public class EmpProcess
             if (!arrayList.isEmpty())
             {
                 // 삭제 직원 조회
-                System.out.println("----------------------------------------------");
-                System.out.println("사원번호 사원명 주민번호  입사일  지역  전화번호  부서명 직위  수당 급여");
-                System.out.println("----------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
+                System.out.println("사원번호  사원명       주민번호       입사일       지역      전화번호     부서명  직위    수당      급여");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
                 for (EmpViewDTO dto : dao.empSearchList(1, String.valueOf(nEmpID)))
                 {
-                    System.out.printf("%3d %5s  %14s %16s %6s %14s %6s %6s %d  %d\n"
-                                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
-                                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
-                                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
+                    System.out.printf("%4d     %4s   %15s  %10s    %3s  %14s  %3s  %3s  %8d  %8d\n"
+                    , dto.getEmpId(), dto.getEmpName(), dto.getSsn(), dto.getIbsaDate()
+                    , dto.getCityLoc(), dto.getTel(), dto.getBuseoName()
+                    , dto.getJikwiName(), dto.getSudang(), dto.getPay()
                     );
                     
                 }
-                System.out.println("----------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------------------------");
 
                 System.out.printf("정말 삭제하시겠습니까(Y/N)? : ");
                 String response = sc.next();
 
-                if (response.equals("Y") || response.equals("y"))
+                if (response.equalsIgnoreCase("Y"))
                 {
                     int result = dao.removeEmp(nEmpID);
                     if (result > 0)
@@ -484,9 +491,10 @@ public class EmpProcess
                 System.out.println("\n>> 삭제 대상이 존재하지 않습니다~!!!");
             }
 
-            dao.close();
         } catch (Exception e) {
             System.out.println(e.toString());
+        } finally {
+            dao.close();
         }
     }
 
