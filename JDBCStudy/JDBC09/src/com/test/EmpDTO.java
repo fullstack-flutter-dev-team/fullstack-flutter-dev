@@ -163,4 +163,12 @@ public class EmpDTO
 	{
 		this.sudang = sudang;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "EmpDTO [empId=" + empId + ", empName=" + empName + ", ssn=" + ssn + ", ibsaDate=" + ibsaDate
+				+ ", cityId=" + cityId + ", tel=" + tel + ", buseoId=" + buseoId + ", jikwiId=" + jikwiId
+				+ ", basicpay=" + basicpay + ", sudang=" + sudang + "]";
+	}
 }

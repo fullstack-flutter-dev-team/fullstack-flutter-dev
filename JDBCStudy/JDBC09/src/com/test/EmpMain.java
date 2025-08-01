@@ -38,7 +38,7 @@ public class EmpMain
 			System.out.println("   - 직위 정렬");
 			System.out.println("4. 직원 수정");
 			System.out.println("5. 직원 삭제");
-			System.out.println("====================================================");
+			System.out.println("========================================");
 			System.out.print("선택(1~5, -1:종료) : ");
 
 			String menus = sc.next();
@@ -49,7 +49,7 @@ public class EmpMain
 				if (menu == -1)
 				{
 					System.out.println("\n>> 프로그램이 종료되었습니다~!!!");
-					return;
+					System.exit(0);
 				}
 
 				switch (menu)
@@ -65,6 +65,7 @@ public class EmpMain
 				System.out.println(e.toString());
 			}
 		} while (true);
-	}
+		
+	}//end of main
 
 }

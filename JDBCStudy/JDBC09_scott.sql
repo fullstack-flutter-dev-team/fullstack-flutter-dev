@@ -314,7 +314,7 @@ ORDER BY E.EMP_ID ASC;
 -- 뷰 이름: EMPVIEW
 CREATE OR REPLACE VIEW EMPVIEW
 AS
-SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE
+SELECT E.EMP_ID, E.EMP_NAME, E.SSN, TO_CHAR(E.IBSADATE, 'YYYY-MM-DD')
 , C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY
 , E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY
 FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J
@@ -333,26 +333,119 @@ FROM EMPVIEW;
 -- 커밋
 COMMIT;
 
---------------------------------------
+-----------------[추가한 SQL쿼리문]---------------------
 -- 지역 조회
 SELECT CITY_ID, CITY_LOC
-FROM TBL_CITY;
+FROM TBL_CITY
+ORDER BY CITY_ID;
 
+-- 지역ID 조회
+SELECT CITY_ID
+FROM TBL_CITY
+WHERE CITY_LOC LIKE '%인천%';
+/* 
+  CITY_ID
+----------
+         7
+*/
 
 --- 부서 조회
 SELECT BUSEO_ID, BUSEO_NAME
-FROM TBL_BUSEO;
+FROM TBL_BUSEO
+ORDER BY BUSEO_ID;
+
+--- 부서ID 조회
+SELECT BUSEO_ID
+FROM TBL_BUSEO
+WHERE BUSEO_NAME LIKE '%개발부%';
 
 
 -- 직위 조회
 SELECT JIKWI_ID, JIKWI_NAME
-FROM TBL_JIKWI;
+FROM TBL_JIKWI
+ORDER BY JIKWI_ID;
+
+-- 직위ID 조회
+SELECT JIKWI_ID
+FROM TBL_JIKWI
+WHERE JIKWI_NAME LIKE '%대리%';
+/* 
+ JIKWI_ID
+----------
+         8
+*/
 
 -- 직급에 따른 최소 기본급 조회
 SELECT MIN_BASICPAY
 FROM TBL_JIKWI
 WHERE JIKWI_NAME LIKE '%대리%';
 
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 
+-- 직원 추가
 INSERT INTO TBL_EMP (EMP_ID, EMP_NAME, SSN, IBSADATE, CITY_ID, TEL, BUSEO_ID, JIKWI_ID, BASICPAY, SUDANG) 
-	VALUES (EMPSEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+	VALUES (EMPSEQ.NEXTVAL
+	, '김한국'
+	, '801211-1347654'
+	, TO_DATE('2004-10-11', 'YYYY-MM-DD')
+	, 1
+	, '010-1234-5678'
+	, 1
+	, 3
+	, 1300000
+	, 500000);
+-- ==>> 1 행 이(가) 삽입되었습니다.
+
+-- 확인
+SELECT *
+FROM EMPVIEW
+WHERE EMP_ID = 62;
+/*
+  EMP_ID EMP_NAME      SSN            IBSADATE   CITY_LOC   TEL             BUSEO_NAME      JIKWI_NAME      MIN_BASICPAY   BASICPAY     SUDANG        PAY
+---------- ---------- -------------- ---------- ---------- --------------- --------------- --------------- ------------ ---------- ---------- ----------
+        62 김한국     801211-1347654 2004-10-11 강원       010-1234-5678   개발부          상무                 3500000      1300000     500000    1800000
+*/
+
+-- 직원 변경
+UPDATE TBL_EMP 
+SET EMP_NAME = '김영국'
+ , SSN = '771112-9876543'
+ , IBSADATE = TO_DATE('2004-10-02', 'YYYY-MM-DD')
+ , CITY_ID = 2
+ , TEL = '010-5678-1234'
+ , BUSEO_ID = 2
+ , JIKWI_ID = 2
+ , BASICPAY = 560000
+ , SUDANG = 10000
+WHERE EMP_ID = 62;
+-- ==>  행 이(가) 업데이트되었습니다.
+
+-- 확인
+SELECT *
+FROM EMPVIEW
+WHERE EMP_ID = 62;
+/* 
+EMP_ID      EMP_NAME     SSN            IBSADATE   CITY_LOC   TEL             BUSEO_NAME      JIKWI_NAME      MIN_BASICPAY   BASICPAY     SUDANG        PAY
+---------- ------------ -------------- ---------- ---------- --------------- --------------- --------------- ------------ ---------- ---------- ----------
+        62 김영국       771112-9876543 2004-10-02 경기       010-5678-1234   기획부          전무                 3800000      560000       10000     570000
+*/
+
+--  직원 삭제
+DELETE
+FROM EMPVIEW
+WHERE EMP_ID = 62;
+-- ==>> 1 행 이(가) 삭제되었습니다.
+
+-- 확인
+SELECT *
+FROM EMPVIEW
+WHERE EMP_ID = 62;
+-- ==>> 선택된 행 없음
+
+-- 확인
+SELECT *
+FROM EMPVIEW;
+
+--커밋
+COMMIT;
+-- ==>> 커밋 완료.

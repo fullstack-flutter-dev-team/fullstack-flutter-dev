@@ -22,8 +22,6 @@ public class EmpViewDTO
 	private int pay;
 	
 	//---- setter / getter -----
-	
-	
 	/**
 	 * @return the empId
 	 */

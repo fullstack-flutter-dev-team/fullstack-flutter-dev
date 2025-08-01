@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.util.DBConn;
@@ -34,17 +33,22 @@ public class EmpDAO
     public int addEmp(EmpDTO empDTO) throws SQLException
     {
         int result = 0;
-        String sql = new StringBuilder().append("").toString();
+        String sql = new StringBuilder()
+                    .append("INSERT INTO TBL_EMP (EMP_ID, EMP_NAME, SSN, IBSADATE")
+                    .append(", CITY_ID, TEL, BUSEO_ID, JIKWI_ID, BASICPAY, SUDANG)")
+                    .append(" VALUES(EMPSEQ.NEXTVAL")
+                    .append(", ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?, ?, ?)")
+                    .toString();
         PreparedStatement pstmt = conn.prepareStatement(sql);
-
-        pstmt.setString(1, ""); // 이름
-        pstmt.setString(1, ""); // 주민번호
-        pstmt.setString(1, ""); // 입사일
-        pstmt.setString(1, ""); // 지역
-        pstmt.setString(1, ""); // 전화번호
-        pstmt.setString(1, ""); // 부서
-        pstmt.setInt(1, 100); // 기본급
-        pstmt.setInt(1, 100); // 수당
+        pstmt.setString(1, empDTO.getEmpName());  // EMP_NAME
+        pstmt.setString(2, empDTO.getSsn());      // SSN
+        pstmt.setString(3, empDTO.getIbsaDate()); // IBSADATE
+        pstmt.setInt(4, empDTO.getCityId());      // CITY_ID
+        pstmt.setString(5, empDTO.getTel());      // TEL
+        pstmt.setInt(6, empDTO.getBuseoId());     // BUSEO_ID
+        pstmt.setInt(7, empDTO.getJikwiId());     // JIKWI_ID
+        pstmt.setInt(8, empDTO.getBasicpay());    // BASICPAY
+        pstmt.setInt(9, empDTO.getSudang());      // SUDANG
         result = pstmt.executeUpdate();
         
         pstmt.close();
@@ -107,7 +111,11 @@ public class EmpDAO
     public ArrayList<CityDTO> cityList() throws SQLException
     {
         ArrayList<CityDTO> result = new ArrayList<>();
-        String sql = "SELECT CITY_ID, CITY_LOC FROM TBL_CITY ORDER BY CITY_ID";
+        String sql  = new StringBuilder()
+                        .append("SELECT CITY_ID, CITY_LOC")
+                        .append(" FROM TBL_CITY")
+                        .append(" ORDER BY CITY_ID")
+                        .toString();
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         ResultSet rs = pstmt.executeQuery();
@@ -115,7 +123,7 @@ public class EmpDAO
          {
              CityDTO cityDto = new CityDTO();
              cityDto.setCityId(rs.getInt("CITY_ID"));
-             cityDto.setCityLoc(rs.getString("EMP_NAME"));
+             cityDto.setCityLoc(rs.getString("CITY_LOC"));
              result.add(cityDto);
          }
         
@@ -129,7 +137,11 @@ public class EmpDAO
     public ArrayList<BuseoDTO> buseoList() throws SQLException
     {
         ArrayList<BuseoDTO> result = new ArrayList<>();
-        String sql = "SELECT CITY_ID, CITY_LOC FROM TBL_CITY ORDER BY CITY_ID";
+        String sql  = new StringBuilder()
+                        .append("SELECT BUSEO_ID, BUSEO_NAME")
+                        .append(" FROM TBL_BUSEO")
+                        .append(" ORDER BY BUSEO_ID")
+                        .toString();
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         ResultSet rs = pstmt.executeQuery();
@@ -151,15 +163,19 @@ public class EmpDAO
     public ArrayList<JikwiDTO> jikwiList() throws SQLException
     {
         ArrayList<JikwiDTO> result = new ArrayList<>();
-        String sql = "SELECT JIKWI_ID, JIKWI_NAME FROM TBL_JIKWI";
+        String sql  = new StringBuilder()
+                        .append("SELECT JIKWI_ID, JIKWI_NAME")
+                        .append(" FROM TBL_JIKWI")
+                        .append(" ORDER BY JIKWI_ID")
+                        .toString();
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         ResultSet rs = pstmt.executeQuery();
          while (rs.next())
          {
              JikwiDTO jikwiDto = new JikwiDTO();
-             jikwiDto.setJikwiId(rs.getInt("CITY_ID"));
-             jikwiDto.setJikwiName(rs.getString("EMP_NAME"));
+             jikwiDto.setJikwiId(rs.getInt("JIKWI_ID"));
+             jikwiDto.setJikwiName(rs.getString("JIKWI_NAME"));
              result.add(jikwiDto);
          }
         
@@ -170,7 +186,7 @@ public class EmpDAO
     }
 
     // 직위에 따른 최소급여 확인
-    public int minBasicpayByJikwi(String strJikwiName) throws SQLException
+    public int getMinBasicpayByJikwi(String strJikwiName) throws SQLException
     {
         int result = 0;
         String sql  = new StringBuilder()
@@ -178,7 +194,7 @@ public class EmpDAO
                         .append(" FROM TBL_JIKWI")
                         .append(" WHERE JIKWI_NAME LIKE ?").toString();
         PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, "'%"+strJikwiName+"%'");
+        pstmt.setString(1, "%" + strJikwiName + "%");
 
         ResultSet rs = pstmt.executeQuery();
          while (rs.next())
@@ -192,10 +208,75 @@ public class EmpDAO
         return result;
     }
 
+    public int getCityIdByLoc(String strCityLoc) throws SQLException
+    {
+        int result = 0;
+        String sql  = new StringBuilder()
+                        .append("SELECT CITY_ID")
+                        .append(" FROM TBL_CITY")
+                        .append(" WHERE CITY_LOC LIKE ?").toString();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, "%" + strCityLoc + "%");
+
+        ResultSet rs = pstmt.executeQuery();
+         while (rs.next())
+         {
+            result = rs.getInt("CITY_ID");
+         }
+        
+        rs.close();
+        pstmt.close();
+
+        return result;
+    }
+
+    public int getBuseoIdByName(String strBuseoName) throws SQLException
+    {
+        int result = 0;
+        String sql  = new StringBuilder()
+                        .append("SELECT BUSEO_ID")
+                        .append(" FROM TBL_BUSEO")
+                        .append(" WHERE BUSEO_NAME LIKE ?").toString();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, "%" + strBuseoName + "%");
+
+        ResultSet rs = pstmt.executeQuery();
+         while (rs.next())
+         {
+            result = rs.getInt("BUSEO_ID");
+         }
+        
+        rs.close();
+        pstmt.close();
+
+        return result;
+    }
+
+    public int getJikwiIdByName(String strJikwiName) throws SQLException
+    {
+        int result = 0;
+        String sql  = new StringBuilder()
+                        .append("SELECT JIKWI_ID")
+                        .append(" FROM TBL_JIKWI")
+                        .append(" WHERE JIKWI_NAME LIKE ?").toString();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, "%" + strJikwiName + "%");
+
+        ResultSet rs = pstmt.executeQuery();
+         while (rs.next())
+         {
+            result = rs.getInt("JIKWI_ID");
+         }
+        
+        rs.close();
+        pstmt.close();
+
+        return result;
+    }
+
      // 직원 검색 리스트 출력
     public ArrayList<EmpViewDTO> empSearchList(int nSubMenu, String strValue) throws SQLException
     {
-        System.out.println("strValue :" + strValue);
         ArrayList<EmpViewDTO> result = new ArrayList<>();
         String sql;
         StringBuilder sb = new StringBuilder()
@@ -216,7 +297,7 @@ public class EmpDAO
         }
 
         sql = sb.toString();
-        System.out.println(sql);
+        // System.out.println(sql);
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         if (nSubMenu == 1) {
@@ -264,105 +345,38 @@ public class EmpDAO
     }
 
 
-
-    // 전체 리스트 확인
-    public ArrayList<EmpDTO01> lists() throws SQLException
-    {
-        ArrayList<EmpDTO01> result = new ArrayList<>();
-        Statement stmt = conn.createStatement();
-        String sql = "SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT,"
-                    + " round((KOR+ENG+MAT)/3, 1) AS AVG, RANK() OVER(ORDER BY (KOR+ENG+MAT) DESC) AS RANK"
-                    + " FROM TBL_SCORE ORDER BY SID ASC";
-
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next())
-        {
-            EmpDTO01 dto = new EmpDTO01();
-            dto.setSid(rs.getString("SID"));
-            dto.setName(rs.getString("NAME"));
-            dto.setKor(rs.getInt("KOR"));
-            dto.setEng(rs.getInt("ENG"));
-            dto.setMat(rs.getInt("MAT"));
-            dto.setTot(rs.getInt("TOT"));
-            dto.setAvg(rs.getDouble("AVG"));
-            dto.setRank(rs.getInt("RANK"));
-            result.add(dto);
-        }
-        
-        rs.close();
-        stmt.close();
-
-        return result;
-    }
-
-
-
-    // 전체 인원 수 확인
-    public int count() throws SQLException
+    // 직원 정보 변경
+    public int updateEmpInfo(EmpDTO dto) throws SQLException
     {
         int result = 0;
-        Statement stmt = conn.createStatement();
-        String sql = String.format("SELECT COUNT(*) AS COUNT FROM TBL_SCORE");
-        ResultSet rs = stmt.executeQuery(sql);
+        String sql = new StringBuilder()
+                    .append("UPDATE TBL_EMP ")
+                    .append(" SET EMP_NAME = ?")
+                    .append(" , SSN = ?")
+                    .append(" , IBSADATE = TO_DATE(?, 'YYYY-MM-DD')")
+                    .append(" , CITY_ID = ?")
+                    .append(" , TEL = ?")
+                    .append(" , BUSEO_ID = ?")
+                    .append(" , JIKWI_ID = ?")
+                    .append(" , BASICPAY = ?")
+                    .append(" , SUDANG = ?")
+                    .append(" WHERE EMP_ID = ?")
+                    .toString();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, dto.getEmpName());
+        pstmt.setString(2, dto.getSsn());
+        pstmt.setString(3, dto.getIbsaDate());
+        pstmt.setInt(4, dto.getCityId());
+        pstmt.setString(5, dto.getTel());
+        pstmt.setInt(6, dto.getBuseoId());
+        pstmt.setInt(7, dto.getJikwiId());
+        pstmt.setInt(8, dto.getBasicpay());
+        pstmt.setInt(9, dto.getSudang());
+        pstmt.setInt(10, dto.getEmpId());
 
-        while (rs.next())
-        {
-            result = rs.getInt("COUNT");
-        }
+        result = pstmt.executeUpdate();
+        pstmt.close();
 
-        rs.close();
-        stmt.close();
-
-        return result;
-    }
-
-    // 번호 검색 인원 수 확인
-    public int count(int sid) throws SQLException
-    {
-        int result = 0;
-        Statement stmt = conn.createStatement();
-        String sql = String.format("SELECT COUNT(*) AS COUNT FROM TBL_SCORE WHERE SID=%d", sid);
-        ResultSet rs = stmt.executeQuery(sql);
-
-        while (rs.next())
-        {
-            result = rs.getInt("COUNT");
-        }
-
-        rs.close();
-        stmt.close();
-
-        return result;
-    }
-
-    // 데이터 수정
-    // public modify(int sid) //-- x
-    public int modify(EmpDTO01 dto) throws SQLException
-    {
-        int result = 0;
-        Statement stmt = conn.createStatement();
-        String sql = String.format("UPDATE TBL_SCORE SET KOR = %d, ENG=%d, MAT=%d"
-                                + " WHERE SID=%s"
-                                // + " WHERE SID=%d"
-                                , dto.getKor(), dto.getEng(), dto.getMat()
-                                , dto.getSid());
-                                // , Integer.parseInt(dto.getSid()));
-        result = stmt.executeUpdate(sql);
-        stmt.close();
-
-        return result;
-    }
-
-    // 데이터 삭제
-    public int remove(int sid) throws SQLException
-    {
-        int result = 0;
-
-        Statement stmt = conn.createStatement();
-        String sql = String.format("DELETE FROM TBL_SCORE WHERE SID=%d", sid);
-        result = stmt.executeUpdate(sql);
-        stmt.close();
-        
         return result;
     }
 
