@@ -7,7 +7,7 @@ package com.test;
  * @author sist
  *
  */
-public class EmpDTO
+public class EmpDTO01
 {
     // 주요 속성 구성
     private String sid, name;  //-- 번호(학번), 이름

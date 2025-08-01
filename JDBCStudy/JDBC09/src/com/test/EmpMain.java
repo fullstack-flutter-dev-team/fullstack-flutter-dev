@@ -54,11 +54,11 @@ public class EmpMain
 
 				switch (menu)
 				{
-					case 1: process.sungjukInsert(); break;
-					case 2: process.sungjukSelectAll(); break;
-					case 3: process.sungjukSearchName(); break;
-					case 4: process.sungjukUpdate(); break;
-					case 5: process.sungjukDelete(); break;
+					case 1: process.empInsert(); break;
+					case 2: process.empSelectAll(); break;
+					case 3: process.empSearch(); break;
+					case 4: process.empUpdate(); break;
+					case 5: process.empDelete(); break;
 				}
 				
 			} catch (Exception e) {
