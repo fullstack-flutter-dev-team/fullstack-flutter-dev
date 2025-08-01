@@ -63,13 +63,13 @@ public class EmpDAO
         ArrayList<EmpViewDTO> result = new ArrayList<>();
         String sql;
         StringBuilder sb = new StringBuilder()
-        		    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
-        		    .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
-        		    .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
-        		    .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")
-        		    .append(" WHERE E.CITY_ID = C.CITY_ID")
-        		    .append("  AND E.BUSEO_ID =  B.BUSEO_ID")
-        		    .append("  AND E.JIKWI_ID = J.JIKWI_ID");
+                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
+                    .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
+                    .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
+                    .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")
+                    .append(" WHERE E.CITY_ID = C.CITY_ID")
+                    .append("  AND E.BUSEO_ID =  B.BUSEO_ID")
+                    .append("  AND E.JIKWI_ID = J.JIKWI_ID");
         switch (nSubMenu)
         {
             case 1: sb.append(" ORDER BY E.EMP_ID"); break;
@@ -280,13 +280,13 @@ public class EmpDAO
         ArrayList<EmpViewDTO> result = new ArrayList<>();
         String sql;
         StringBuilder sb = new StringBuilder()
-        		    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
-        		    .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
-        		    .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
-        		    .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")
-        		    .append(" WHERE E.CITY_ID = C.CITY_ID")
-        		    .append("  AND E.BUSEO_ID =  B.BUSEO_ID")
-        		    .append("  AND E.JIKWI_ID = J.JIKWI_ID");
+                    .append("SELECT E.EMP_ID, E.EMP_NAME, E.SSN, E.IBSADATE")
+                    .append(", C.CITY_LOC, E.TEL, B.BUSEO_NAME, J.JIKWI_NAME, J.MIN_BASICPAY")
+                    .append(", E.BASICPAY, E.SUDANG, (E.BASICPAY+E.SUDANG) AS PAY")
+                    .append(" FROM TBL_EMP E, TBL_CITY C, TBL_BUSEO B, TBL_JIKWI J")
+                    .append(" WHERE E.CITY_ID = C.CITY_ID")
+                    .append("  AND E.BUSEO_ID =  B.BUSEO_ID")
+                    .append("  AND E.JIKWI_ID = J.JIKWI_ID");
         switch (nSubMenu)
         {
             case 1: sb.append(" AND E.EMP_ID = ? ORDER BY E.EMP_ID"); break;
