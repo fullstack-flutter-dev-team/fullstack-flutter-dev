@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test006.html</title>
+    <style type="text/css">
+        * {
+            font-size: 20pt;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+            color: #334433;
+        }
+    </style>
+    <script type="text/javascript">
+        // 여기는 html 문서 영역이 아닌 JavaScript 문법이 적용되는 영역.
+        // 라인 단위 주석 
+        /*
+           블럭 단위 주석
+        */
+        function actionPerformed()
+        {
+            //alert("함수 호출 확인~!!!");
+            var vKor = document.getElementById("kor").value; // "90"
+            var vEng = document.getElementById("eng").value; // "80"
+            var vMat = document.getElementById("mat").value; // "70"
+
+            var vTot = 0; // 총점
+            var vAvg = 0; // 평균
+
+            vTot = vKor+vEng+vMat; // "90" + "80" + "70"
+            console.log("vTot : " + vTot);
+            
+            // parseInt()
+            // vTot = parseInt(vKor+vEng+vMat); // -- (x)
+            vTot = parseInt(vKor) + parseInt(vEng) + parseInt(vMat);
+            console.log("vTot : " + vTot);
+            
+            //vAvg = vTot/3;
+            vAvg = Math.round(vTot/3);
+            console.log("vAvg : " + vAvg);
+
+            document.getElementById("tot").value = vTot;
+            document.getElementById("avg").value = vAvg;
+
+        }
+    </script>
+</head>
+
+<body background="images/sky.jpg">
+
+    <div>
+        <h1>데이터 입력 관련 태그</h1>
+        <hr>
+    </div>
+    <div>
+        <!-- eheck~!!! -->
+        <form>
+            이름 <input type="text" id="name"><br>
+            국어 <input type="text" id="kor"><br>
+            영어 <input type="text" id="eng"><br>
+            수학 <input type="text" id="mat"><br>
+            <br>
+
+            <!-- 결과 버튼 클릭 이벤트가 발생했을 때(클릭 이벤트가 on 되었을 때) -->
+             <!-- -> actionPerformed() 자바스크립트 함수 호출 -->
+            <input type="button" value="결과" onclick="actionPerformed();">
+            <input type="reset" value="취소">
+            <br><br>
+
+            총점<input type="text" id="tot"> &nbsp; 평균<input type="text" id="avg">
+        </form>
+    </div>
+</body>
+
+</html>

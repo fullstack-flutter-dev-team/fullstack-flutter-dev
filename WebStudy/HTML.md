@@ -10,19 +10,21 @@ HTML 이라 Hyper Text Markup Language 의 약어로,
 (ex. <title>문서의 제목 </title>)
  - Hyper Text : 링크
 
-
 - HTML의 변천사 (축약)
   최초의 HTML은 팀 버너스 리 라는 CERN(유럽 원자핵 공동 연구소)의 물리학자가 만들었다.
-  이후 W3C(World Wide Web Consoritium)이 창립되어
+  이후 W3C(World Wide Web Consortium)이 창립되어
   팀 버너스 리의 주오 아래 HTML에 대한 표준을 관장하고 있다.
 
   - 1989년
-    
+    HTML 의 시작은 CERN의 팀 버너스 리가 인콰이어를 제안하며 시작되었다.
+    인콰이어는 CERN의 연구원들이 문서를 이용/공유하기 위한 체계였다.
 
   - 1991년
-
+    비공식적인 CERN의 문서를 보면 1991년 말 팀 버너스 리가 HTML 태그를 대중에 언급했다고 한다. 이 때 만들어진 태그 중 일부가 HTML5 버전에도 여전히 존재한다. 
 
   - 1992년
+    1992년 7월 HTML DTD* 1.0의 첫 번째 비공식 초안이 나왔으며
+    11월 HTML DTD 1.1 비공식 초안이 발표되었다.
 
   *. DTD(Document Type Declaration)
     DOCTYPE 이라고 불린다.
@@ -37,7 +39,6 @@ HTML 이라 Hyper Text Markup Language 의 약어로,
     데이터를 쉽게 주고받을 수 있게 하여 HTML의 한계를 극복할 목적으로 만들어졌다. -- 데이터 구조화 ()
 
  - (중략...)
-
 
  - 1999 ~ 2000년
    1999년 12월 HTML 4.01 발표.
@@ -118,3 +119,6 @@ HTML 이라 Hyper Text Markup Language 의 약어로,
     <Connector URIEncoding="utf-8" connectionTimeout="20000" maxParameterCount="1000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
 
 ```
+
+- 실행
+  - http://localhost:8090/WebApp01/Test001.html

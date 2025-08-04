@@ -14,7 +14,8 @@
 			"fullstack-flutter-dev_github/JDBCStudy/JDBC07",
 			"fullstack-flutter-dev_github/JDBCStudy"
 		],
-		"java.compile.nullAnalysis.mode": "automatic"
+		"java.compile.nullAnalysis.mode": "automatic",
+		"liveServer.settings.multiRootWorkspaceName": "_Workspace"
 	},
 	"extensions": {
 		"recommendations": [
