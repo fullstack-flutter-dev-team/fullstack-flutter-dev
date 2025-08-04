@@ -26,6 +26,14 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
 - [vs code 가이드 선 보이기 검색](https://www.google.com/search?q=vs+code+%EA%B0%80%EC%9D%B4%EB%93%9C+%EC%84%A0+%EB%B3%B4%EC%9D%B4%EA%B8%B0&newwindow=1&sca_esv=8ff83a0cf2859f3b&ei=Z1RjaImnDd2C2roPk8-8gAg&oq=VS+CODE++%EA%B0%80%EC%9D%B4%EB%93%9C+%EC%84%A0+&gs_lp=Egxnd3Mtd2l6LXNlcnAiF1ZTIENPREUgIOqwgOydtOuTnCDshKAgKgIIADIJECEYoAEYChgqMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKMgcQIRigARgKSP0wUK0EWLckcAF4AZABAZgBnAKgAbwXqgEGMi4wLjExuAEDyAEA-AEBmAILoAK5EcICChAAGLADGNYEGEfCAgoQABiABBhDGIoFwgIFEAAYgATCAgcQABiABBgNwgIIEAAYCBgNGB7CAgUQABjvBcICCBAAGIAEGKIEwgIGEAAYDRgemAMAiAYBkAYHkgcFMy4wLjigB6Y5sgcFMi4wLji4B7YRwgcFMS42LjTIBxs&sclient=gws-wiz-serp)
 - ⭐⭐ [[VS Code] 코드 길이 가이드선 표시하기](https://ldne.tistory.com/460)
 - []()
+### vscode java 
+- [vscode could not find or load main class 검색](https://www.google.com/search?q=vscode+could+not+find+or+load+main+class&newwindow=1&sca_esv=36222d67fa35b916&ei=0vyPaPHQGsOmvr0PlrnE-QM&ved=0ahUKEwjxgYic8e-OAxVDk68BHZYcMT8Q4dUDCBA&uact=5&oq=vscode+could+not+find+or+load+main+class&gs_lp=Egxnd3Mtd2l6LXNlcnAiKHZzY29kZSBjb3VsZCBub3QgZmluZCBvciBsb2FkIG1haW4gY2xhc3MyBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIFEAAY7wVI9B1Q_g5YjRxwAXgBkAEAmAGdAqAByAyqAQMyLTa4AQPIAQD4AQGYAgKgApYCwgIKEAAYsAMY1gQYR5gDAIgGAZAGCpIHBTEuMC4xoAf8OLIHAzItMbgHjwLCBwUwLjEuMcgHBw&sclient=gws-wiz-serp)
+  - [Could not find or load main class - VS Code](https://stackoverflow.com/questions/57857855/could-not-find-or-load-main-class-vs-code)
+  - []()
+  - []()
+  - []()
+- []()
+- []()
 
 ### vscode 마우스 휠 확대
 - [vscode 마우스 휠 확대 검색](https://www.google.com/search?q=vscode+%EB%A7%88%EC%9A%B0%EC%8A%A4+%ED%9C%A0+%ED%99%95%EB%8C%80&rlz=1C1GCEU_koKR1161KR1161&oq=vs+code+%EB%A7%88%EB%AC%B4%EC%8A%A4&gs_lcrp=EgZjaHJvbWUqCQgCEAAYDRiABDIGCAAQRRg5MgkIARAAGA0YgAQyCQgCEAAYDRiABDIJCAMQABgNGIAEMgkIBBAAGA0YgAQyCQgFEAAYDRiABDIICAYQABgNGB4yCAgHEAAYDRgeMggICBAAGA0YHjIICAkQABgNGB7SAQkxMTMzNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)

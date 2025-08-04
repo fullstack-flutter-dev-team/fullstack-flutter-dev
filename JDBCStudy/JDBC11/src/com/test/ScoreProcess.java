@@ -37,7 +37,7 @@ public class ScoreProcess
             Scanner sc = new Scanner(System.in);
 
             do { 
-                System.out.printf("%d번 학생 성적 입력() : ", ++count);
+                System.out.printf("%d번 학생 성적 입력(이름 국어 영어 수학(『.』종료)) : ", ++count);
                 String name = sc.next();
                 if (name.equals("."))
                 {
@@ -221,7 +221,8 @@ public class ScoreProcess
                 System.out.printf("정말 삭제하시겠습니까(Y/N)? : ");
                 String response = sc.next();
 
-                if (response.equals("Y") || response.equals("y"))
+                // if (response.equals("Y") || response.equals("y"))
+                if (response.equalsIgnoreCase("y"))
                 {
                     int result = dao.remove(sid);
                     if (result > 0)

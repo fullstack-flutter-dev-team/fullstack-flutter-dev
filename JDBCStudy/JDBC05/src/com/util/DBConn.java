@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class DBConn
 {
-    public static final String JDBC_CLASS = "oracle.jdbc.driver.OracleDriver";
+    public static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     public static final String JDBC_URL = "jdbc:oracle:thin:@211.238.142.174:1521:xe";
 
     public static Connection dbConn;
@@ -29,7 +29,7 @@ public class DBConn
             String url = DBConn.JDBC_URL;
             String user = "scott";
             String password = "tiger";
-            Class.forName(DBConn.JDBC_CLASS);
+            Class.forName(DBConn.JDBC_DRIVER);
             dbConn = DriverManager.getConnection(url, user, password);
         }
 
@@ -41,7 +41,7 @@ public class DBConn
     {
         if (dbConn == null)
         {
-            Class.forName(DBConn.JDBC_CLASS);
+            Class.forName(DBConn.JDBC_DRIVER);
             dbConn = DriverManager.getConnection(url, user, password);
         }
 
