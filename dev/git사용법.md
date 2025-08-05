@@ -1,9 +1,8 @@
 ## git 사용법
 - [git 설정 검색](https://www.google.com/search?q=git+%EC%84%A4%EC%A0%95&rlz=1C1GCEU_koKR1161KR1161&oq=git+%EC%84%A4%EC%A0%95&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIKCAEQABixAxiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ3OTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
-  - ✨ [깃(Git) & 깃허브(GitHub)](https://wikidocs.net/book/14452)
+  - ⭐ [깃(Git) & 깃허브(GitHub) 🔹wikidocs](https://wikidocs.net/book/14452)
     - [1.4. Git 설정 파일 (.gitconfig) 관리](https://wikidocs.net/277236)
   - [깃(git),  깃허브(github), 소스트리(sourcetree) 설치하기](https://m.blog.naver.com/libralim/223511700938)
-  - []()
   - []()
   - []()
   - []()

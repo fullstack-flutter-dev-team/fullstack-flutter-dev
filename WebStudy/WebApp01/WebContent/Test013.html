@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test013.html</title>
+</head>
+
+<body>
+
+    <div id="top">
+        <h1>테이블(표)열/행 병합 실습</h1>
+        <hr>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            <tr>
+                <td>마포구</td>
+                <td>은평구</td>
+            </tr>
+            <tr>
+                <td>합정동</td>
+                <td>서교동</td>
+                <td>수색동</td>
+                <!-- <td>신사동</td> -->
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            <tr>
+                <td>마포구</td>
+                <td>마포구</td>
+                <td>은평구</td>
+            </tr>
+            <tr>
+                <td>합정동</td>
+                <td>서교동</td>
+                <td>수색동</td>
+                <!-- <td>신사동</td> -->
+            </tr>
+        </table>
+    </div>
+    <br>
+    <table border="1">
+        <tr>
+            <td>마포구</td>
+            <td>마포구</td>
+            <td>은평구</td>
+        </tr>
+        <tr>
+            <td>합정동</td>
+            <td>서교동</td>
+            <td>수색동</td>
+            <td>신사동</td>
+        </tr>
+    </table>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            <tr>
+                <td>마포구</td>
+                <td>마포구</td>
+                <td>은평구</td>
+                <td>은평구</td>
+            </tr>
+            <tr>
+                <td>합정동</td>
+                <td>서교동</td>
+                <td>수색동</td>
+                <td>신사동</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            <tr>
+                <td>마포구</td>
+                <td>은평구</td>
+            </tr>
+            <tr>
+                <td>합정동</td>
+                <td>서교동</td>
+                <td>수색동</td>
+                <td>신사동</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div>
+        <table border="1">
+            <tr>
+                <td colspan="2">마포구</td>
+                <td colspan="2">은평구</td>
+            </tr>
+            <tr>
+                <td>합정동</td>
+                <td>서교동</td>
+                <td>수색동</td>
+                <td>신사동</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <!-- 마포구에 동교동 추가 -->
+    <!-- 은평구에 진관동 추가 -->
+    <table border="2">
+        <tr>
+            <td colspan="3" align="center" bgcolor="yellow">마포구</td>
+            <td colspan="3" align="center">은평구</td>
+        </tr>
+        <tr>
+            <td>합정동</td>
+            <td>서교동</td>
+            <td>동교동</td>
+            <td>수색동</td>
+            <td>신사동</td>
+            <td>진관동</td>
+        </tr>
+    </table>
+
+    <br>
+    <!-- 마포구 ➡️ 합정동, 서교동 -->
+    <!-- 은평구 ➡️ 수색동, 신사동, 진관동, 불광동 -->
+    <table border="2">
+        <tr>
+            <td colspan="2" align="center" bgcolor="yellow">마포구</td>
+            <td colspan="4" align="center">은평구</td>
+        </tr>
+        <tr>
+            <td>합정동</td>
+            <td>서교동</td>
+            <td>수색동</td>
+            <td>신사동</td>
+            <td>진관동</td>
+            <td>불광동</td>
+        </tr>
+    </table>
+    <br>
+    <!-- 노원구 상계동 -->
+    <!-- 노원구 중계동 -->
+    <!-- 강남구 역삼동 -->
+    <!-- 강남구 논현동 -->
+    <table border="2">
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>중계동</td>
+        </tr>
+        <tr>
+            <td>강남구</td>
+            <td>역삼동</td>
+        </tr>
+        <tr>
+            <td>강남구</td>
+            <td>논현동</td>
+        </tr>
+    </table>
+    <br>
+    <!-- 노원구 상계동 -->
+    <!-- 노원구 중계동 -->
+    <!-- 강남구 역삼동 -->
+    <!-- 강남구 논현동 -->
+    <table border="2">
+        <tr>
+            <th rowspan="2">노원구</th>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>중계동</td>
+        </tr>
+        <tr>
+            <th rowspan="2">강남구</th>
+            <td>역삼동</td>
+        </tr>
+        <tr>
+            <td>논현동</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <a href="#top">최상단으로 이동</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- 노원구  상계동 -->
+    <!--        중계동 -->
+    <!-- 강남구  역삼동 -->
+    <!--        논현동 -->
+    <!--        청담동 -->
+    <!-- 은평구  불광동 -->
+    <!--        녹번동 -->
+    <!--        역촌동 -->
+    <!--        신사동 -->
+    <table border="1">
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>중계동</td>
+        </tr>
+        <tr>
+            <td>강남구</td>
+            <td>역삼동</td>
+        </tr>
+        <tr>
+            <td>강남구</td>
+            <td>논현동</td>
+        </tr>
+        <tr>
+            <td>강남구</td>
+            <td>청담동</td>
+        </tr>
+        <tr>
+            <td>은평구</td>
+            <td>불광동</td>
+        </tr>
+        <tr>
+            <td>은평구</td>
+            <td>녹번동</td>
+        </tr>
+        <tr>
+            <td>은평구</td>
+            <td>역촌동</td>
+        </tr>
+        <tr>
+            <td>은평구</td>
+            <td>신사동</td>
+        </tr>
+    </table>
+
+    <br>
+    <table border="1">
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>노원구</td>
+            <td>상계동</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <table border="2">
+        <tr>
+            <th rowspan="2">노원구</th>
+            <td>상계동</td>
+        </tr>
+        <tr>
+            <td>중계동</td>
+        </tr>
+        <tr>
+            <th rowspan="3">강남구</th>
+            <td>역삼동</td>
+        </tr>
+        <tr>
+            <td>논현동</td>
+        </tr>
+        <tr>
+            <td>청담동</td>
+        </tr>
+        <tr>
+            <th rowspan="4">은평구</th>
+            <td>불광동</td>
+        </tr>
+        <tr>
+            <td>녹번동</td>
+        </tr>
+        <tr>
+            <td>역촌동</td>
+        </tr>
+        <tr>
+            <td>신사동</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="#top">최상단으로 이동</a>
+</body>
+
+</html>
