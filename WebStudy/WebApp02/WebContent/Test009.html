@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test009.html</title>
+
+    <link rel="stylesheet" type="text/css" href="css/externalStyle.css">
+    <style type="text/css">
+        @import url("css/importStyle.css");
+        p {
+            font-size: 100pt;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <a name="top"></a>
+    <div>
+        <h1>스타일 적용의 우선순위 규칙 확인</h1>
+        <!-- 적용되는 엘리먼트와 가장 가까운 스타일이 적용된다.(우선순위는 없는 듯...) -->
+        <h2>import 적용 실습</h2>
+        <hr>
+    </div>
+
+    <div>
+        <p>이와 같은 상황이라면... 난 어떻게 표현되어야 할까?</p>
+        <p style="color: orange; font-size:20pt;">이와 같은 상황이라면... 난 어떻게 표현되어야 할까?</p>
+    </div>
+
+
+    <br><br><br>
+    <a rel="" href="#top">최 상단으로 이동</a>
+</body>
+
+</html>

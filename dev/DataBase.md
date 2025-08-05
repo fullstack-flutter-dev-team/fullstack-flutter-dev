@@ -58,6 +58,14 @@
     - []()
     - []()
   - []()
+  - [ORACLE JOIN 검색](https://www.google.com/search?q=ORACLE+JOIN&oq=ORACLE+JOIN&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGIAEMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAE0gEIMjQzOGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
+    - [[DB/오라클] 조인 완벽 정리 ( INNER 조인 OUTER 조인 )](https://codingwone.tistory.com/29)
+    - [oracle 여러 테이블 조회](https://www.google.com/search?q=oracle+%EC%97%AC%EB%9F%AC+%ED%85%8C%EC%9D%B4%EB%B8%94+%EC%A1%B0%ED%9A%8C&oq=ORACLE+%EC%97%AC%EB%9F%AC+%ED%85%8C%EC%9D%B4%EB%B8%94+SELCET+&gs_lcrp=EgZjaHJvbWUqCggCEAAYogQYiQUyBggAEEUYOTIHCAEQABjvBTIKCAIQABiiBBiJBTIHCAMQABjvBTIHCAQQABjvBdIBCTI2MzUwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+    - []()
+    - []()
+    - []()
+  - []()
+  - []()
 
 - []()
 ### ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅

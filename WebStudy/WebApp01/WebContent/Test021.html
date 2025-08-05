@@ -20,7 +20,20 @@
     <br>
 
     <div>
+        <!-- 
+        [동일한 의미]
         <form>
+        <form action="">
+        <form action="Test021.html"> -->
+        <!-- 
+            Test022.html?name=&email=&content=
+        -->
+        <!-- 
+            데이터 전송 및 페이지 요청
+            -> 폼으로 구성한 데이터의 내용들을 항목별고 전달할테니
+               요청한 페이지와 만날 수 있도록 처리해달라...
+        -->
+        <form action="Test022.html">
             * 이름
             <input type="text" name="name"> <br><br>
 
@@ -31,23 +44,36 @@
             <textarea rows="10" cols="50" name="content"></textarea><br><br>
 
             <!-- 동일한 기능 -->
-            <input type="button" value="전송하기">
+            <input type="button" value="전송하기-테스트">
             <button type="button">전송하기</button>
             <button type="button">
                 <img alt="" src="images/btn_02.png">
             </button>
             <br><br>
-            
+
             <!-- 다른 기능 -->
             <!-- submit : 서버에 데이터 전송 및 페이지 데이터 요청 -->
             <input type="button" value="전송하기-1">
             <input type="submit" value="전송하기-2">
+            <!-- 
+            Test021.html?name=&email=&content=
+            -->
+            <br><br>
+            <button>버튼 테스트</button>
+            <!-- 
+            Test021.html?name=&email=&content=
+            -->
+
+
             <br><br>
 
             <input type="button" value="전송하기">
             <input type="submit" value="전송하기">
+
             <input type="reset" value="전송하기">
-            <button>전송하기</button>
+            <!-- 해당 웹페이지를 초기화 -->
+
+            <button>전송하기(button태그)input태그의 submit 타입과 같은 기능</button>
 
             <button type="button">전송하기</button>
             <button type="submit">전송하기</button>

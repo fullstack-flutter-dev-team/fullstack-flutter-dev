@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test023.html</title>
+
+    <meta name="keywords" content="html, 연습, 웹, 예제, 태그 속성">
+    <meta name="description" content="htm을 연습하는 페이지...">
+    <meta name="autoor" content="nikim">
+    <meta name="generator" content="eclipse">
+    <!-- <meta http-equiv="refresh" content="5;url=http://www.daum.net"> -->
+</head>
+
+<body>
+    <div id="top">
+        <h1>드롭다운메뉴(selectbox) 만들기</h1>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <form>
+            <p>당신이 가장 좋아하는 스포츠는?</p>
+            <select name="selectSports">
+                <option>-- 선택하세요 --</option>
+                <option value="val1">야구</option>
+                <option value="val2">축구</option>
+                <option value="val3">배구</option>
+                <option value="val4">농구</option>
+            </select>
+            <br><br>
+
+            <p>당신의 직책은?</p>
+            <select name="selectJikwi">
+                <option value="code1">회장</option>
+                <option value="code2">사장</option>
+                <option value="code3">이사</option>
+                <option value="code4">부장</option>
+                <option value="code5">과장</option>
+                <option value="code6">대리</option>
+                <option value="code7" selected="selected">사원</option>
+            </select>
+            <br><br>
+
+            <p>가을에 단풍구경 가고싶은 곳은? (다중 선택 가능(ctrl+ , shift +))</p>
+            <select name="trav" multiple="multiple" size="5">
+                <option value="mt1">백두산</option>
+                <option value="mt2">한라산</option>
+                <option value="mt3">지리산</option>
+                <option value="mt4">설악산</option>
+                <option value="mt5">속리산</option>
+            </select>
+            <br><br>
+            <br><br>
+
+            <button type="button">서버로 전송</button>
+            <button type="reset">취소</button>
+            <br><br>
+        </form>
+    </div>
+
+
+    <br>
+    <br>
+    <a href="#top">최상단으로 이동</a>
+</body>
+
+</html>

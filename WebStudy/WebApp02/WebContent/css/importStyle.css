@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/*
+h3 {color: blue;}
+h4 {color: red;}
+*/
+
+p {
+    font-size: 2pt;
+    font-style: italic;
+    color: purple;
+}
