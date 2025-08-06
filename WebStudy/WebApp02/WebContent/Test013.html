@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test013.html</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        p {
+            font-size: 10pt;
+            color: gray;
+        }
+
+        /*first-line이 적용된 첫 줄에 대해서만 영향을 주게 되며
+           나머지 글자에는 적용되지 않는다.*/
+        /*
+        p:first-line {
+            font-size: 30pt;
+            color: blue;
+            font-weight: bold;
+        }
+        */
+        /*first-letter가 적용된 첫 번째 글자에 대해서만 영향을 주게 되며
+           나머지 글자에는 적용되지 않는다.*/
+        p:first-letter {
+            font-size: 30pt;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <a name="top"></a>
+    <div>
+        <h1>가상 요소 적용 실습</h1>
+        <hr>
+    </div>
+
+    <div>
+        <p>문단 태그를 활용하여 내용을 작성하고 있다.
+            이 태그 내부에 기술된 내용은 엘리먼트 선잭자의 영향을 받고 있는 상황이다.
+            하지만, 이 영역 안에서도 상황에 따른 스타일 적용이 가능하다.
+            첫 라인의 텍스트는 글자색이 ()이고, 글꼴 크기는 ()이다.
+            둘째 라인의 텍스트는 글자색이 ()이고, 글꼴 크기는 ()가 된다.
+        </p>
+        <p>
+
+        </p>
+    </div>
+
+
+    <br><br><br>
+    <a rel="" href="#top">최 상단으로 이동</a>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/*
+colorStyle.css
+*/
+
+h2 {
+    /*
+    color: #39c539;
+    */
+    color:lime;
+    font-size: 22pt;
+    font-style: italic;
+}
+
+span {
+    color:rgb(23, 179, 179);
+    font-weight: bold;
+}
+
+p {
+    color: blue;
+    font-weight: bold;
+    font-size: 20pt;
+}

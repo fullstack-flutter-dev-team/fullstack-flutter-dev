@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test011.html</title>
+
+    <link rel="stylesheet" type="text/css" href="css/externalStyle.css">
+    <style type="text/css">
+        a { /*태그 선택자, 엘리먼트 선택자*/
+            text-decoration: none;
+            font-size: 22pt;
+        }
+
+        span {
+            font-size: 100pt;
+        }
+
+        /*동적선택자(가상선택자)*/
+        a:visited {
+            color: aqua;
+        }
+        
+        /*동적선택자(가상선택자)*/
+        a:hover {
+            color: orange;
+            font-weight: bold;
+        }
+        
+        /*동적선택자(가상선택자)*/
+        a:active { /*스타일 상속성(hover bold유지)*/
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a name="top"></a>
+    <div>
+        <h1>선택자(selector) 활용</h1>
+        <h2>동적 선택자</h2>
+        <p>(가상 선택자, 가상 클래스, 상태 선택자,....)</p>
+        <hr>
+    </div>
+
+    <div>
+        <p>
+            <a href="http://www.daum.net">다음으로 바로가기</a>
+        </p>
+        <p>
+            <a href="http://www.naver.com">네이버로 바로가기</a>
+        </p>
+        <p>
+            <a href="http://www.google.com">구글로 바로가기</a>
+        </p>
+    </div>
+
+
+    <br><br><br>
+    <a rel="" href="#top">최 상단으로 이동</a>
+</body>
+
+</html>

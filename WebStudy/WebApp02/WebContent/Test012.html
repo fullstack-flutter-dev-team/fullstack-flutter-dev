@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test012.html</title>
+
+    <link rel="stylesheet" type="text/css" href="css/externalStyle.css">
+    <style type="text/css">
+        a {
+            text-decoration: none;
+            font-size: 22pt;
+        }
+
+        a:link {
+            color: blue;
+        }
+
+        a:hover {
+            color: orange;
+            font-weight: bold;
+        }
+
+        a.yellow {
+            color: yellow;
+            font-family: 궁서;
+        }
+
+        a.red {
+            color: red;
+            font-family: 맑은 고딕;
+        }
+
+        a.yellow:hover {
+            color: white;
+            font-weight: bold;
+        }
+        
+        a.red:hover {
+            color: aqua;
+            font-weight: bold;
+        }
+      
+    </style>
+</head>
+
+<body bgcolor="#334433" text="#ffffff">
+    <a name="top"></a>
+    <div>
+        <h1>한 화면(한 페이지)에 두 가지 형태의 링크 설정</h1>
+        <hr>
+    </div>
+
+    <div>
+        <p>
+            <!-- 절대 경로를 사용해야 함 -->
+            <a class="yellow" href="Test011.html">Test011 바로가기</a>
+        </p>
+        <p>
+            <!-- 절대 경로를 사용해야 함 -->
+            <a class="red" href="Test010.html">Test010 바로가기</a>
+        </p>
+    </div>
+
+
+    <br><br><br>
+    <a rel="" href="#top">최 상단으로 이동</a>
+</body>
+
+</html>
