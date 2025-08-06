@@ -17,6 +17,9 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
 - [글꼴(폰트) 설치 : 나눔고딕코딩](https://tttsss77.tistory.com/209)
 - [[Etc] VS Code 글꼴 변경](https://hyeonjiwon.github.io/etc/vscode-%EA%B8%80%EA%BC%B4-%EB%B3%80%EA%B2%BD/)
 
+### vs code HTML 파일 안 JAVASCRIPT 코드 주석이 제대로 되지 않을 때
+- [vs code HTML 파일 안 JAVASCRIPT 코드 주석이 제대로 되지 않을 때](https://idvroom.tistory.com/entry/HTML-%ED%8C%8C%EC%9D%BC-%EC%95%88-JAVASCRIPT-%EC%BD%94%EB%93%9C-%EC%A3%BC%EC%84%9D%EC%9D%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%84-%EB%95%8C)
+  
 ### **vs code 한글 두번**
 - [vs code 한글 두번 검색](https://www.google.com/search?q=vs+code+%ED%95%9C%EA%B8%80+%EB%91%90%EB%B2%88&rlz=1C1GCEU_koKR1161KR1161&oq=vs+code+%ED%95%9C%EA%B8%80+%EB%91%90%EB%B2%88&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDY2NzZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
   - ⭐ [**문제해결 : 한글 입력 시 마지막 글자가 2번 생기는 오류**](https://velog.io/@nuyhes/%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0-%ED%95%9C%EA%B8%80-%EC%9E%85%EB%A0%A5-%EC%8B%9C-%EB%A7%88%EC%A7%80%EB%A7%89-%EA%B8%80%EC%9E%90%EA%B0%80-2%EB%B2%88-%EC%83%9D%EA%B8%B0%EB%8A%94-%EC%98%A4%EB%A5%98)

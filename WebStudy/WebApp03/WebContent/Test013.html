@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test013.html</title>
+
+    <!-- 테스트 -->
+    <style type="text/css">
+
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+        // <!-- var t = 100;  
+        //       --> t = 200
+        // document.write("t:" + t);
+
+
+        // msg 변수 → 함수 밖에 선언 → 모든 함수에서 접근 가능한 전역 변수
+        // var msg = "2025년 8월 6일 수요일";
+
+        // msg 변수 → 함수 밖에 선언 → 모든 함수에서 접근 가능한 전역 변수
+        msg = "2025년 8월 6일 수요일";
+
+        // ※ 키워드 사용 여부와 관계없이 두 경우 모두 전역 변수의 형태로 기능하고 있는 상황~!!
+
+        function btnOnclick1() {
+            // 테스트
+            // alert("첫 번째 버튼 클릭 확인~!!!");
+
+           // 『var』 키워드 포함 name 변수 → 함수 내부에서 선언 → 지역 변수
+           // var name = "김한국";
+           
+           // 『var』 키워드 생략 name 변수 → 함수 내부에서 선언 → 상황에 따른 지역/전역 변수로 기능
+            name = "김한국";
+            // 테스트
+            alert(name);
+
+            document.write("이름 : " + name);
+        }
+        
+        function btnOnclick2() {
+            // 테스트
+            alert("두 번째 버튼 클릭 확인~!!!");
+
+            // 테스트
+            alert(msg);
+
+            document.write("이름 : " + name);
+        }
+
+
+        /* 이벤트 등록 방법 ② */
+        document.onload = windowOnload();
+
+        // 자바스크립트 함수 정의
+        function windowOnload() {
+            // alert("경고창~!!!");
+        }
+
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h3>지역변수/전역변수</h3>
+        <hr>
+    </div>
+
+    <div>
+        <input type="button" value="Button1" onclick="btnOnclick1();"><br><br>
+        <input type="button" value="Button2" onclick="btnOnclick2();"><br><br>
+    </div>
+
+</body>
+
+</html>

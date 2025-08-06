@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test014.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #343;
+            font-family: 맑은 고딕;
+        }
+
+        input.box:focus {
+            background-color: yellow;
+        }
+
+        input.btn:hover {
+            color: orange;
+            font-weight: bold;
+        }
+
+        input.numberBox {
+            width: 60px;
+            text-align: right;
+        }
+
+        input#btnResult {
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+        function actionBtnA() {
+            // 테스트
+            // alert("A버튼 클릭 확인~!!!!");
+
+            // document 객체에 접근 (DOM Tree?)
+            var txtLeft = document.getElementById("textLeft");  //-- txtLeft 은 객체
+            var txtRight = document.getElementById("textRight"); //-- txtRight 는 객체
+            
+            // 확인
+            // console.log("txtLeft : " + txtLeft);
+            //==>> [object HTMLInputElement]
+            // console.log("txtRight : " + txtRight);
+            //==>> [object HTMLInputElement]
+            
+            // console.log("txtLeft.value : " + txtLeft.value);
+            // console.log("txtRight.value : " + txtRight.value);
+            
+            var leftStr = txtLeft.value;
+            console.log("leftStr : " + leftStr);
+            txtRight.value = leftStr;
+        }
+        
+        function actionBtnB() {
+            // 테스트
+            // alert("B버튼 클릭 확인~!!!!");
+            // document 객체에 접근 (DOM Tree?)
+            // var txtLeft = document.getElementById("textLeft");  //-- txtLeft 은 객체
+            // var txtRight = document.getElementById("textRight"); //-- txtRight 는 객체
+            // var rightStr = txtRight.value;
+            // console.log("rightStr : " + rightStr);
+            // txtLeft.value = rightStr;
+
+            var txt01Obj = document.getElementById("textLeft");
+            var txt02str = document.getElementById("textRight").value;
+
+            txt01Obj.value = txt02str;
+        }
+
+        function actionBtnResult() {
+            console.log("actionBtnResult 호출");
+            var txtNum1Val = document.getElementById("txtNumber01").value;
+            var txtNum2Val = document.getElementById("txtNumber02").value;
+            var txtRestObj = document.getElementById("txtResult");
+            console.log("txtNum1Val :" + txtNum1Val);
+            console.log("txtNum2Val :" + txtNum2Val);
+            console.log("Number.isInteger(txtNum1Val)  :" + isNaN(txtNum1Val));
+            
+            // 확인
+            console.log(txtNum1Val + " / " + txtNum2Val);
+
+            // var result = txtNum1Val + txtNum2Val; //-- 변수 txtNum1Val의 문자열과 변수 txtNum2Val의 문자열 결합
+            // var result = parseInt(txtNum1Val + txtNum2Val); //-- 문자열 결합된 결과물을 정수 형태로 변환
+
+            // parseInt()
+            var result = parseInt(txtNum1Val) + parseInt(txtNum2Val);
+            //                    "20"                      "30"
+
+            // Number() → 생성자 함수
+            var result = Number(txtNum1Val) + Number(txtNum2Val);
+            console.log("result : " + result);
+
+            // 위의 처리 내용과 같은 결과
+            /*   
+                document.getElementById("txtResult").value
+                = parseInt(document.getElementById("txtNumber01").value) 
+                + parseInt(document.getElementById("txtNumber02").value);  
+            */
+
+            if (!isNaN(txtNum1Val) && !isNaN(txtNum2Val)) {
+                txtRestObj.value = parseInt(txtNum1Val) + parseInt(txtNum2Val);
+            } else {
+                txtRestObj.value = txtNum1Val + txtNum2Val;
+            }
+
+        }
+
+
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 기본 관찰</h1>
+        <hr>
+    </div>
+
+    <div>
+        <input type="text" class="box" id="textLeft">
+        <input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA();">
+        <input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB();">
+        <input type="text" class="box" id="textRight"><br><br>
+    </div>
+    <hr>
+    <div>
+        <input type="text" class="numberBox" id="txtNumber01"> +
+        <input type="text" class="numberBox" id="txtNumber02">
+        <input type="buttn" value= " = " class="btn" id="btnResult" onclick="actionBtnResult();">
+        <input type="text" class="numberBox" id="txtResult" disabled>
+    </div>
+
+</body>
+
+</html>

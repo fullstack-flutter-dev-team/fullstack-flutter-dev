@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test015.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+      
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        function actionCalc(param) {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+
+            console.log("param : " + param);
+            console.log("parseInt(num1) : " + parseInt(num1));
+            console.log("parseInt(num2) : " + parseInt(num2));
+            var result = 0;
+
+            if (!isNaN(parseInt(num1)) && !isNaN(parseInt(num2)))
+            {
+                switch(param) {
+                    case '+': result = parseInt(num1) + parseInt(num2); break;
+                    case '-': result = parseInt(num1) - parseInt(num2); break;
+                    case '*': result = parseInt(num1) * parseInt(num2); break;
+                    case '/': result = parseInt(num1) / parseInt(num2); break;
+                }
+
+                document.getElementById("result").value = result;
+            }
+            
+        }
+        
+
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <hr>
+    </div>
+
+    <div>
+        <p>사용자로부터 두 개의 정수를 입력받고</p>
+        <p>합, 차, 곱, 몫을 연산하여 결과를 페이지에 출력할 수 있도록 한다.</p>
+        <p>HTML, CSS, javascript를 활용하여 처리한다.</p>
+        <hr>
+    </div>
+    <div>
+        <form>
+            정수1 <input type="text" id="num1" class="txtNum">&nbsp;&nbsp;
+            정수2 <input type="text" id="num2" class="txtNum">
+            <br><br>
+            
+            <input type="button" class="btn" value="더하기" onclick="actionCalc('+');">&nbsp;
+            <input type="button" class="btn" value="빼기"  onclick="actionCalc('-');">&nbsp;
+            <input type="button" class="btn" value="곱하기" onclick="actionCalc('*');">&nbsp;
+            <input type="button" class="btn" value="나누기" onclick="actionCalc('/');">
+            <br><br>
+
+            결과&nbsp;<input type="text" id="result" class="txtNum" disabled="disabled">&nbsp;
+            <input type="reset" class="btn" value="취소">
+        </form>
+    </div>
+
+</body>
+
+</html>
