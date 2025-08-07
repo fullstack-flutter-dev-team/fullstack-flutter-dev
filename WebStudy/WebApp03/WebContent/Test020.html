@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test020.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        .con {
+            border-style: solid;
+        }
+
+        
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        //-------------------------
+        // 함수 정의 → 선언문 방식
+        //-------------------------
+        function sub1(x, y) {
+            return x+y;
+        }
+
+        // ※ 『console.log()』 의 처리 결과는
+        //    브라우저의 개발자 도구(F12) 콘솔에서 확인
+        console.log("sub1(1, 2) → " + sub1(1,2));
+        //==>> sub1(1, 2) → 3
+
+        //-------------------------
+        // 함수 정의 → 표현식 방식
+        //-------------------------
+        // var sub2 = 값;
+        // var sub2 = 기능, 동작, 행위;
+        var sub2 = function(x, y) {
+            return x*y;
+        };
+
+        console.log("sub2(3, 4) → " + sub2(3,4));
+        //==>> sub2(3, 4) → 12
+        
+        var test = sub2;
+        console.log("test(5, 4) → " + test(5,4));
+        //==>> test(5, 4) → 20
+        
+        
+        //---------------------------
+        // 기명 함수 표현식의 함수 호출
+        //---------------------------
+        var sub3 = function sum(x, y)
+        {
+            return x + y;
+        };
+        console.log("sub3(5, 4) → " + sub3(5,4));
+        //==>> sub3(5, 4) → 9
+        
+        // console.log("sum(5, 4) → " + sum(5,4));
+        //==에러==>> ReferenceError: sum is not defined
+        //  ※ 함수 표현식에서 사용된 함수의 이름은
+        //     외부 코드에서 접근할 수 없다.
+
+        //---------------------------
+        // 기명 함수 표현식을 이용한 재귀 호출
+        // 팩토리얼 함수
+        //---------------------------
+        var fact = function factorial(n)
+        {
+            if (n <= 1) {
+                return 1;
+            } else {
+                return n * factorial(n-1);
+            }
+        };
+
+        console.log("fact(4) → " + fact(4));
+        //==>> fact(4) → 24
+        
+        //-------------------------------------------
+        // Function() 생성자 함수를 활용한 함수 정의
+        //-------------------------------------------
+        var sub4 = Function("x", "y", "return x+y")
+        console.log("sub4(4, 7) → " + sub4(4, 7));
+        //==>> sub4(4, 7) → 11
+        
+        //---------------------------------------------------
+        // 선언문 방식으로 정의된 함수 호이스팅
+        // ※ 호이스팅 → 정의 구문 이전에 사용되는 호출 구문
+        //---------------------------------------------------
+        console.log("sub5(4, 7) → " + sub5(4, 7));
+        //==>> sub5(4, 7) → 11
+        function sub5(a, b) {
+            return a + b;
+        }
+
+        //---------------------------------------------------
+        // 표현식 방식으로 정의된 함수 호이스팅
+        // → 불가능
+        //---------------------------------------------------
+        // console.log("sub6(4, 7) → " + sub6(4, 7));
+        //==>> 에러 발생
+        // TypeError: sub6 is not a function
+        var sub6 = function(a, b) {
+            return a + b;
+        };
+        console.log("sub6(4, 7) → " + sub6(4, 7));
+        //==>> sub6(4, 7) → 11
+
+
+        //---------------------------------------------------
+        // 콜백 함수 정의  -> 페이지 요청 시 호출
+        //---------------------------------------------------
+        window.onload = function()
+        {
+            alert("환영합니다.~!!!");
+        }
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>함수</p>
+        <hr>
+    </div>
+
+</body>
+
+</html>

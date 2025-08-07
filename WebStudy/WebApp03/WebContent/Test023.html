@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test023.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+   
+   </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        // 배열 형식 1
+        var arr = new Array();
+        arr[0] = 10; 
+        arr[1] = 20; 
+        arr[2] = 30; 
+
+        for (var m=0; m<arr.length; m++) {
+            console.log("arr[" + m + "] = " + arr[m]);
+        }
+        //==>> 10 20 30
+
+
+        //  배열 형식 2
+        // var arr2 = {11, 12, 13}; //-- 초기화
+        var arr2 = [11, 12, 13]; //-- 초기화
+        // var arr2 = []; //-- 빈 배열(『new Array()』 보다 성능이 좋음)
+
+        //
+        for (var m in arr2) {
+            console.log(arr2[m]);
+        }
+        //==>> 11 12 13
+
+
+        //==================================
+        //  권장하지 않는 방식~~!!!
+        //==================================
+        var temp = new Array(3, 4, 5);
+        for (var m = 0; m < temp.length; m++) {
+            console.log(temp[m]);
+        }
+        //===>> 3 4 5 
+
+        var temp2 = new Array(3);
+        console.log("temp2.length : " + temp2.length);
+        //==>> temp2.length : 3
+        
+        temp2[0] = 1;
+        temp2[1] = 2;
+        temp2[2] = 3;
+        temp2[3] = 4;
+        temp2[4] = 5;
+        console.log("temp2.length : " + temp2.length);
+        //==>> temp2.length : 5
+
+        temp2.forEach(element => {
+            console.log("temp2.element : " + element);
+        });
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>배열</p>
+        <hr>
+    </div>
+
+
+</body>
+
+</html>

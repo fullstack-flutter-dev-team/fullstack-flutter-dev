@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test018.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+
+</style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        var s, n;
+
+        // while
+        s = 0;
+        n = 0;
+
+        while (n < 10) {
+            n++;
+            s+=n;
+        }
+        document.writeln("while : " + s + "<br>");
+        
+        // do ~ while
+        s = 0;
+        n = 0;
+        
+        do {
+            n++;
+            s+=n;
+        } while (n < 10);
+        document.writeln("do-while : " + s + "<br>");
+        
+        
+        // for
+        s = 0;
+        for (n=0; n<=10; n++) {
+            s+=n;
+        }
+        document.writeln("for : " + s + "<br>");
+
+        // continue
+        s = 0;
+        n = 0;
+        while (n < 10) {
+            n++;
+
+            if (n%2==0) {
+                continue;
+            }
+
+            s+=n;
+            document.writeln("while 문(continue)  n : " + n + "<br>");
+        }
+        document.writeln(">> while 문(continue) s : " + s + "<br>");
+
+        // break
+        s = 0;
+        n = 0;
+        while (true) { //-- while(1)
+            n++;
+            s+=n;
+
+            if (s >= 1000) {
+                break;
+            }
+            document.writeln("while 문(break)  n : " + n + "<br>");
+        }
+        document.writeln(">> while 문(break) s : " + s + "<br>");
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>반복문</p>
+        <hr>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test024.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+   
+   </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        //----------------------------------
+        // 배열의 배열 형식 1
+        //----------------------------------
+        var arr = new Array();
+        arr[0] = new Array();
+        arr[1] = new Array();
+
+        arr[0][0] = 1;
+        arr[0][1] = 2;
+        arr[0][2] = 3;
+
+        arr[1][0] = 4;
+        arr[1][1] = 5;
+        arr[1][2] = 6;
+
+        for (var m = 0; m<arr.length; m++) {         // 0      1
+            for (var n = 0; n<arr[m].length; n++) {  // 0 1 2  0 1 2
+                console.log("arr[" + m + "][" + n + "] = " + arr[m][n]);
+            }
+        }
+        //--==>> 1 2 3 4 5 6
+
+        //----------------------------------
+        // 배열의 배열 형식 2
+        //----------------------------------
+        var arr2 = [[31,32,33], [34,35,36]];
+        for (var m = 0; m<arr2.length; m++) {         // 0      1
+            for (var n = 0; n<arr2[m].length; n++) {  // 0 1 2  0 1 2
+                console.log("arr2[" + m + "][" + n + "] = " + arr2[m][n]);
+            }
+        }
+        //--==>> 31 32 33 34 35 36
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>배열의 배열(2차원 배열)</p>
+        <hr>
+    </div>
+
+
+</body>
+
+</html>

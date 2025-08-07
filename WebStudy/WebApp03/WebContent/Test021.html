@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test021.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        .con {
+            border-style: solid;
+        }
+
+        
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        function list1() {
+            for (var i=0; i<list1.arguments.length; i++) {
+                val = list1.arguments[i] + "<br>";
+                document.write(val);
+            }
+        }
+
+        function list2(arg1, arg2) {
+            document.writeln("-----------------------------<br>");
+            document.writeln(arg1 + "<br>");
+            document.writeln(arg2 + "<br>");
+            
+            for (var i=2; i<list2.arguments.length; i++) {
+                document.writeln(list2.arguments[i] + "<br>");
+            }
+        }
+
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>함수의 가변인수</p>
+        <hr>
+    </div>
+
+    <script type="text/javascript">
+        list1(0, "서울", "부산", 3);
+        list2(0, "서울", "부산", 3);
+    </script>
+
+</body>
+
+</html>

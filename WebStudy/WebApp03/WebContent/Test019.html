@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test019.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        .con {
+            border-style: none;
+        }
+
+        input.btn {
+            width: 50%;
+        }
+
+        
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        function calc() {
+            console.log(">>> calc()")
+
+            var nSum = 0;
+            var numEl =  document.getElementById("num");
+            var resultEl = document.getElementById("result");
+
+            var nNum = parseInt(numEl.value);
+
+            if (nNum < 100 || isNaN(nNum)) {
+                alert("100 이상만 입력~!!");
+                resultEl.value = "";
+            } else {
+                resultEl.value = "";
+                for (n=0; n<=nNum; n++) {
+                    nSum += n;
+
+                    if (n%10==0) {
+                        resultEl.value += "1 ~ " + n + " : " + nSum +"\n";
+                    } 
+                    
+                }
+                resultEl.value += ">> 1 ~ " + nNum + " : " + nSum +"\n";
+                
+            }
+        }
+
+        function actionCalculate() {
+            console.log(">> actionCalculate");
+
+            // check~!!!
+            document.getElementById("result").value = "";
+
+            // var nNum = parseInt(document.getElementById("num").value);
+            var nNum = Number(document.getElementById("num").value);
+            var nSum = 0;
+
+            if (nNum < 100) {
+                alert("입력값은 100 이상만 가능합니다~!!!");
+                return;        // check~!!!
+            }
+
+            for (var n=1; n<=nNum; n++) { //-- 1 부터 사용자 입력값(nNum)까지 1씩 증가하며 반복 수행
+                nSum += n;                //-- nSum 을 n 만큼씩 증가
+                // document.getElementById("result").value = "1 ~ " + n + " : " + nSum;
+                //==>> 1 ~ 121 : 7381
+
+                // document.getElementById("result").value += "1 ~ " + n + " : " + nSum;
+                // document.getElementById("result").value += "1 ~ " + n + " : " + nSum + "<br>";
+                // document.getElementById("result").value += "1 ~ " + n + " : " + nSum + "\n";
+
+                if (n%10 == 0) {          //-- n 이 10의 배수
+                    document.getElementById("result").value += "1 ~ " + n + " : " + nSum + "\n";
+                }
+            }
+            
+            document.getElementById("result").value += ">> 1 ~ " + nNum + " : " + nSum + "\n";
+        }
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>반복문</p>
+        <hr>
+    </div>
+    <!-- 
+        사용자로부터 임의의 정수 n을 입력받아
+        1 부터 n까지의 합을 계산하되
+        n 은 100 이상만 어용할 수 있도록 처리하고,
+        출력 시 10의 배수가 될 때 마다 중간 합을 출력할 수 있는 페이지를 구성한다.
+        반복문을 활용할 수 있도록 한다.
+
+        HTML, CSS, Javascript
+
+        페이지 레이아웃
+        ---------------------------------------------
+        정수 입력(100 이상)   [       ]     -> textbox    #num
+        <결과>   <취소>                     -> button   
+        
+        ----------------------------------- -> textarea  #result
+        1 ~ 10 : XX                             
+        1 ~ 20 : XXX
+        1 ~ 30 : XXXX
+        :
+        1 ~ 100 : XXXX
+        >> 1 ~ 101 : XXX 최종 합
+        ----------------------------------------------
+        
+        
+        ---------------------------------------------
+     -->
+<form>
+
+    <div  class="con" style="display:table; width:400px;">
+       <div  style="display:table-row">
+           <div class ="A" style="display:table-cell">정수 입력(100 이상)</div>
+           <div class ="B" style="display:table-cell"><input type="text" id="num">  </div>
+       </div>
+       <br>
+       <div style="display:table-row;text-align: center;">
+           <div class ="A" style="display:table-cell; width: 50%;">
+               <!-- <input type="button" value="결과" onclick="calc();"></div> -->
+               <input type="button" value="결과" class="btn" onclick="actionCalculate();"></div>
+           <div class ="B" style="display:table-cell; width: 50%;">
+               <input type="reset" value="취소" class="btn"></div>
+
+       </div>
+    </div>
+    <br>
+    <div  class="con" style="display:table; width:400px;">
+        <div style="display:table-row;text-align: center;">
+                <textarea rows="10" cols="50" id="result" readonly="readonly"></textarea>
+        </div>
+        
+    </div>
+</form>
+
+</body>
+
+</html>

@@ -8,6 +8,9 @@
     <!-- 테스트 -->
     <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
     <style type="text/css">
+         div {
+        border-style:hidden;
+    } 
         * {
             font-family: 나눔고딕;
             font-weight: bold;
@@ -27,12 +30,8 @@
         div.result_title {
             text-align: center;
             font-weight: bold;
-            width: 250px;
         }
 
-        div.result_title>span {
-            white-space: 50px;
-        }
 
         div.result {
             text-align: center;
@@ -114,6 +113,38 @@
             grade.value = result;
         }
 
+        function action() {
+            var name = document.getElementById("name");
+            var kor = document.getElementById("kor");
+            var eng = document.getElementById("eng");
+            var mat = document.getElementById("mat");
+            var avg = document.getElementById("avg");
+            var grade = document.getElementById("grade");
+
+            var nTot = 0;
+            var nAvg = 0;
+            var gradeStr = "";
+
+            // 총점 산출
+            nTot = nKor+nEng+nMat;
+
+            // 평균 산출
+            nAvg = Math.round(nTot/3);
+
+            document.getElementById("avg").value = nAvg;
+
+            // 등급(판정 결과) 산출
+            if (nKor >= 40 && nEng >= 40 && nMat >=40 && nAvg >= 60) {
+                gradeStr  = "합격";
+            } else if (nAvg >= 60) {
+                gradeStr = "과락";
+            } else {
+                gradeStr = "불합격";
+            }
+
+            document.getElementById("grade").value = gradeStr;
+        }
+
     </script>
     <noscript>
         자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
@@ -156,14 +187,17 @@
     ------------------------------------------------------
     -->
 
-    <div>
-        <div>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="name" class="inTxt"></div>
-        <div>국어점수<input type="text" id="kor" class="inTxt"></div>
-        <div>영어점수<input type="text" id="eng" class="inTxt"></div>
-        <div>수학점수<input type="text" id="mat" class="inTxt"></div><br>
-        <div class="btnArea"><input type="button" class="btn" value="처리 결과 확인" onclick="calcScore();"></div><br>
-        <div class="result_title">평균<span></span>판정결과</div>
-        <div class="result">
+    <div class="con" style="display: table;width:250px;">
+        <div style="display: table-row;">이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="name" class="inTxt"></div>
+        <div style="display: table-row;">국어점수<input type="text" id="kor" class="inTxt"></div>
+        <div style="display: table-row;">영어점수<input type="text" id="eng" class="inTxt"></div>
+        <div style="display: table-row;">수학점수<input type="text" id="mat" class="inTxt"></div><br>
+        <div class="btnArea" style="display: table-row;"><input type="button" class="btn" value="처리 결과 확인" onclick="calcScore();"></div><br>
+        <div class="result_title" style="display: table-row">
+            <div class="result_title_cell" style="display: table-cell;">평균</div>
+            <div class="result_title_cell" style="display: table-cell;">판정결과</div>
+        </div>
+        <div class="result" style="display: table-row;">
             <input type="text" class="result" id="avg" disabled="disabled">
             <input type="text" class="result" id="grade" disabled="disabled">
         </div>
