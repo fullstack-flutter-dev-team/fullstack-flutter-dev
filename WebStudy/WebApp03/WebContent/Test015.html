@@ -8,7 +8,60 @@
     <!-- 테스트 -->
     <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
     <style type="text/css">
-      
+        * {
+            color: #334433;
+            font-family: 나뭄고딕코딩;
+            font-weight: bold;
+        }
+        input:focus {
+            background-color: #eeeedd;
+        }
+        input.btn {
+            width: 80px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+
+        }
+
+        txtNum {
+
+        }
+
+        div.sol {
+            background-color: rgb(233, 210, 203);
+        }
+/* 
+        form {
+            background-color: rgb(229, 237, 237);
+        }
+
+        input.txtNum:focus {
+            background-color: yellow;
+        } */
+
+        input.btn {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        /* input.btn:hover {
+            background-color: coral;
+        }
+
+        input#result {
+            text-align: right;
+            background-color: rgb(224, 239, 222);
+        } */
     </style>
 
     <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
@@ -24,22 +77,54 @@
             console.log("parseInt(num2) : " + parseInt(num2));
             var result = 0;
 
-            if (!isNaN(parseInt(num1)) && !isNaN(parseInt(num2)))
-            {
-                switch(param) {
+            if (!isNaN(parseInt(num1)) && !isNaN(parseInt(num2))) {
+                switch (param) {
                     case '+': result = parseInt(num1) + parseInt(num2); break;
                     case '-': result = parseInt(num1) - parseInt(num2); break;
                     case '*': result = parseInt(num1) * parseInt(num2); break;
-                    case '/': result = parseInt(num1) / parseInt(num2); break;
+                    case '/': result = parseInt(num1) / parseInt(num2); result = result.toFixed(2);
                 }
 
                 document.getElementById("result").value = result;
             }
-            
+
         }
-        
 
+        function calc(obj) {
+            // 강사님 풀이 
+            console.log(obj.type);
+            //==>> button
+            console.log(obj.className);
+            //==>> undefined
+            console.log(obj.value);
+            //==>> 더하기/빼기/곱하기/나누기
 
+            var vNum1 = document.getElementById("num1").value;
+            var vNum2 = document.getElementById("num2").value;
+            var vResult = 0;
+
+            /* 
+              [자바스크립트]
+               "20" + 10 -> 2010
+               "20" * 10 -> 200
+            */
+
+            if (obj.value == "더하기") {
+                console.log(">> 덧셈 연산 수행");
+                vResult = parseInt(vNum1) + parseInt(vNum2);
+            } else if (obj.value == "빼기") {
+                console.log(">> 뺄셈 연산 수행");
+                vResult = parseInt(vNum1) - parseInt(vNum2);
+            } else if (obj.value == "곱하기") {
+                console.log(">> 곱셈 연산 수행");
+                vResult = parseInt(vNum1) * parseInt(vNum2);
+            } else if (obj.value == "나누기") {
+                console.log(">> 나눗셈 연산 수행");
+                vResult = parseInt(vNum1) / parseInt(vNum2);
+            }
+
+            document.getElementById("result2").value = vResult;
+        }
 
     </script>
     <noscript>
@@ -66,18 +151,49 @@
     </div>
     <div>
         <form>
+            <br>
             정수1 <input type="text" id="num1" class="txtNum">&nbsp;&nbsp;
             정수2 <input type="text" id="num2" class="txtNum">
             <br><br>
-            
+
             <input type="button" class="btn" value="더하기" onclick="actionCalc('+');">&nbsp;
-            <input type="button" class="btn" value="빼기"  onclick="actionCalc('-');">&nbsp;
+            <input type="button" class="btn" value="빼기" onclick="actionCalc('-');">&nbsp;
             <input type="button" class="btn" value="곱하기" onclick="actionCalc('*');">&nbsp;
             <input type="button" class="btn" value="나누기" onclick="actionCalc('/');">
             <br><br>
 
             결과&nbsp;<input type="text" id="result" class="txtNum" disabled="disabled">&nbsp;
             <input type="reset" class="btn" value="취소">
+            <br>
+            <br>
+            <br>
+        </form>
+    </div>
+
+        <div class="sol">
+            <h3>[강사님 풀이]</h3>
+            <hr>
+        <form>
+            <br>
+            정수1 <input type="text" id="num1" class="txtNum">&nbsp;&nbsp;
+            정수2 <input type="text" id="num2" class="txtNum">
+            <br><br>
+
+            <input type="button" class="btn" value="더하기" onclick="calc(this);">&nbsp;
+            <!-- <input type="button" class="btn" value="더하기" onclick="calc('+');">&nbsp; -->
+            <input type="button" class="btn" value="빼기" onclick="calc(this);">&nbsp;
+            <!-- <input type="button" class="btn" value="빼기" onclick="calc('-');">&nbsp; -->
+            <input type="button" class="btn" value="곱하기" onclick="calc(this);">&nbsp;
+            <!-- <input type="button" class="btn" value="곱하기" onclick="calc('*');">&nbsp; -->
+            <input type="button" class="btn" value="나누기" onclick="calc(this);">
+            <!-- <input type="button" class="btn" value="나누기" onclick="calc('/');"> -->
+            <br><br>
+
+            결과&nbsp;<input type="text" id="result2" class="txtNum" disabled="disabled">&nbsp;
+            <input type="reset" class="btn" value="취소">
+            <br>
+            <br>
+            <br>
         </form>
     </div>
 

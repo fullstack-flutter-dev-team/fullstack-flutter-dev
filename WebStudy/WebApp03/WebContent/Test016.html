@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test016.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bod;
+            text-align: right;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            text-align: center;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+        .txt {
+            text-align: right;
+        }
+
+        input#inMoney:focus {
+            background-color: yellow;
+        }
+
+        input#inMoney:focus {
+            background-color: yellow;
+        }
+
+        input.btn {
+            font-weight: bold;
+            font-family: 나눔 고딕;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+        function actionCalc() {
+            console.log(">>> actionCalc")
+
+            var inputMoney = document.getElementById("inMoney");
+            var tot  = document.getElementById("tot");
+            var n500 = document.getElementById("n500");
+            var n100 = document.getElementById("n100");
+            var n50  = document.getElementById("n50");
+            var n10  = document.getElementById("n10");
+
+            var numInMoney = parseInt(inputMoney.value);
+            var tempN = numInMoney;
+
+            if (!isNaN(numInMoney)) {
+                console.log(numInMoney / 500);
+                var num500 = Math.trunc(numInMoney / 500);
+                tempN = num500 > 0 ? numInMoney - 500 * num500 : tempN;
+                console.log("num500 :" + num500);
+                console.log("tempN :" + tempN);
+
+                var num100 = Math.trunc(tempN / 100);
+                tempN = num100 > 0 ? tempN - 100 * num100 : tempN;
+                console.log("num100 :" + num100);
+                console.log("tempN :" + tempN);
+
+
+                var num50 = Math.trunc(tempN / 50);
+                tempN = num50 > 0 ? tempN - 50 * num50 : tempN;
+                console.log("num50 :" + num50);
+                console.log("tempN :" + tempN);
+
+                var num10 = Math.trunc(tempN / 10);
+                tempN = num10 > 0 ? tempN - 10 * num10 : tempN;
+                console.log("num10 :" + num10);
+                console.log("tempN :" + tempN);
+
+                // 연산 결과 값 설정
+                tot.value  = numInMoney;
+                n500.value = num500;
+                n100.value = num100;
+                n50.value  = num50;
+                n10.value  = num10;
+            } else {
+                // alert("금액에 해당되는 정수를 입력하세요~~~");
+                document.getElementsByTagName("form")[0].reset();
+            }
+        }
+
+        function actionCalculate() {
+            console.log(">>> actionCalculate");
+
+            var moneyStr = document.getElementById("money").value;
+            var money = parseInt(moneyStr);
+
+            document.getElementById("totalMoney").value = money;
+
+            // var m500 = parseInt(money/500);
+            var m500 = Math.floor(money/500);
+
+            // 확인
+            console.log("123.456");
+            console.log("parseInt(123.456) : " + parseInt(123.456));
+            console.log("Math.floor(123.456) : " + Math.floor(123.456));
+
+            // money = money%500;
+            money %= 500;
+
+            var m100 = parseInt(money/100);
+            // var m100 = Math.floor(money/100);
+
+            // money = money%100;
+            money %= 100;
+
+            
+            var m50 = parseInt(money/50);
+            // var m50 = Math.floor(money/50);
+
+            // money = money%50;
+            money %= 50;
+
+            var m10 = parseInt(money/10);
+
+            document.getElementById("m500").value = m500;
+            document.getElementById("m100").value = m100;
+            document.getElementById("m50").value = m50;
+            document.getElementById("m10").value = m10;
+        }
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <hr>
+    </div>
+    <!-- 
+        특정 금액(10월 ~ 990원)을 사용자로부터 입력받아
+        화폐 단위로 구분하여 출력하는 페이지를 구성한다.
+        화폐 단위는 편의상 오백원, 백원, 오십원, 십원으로 구분한다.
+        HTML, CSS, Javascript를 활용한다.
+
+        페이지 기본 레이아웃 구성
+        ----------------------------------------------------
+          금액  [    ] 원                #money
+           < 결과 > < 취소 >
+         
+           총액   [    ] 원              #totalMoney
+           오백원 [    ] 개              #m500
+           백원   [    ] 개              #m100
+           오십원 [    ] 개              #m50
+           십원   [    ] 개              #m10
+
+        ----------------------------------------------------
+    -->
+
+    <div>
+        <form>
+            <!-- 금액 &nbsp; <input type="text"> &nbsp; 원<br>
+            <input type="button" value="결과" id="">
+            <input type="button" value="취소" id=""> <br><br> -->
+
+            <table border="0">
+                <tr align="center">
+                    <td>금액</td>
+                    <td><input type="text" class="txtNum" id="inMoney"></td>
+                    <td>원</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="button" value="결과" class="btn" id="btnCalc" onclick="actionCalc();">&nbsp;
+                        <input type="reset" value="취소" class="btn" id="btnCancel">
+                    </td>
+                </tr>
+                <tr style="height: 10px;"></tr>
+                <tr>
+                    <td>총액</td>
+                    <td><input type="text" class="txtNum" id="tot" disabled="disabled"></td>
+                    <td>원</td>
+                </tr>
+                <tr>
+                    <td>오백원</td>
+                    <td><input type="text" class="txtNum" id="n500" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>백원</td>
+                    <td><input type="text" class="txtNum" id="n100" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>오십원</td>
+                    <td><input type="text" class="txtNum" id="n50" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>십원</td>
+                    <td><input type="text" class="txtNum" id="n10" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+            </table>
+            <!-- 총액&nbsp;  <input type="text">&nbsp;원<br>
+                오백원&nbsp;<input type="text" disabled="disabled">&nbsp;개<br>
+                백원&nbsp;  <input type="text" disabled="disabled">&nbsp;개<br>
+                오십원&nbsp;<input type="text" disabled="disabled">&nbsp;개<br>
+                십원&nbsp;  <input type="text" disabled="disabled">&nbsp;개<br> -->
+        </form>
+    </div>
+
+    <br><br>
+    <h3>강사님 풀이</h3>
+    <hr>
+    <div>
+<table border="0">
+                <tr align="center">
+                    <td>금액</td>
+                    <td><input type="text" class="txtNum" id="money"></td>
+                    <td>원</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <input type="button" value="결과" class="btn" id="" onclick="actionCalculate();">&nbsp;
+                        <input type="reset" value="취소" class="btn" id="">
+                    </td>
+                </tr>
+                <tr style="height: 10px;"></tr>
+                <tr>
+                    <td>총액</td>
+                    <td><input type="text" class="txtNum" id="totalMoney" disabled="disabled"></td>
+                    <td>원</td>
+                </tr>
+                <tr>
+                    <td>오백원</td>
+                    <td><input type="text" class="txtNum" id="m500" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>백원</td>
+                    <td><input type="text" class="txtNum" id="m100" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>오십원</td>
+                    <td><input type="text" class="txtNum" id="m50" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+                <tr>
+                    <td>십원</td>
+                    <td><input type="text" class="txtNum" id="m10" disabled="disabled"></td>
+                    <td>개</td>
+                </tr>
+            </table>
+    </div>
+
+
+</body>
+
+</html>
