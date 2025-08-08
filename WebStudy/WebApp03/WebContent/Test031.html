@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test031.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        /* DivTable.com */
+        .divTable {
+            display: table;
+            width: 100%;
+        }
+
+        .divTableRow {
+            display: table-row;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+        }
+
+        .divTableCell,
+        .divTableHead {
+            /* border: 1px solid #999999; */
+            display: table-cell;
+            padding: 3px 10px;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+            font-weight: bold;
+        }
+
+        .divTableFoot {
+            background-color: #EEE;
+            display: table-footer-group;
+            font-weight: bold;
+        }
+
+        .divTableBody {
+            display: table-row-group;
+        }
+
+        #count {
+            text-align: right;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        //
+        function actionAddScore(params) {
+            console.log(">>> actionAddScore()");
+            var arrStudent = Array();
+            var count = 0;
+            var nStudent = 0;
+            var rank = 1;
+
+            do {
+                var inData = prompt("이름 국어 영어 수학(" + (count+1) + ") : ");
+                if (inData=="." || inData==" " || inData==null) {
+                    break;
+                }
+                arrStudent[count] = inData.split(" ");
+                console.log("arrStudent : " + arrStudent[count]);
+                count++;
+            } while(true);
+            // arrStudent[0] = ["김한국", "70", "80", "60" ];
+            // arrStudent[1] = ["홍길동", '55', '78', "60" ];
+            // arrStudent[2] = ["이하나", '76', "89", '60' ];
+
+            nStudent = arrStudent.length;
+            console.log(">> nStudent : " + nStudent);
+
+            // 인원 수
+            document.getElementById("count").value = nStudent;
+            var sum = 0;
+            arrStudent.forEach(student => {
+                sum = 0;
+                for (var n=1; n<student.length;n++) {
+                    sum += parseInt(student[n]);
+                }
+                student.push(sum);
+                console.log("sum :" + sum);
+                console.log("student :" + student);
+            });
+            
+            document.getElementById("list").value = "---------------------------------------------\n";
+            document.getElementById("list").value += "이름\t국어\t영어\t수학\t총점\t등수\n";
+            document.getElementById("list").value += "---------------------------------------------\n";
+            arrStudent.forEach(student => {
+                console.log("student :" + student);
+                rank = 1;
+                for (var k=0;k<arrStudent.length;k++) {
+                    if (student[4] < arrStudent[k][4]) {
+                        rank++;
+                    }
+                }
+                student.push(rank);
+                document.getElementById("list").value += student.join("\t") + "\n";
+            });
+            document.getElementById("list").value += "---------------------------------------------\n";
+        }
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>prompt()</p>
+        <hr>
+    </div>
+    <br>
+
+    <!-- 
+         prompt() 를 활용하여 여러 명의 성적 데이터를 입력받아 다차원 배열로 구성하고,
+         등수를 부여하여 리스트를 출력하는 페이지를 구현한다.
+         HTML, CSS, Javascript를 활용한다.
+
+         페이지 레이아웃
+         -------------------------------------------------------------------
+         < 성적 정보 입력 > -> button -> prompt() > 이름 국어 영어 수학(1) : xxx xx xx xx
+                                                   이름 국어 영어 수학(2) : xxx xx xx xx
+     
+        전체 인웡 수 : [ x ] 명
+
+        ----------------------------------------- -> textarea
+        이름  국어  영어  수학 총점  등수
+        도우너 80    80   80  240   x등
+        김한국 80    70   80  230   x등
+        마이콜 80    90   80  250   x등
+        ----------------------------------------- ->
+    -->
+
+    <div class="divTable">
+        <div class="divTableBody">
+            <div class="divTableRow">
+                <div class="divTableCell">&nbsp;
+                    <button type="submit" onclick="actionAddScore();">성적 정보 입력</button>
+                    
+                </div>
+                <div class="divTableCell">&nbsp;
+                    
+                </div>
+            </div>
+            <br>
+            <div class="divTableRow">
+                <div class="divTableCell">&nbsp;
+                    <label>전체 인원 수 : </label>
+                    <input type="text" id="count"><label>명</label>
+                    
+                </div>
+                <div class="divTableCell">&nbsp;
+                    
+                </div>
+            </div>
+            <br>
+            <div class="divTableRow">
+                <div class="divTableCell">&nbsp;
+                    <textarea rows="20" cols="50" id="list"></textarea>
+                    
+                </div>
+                <div class="divTableCell">&nbsp;
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

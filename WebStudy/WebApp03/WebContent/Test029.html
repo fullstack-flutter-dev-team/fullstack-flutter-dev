@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test029.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        function addMember(params) {
+            console.log(">>> addMember");
+
+            var str = "";
+            var arr = new Array();
+            var n = 0;
+
+            do {
+                // check~!!!
+                /*
+                  [prompt()] 대화차을 통해 데이터 입력 안내
+                   -> 사용자의 입력 데이터를 변수 str에 담아내기 
+                 */
+                str = prompt("이름 전화번호(" + (n+1) + ") : ");
+
+                // 확인
+                console.log("str : " + str);
+
+                if (str == "." || str==null || str==" " || str=="") {
+                    break;
+                }
+
+                arr[n] = str;
+                n++;
+
+            } while(true);
+            console.log(">>> do - while 종료....")
+
+            // 인원 수 전달
+            document.getElementById("txtCount").value = arr.length;
+            document.getElementById("txtResult").value = " 이름 전화번호\n";
+            
+            for (var n = 0; n<arr.length; n++) {
+                document.getElementById("txtResult").value += arr[n] + "\n";
+            }
+
+            console.log(">>> 함수 종료....")
+        }
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p></p>
+        <hr>
+    </div>
+    
+    <!-- 
+        사용자로부터 여러 명의 이름과 전화번호를 입력받고
+        그 내용을 전체 출력하는 페이지를 구성한다.
+        HTML, CSS, Javascript를 활용한다.
+        단, 데이터를 입력받는 과정은 * prompt()를 활용한다.
+
+        페이지 레이아웃
+        ---------------------------------------------------------
+        < 회원 정보 입력 >   → button  → click → 이름 전화번호(1) : 고길동 010-1111-2222
+                                                이름 전화번호(2) : 도우너 010-1111-2222
+                                                이름 전화번호(2) : 마이콜 010-1111-2222
+                                                이름 전화번호(2) : .
+
+        전체 회원 수 : [ 1 ] 명
+        ------------------------------------------
+             이름       전화번호
+        ------------------------------------------
+        고길동 010-1111-2222
+        도우너 010-1111-2222
+        마이콜 010-1111-2222
+        ------------------------------------------
+
+        ---------------------------------------------------------
+     -->
+
+     <div>
+        <form>
+            <input type="button" value="회원 정보 입력" class="btn" style="width: 220px;" onclick="addMember();">
+            <br>
+            <label>전체 회원 수</label>
+            <br>
+            <input type="text" id="txtCount" class="txt" readonly="readonly" style="width:20px;"> 명
+            <br>
+            <textarea id="txtResult"></textarea>
+        </form>
+
+     </div>
+     
+</body>
+
+</html>

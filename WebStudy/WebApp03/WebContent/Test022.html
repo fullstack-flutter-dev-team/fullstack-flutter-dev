@@ -27,6 +27,13 @@
     <script type="text/javascript">
         // 자바스크립트 코드 작성
 
+        // 자바스크립트 배열 선언 및 초기화
+        var arr = [4, 7, 9, 1, 3, 2, 5, 6, 8];
+
+        function init() {
+            document.getElementById("arr1").value = arr;
+        }
+
         function actionCalculate() {
             console.log(">> actionCalculate");
             var arrOri = [4, 7, 9, 1, 3, 2, 5, 6, 8];
@@ -49,9 +56,22 @@
                 arr1Obj.value = strArr1;
                 arr2Obj.value = strArr2;
             }
+        }
 
+        function actionArray(params) {
+            // 확인
+            // alert("함수 호출 확인~!!!");
 
+            var str = " ";
 
+            for (var n = 0; n < arr.length; n++) { //-- 배열의 전체 요소(길이)만큼 반복(각 요소 확인)
+                // 짝수만
+                if (arr[n]%2 == 0) {               //-- 인덱스(n)가 아닌 요소값이 짝수일 경우...
+                    str += arr[n] + " ";
+                }
+            }
+
+            document.getElementById("arr2").value = arr;
         }
 
 
@@ -66,7 +86,7 @@
 <!-- <body> -->
 <!-- <body onload="windowOnload();"> -->
 
-<body>
+<body onload="init();">
     <div>
         <h1>자바스크립트 활용</h1>
         <p></p>

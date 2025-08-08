@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test027.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+   
+   </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        var arr1 = ["one", "two", "three"];
+        arr1.push("four");                           //--- check~!!!
+        document.write("<P>" + arr1.join(" / ") + "</p>");
+        //-==>> one / two / three / four
+
+        var arr2 = ["one", "two", "three"];
+        arr2.pop();                                 //--- check~!!!
+        document.write("<P>" + arr2.join(" / ") + "</p>");
+        //--==>> one / two
+
+        var arr3 = ["one", "two", "three"];
+        arr3.unshift("zero");                       //--- check~!!!
+        document.write("<P>" + arr3.join(" / ") + "</p>");
+        //--==>> zero / one / two / three
+
+        var arr4 = ["one", "two", "three"];
+        arr4.shift();                       //--- check~!!!
+        document.write("<P>" + arr4.join(" / ") + "</p>");
+        //--==>> two / three
+        /* 
+          * 배열.push() 나 배열.unshift() 는 대상 배열에 요소를 추가한다.
+            이 때, push()는 배열의 맨 끝에, unshift()는 배열의 맨 앞에 요소를 추가한다.
+       
+          * 자바스크립트 배열에서 요소를 제거하는 메서드에는
+            배열.pop() 과 배열.shift() 가 있다.
+
+        */
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>배열 push/pop/unshift/shift</p>
+        <hr>
+    </div>
+
+
+</body>
+
+</html>

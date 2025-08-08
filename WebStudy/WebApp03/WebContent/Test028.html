@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test028.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        /* DivTable.com */
+        .divTable {
+            display: table;
+            width: 100%;
+        }
+
+        .divTableRow {
+            display: table-row;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+        }
+
+        .divTableCell,
+        .divTableHead {
+            border: 0px solid #999999;
+            display: table-cell;
+            padding: 3px 10px;
+        }
+        input.btn {
+            background-color: #1eb219;
+            width: 80%;
+        }
+
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+            font-weight: bold;
+        }
+
+        .divTableFoot {
+            background-color: #EEE;
+            display: table-footer-group;
+            font-weight: bold;
+        }
+
+        .divTableBody {
+            display: table-row-group;
+        }
+
+        #txt01:focus {
+            background-color: yellow;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        // 자바스크립트 코드 작성
+
+        function actionTest(params) {
+            console.log(">> actionTest");
+            var txt01Obj = document.getElementById("txt01");
+            var txt02Obj = document.getElementById("txt02");
+            var txt03Obj = document.getElementById("txt03");
+
+            var txt01Val = txt01Obj.value;
+            var txt02Val = txt02Obj.value;
+            var txt03Val = txt03Obj.value;
+
+            var inArr = txt01Val.split(" ");
+            var maxNum = 0;
+            var retArrStr = "";
+
+            console.log(">> txt01Val : " + txt01Val);
+            console.log(">> inArr : " + inArr);
+            console.log(">> inArr.length : " + inArr.length);
+
+            inArr.forEach(element => {
+                if (parseInt(element) == isNaN) {
+                    alert("정수를 입력해 주세요.")
+                    return;
+                }
+            });
+
+            inArr.forEach(element => {
+                retArrStr += element + " ";
+                if (Number(element) > maxNum) {
+                    maxNum = Number(element);
+                    console.log(">> maxNum : " + maxNum);
+                }
+            });
+
+            // 결과 출력
+            txt02Obj.value = retArrStr;
+            txt03Obj.value = maxNum;
+        }
+
+        /* 강사님 풀이 */
+         function actionPerformed(params) {
+            console.log("");
+
+            // 사용자 입력값을 활용하여 자바스크립트 배열 구성
+            var tempStr = document.getElementById("txt01").value; //--"10 30 20 50 40"
+            var arr = tempStr.split(" ");                         //-- 공백으로 구분하여 배열 반환
+            // var arr = ["10", "30", "20", "50", "40"];
+
+            // 확인 -> 배열의 전체 요소 더미 학인
+            document.getElementById("txt02").value = arr;         //-- 더미 확인
+            //==>> 10,30,20,50,40
+            
+            var allStr = "";
+            for (var n=0; n<arr.length; n++) {
+                allStr += arr[n] + " ";
+            }
+            document.getElementById("txt02").value = allStr;
+            
+            // 가장 큰 수 얻어내기
+            var max = Number(arr[0]);
+            
+            for (var n=1; n<arr.length; n++) {
+                if (max < Number(arr[n])) {
+                    max = Number(arr[n]);
+                }
+            }
+            document.getElementById("txt03").value = max;
+         }
+
+
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p></p>
+        <hr>
+    </div>
+
+    <!-- 
+       사용자로부터 임의의 정수를 임의의 갯수만큰 입력받고,
+       입력받은 항목으로 배열을 구성하여,
+       구성한 정수들 중 가장 큰 수를 출력해줄 수 있는 페이지를 구성한다.
+       HTML, CSS, Javascript를 활용한다.
+
+       페이지 레이아웃
+       ----------------------------------------------------------------
+        데이터 입력(공백 구분)         [         ]   → text   → 배열 구성          #txt01
+                 
+                   < 결과 확인 >                    → button
+
+        - 전체 출력                   [         ]   → text   → 배열 전체 요소 출력 #txt02
+
+        - 가장 큰 수                  [    ]        → text                        #txt03
+       ----------------------------------------------------------------
+    -->
+    <div class="divTable" style="width: 400px; background-color: #eaf0df;">
+        <div class="divTableBody">
+            <div class="divTableRow">
+                <div class="divTableCell"><label> 데이터 입력(공백 구분)</label></div>
+                <div class="divTableCell"><input type="text" id="txt01"></div>
+            </div>
+            <br>
+            <div class="divTableRow">
+                <!-- <input type="button" class="btn" value="결과 확인" onclick="actionTest();"> -->
+                <input type="button" class="btn" value="결과 확인" onclick="actionPerformed();">
+            </div>
+            <br>
+            <div class="divTableRow">
+                <div class="divTableCell"><label> - 전체 출력</label></div>
+                <div class="divTableCell"><input type="text" id="txt02" disabled="disabled"></div>
+            </div>
+            <div class="divTableRow">
+                <div class="divTableCell"><label> - 가장 큰 수</label></div>
+                <div class="divTableCell"><input type="text" id="txt03" disabled="disabled"></div>
+            </div>
+        </div>
+    </div>
+    <!-- DivTable.com -->
+
+</body>
+
+</html>
