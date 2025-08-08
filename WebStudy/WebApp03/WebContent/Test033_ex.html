@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test033_ex.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+
+        .tbl_header {
+            background-color: rgb(193, 238, 200);
+        }
+
+        .sunday {
+            color: red;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        // 테이블 노드 생성
+        function createTdNode(val, colorVal) {
+            var textNode = document.createTextNode(val);
+            var tdNode = document.createElement("td");
+
+            if (colorVal != null) {
+                tdNode.style.color = "red";
+            }
+            tdNode.appendChild(textNode);
+            return tdNode;
+        }
+
+        /*
+        *  달력 그리기
+        */
+        function drawCalendar(params) {
+            console.log(">>> drawCalendar()");
+
+            var arrMonthLastDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var year = document.getElementById("txtYear");
+            var month = document.getElementById("txtMonth");
+            var nYear = Number(year.value);
+            var nMonth = Number(month.value);
+            // var nYear = 2025;
+            // var nMonth = 8;
+            var nLeapYearCount = 0;
+            var nTotDays = 0;
+            var arrCal = [];
+
+            for (var n = 1; n < nYear; n++) {
+
+                // 윤년 
+                if (isLeapYear(n)) {
+                    //    console.log(">>윤년: " + n);
+                    nLeapYearCount++;
+                }
+            }
+            console.log(">> nLeapYearCount : " + nLeapYearCount);
+
+            // 전체 일수 계산
+            nTotDays = (nYear - 1) * 365 + nLeapYearCount;
+            console.log(">> nTotDays : " + nTotDays);
+
+            for (var m = 1; m < nMonth; m++) {
+                if (m == 2 && isLeapYear(nYear)) {
+                    nTotDays += arrMonthLastDay[m - 1] + 1;
+                } else {
+                    nTotDays += arrMonthLastDay[m - 1];
+                }
+            }
+
+            //해당 월 1일의 요일 인덱스
+            var firstDayIndex = nTotDays % 7;
+            console.log(">> firstDayIndex : " + firstDayIndex);
+
+            // 달력 그리기
+            var tableNode = document.getElementById("calendarTbl");
+            var trNode = document.createElement("tr");  // <tr></tr>
+            var nTblTrCount = tableNode.childNodes.length;
+
+            // 달력 초기화
+            for (var m=0; m<nTblTrCount; m++) {
+                if (tableNode.childNodes.length<3) {
+                    break;
+                }
+                tableNode.lastChild.remove();
+            }
+
+            // 해당 월의 1일 이전 요일은 공백으로 처리
+            for (var i = 0; i <= firstDayIndex; i++) {
+                trNode.appendChild(createTdNode(" "));
+            }
+
+            // 1일이 일요일이 되는 경우 처리
+            if (trNode.children.length == 7) {
+                trNode = document.createElement("tr"); 
+                tableNode.appendChild(trNode);
+            }
+
+            for (var idx = 1; idx <= arrMonthLastDay[nMonth - 1]; idx++) {
+                trNode.appendChild(createTdNode(idx));
+                
+                // 주 단위 tr노드 추가
+                if (trNode.children.length%7==0 ) {
+                    tableNode.appendChild(trNode);
+                    trNode = document.createElement("tr"); 
+                }
+
+                // 해당 월 마지막 주 처리
+                if (idx == arrMonthLastDay[nMonth - 1]) {
+                    tableNode.appendChild(trNode);
+                }
+            }
+            console.log(trNode.children.length);
+        }
+
+        // 윤년 계산
+        function isLeapYear(year) {
+            var isLeapYear = false;
+            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                isLeapYear = true;
+            }
+            return isLeapYear;
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>테이블 동적 생성으로 만년달력 그리기</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
+        <input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
+        <br><br>
+
+        <input type="button" value="만년달력 그리기" class="btn" style="width: 200px;" onclick="drawCalendar();">
+        <br><br>
+
+        <table border="1" id="calendarTbl">
+            <tr class="tbl_header">
+                <th class="sunday">일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

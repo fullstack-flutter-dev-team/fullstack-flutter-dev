@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test032.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        input.btn {
+            margin-left: 40px;
+            width: 160px;
+            display: inline-table;
+        }
+
+        input.btn:hover {
+            background-color: rgb(83, 223, 255);
+        }
+
+        input.btn:active {
+            background-color: red;
+        }
+
+        input.btn_del {
+            margin-left: 40px;
+            width: 160px;
+            display: inline-table;
+        }
+
+        input.btn_del:hover {
+            background-color: rgb(231, 104, 209);
+        }
+
+        input.btn_del:active {
+            background-color: red;
+        }
+
+        input.txt:focus {
+            background-color: yellow;
+        }
+
+        .tbl_th {
+            background-color: aquamarine;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        function addMember(params) {
+            console.log(">>> addMember()");
+
+            var name = document.getElementById("txtName").value;
+            var tel = document.getElementById("txtTel").value;
+            var addr = document.getElementById("txtAddr").value;
+
+            // 확인
+            console.log("name : " + name);
+            console.log("tel : " + tel);
+            console.log("addr : " + addr);
+
+            if (name == "" || tel == "" || addr == "") {
+                return;
+            } else {
+                // check~!!!
+                // 작업 대상 table 엘리먼트 접근
+                var tableNode = document.getElementById("memberTbl");
+
+                // table tr th td
+                // table thead tbody tr th td
+
+                // tbody 엘리먼트 접근 -> 사용하지 않는 경우 생략
+                // *주의. 브라우저에 따라 다른 결과
+                /* 
+                var tbodyNode;
+                if (tableNode.childNodes[0].nodeType==1) {
+                    tbodyNode = tableNode.childNodes[0];  // IE 기준
+                } else {
+                    tbodyNode = tableNode.childNodes[1];  // IE 이외 CR, FF, ...
+                }
+                */
+
+                // 확인
+                console.log(">>> nodeType : " + tableNode.childNodes[0].nodeType);
+                //==>> >>> nodeType : 3
+
+                var trNode = document.createElement("tr");  // <tr></tr>
+                //----
+                var tdNode1 = document.createElement("td");  // <td></td>
+                var nameNode = document.createTextNode(name);  // <td> 노드에 추가할 "홍길동" 텍스트노드 생성
+                //----
+                var tdNode2 = document.createElement("td");  // <td></td>
+                var telNode = document.createTextNode(tel);  // <td> 노드에 추가할 "010-1111-2222" 텍스트노드 생성
+                //----
+                var tdNode3 = document.createElement("td");  // <td></td>
+                var addrNode = document.createTextNode(addr);  // <td> 노드에 추가할 "제주 서귀포" 텍스트노드 생성
+                //---------------[Step - 1]----------------------------------
+                tdNode1.appendChild(nameNode);  // <td>"홍길동"</td>
+                tdNode2.appendChild(telNode);   // <td>"010-1111-2222"</td>
+                tdNode3.appendChild(addrNode);  // <td>"제주 서귀포"</td>
+                //---------------[Step - 2]----------------------------------
+                trNode.appendChild(tdNode1);  // <tr><td>"홍길동"</td></tr>
+                trNode.appendChild(tdNode2);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td></tr>
+                trNode.appendChild(tdNode3);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td><td>"제주 서귀포"</td></tr>
+                //---------------[Step - 3]----------------------------------
+                tableNode.appendChild(trNode);
+            }
+        }
+
+        /** 
+        *
+        */
+        function createTdNode(val) {
+            var textNode =  document.createTextNode(val);
+            var tdNode = document.createElement("td");
+            tdNode.appendChild(textNode);
+            return tdNode;
+        }
+
+        function delMember(params) {
+            console.log(">>> delMember");
+
+            var tableNode = document.getElementById("memberTbl");
+            var size = tableNode.childNodes.length;
+
+            // 회원 삭제
+            tableNode.lastChild.remove();
+            console.log(tableNode.childNodes.length);
+
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>테이블 동적 생성/삭제</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <form>
+            <label style="width:60px; display:inline-table;">이름</label>
+            <input type="text" id="txtName" class="txt"><br>
+            <label style="width:20px;">전화번호</label>
+            <input type="text" id="txtTel" class="txt"><br>
+            <label style="width:60px;display: inline-table;">주소</label>
+            <input type="text" id="txtAddr" class="txt">
+            <br>
+            <br>
+
+            <!-- <button type="button" class="btn">회원 정보 입력</button> -->
+            <input type="button" class="btn" value="회원 정보 입력" onclick="addMember();">
+            <br><br>
+            <input type="button" class="btn_del" value="회원 정보 삭제" onclick="delMember();">
+            <br><br><br>
+
+            <table border="1" id="memberTbl">
+                <tr class="tbl_th">
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>주소</th>
+                </tr>
+                <tr>
+                    <td>김한국</td>
+                    <td>010-111-2222</td>
+                    <td>제주 서귀포</td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test033.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+        
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        function addMember(params) {
+            console.log(">>> addMember()");
+
+            var name = document.getElementById("txtName").value;
+            var tel = document.getElementById("txtTel").value;
+            var addr = document.getElementById("txtAddr").value;
+
+            // 확인
+            console.log("name : " + name);
+            console.log("tel : " + tel);
+            console.log("addr : " + addr);
+
+            if (name == "" || tel == "" || addr == "") {
+                return;
+            } else {
+                // check~!!!
+                // 작업 대상 table 엘리먼트 접근
+                var tableNode = document.getElementById("memberTbl");
+
+                // table tr th td
+                // table thead tbody tr th td
+
+                // tbody 엘리먼트 접근 -> 사용하지 않는 경우 생략
+                // *주의. 브라우저에 따라 다른 결과
+                /* 
+                var tbodyNode;
+                if (tableNode.childNodes[0].nodeType==1) {
+                    tbodyNode = tableNode.childNodes[0];  // IE 기준
+                } else {
+                    tbodyNode = tableNode.childNodes[1];  // IE 이외 CR, FF, ...
+                }
+                */
+
+                // 확인
+                console.log(">>> nodeType : " + tableNode.childNodes[0].nodeType);
+                //==>> >>> nodeType : 3
+
+                var trNode = document.createElement("tr");  // <tr></tr>
+                //----
+                var tdNode1 = document.createElement("td");  // <td></td>
+                var nameNode = document.createTextNode(name);  // <td> 노드에 추가할 "홍길동" 텍스트노드 생성
+                //----
+                var tdNode2 = document.createElement("td");  // <td></td>
+                var telNode = document.createTextNode(tel);  // <td> 노드에 추가할 "010-1111-2222" 텍스트노드 생성
+                //----
+                var tdNode3 = document.createElement("td");  // <td></td>
+                var addrNode = document.createTextNode(addr);  // <td> 노드에 추가할 "제주 서귀포" 텍스트노드 생성
+                //---------------[Step - 1]----------------------------------
+                tdNode1.appendChild(nameNode);  // <td>"홍길동"</td>
+                tdNode2.appendChild(telNode);   // <td>"010-1111-2222"</td>
+                tdNode3.appendChild(addrNode);  // <td>"제주 서귀포"</td>
+                //---------------[Step - 2]----------------------------------
+                trNode.appendChild(tdNode1);  // <tr><td>"홍길동"</td></tr>
+                trNode.appendChild(tdNode2);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td></tr>
+                trNode.appendChild(tdNode3);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td><td>"제주 서귀포"</td></tr>
+                //---------------[Step - 3]----------------------------------
+                tableNode.appendChild(trNode);
+            }
+        }
+
+        /** 
+        *
+        */
+        function createTdNode(val) {
+            var textNode =  document.createTextNode(val);
+            var tdNode = document.createElement("td");
+            tdNode.appendChild(textNode);
+            return tdNode;
+        }
+
+        function delMember(params) {
+            console.log(">>> delMember");
+
+            var tableNode = document.getElementById("memberTbl");
+            var size = tableNode.childNodes.length;
+
+            // 회원 삭제
+            tableNode.lastChild.remove();
+            console.log(tableNode.childNodes.length);
+
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>테이블 동적 생성으로 만년달력 그리기</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
+        <input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
+        <br><br>
+        
+        <input type="button" value="만년달력 그리기" class="btn" style="width: 200px;">
+        <br><br>
+
+        <table border="1" id="calendarTbl">
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
