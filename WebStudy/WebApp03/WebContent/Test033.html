@@ -20,7 +20,7 @@
         input:focus {
             background-color: #eeeedd;
         }
-        
+
         input.btn {
             width: 90px;
             font-weight: bold;
@@ -52,8 +52,6 @@
         th {
             width: 48px;
         }
-
-
     </style>
 
     <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
@@ -62,75 +60,327 @@
         // 자바스크립트 코드 작성
         //----------------------------------------------
 
-        function addMember(params) {
-            console.log(">>> addMember()");
+        function actionCalendar() {
+            // 확인
+            // alert("함수 호출 확인~!!!");
 
-            var name = document.getElementById("txtName").value;
-            var tel = document.getElementById("txtTel").value;
-            var addr = document.getElementById("txtAddr").value;
+            // 사용자가 입력한 연, 월 데이터 가져오기
+            var yearStr = document.getElementById("txtYear").value;
+            var monthStr = document.getElementById("txtMonth").value;
+
+            // 입력한 데이터를 문자열 형태로
+            // 체크해볼 수 있는 유효성 검사 코드 삽입 가능~!!!
+
+            var year = parseInt(yearStr);
+            var month = parseInt(monthStr);
+
+            // 입력된 데이터를 숫자 형태로
+            // 체트해볼 수 있는 유효성 검사 코드 삽입 가능~!!!!
+            /* 
+            if (year < 1) {
+                alert("입력 연도 데이터 이상~!!!!");
+                return;
+            }
+            
+            if (month < 1 || month > 12) {
+                alert("입력 월 데이터 이상~!!!!");
+                return;
+            } 
+            */
+            if (year < 1 || month < 1 || month > 12) {
+                alert("입력 날짜 데이터가 유효하지 않습니다~!!!!");
+                return;
+            }
+
+            // *사용자가 입력한 연도, 월 → 이 년월에 해당하는 1일의 요일 알아내기~!!!
+            var total = 0;
+
+            // * Math.floor() → 소수부 절삭 → parseInt()
+            //   Math.ceil()  → 소수부 올림
+            //   Math.round()  → 소수부 반올림
+
+            // 1단계. 1년 1월 1일 부터... 입력년도 기준 전년도 12월 31일까지의 총 날짜 수 구하기
+            // total = (year - 1)*365 + (year-1)/4 - (year-1)/100 + (year-1)/400; //-- java
+            total = (year - 1) * 365 + parseInt((year - 1) / 4) - parseInt((year - 1) / 100) + parseInt((year - 1) / 400);
 
             // 확인
-            console.log("name : " + name);
-            console.log("tel : " + tel);
-            console.log("addr : " + addr);
+            console.log("1년 1월 1일 ~ " + (year - 1) + "년 12월 31일 : " + total);
+            //==>> 1년 1월 1일 ~ 2024년 12월 31일 : 739251
 
-            if (name == "" || tel == "" || addr == "") {
-                return;
-            } else {
-                // check~!!!
-                // 작업 대상 table 엘리먼트 접근
-                var tableNode = document.getElementById("memberTbl");
+            // 2단계. 해당 연도 1월 1일 부터... 해당 연도 해당 월 1일까지 총 날짜 수 구하기
+            //       → 1단계 결과에 더하기
+            var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-                // table tr th td
-                // table thead tbody tr th td
+            // 확인 
+            // console.log(m.length);
 
-                // tbody 엘리먼트 접근 -> 사용하지 않는 경우 생략
-                // *주의. 브라우저에 따라 다른 결과
-                /* 
-                var tbodyNode;
-                if (tableNode.childNodes[0].nodeType==1) {
-                    tbodyNode = tableNode.childNodes[0];  // IE 기준
-                } else {
-                    tbodyNode = tableNode.childNodes[1];  // IE 이외 CR, FF, ...
-                }
-                */
+            // Type-1
+            // for (var i=0; i<month-1; i++) {
+            //     total += m[i];
+            // }
+            // total++;
+            // if (month>=3 && (year%4==0 && year%100!=0 || year%400==0)) {
+            //     total++;
+            // }
+            //==>> 1년 1월 1일 ~ 2025년 8월 1일 : 739464
 
-                // 확인
-                console.log(">>> nodeType : " + tableNode.childNodes[0].nodeType);
-                //==>> >>> nodeType : 3
-
-                var trNode = document.createElement("tr");  // <tr></tr>
-                //----
-                var tdNode1 = document.createElement("td");  // <td></td>
-                var nameNode = document.createTextNode(name);  // <td> 노드에 추가할 "홍길동" 텍스트노드 생성
-                //----
-                var tdNode2 = document.createElement("td");  // <td></td>
-                var telNode = document.createTextNode(tel);  // <td> 노드에 추가할 "010-1111-2222" 텍스트노드 생성
-                //----
-                var tdNode3 = document.createElement("td");  // <td></td>
-                var addrNode = document.createTextNode(addr);  // <td> 노드에 추가할 "제주 서귀포" 텍스트노드 생성
-                //---------------[Step - 1]----------------------------------
-                tdNode1.appendChild(nameNode);  // <td>"홍길동"</td>
-                tdNode2.appendChild(telNode);   // <td>"010-1111-2222"</td>
-                tdNode3.appendChild(addrNode);  // <td>"제주 서귀포"</td>
-                //---------------[Step - 2]----------------------------------
-                trNode.appendChild(tdNode1);  // <tr><td>"홍길동"</td></tr>
-                trNode.appendChild(tdNode2);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td></tr>
-                trNode.appendChild(tdNode3);  // <tr><td>"홍길동"</td><td>"010-1111-2222"</td><td>"제주 서귀포"</td></tr>
-                //---------------[Step - 3]----------------------------------
-                tableNode.appendChild(trNode);
+            // Type-2
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                m[1] = 29;
             }
+            for (var i = 0; i < month - 1; i++) {
+                total += m[i];
+            }
+            total++; // 1일
+
+            // 확인
+            // alert("1년 1월 1일 ~ " + year + "년 " + month + "월 1일 : " + total);
+            console.log("1년 1월 1일 ~ " + year + "년 " + month + "월 1일 : " + total);
+            // console.log("1년 1월 1일 ~ ${year}년 ${month}월 1일 : ${total}");
+            //==>> 1년 1월 1일 ~ 2025년 8월 1일 : 739464
+
+            // 3단계. 해당 연도 해당 월의 첫 날(1일)의 요일 구하기
+            var days = total % 7;
+
+            // 확인
+            console.log(days);
+            //==>> 5 (금요일, 2025년 8월)
+
+            // 4단계. 해당 연도 해당 월의 마지막 날짜 구하기
+            //        (28일 or 29일 or 30일 or 31일)
+            var lastDay = m[month - 1];
+
+            // * Type-1 방식으로 처리했을 경우 추가 연산
+            // if (month==2 && (year%4==0 && year%100!=0 || year%400==0)) {
+            //     lastDay = 29;
+            // }
+
+            // 확인
+            console.log(lastDay);
+
+            // 5단계. 해당 연도 해당 월 기준 달력 구성하기(출력하기, 그리기)
+            //        -> 테이블 동적 생성 구문 활용
+
+            // 5-1 기존 테일블 활용하기 ----[Start]-----------------------------
+            /*   
+            var tableNode = document.getElementById("calendarTbl"); // <table id="calendarTbl"..></table>
+            var trNode = document.createElement("tr");             // <tr></tr>
+
+            // 해당 월의 1일이 시작되기 전에 빈 칸 td 구성하기
+            for (var i=0; i<days;i++) {
+                trNode.appendChild(createTdNode(""));
+            }
+
+            // 1일 부터...해당 월의 마지말 날짜까지 td 채우기
+            var d = 1;          // 변수 선언 위치 check~!!!
+
+            for (d = 1; d<=lastDay;d++) {
+                trNode.appendChild(createTdNode(d));  // 어떤 형태로 그려지는지 check~!!!
+
+                // 일요일을 그리기 시작할 때...
+                // 기존의 tr구성을 마무리하고
+                // 다시 새로운 tr을 구성할 수 있도록 처리
+                if ((days+d)%7==0) {                          //-- 일요일 그릴 때 
+                    tableNode.appendChild(trNode);            //-- 기존의 tr을 table에 추가
+                    trNode = document.createElement("tr");    //-- 새로운 tr 구성
+                }
+            }
+
+            // 확인
+            console.log("d: " + d);
+            
+            // 날짜 구성 이후 마지막 빈 칸 td 채우기
+            // 최종적으로 처리된 날짜가 일요일 개행이 적용되지 않은 경우에만...
+            if ((days+(d-1)%7) != 0) {                      //-- (d-1) check~!!!
+                for (var i=0;i<7;i++, d++) {
+                    trNode.appendChild(createTdNode(""));   //-- d++ check~!!!
+                    
+                    if ((d+days)%7 == 0) {
+                        tableNode.appendChild(trNode);
+                        break;
+                    }
+                }
+            }
+            
+            tableNode.appendChild(trNode);
+             */
+            // 5-1 기존 테일블 활용하기 ----[End]-----------------------------
+
+            // 5-2 tbody 노드 활용하기 ----[Start]------------------------------
+
+            // var tableNode = document.getElementById("calendarTbl"); // <table id="calendarTbl"..></table>
+            // var tbodyNode = null;
+
+            // // 확인
+            // console.log(tableNode);
+            // //==>> [object HTMLTableElement]
+            // console.log(tableNode.childNodes);
+            // //==>> [object NodeList]  --> 자바스크립트 배열
+            // //==>> NodeList(2) [text, tbody]
+            // console.log(tableNode.childNodes[0]);
+            // //==>> [object Text]
+            // // ==>>#text
+            // console.log(tableNode.childNodes[0].nodeType);
+            // // ==>> 3
+            // console.log(tableNode.childNodes[1]);
+            // //==>> [object tbody]
+            // console.log(tableNode.childNodes[1].nodeType);
+            // //==>> 1
+
+            // if (tableNode.childNodes[0].nodeType == 1) {
+            //     tbodyNode = tableNode.childNodes[0];
+            // } else {
+            //     tbodyNode = tableNode.childNodes[1];
+            // }
+
+            // // 확인
+            // console.log(tableNode.childNodes.length); //-- >>2
+            // console.log(tableNode.childNodes[0]);     //-- [object HTMLTableRowElement]
+            // console.log(tableNode.childNodes[1]);     //-- [object Text]
+
+            // // tbodyNode 의 기존 자식 노드 삭제 과정
+            // for (var n = tbodyNode.childNodes.length - 1; n >= 0; n--) {  // 1 0
+            //     tbodyNode.removeChild(tbodyNode.childNodes[n]);
+            // }
+
+            // // <table border="1" id="calendarTbl"></table>
+
+            // var trNode = document.createElement("tr");
+
+            // // 요일 이름 다시 출력하기
+            // var daysName = [
+            //     "일요일",
+            //     "월요일",
+            //     "화요일",
+            //     "수요일",
+            //     "목요일",
+            //     "금요일",
+            //     "토요일",
+            // ]
+
+            // for (var i=0; i<daysName.length; i++) {
+            //     trNode.appendChild(createTdNode(daysName[i]));
+            // }
+            // tbodyNode.appendChild(trNode);
+
+            // var trNode = document.createElement("tr");             // <tr></tr>
+
+            // // 해당 월의 1일이 시작되기 전에 빈 칸 td 구성하기
+            // for (var i=0; i<days;i++) {
+            //     trNode.appendChild(createTdNode(""));
+            // }
+
+            // // 1일 부터...해당 월의 마지말 날짜까지 td 채우기
+            // var d = 1;          // 변수 선언 위치 check~!!!
+
+            // for (d = 1; d<=lastDay;d++) {
+            //     trNode.appendChild(createTdNode(d));  // 어떤 형태로 그려지는지 check~!!!
+
+            //     // 일요일을 그리기 시작할 때...
+            //     // 기존의 tr구성을 마무리하고
+            //     // 다시 새로운 tr을 구성할 수 있도록 처리
+            //     if ((days+d)%7==0) {                          //-- 일요일 그릴 때 
+            //         tbodyNode.appendChild(trNode);            //-- 기존의 tr을 table에 추가
+            //         trNode = document.createElement("tr");    //-- 새로운 tr 구성
+            //     }
+            // }
+
+            // // 날짜 구성 이후 마지막 빈 칸 td 채우기
+            // // 최종적으로 처리된 날짜가 일요일 개행이 적용되지 않은 경우에만...
+            // if ((days+(d-1)%7) != 0) {                      //-- (d-1) check~!!!
+            //     for (var i=0;i<7;i++, d++) {
+            //         trNode.appendChild(createTdNode(""));   //-- d++ check~!!!
+
+            //         if ((d+days)%7 == 0) {
+            //             tbodyNode.appendChild(trNode);
+            //             break;
+            //         }
+            //     }
+            // }
+
+            // tbodyNode.appendChild(trNode);
+
+            // 5-3 새로운 달력 그리기 -----[Start]------------------------------
+            var tableNodeOld = document.getElementById("calendarTbl");
+            if (tableNodeOld != null) {
+                tableNodeOld.remove();
+            }
+
+            var div = document.getElementById("newCalendarArea");
+            console.log("child: " + div.childElementCount);
+            if (div.childElementCount >= 1) {
+                div.removeChild();
+            }
+
+            var tableNode = document.createElement("table");
+            var trNode = document.createElement("tr");
+
+            // 요일 이름 다시 출력하기
+            var daysName = [
+                "일요일",
+                "월요일",
+                "화요일",
+                "수요일",
+                "목요일",
+                "금요일",
+                "토요일",
+            ]
+            
+            for (var i = 0; i < daysName.length; i++) {
+                trNode.appendChild(createTdNode(daysName[i]));
+            }
+            
+            tableNode.appendChild(trNode);
+
+            // check~!!!
+            div.appendChild(tableNode);
+
+            var trNode = document.createElement("tr");             // <tr></tr>
+
+            // 해당 월의 1일이 시작되기 전에 빈 칸 td 구성하기
+            for (var i=0; i<days;i++) {
+                trNode.appendChild(createTdNode(""));
+            }
+
+            // 1일 부터...해당 월의 마지말 날짜까지 td 채우기
+            var d = 1;          // 변수 선언 위치 check~!!!
+
+            for (d = 1; d<=lastDay;d++) {
+                trNode.appendChild(createTdNode(d));  // 어떤 형태로 그려지는지 check~!!!
+
+                // 일요일을 그리기 시작할 때...
+                // 기존의 tr구성을 마무리하고
+                // 다시 새로운 tr을 구성할 수 있도록 처리
+                if ((days+d)%7==0) {                          //-- 일요일 그릴 때 
+                    tableNode.appendChild(trNode);            //-- 기존의 tr을 table에 추가
+                    trNode = document.createElement("tr");    //-- 새로운 tr 구성
+                }
+            }
+
+            // 날짜 구성 이후 마지막 빈 칸 td 채우기
+            // 최종적으로 처리된 날짜가 일요일 개행이 적용되지 않은 경우에만...
+            if ((days+(d-1)%7) != 0) {                      //-- (d-1) check~!!!
+                for (var i=0;i<7;i++, d++) {
+                    trNode.appendChild(createTdNode(""));   //-- d++ check~!!!
+
+                    if ((d+days)%7 == 0) {
+                        tableNode.appendChild(trNode);
+                        break;
+                    }
+                }
+            }
+
+
+
         }
 
-        /** 
-        *
-        */
-        function createTdNode(val) {
-            var textNode =  document.createTextNode(val);
-            var tdNode = document.createElement("td");
-            tdNode.appendChild(textNode);
-            return tdNode;
+        function createTdNode(val) {                     //--   "김한국"
+            var textNode = document.createTextNode(val); //--    ㄴ "김한국"
+            var tdNode = document.createElement("td");   //--     "<td></td>"   
+            tdNode.appendChild(textNode);                //--     "<td></td>"   
+            return tdNode;                               //--          ㄴ"김한국"
         }
+
 
         function delMember(params) {
             console.log(">>> delMember");
@@ -169,8 +419,8 @@
         <input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
         <input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
         <br><br>
-        
-        <input type="button" value="만년달력 그리기" class="btn" style="width: 200px;">
+
+        <input type="button" value="만년달력 그리기" class="btn" style="width: 200px;" onclick="actionCalendar();">
         <br><br>
 
         <table border="1" id="calendarTbl">
@@ -184,6 +434,8 @@
                 <th>토</th>
             </tr>
         </table>
+
+        <div id="newCalendarArea"></div>
     </div>
 
 </body>

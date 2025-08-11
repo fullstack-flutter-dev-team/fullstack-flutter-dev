@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test034.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+
+        function actionGame() {
+            var arrGame = ["가위", "바위", "보"];
+            var txtUserObj = document.getElementById("txtUser");
+            var txtResultObj = document.getElementById("txtResult");
+            var txtUserInput = Number(txtUserObj.value);
+            var txtResult = txtResultObj.value;
+
+            if (txtUserInput == undefined || txtUserInput < 1 || txtUserInput > 3) {
+                alert("값을 입력 해 주세요...");
+                return;
+            }
+
+            // 난수 발생
+            var com = Math.floor(Math.random() * 3);
+            var strResult = "";
+
+            // 
+            console.log("사용자 : " + txtUserInput);
+            console.log("사용자 : " + arrGame[txtUserInput - 1]);
+            console.log("com   : " + com);
+            console.log("com   : " + arrGame[com]);
+
+            if (arrGame[txtUserInput - 1] == '가위') {
+                if (arrGame[com] == "바위") {
+                    strResult = "컴퓨터가 이겼습니다.";
+                } else if (arrGame[com] == "보") {
+                    strResult = "사용자가 이겼습니다.";
+                } else {
+                    strResult = "무승부 입니다.";
+                }
+            } else if (arrGame[txtUserInput - 1] == '바위') {
+                if (arrGame[com] == "가위") {
+                    strResult = "사용자가 이겼습니다.";
+                } else if (arrGame[com] == "보") {
+                    strResult = "컴퓨터가 이겼습니다.";
+                } else {
+                    strResult = "무승부 입니다.";
+                }
+            } else if (arrGame[txtUserInput - 1] == '보') {
+                if (arrGame[com] == "가위") {
+                    strResult = "컴퓨터가 이겼습니다.";
+                } else if (arrGame[com] == "바위") {
+                    strResult = "사용자가 이겼습니다.";
+                } else {
+                    strResult = "무승부 입니다.";
+                }
+            }
+
+            txtResultObj.value = "사용자: " + arrGame[txtUserInput - 1]
+                + "  컴퓨터: " + arrGame[com]
+                + "  → " + strResult;
+
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>가위 바위 보 게임</p>
+        <hr>
+    </div>
+    <br>
+
+    <!-- 
+        가위 바위 보 게임을 구성한다.
+        HTML, CSS, Javascript를 활용한다.
+        이 과정에서 자바스크립트 난수 발생 함수를 찾아 활용한다.
+        
+        -> w3sdhooles.com
+        -> koxo.com
+    
+        페이지 레이아웃
+        ---------------------------------------------------------------------
+
+        입력(1.가위, 2.바위, 3.보)  [ 2 ]                 → text  #txtUser
+
+        < 게임 결과 확인 >                                → button
+
+        [ 사용자:바위 컴퓨터:보 → 컴퓨터가 이겼습니다.]     → text #txtResult
+
+
+        ---------------------------------------------------------------------
+    -->
+
+    <div>
+        <div>
+            <div style="width:200px; display:inline-table;"><label>입력(1.가위, 2.바위, 3.보)</label></div>
+            <div style="width:200px; display:inline-table;"><input type="text" id="txtUser"></div>
+        </div>
+        <div style="width:400px; display:block;"><input type="button" value="게임 결과 확인" onclick="actionGame();"
+                style="width:360px;"> </div>
+        <div style="width:400px; display:block;"><input type="text" id="txtResult" readonly="readonly"
+                style="width:350px;"></div>
+    </div>
+
+
+</body>
+
+</html>
