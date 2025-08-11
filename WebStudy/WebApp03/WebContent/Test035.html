@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test035.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        function startGame(params) {
+            var txtCountObj = document.getElementById("txtCount");
+            var resultAreaObj = document.getElementById("resultArea");
+            resultAreaObj.value = "";
+
+            var nCount = Number(txtCountObj.value);
+            var arrLotto = Array(Array());
+            var numTemp = 0;
+
+            for (var n = 0; n < nCount; n++) {
+                var arr = Array();
+                for (var i = 0; i < 6; i++) {
+                    do {
+                        numTemp = Math.floor(Math.random() * 45) + 1;
+                    } while (arr.includes(numTemp));
+                    arr[i] = (numTemp);//(numTemp);
+                }
+                arrLotto[n] = (arr);//(numTemp);
+                arrLotto[n].sort(function (a, b) { return a - b; });
+            }
+
+            for (var n = 0; n < nCount; n++) {
+                resultAreaObj.value += arrLotto[n].join(" ");
+                resultAreaObj.value += "\n";
+            }
+
+        }
+
+        function createLotto(params) {
+            document.getElementById("resultArea").value = "";
+            var count = parseInt(document.getElementById("txtCount").value);
+
+            for (var i = 0; i < count; i++) {
+                // runLottoSingle();
+                // document.getElementById("resultTxt").value = runLottoSingle();
+                document.getElementById("resultArea").value += runLottoSingle() + "\n";
+            }
+
+
+        }
+
+        // 로또 1 게임 실행
+        function runLottoSingle(params) {
+            // 방 6개로 구성된 자바스크립트 배열 생성
+            var lottoArray = new Array(6);
+
+            // 공 45개로 구성된 배열 생성
+            var arr = new Array(45);
+
+            // 1 ~ 45까지의 로또 번호를 공에 새겨넣기
+            for (var i = 1; i < arr.length; i++) {
+                arr[i - 1] = i;
+            }
+
+            // 뒤섞기
+            for (var i = 0; i < arr.length; i++) { // i : 0 ~ 44
+                var j = parseInt(Math.random() * 45); // j : 0 ~ 44 사이의 정수 형태의 난수 발생~!!
+                var temp = arr[i];  //
+                arr[i] = arr[j];    //
+                arr[j] = temp;      //
+            }
+
+            // 확인(더미 확인)
+            // console.log(arr);
+            // return arr;
+
+            // 배열의 요소 옮겨담기
+            for (var i = 0; i < lottoArray.length; i++) {
+                lottoArray[i] = arr[i];
+            }
+
+            // 더미 반환
+            // return lottoArray;
+            
+            // 정렬 수행
+            // lottoArray.sort(기능, 동작, 행위); 
+            // lottoArray.sort(function(){}); 
+            lottoArray.sort(function(left, right) {
+                // return Number(right) - Number(left);  // 내림차순
+                return Number(left) - Number(right);  // 오름차순
+            });
+
+            // 구성된 배열(최종 결과값) 반환
+            // return lottoArray; // 더미 반환
+
+            var result = "";
+            for (var i=0; i<lottoArray.length; i++) {
+                result += lottoArray[i] + " ";
+            }
+
+            // 구성된 문자열 반환
+            return result;
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>로또 번호(1~45) 생성</p>
+        <hr>
+    </div>
+    <br>
+
+    <!-- 
+        로또 번호(1 ~ 45)를 중복되지 않은 정수 6개를 생성하여
+        출력해주는 페이지를 구현한다.
+        HTML, CSS, Javascript를 활용한다.
+        난수 발생 함수를 활용한다.
+        번호순으로(오름차순) 정렬하여 출력할 수 있도록 한다.
+        단, 주문한 장 수 만큼 출력할 수 있도록 한다.
+        
+        -> w3sdhooles.com
+        -> koxo.com
+    
+        페이지 레이아웃
+        ---------------------------------------------------------------------
+
+        로또  [ 3 ] 장               → text  #txtCount
+
+        < 주문하기 >                               → button
+
+        결과
+        -------------------------------------    → textarea #resultArea
+        1  3  4  6  7  9
+        6 12 34 35 37  45
+        7 13 35 36 38  44
+ 
+        ---------------------------------------------------------------------
+    -->
+
+    <div>
+        <div>
+            <div style="width:50px; display:inline-table;"><label>로또</label></div>
+            <div style="width:140px; display:inline-table;"><input type="text" id="txtCount"></div>
+            <div style="width:10px; display:inline-table;"><label>&nbsp;장</label></div>
+        </div>
+        <br>
+        <div style="width:200px; display:block;">
+            <!-- <input type="button" value="주문하기" onclick="startGame();" style="width:240px;"> -->
+            <input type="button" value="주문하기" onclick="createLotto();" style="width:240px;">
+        </div>
+        <br>결과
+        <div style="width:200px; display:block;">
+            <textarea id="resultArea" rows="20" readonly="readonly" style="width:230px;"></textarea>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test037.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        function actionChoice(params) {
+            var checkObj = document.getElementsByName("subject");
+
+            console.log("checkObj : " + checkObj);
+            //==>> checkObj : [object NodeList]  -> 자바스크립트 배열
+
+            var msg = "";
+            var flag = true;
+
+            for (var i=0; i<checkObj.length; i++) { // i : 0 1 2 3 4 5
+                if (checkObj[i].checked) {
+                    console.log(checkObj[i].value + " ");
+                    msg += checkObj[i].value + " ";
+                    // break;   // check~!!!
+
+                    flag = false;
+                }
+            }
+
+            // console.log("msg : " + msg);
+
+            if (flag) {
+                msg = "선택한 과목이 존재하지 않습니다.";
+                alert(msg);
+            } else {
+                alert(msg);
+            }
+        }
+
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>라디오버튼, 체크박스 다루기</p>
+        <hr>
+    </div>
+    <br>
+
+    
+
+    <div>
+       <h2>라디오버튼, *체크박스 다루기</h2>
+
+       <from>
+        --- 과목 선택 --- <br><br>
+        <input type="checkbox" name="subject" id="a" value="자바기초"><label for="a">JAVA Beginning</label>
+        <input type="checkbox" name="subject" id="b" value="오라클"><label for="b">Oracle</label>
+        <input type="checkbox" name="subject" id="c" value="자바심화"><label for="c">Java Advanced</label>
+        <input type="checkbox" name="subject" id="d" value="웹클라이언트"><label for="d">WEB Client</label>
+        <input type="checkbox" name="subject" id="e" value="웹APP서버"><label for="e">JSP/Servlet</label>
+        <input type="checkbox" name="subject" id="f" value="프레임워크"><label for="f">Framework</label>
+        <br><br>
+
+        <button type="button" class="btn" onclick="actionChoice();">선택 완료</button>
+
+
+
+       </from>
+    </div>
+
+
+</body>
+
+</html>

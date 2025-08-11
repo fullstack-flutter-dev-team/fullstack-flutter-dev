@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test038.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+
+        /* 추가 */
+        div.menu {
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+
+        label:hover {
+            background-color: aqua;
+        }
+
+        label:active {
+            background-color: red;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        function actionChoice(menu, param2) {
+            console.log("menu : " + menu);
+            console.log("param2 : " + param2);
+            var sizeObj = document.getElementsByName("size");
+            var kindObj = document.getElementsByName("checkGroup");
+            kindObj.onclick = console.log("test");
+
+            var nSize = 0;
+            for (var i = 0; i < sizeObj.length; i++) {
+                if (sizeObj[i].checked) {
+                    nSize = Number(sizeObj[i].value);
+                }
+            }
+
+            var nChoided = 0;
+            for (var i = 0; i < kindObj.length; i++) {
+                if (kindObj[i].checked) {
+                    nChoided++;
+                }
+            }
+
+            if (nSize < 1) {
+                alert("사이즈를 먼저 선택해 주세요.");
+                kindObj[param2].checked = false;
+            } else if (nChoided > nSize) {
+                console.log(">>> 초과선택~!! , (nSize: " + nSize + ", nChoiced: " + nChoided);
+                alert("초과 선택 하셨습니다.");
+                kindObj[param2].checked = false;
+            }
+            console.log("size: " + nSize);
+
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>아이스크림 주문</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <h2>아이스크림 주문</h2>
+        <div class="menu">--- 사이즈 선택 --- </div>
+        <input type="radio" name="size" id="a1" value="1" onclick="actionChoice('size', 1);">
+        <input type="radio" name="size" id="a1" value="1" onclick="actionChoice('size', 1);">
+        <label for="a1">싱글(1)</label>
+        <input type="radio" name="size" id="a2" value="2" onclick="actionChoice('size', 2);">
+        <label for="a2">더블(2)</label>
+        <input type="radio" name="size" id="a3" value="3" onclick="actionChoice('size', 3);">
+        <label for="a3">파인트(3)</label>
+        <input type="radio" name="size" id="a4" value="4" onclick="actionChoice('size', 4);">
+        <label for="a4">쿼터(4)</label>
+        <input type="radio" name="size" id="a5" value="5" onclick="actionChoice('size', 5);">
+        <label for="a5">패밀리(5)</label>
+        <input type="radio" name="size" id="a6" value="6" onclick="actionChoice('size', 6);">
+        <label for="a6">하프갤런(6)</label>
+        <br><br>
+
+        <div class="menu">--- 종류 선택 --- </div>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 0);" value="말차">말차</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 1);" value="엄마">엄마는외계인</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 2);" value="레인">레인보우샤베트</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 3);" value="슈팅">슈팅스타</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 4);" value="봉봉">아몬드봉봉</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 5);" value="요거">요거트</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 6);" value="초코">초코나무</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 7);" value="망고">애플망고</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 8);" value="솜사탕">이상한나라의솜사탕</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 9);" value="체리">체리쥬빌레</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 10);" value="피트">피스타치오</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 11);" value="민트">민트초코</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 12);" value="쿠키">쿠키앤크림</label>
+        <br><br>
+
+        <!-- <button type="button" class="btn" onclick="actionChoice();">선택 완료</button> -->
+
+
+
+        </from>
+    </div>
+
+
+</body>
+
+</html>
