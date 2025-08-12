@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test045.html</title>
+
+    <!-- 테스트 -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style type="text/css">
+      
+    </style>
+
+    <script type="text/javascript" src="js/actionMenu.js"></script>
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        window.onload = function () {
+            console.log(">>> window.onload~!!!");
+            document.querySelector("input[type=button]").onclick = objTest;
+
+
+
+            function objTest() {
+                console.log(">>> objTest");
+
+                // 사용자 정의 객체(생성자 함수) 정의
+                //-- Test044.html 에서와 마찬가지로 사용자 정의 객체 구성
+                //   단, 차이점 비교 확인~!!! check~!!!
+                function Blog(b, d) {
+
+                    // 객체를 구성하는 속성
+                    this.body = b;
+                    this.date = d;
+
+                    // 날짜 출력용 함수 정의
+                    this.userLocalString = function() {
+                        return d.getFullYear() + "-" + (d.getMonth()+1) + "-"+d.getDate();
+                    };
+                }
+
+                // 객체 생성
+                var blog  = new Blog("블로그 개설", "2025-08-12");
+
+                // 생성된 객체의 속성(멤버) 접근
+                var str = blog.body + " / " + blog.date;
+
+                //확인
+                console.log("blog : " + blog);
+
+                // Test044.html 에서와 마찬가지로,
+                // 사용자 정의 객체(생성 함수 활용) 여러 개 생성하여 배열 구조에 저장
+                // 단, 차이점 비교 확인~!!! check~!!!
+                var arrObj = [
+                    new Blog("블로그 개설"                , new Date("2025/08/01")),
+                    new Blog("블로그 레이아웃 구성"        , new Date("2025/08/07")),
+                    new Blog("생성자 함수 이용한 객체 생성" , new Date("2025/08/11")),
+                ];
+                /* 
+                  * 자바스크립트에서의 날짜 데이터
+                  Date 객체는 날짜와 시간 작업을 하는데 사용되는
+                  가장 기본적인 자바스크립트 내장 객체이다.
+
+                  var now = new Date();
+
+
+                */
+
+                str = "<table class='table'>";
+                str += "<tr>";
+                str += "<th>제목</th><th>날짜</th>";
+                str += "</tr>";
+/* 
+                for (var i=0; i<arrObj.length;i++) {
+                    str += "<tr>";
+                    str += "<td>"+ arrObj[i].body +"</td><td>"+ arrObj[i].date +"</td>";
+                    str += "</tr>";
+                }
+ */
+                for (var i=0; i<arrObj.length;i++) {
+                    str += "<tr>";
+                    str += "<td>"+ arrObj[i].body +"</td><td>"+ arrObj[i].userLocalString() +"</td>";
+                    str += "</tr>";
+                }
+
+                str += "</table>";
+                var result = document.getElementById("result");
+                result.innerHTML = str;
+
+            }
+
+
+        }//window.onload
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+ 
+ <div>
+    <h2>자바스크립트 객체</h2>
+    <p>(사용자 정의 객체)</p>
+    <div>
+        <input type="button" value="사용자 정의 객체 테스트" class="btn control">
+        <br><br>
+
+        <div id="result">
+
+        </div>
+    </div>
+ </div>
+
+
+
+
+</body>
+
+</html>

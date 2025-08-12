@@ -124,12 +124,27 @@
         }//window.onload
 
 
-        function actionAddr(params) {
+        function actionAddr(selAddr) {
             // 확인
             console.log(">>> actionAddr() 함수");
+            console.log("selAddr: " + selAddr);
 
-            // BOM
-            // window.open("Test041.html", "test", "width=50", "height=300;");
+            // check~!!!
+            // Test040.html로 전송
+            window.opener.document.getElementById("addr1").value = "1234";
+            window.opener.document.getElementById("addr1").value = selAddr;
+            
+            // Test040.html 의 <span>
+            // IE용
+            // window.opener.document.getElementById("txtContent").innerText = selAddr;
+            // CR, FF 용
+            window.opener.document.getElementById("txtContent").innerHTML = selAddr;
+
+            // focus
+            window.opener.document.getElementById("addr2").focus();
+
+            // 현재 창 닫기
+            window.close();
 
         }
 
