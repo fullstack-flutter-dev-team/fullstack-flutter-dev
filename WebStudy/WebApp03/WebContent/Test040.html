@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test040.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+
+        /* 추가 */
+        div.menu {
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+
+        label:hover {
+            background-color: aqua;
+        }
+
+        label:active {
+            background-color: red;
+        }
+
+        /* 추가 */
+        select {
+            width: 120px;
+        }
+
+        table#memberList {
+            border-color: #334433;
+            border: 1px solid black;
+            /* background-color: antiquewhite; */
+            width: 450px;
+        }
+
+        table#memberList>tbody:first-child {
+            border-color: #334433;
+            background-color: rgb(127, 153, 230);
+            width: 450px;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        window.onload = function () {
+            document.querySelector(".btn").onclick = searchAddr;
+
+
+            function searchAddr(params) {
+                // 확인
+                console.log(">>> searchAddr() 함수");
+
+                // BOM
+                window.open("Test041.html", "test", "width=700, height=400;");
+                
+            }
+
+        
+
+        }//window.onload
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>주소 검색</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <h2>[주소 검색]</h2>
+        <form id="addrForm">
+           기본 주소
+           <input type="text" id="addr1" readonly="readonly" class="txt">
+           <input type="button" value="검색" class="btn">
+           <br><br>
+           
+           상세 주소
+           <input type="text" id="addr2" class="txt">
+           <br><br>
+
+           <span id="txtContent" style="color:red; font-weight: bold;font-family: 맑은 고딕;">
+            눈으로 확인할 수 있도록 처리
+           </span>
+        </form>
+
+
+    </div>
+
+</body>
+</html>

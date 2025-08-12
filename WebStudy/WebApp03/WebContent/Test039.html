@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test039.html</title>
+
+    <!-- 테스트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/externalStyle.css"> -->
+    <style type="text/css">
+        * {
+            color: #334433;
+        }
+
+        input {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        input:focus {
+            background-color: #eeeedd;
+        }
+
+        input.btn {
+            width: 90px;
+            font-weight: bold;
+            font-family: 맑은 고딕;
+        }
+
+        input.btn:hover {
+            background-color: #334433;
+            color: white;
+        }
+
+        input.btn:active {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        textarea {
+            font-family: 나눔고딕코딩;
+            font-weight: bold;
+        }
+
+        th {
+            width: 48px;
+        }
+
+        /* 추가 */
+        div.menu {
+            font-weight: bold;
+            background-color: antiquewhite;
+        }
+
+        label:hover {
+            background-color: aqua;
+        }
+
+        label:active {
+            background-color: red;
+        }
+
+        /* 추가 */
+        select {
+            width: 120px;
+        }
+
+        table#memberList {
+            border-color: #334433;
+            border: 1px solid black;
+            /* background-color: antiquewhite; */
+            width: 450px;
+        }
+
+        table#memberList>tbody:first-child {
+            border-color: #334433;
+            background-color: rgb(127, 153, 230);
+            width: 450px;
+        }
+    </style>
+
+    <!-- <script type="text/javascript" src="js/jsTest.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        window.onload = function () {
+            // document.querySelector(".btn").onclick = addMemberEx;
+            document.querySelector(".btn").onclick = addMember;
+            document.querySelector("#userPosition").onclick = selectTest;
+
+            function selectTest(params) {
+                console.log(">> selectTest");
+
+                // Type-1
+                var positionStr = document.getElementById("userPosition").value;
+                console.log(">> positionStr : " + positionStr);
+                //==>> >> positionStr : zaq(부장)
+
+                var positionObj = document.getElementById("userPosition");
+                console.log(">> positionObj : " + positionObj);
+                //==>> >> positionObj : [object HTMLSelectElement]
+
+                /*
+                // Type-2
+                var positionOptions = positionObj.options;
+                console.log(">> positionOptions : " + positionOptions);
+                //==>> >> positionOptions : [object HTMLOptionsCollection]  → 자바스크립트 배열
+                
+                // 확인
+                console.log(">> positionOptions.length : " + positionOptions.length);
+                //==>> >> positionOptions.length : 4
+
+                var positionMsg = "";
+                for (var i=0; i<positionOptions.length;i++) {  // i : 0 1 2 3
+                    // 확인
+                    console.log("positionOptions[" + i + "] : " + positionOptions[i].selected);
+
+                    if (positionOptions[i].selected) {
+                        console.log("positionOptions : " + positionOptions[i].value);
+
+                        // 단일 선택
+                        // positionMsg = positionOptions[i].value;
+                        // break;
+
+                        // 다중 선택
+                        positionMsg = positionOptions[i].value;
+                    }
+                }
+
+                console.log("positionMsg : " + positionMsg);
+
+                // positionOptions.array.forEach(element => {
+                    
+                // });
+                */
+
+                // Type-3
+                var positionObj = document.getElementById("userPosition");
+
+                //  확인
+                console.log("positionObj.selectedIndex : " + positionObj.selectedIndex);
+                //==>> 부장 → 0, 과장 → 1, 대리 → 2, 사원 → 3 
+
+                // 확인
+                // console.log(positionObj.options[0].value);
+                // console.log(positionObj.options[1].value);
+                // console.log(positionObj.options[2].value);
+                // console.log(positionObj.options[3].value);
+
+
+                var positionMsg = positionObj.options[positionObj.selectedIndex].value;
+                console.log("positionMsg : " + positionMsg);
+
+
+            }
+
+            function addMember(params) {
+                var uName = document.getElementById("userName").value;
+                var uSsn = document.getElementById("userSsn").value;
+
+                // var uCity = document.getElementById("userCity").value;
+                var uCityObj = document.getElementById("userCity");
+                console.log(uCityObj.selectedIndex);
+                // ==>> 서울0, 대전1, 대구2, 광주3, 부산4
+                console.log(uCityObj.options[uCityObj.selectedIndex].value);
+                //==>> 1123(서울), 2280(대전), 5567(대구), 9984(광주), 9987(부산)
+
+                var uCity = uCityObj.options[uCityObj.selectedIndex].value;
+
+                var buseoObj = document.getElementById("userDepartment");
+                var uBuseo = buseoObj.options[buseoObj.selectedIndex].value;
+
+                var positionObj = document.getElementById("userPosition");
+                var uPosition = positionObj.options[positionObj.selectedIndex].value;
+
+                var uBasicpay = document.getElementById("userBasicpay").value;
+
+                //---------------------------------------------------------------
+                //-- 테이블 동적 생성
+                var tableNode = document.getElementById("memberList");
+                var tBodyNodes = document.getElementById("memberList").getElementsByTagName("tbody");
+                var trNode = document.createElement("tr");
+
+                // 확인
+                // console.log(tBodyNodes);
+                // console.log(tBodyNodes.length);
+                // console.log(tBodyNodes[0].childNodes);
+
+                trNode.appendChild(createTdNode(uName));
+                trNode.appendChild(createTdNode(uSsn));
+                trNode.appendChild(createTdNode(uCity));
+                trNode.appendChild(createTdNode(uBuseo));
+                trNode.appendChild(createTdNode(uPosition));
+                trNode.appendChild(createTdNode(uBasicpay));
+                // tableNode.appendChild(trNode);
+
+                if (tBodyNodes[0].childNodes.length % 2 == 0) {
+                    trNode.style.backgroundColor = 'rgb(255, 255, 244)';
+                } else {
+                    trNode.style.backgroundColor = 'rgb(255, 244, 254)';
+
+                }
+
+                tBodyNodes[0].appendChild(trNode);
+                // 
+
+                //-----------------------------------------------테이블 동적 생성
+               
+                // 입력 Fofm 리셋---------------------
+                // type-1
+                // document.querySelector("#memberForm").reset(); // check~!!!
+                
+                // type-2
+                document.forms[0].reset();  // check~!!!
+
+                // type-3
+                // document.querySelector('input[type="reset"]').click();
+
+                // type-4
+                // 입력폼 리셋
+                // formClear();  // check~!!!
+
+
+                // 이름 입력창 포커스 적용
+                document.querySelector("#userName").focus();
+            }
+
+
+            // 입력폼 초기화
+            function formClear(params) {
+                document.getElementById("userName").value = "";
+                document.getElementById("userSsn").value = "";
+
+                var cityObj = document.getElementById("userCity");
+                cityObj.options[0].selected = true;
+
+                var buseoObj = document.getElementById("userDepartment");
+                buseoObj.options[3].selected = true;
+
+                var jikwiObj = document.getElementById("userPosition");
+                jikwiObj.options[3].selected = true;
+
+                document.getElementById("userBasicpay").value = "";
+            }
+
+            function addMemberEx(params) {
+                console.log(">>> addMember");
+
+                var name = document.getElementById("userName");
+                var ssn = document.getElementById("userSsn");
+                var city = document.getElementById("userCity");
+                var buseo = document.getElementById("userDepartment");
+                var jikwi = document.getElementById("userPosition");
+                var basicPay = document.getElementById("userBasicpay");
+                var memberListTbl = document.getElementById("memberList");
+
+
+                var userName = name.value;
+                var userSsn = ssn.value;
+                // var userCity     = city.value;     
+                var userCity = city.options[city.selectedIndex].text;
+                // var userBuseo    = buseo.value;    
+                var userBuseo = buseo.options[buseo.selectedIndex].text;
+                // var userJikwi    = jikwi.value;    
+                var userJikwi = jikwi.options[jikwi.selectedIndex].text;
+                var userBasicPay = basicPay.value;
+
+                // 확인
+                console.log("userName: " + userName);
+                console.log("userSsn: " + userSsn);
+                console.log("userSsn: " + userSsn.length);
+                console.log("userCity: " + userCity);
+                console.log("userBuseo: " + userBuseo);
+                console.log("userJikwi: " + userJikwi);
+                console.log("userBasicpay: " + userBasicPay);
+
+                if (userName == "" || userSsn == "" || userBasicPay == "" || Number(userBasicPay) == NaN) {
+                    alert(">> 데이터 입력 필수!!");
+                    return;
+                } else if (userSsn.length != 14) {
+                    alert(">> 주민번호 유효성 검사 실패!!");
+                    return;
+                }
+
+
+
+                var trNode = document.createElement("tr");
+                trNode.appendChild(createTdNode(userName));
+                trNode.appendChild(createTdNode(userSsn));
+                trNode.appendChild(createTdNode(userCity));
+                trNode.appendChild(createTdNode(userBuseo));
+                trNode.appendChild(createTdNode(userJikwi));
+                trNode.appendChild(createTdNode(userBasicPay));
+
+                var tBody = memberListTbl.getElementsByTagName("tbody");
+                // memberListTbl.appendChild(trNode);
+
+                if (tBody[0].childNodes.length % 2 == 0) {
+                    trNode.style.backgroundColor = "rgb(255, 255, 244)";
+                } else {
+                    trNode.style.backgroundColor = 'rgb(240, 255, 255)';
+                }
+                trNode.style.borderColor = 'black;';
+                tBody[0].appendChild(trNode);
+
+                // reset
+                document.querySelector('input[type="reset"]').click();
+
+
+
+            }
+
+            function createTdNode(strTxt) {
+                var txNode = document.createTextNode(strTxt);
+                var tdNode = document.createElement("td");
+                tdNode.appendChild(txNode);
+                return tdNode;
+            }
+
+
+            let Jumin = function (inputData) {
+
+                let replaceData = inputData.replace("-", "");
+
+                let plusReplaceData = "";
+
+                plusReplaceData += (Number((replaceData[0])) * 2) +
+                    (Number((replaceData[1])) * 3) +
+                    (Number((replaceData[2])) * 4) +
+                    (Number((replaceData[3])) * 5) +
+                    (Number((replaceData[4])) * 6) +
+                    (Number((replaceData[5])) * 7) +
+                    (Number((replaceData[6])) * 8) +
+                    (Number((replaceData[7])) * 9) +
+                    (Number((replaceData[8])) * 2) +
+                    (Number((replaceData[9])) * 3) +
+                    (Number((replaceData[10])) * 4) +
+                    (Number((replaceData[11])) * 5);
+
+                plusReplaceData = (11 - ((plusReplaceData) % 11));
+
+                return plusReplaceData;
+            }
+
+        }
+
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+    <!-- <script type="text/javascript" src="js/alertTest.js"></script> -->
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+    <div>
+        <h1>자바스크립트 활용</h1>
+        <p>제품목록 다루기</p>
+        <hr>
+    </div>
+    <br>
+
+    <div>
+        <h2>[선택목록(select) 다루기]</h2>
+        <form id="memberForm">
+            <table>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" id="userName" class="txt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>주민번호</td>
+                    <td>
+                        <input type="text" id="userSsn" class="txt">
+                    </td>
+                </tr>
+                <tr>
+                    <td>지역</td>
+                    <td>
+                        <!-- <input type="text" id="userCity" class="txt"> -->
+                        <select id="userCity">
+                            <option value="1123(서울)">서울</option>
+                            <option value="2280(대전)">대전</option>
+                            <option value="5567(대구)">대구</option>
+                            <option value="9984(광주)">광주</option>
+                            <option value="9987(부산)">부산</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>부서</td>
+                    <td>
+                        <!-- <input type="text" id="userDepartment" class="txt"> -->
+                        <select id="userDepartment">
+                            <option value="110(개발부)">개발부</option>
+                            <option value="230(인사부)">인사부</option>
+                            <option value="312(자재부)">자재부</option>
+                            <option value="452(영업부)" selected="selected">영업부</option>
+                            <option value="500(총무부)">총무부</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>직위</td>
+                    <td>
+                        <!-- <input type="text" id="userPosition" class="txt"> -->
+                        <select id="userPosition">
+                            <option value="zaq(부장)">부장</option>
+                            <option value="xsw(과장)">과장</option>
+                            <option value="cde(대리)">대리</option>
+                            <option value="vfr(사원)" selected="selected">사원</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>기본급</td>
+                    <td>
+                        <input type="text" id="userBasicpay" class="txt">
+                    </td>
+                </tr>
+            </table>
+            <br>
+
+            <input type="button" class="btn btnAdd" value="직원 추가">
+            <input type="reset" class="btn" value="입력 취소">
+            <br><br>
+
+            <table id="memberList">
+                <tr>
+                    <td>이름</td>
+                    <td>주민번호</td>
+                    <td>지역</td>
+                    <td>부서</td>
+                    <td>직위</td>
+                    <td>기본급</td>
+                </tr>
+            </table>
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>

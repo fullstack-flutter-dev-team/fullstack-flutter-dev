@@ -73,14 +73,42 @@
         //----------------------------------------------
         // 자바스크립트 코드 작성
         //----------------------------------------------
-        var cnt = 0; //-- 선택할 수 있는 아이스크림의 갯수
+        var cnt = 0;       //-- 선택할 수 있는 아이스크림의 갯수
+        var userCount = 0; //-- 사용자가 선택한 아이스크림의 갯수
 
        function countSet(obj) {
         // console.log(obj);
         // console.log(obj.value);
         cnt = parseInt(obj.value);
         console.log("선택할 수 있는 아이스크림의 갯수는  " + cnt + " 입니다.");
+       }
 
+       function actionChoice(obj) {
+        // console.log(obj);
+        //==>> [object HTMLInputElement]
+        // console.log(obj.checked);
+        //==>> true/false
+        //-- 체크 설정되며 클릭된 상황 vs 체크 해제되며 클릭된 상황 → 판단 가능
+
+        if (obj.checked) { // true
+
+            if (userCount >= cnt) {
+                alert("선택할 수 있는 갯수를 초과하였습니다.");
+
+                // check~!!!
+                obj.checked = false;
+                return;
+            }
+
+            // 사용자가 선택한 아이스크림의 갯수 증가(→ 체크 설정)
+            userCount++;
+        } else  {
+            // 사용자가 선택한 아이스크림의 갯수 감소(→ 체크 해제)
+            userCount--;
+        }
+
+        // 확인
+    console.log(cnt + " 중 " + userCount + " 선택!!!");
         
        }
 
@@ -123,19 +151,19 @@
         <br><br>
 
         <div class="menu">--- 종류 선택 --- </div>
-        <label><input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 0);" value="말차">말차</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 1);" value="엄마">엄마는외계인</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 2);" value="레인">레인보우샤베트</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 3);" value="슈팅">슈팅스타</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 4);" value="봉봉">아몬드봉봉</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 5);" value="요거">요거트</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 6);" value="초코">초코나무</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 7);" value="망고">애플망고</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 8);" value="솜사탕">이상한나라의솜사탕</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 9);" value="체리">체리쥬빌레</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 10);" value="피트">피스타치오</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 11);" value="민트">민트초코</label>
-        <label> <input type="checkbox" name="checkGroup" onclick="actionChoice('kind', 12);" value="쿠키">쿠키앤크림</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="말차">말차</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="엄마">엄마는외계인</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="레인">레인보우샤베트</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="슈팅">슈팅스타</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="봉봉">아몬드봉봉</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="요거">요거트</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="초코">초코나무</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="망고">애플망고</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="솜사탕">이상한나라의솜사탕</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="체리">체리쥬빌레</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="피트">피스타치오</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="민트">민트초코</label>
+        <label><input type="checkbox" name="checkGroup" onclick="actionChoice(this);" value="쿠키">쿠키앤크림</label>
         <br><br>
 
         <!-- <button type="button" class="btn" onclick="actionChoice();">선택 완료</button> -->
