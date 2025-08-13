@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test048.html</title>
+
+    <!-- 테스트 -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style type="text/css">
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/actionMenu.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        window.onload = function () {
+            console.log(">>> window.onload~!!!");
+            document.querySelector("input[type=button]").onclick = actionBrowser;
+
+
+            /* 
+                ○ screen 객체(BOM)
+                  : 웹 브라우저의 화면이 아니라 운영체제 화면의 속성을 가지는 객체
+                
+                ○ screen 객체의 속성
+                 - width : 화면의 너비
+                 - height : 화면의 높이
+                 - availWidth  : 실제 화면에서 사용 가능한 너비(Windows Taskbar 제외)
+                 - availHeight : 실제 화면에서 사용 가능한 높이(Windows Taskbar 제외)
+                 - colorDepth  : 사용 가능한 색상 수
+                 - pixelDepth  : 한 픽셀 당 비트 수
+            */
+            var out = "";
+            for (var i in screen) {
+                out += "* " + i + " : " + screen[i] + "\n";
+            }
+
+            console.log(">> screen : " + out);
+            /* 
+            >> screen : * availWidth : 1819
+                * availHeight : 1080
+                * width : 1920
+                * height : 1080
+                * colorDepth : 24
+                * pixelDepth : 24
+                * availLeft : 0
+                * availTop : 0
+                * orientation : [object ScreenOrientation]
+                * onchange : null
+                * isExtended : true
+                * addEventListener : function addEventListener() { [native code] }
+                * dispatchEvent : function dispatchEvent() { [native code] }
+                * removeEventListener : function removeEventListener() { [native code] }
+                * when : function when() { [native code] }
+            */
+
+            /* 
+              ○ navigator 객체(BOM)
+                : 클라이언트가 사용하는 브라우저 정보와 운영체제의 정보를 제공하는 객체
+
+              ○ navigator 객체의 속성
+                - navigator.appCodeName : 브라우저 코드 명을 반환한다.
+                - navigator.appName     : 브라우저 이름을 반환한다.
+                - navigator.appVersion  : 브라우저 버전 정보를 반환한다.
+                - navigator.language    : 브라우저 사용 언어를 반환한다.
+                - navigator.product     : 브라우저 사용 엔지 이름을 반환한다.
+                - navigator.platform    : 브라우저를 실행하는 운영체제를 반환한다.
+                - navigator.userAgent   : 브라우저와 운영체제 종합 정보를 반환한다.
+                - 
+            */
+
+            // 브라우저 확인 버트 클릭 시 호출되는 함수
+            function actionBrowser(params) {
+                var lay = document.getElementById("layResult");
+                var s = "";
+
+                var browser = "none";
+                var userAgent = navigator.userAgent;
+
+                // 소문자로 변환 갱신
+                userAgent = userAgent.toLowerCase();
+
+                s = "userAgent : " + userAgent + "<br>";
+
+                if (userAgent.indexOf("msie") > -1) {
+                    browser = "IE";
+                } else if (userAgent.indexOf("edge") > -1) {
+                    browser = "Edge";
+                } else if (userAgent.indexOf("firefox") > -1) {
+                    browser = "Firefox";
+                } else if (userAgent.indexOf("opera") > -1) {
+                    browser = "Opera";
+                } else if (userAgent.indexOf("chrome") > -1) {
+                    browser = "Chrome";
+                } else if (userAgent.indexOf("safari") > -1) {
+                    browser = "Safari";
+                }
+
+                s += "browser : " + browser + "<br>";
+
+                lay.innerHTML = s;
+            }
+
+
+            /* 
+              ○ location 객체(BOM)
+                : 브라우저의 주소 및 표시줄과 관련된 객체로 
+                  프로토콜의 종류 및 호스트 이름, 문서 위치 등의 정보를 담고 았다.
+        
+
+              ○ location 객체의 속성
+              -  href : 문서의 URL 주소
+              -  host : 호스트 이름과 포트 번호
+              -  hostname : 호스트 이름
+              -  port : 포트 번호
+              -  pathname : 디레터리 경로
+              -  hash :앵커 이름
+              -  search : 요청 매개변수 (예: ?param=10)
+              -  protocol : 프로토콜의 종류
+
+              ○ location 객체의 메서드
+              - assign(link) : 현재 위치를 이동
+              - reload() : 새로고침
+              - replace(link) : 현재 위치를 이동(뒤로가기 불가)
+            */
+            out = "";
+            for (var i in location) {
+                out += "* " + i + " : " + location[i] + "\n";
+            }
+
+            console.log("location : " + out);
+            /* 
+                location : * ancestorOrigins : [object DOMStringList]
+                * href : http://127.0.0.1:5500/fullstack-flutter-dev_github/WebStudy/WebApp03/WebContent/Test048.html
+                * origin : http://127.0.0.1:5500
+                * protocol : http:
+                * host : 127.0.0.1:5500
+                * hostname : 127.0.0.1
+                * port : 5500
+                * pathname : /fullstack-flutter-dev_github/WebStudy/WebApp03/WebContent/Test048.html
+                * search : 
+                * hash : 
+                * assign : function assign() { [native code] }
+                * reload : function reload() { [native code] }
+                * replace : function replace() { [native code] }
+                * toString : function toString() { [native code] }
+            */
+
+
+            // -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
+
+        }//window.onload
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+
+    <div>
+        <p>사용자 정의 객체 및 프로토타입 활용</p>
+        <div>
+
+        </div>
+    </div>
+
+    <div>
+        <input type="button" value="브라우저 확인">
+        <br><br>
+        <div id="layResult"></div>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test047.html</title>
+
+    <!-- 테스트 -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <style type="text/css">
+
+    </style>
+
+    <!-- <script type="text/javascript" src="js/actionMenu.js"></script> -->
+    <script type="text/javascript">
+        //----------------------------------------------
+        // 자바스크립트 코드 작성
+        //----------------------------------------------
+
+        window.onload = function () {
+            console.log(">>> window.onload~!!!");
+
+            var s = "seoul?자바&123+4";
+            /* 
+                ○  『escape()』함수
+                    - 알파벳, 숫자, 『*』,『@』,『-』,『_』,『+』,『.』,『/』를 제외한 
+                       모두 16진수로 바꾸어주는 기능을 가진 함수
+                    - 쉼표나 세미콜론 같은 문자가 쿠기 문자열과 충돌하는 것을 피하기 위해 사용.
+                      『unescape()』 함수를 활용하여 다시 원래의 상태로 복구시킬 수 있다.
+            */
+
+            var out;
+            out = escape(s);
+            console.log(out);
+            //==>> seoul%3F%uC790%uBC14%26123+4
+            //          ---======------=== 
+            //==>> seoul?    자     바   & 123+4
+
+            out = unescape(out);
+            console.log(out);
+            //==>> seoul?자바&123+4
+
+            /* 
+                ○  『encodeURI()』함수
+                    - URI(Uniform Resource Identifer)의 특정한 문자를 UTF-8 인코딩해
+                      연속된 이스케이프 문자(이스케이프 시퀀스, 1개 ~ 4개)로 나타낸다.
+                      (예: 『%20』은 공백)
+                      (두 개의 대리 문자로 이루어진 문자만 이스케이프 문자 네 개로 변환)
+                    - URI(Uniform Resource Identifer) 내에서 특수 문자를 인코딩하여 안전한 형태로 변화하는 데 사용한다. 
+                    - URL의 전체 구조를 고려하여 인코딩을 수행한다.
+                      즉, URL에서 이미 예약된 문자는 인코딩하지 않고 유지한다.
+                       (예약된 문자 : 
+                         『;』, 『,』, 『/』, 『?』, 『:』, 『@』, 『&』, 『=』, 『+』,
+                         『$』, 『#』, 『<』, 『>』, 『"』, 『'』, 『%』, 『{』, 『}』,
+                         『|』, 『\』, 『^』, 『~』, 『[』, 『]』, 『 』)
+ 
+                     - 이 함수는 전체 URL을 인코딩할 때 유용하다.
+                     - 『encodingURI()』는 URL의 일부만 인코딩하는데 적합하지 않을 수 있다.
+                       URL의 특정 부분, 예를 들어 쿼리 매개ㅁ변수만 인코딩해야 하는 경우에는
+                       『encodeURIComponent()』 함수를 사용하는 것이 좋다.
+                     - 『encodeURI()』 함수는 모든 특수문자를 인코딩하는 것이 아니다.
+                       예를 들어, 『#』문자는 URL에서 fragment식별자로 사용되므로 인코딩되지 않으며
+                       『/』 문자는 URL에서 경로 구분자로 사용되므로 인코딩되지 않는다.
+                       모든 특수문자를 인코딩해야 할 상황이라면 『encodeURIComponent()』를 사용해야 한다.
+            */
+
+            out = encodeURI(s);
+            console.log("encodeURI(s): " + out);
+            //==>>encodeURI(s): seoul?%EC%9E%90%EB%B0%94&123+4
+            //                        ------------------ 
+            //==>>              seoul?    자     바     &123+4
+            var uri = "https://www.text.com/search?q=hello world";
+            var encodeURI1 = encodeURI(uri);
+            console.log("encodeURI1 : " + encodeURI1);
+            //==>> encodeURI1 : https://www.text.com/search?q=hello%20world
+            //                                                     ---
+
+            var uri = "https://www.text.com/파일 이름.txt";
+            var encodeURI2 = encodeURI(uri);
+            console.log("encodeURI2 : " + encodeURI2);
+            //==>> encodeURI2 : https://www.text.com/%ED%8C%8C%EC%9D%BC%20%EC%9D%B4%EB%A6%84.txt
+            //                                                         ---
+            //%20 : 공백문자
+
+
+            out = encodeURIComponent(s);
+            console.log("encodeURIComponent(s): " + out);
+            //==>> encodeURIComponent(s): seoul%3F%EC%9E%90%EB%B0%94%26123%2B4
+            //                                 ------------------------   ---
+            //                            seoul ?자바&                  123 + 4
+
+            /* ※ 『encodeURI()』와 『encodeURIComponent()』의 차이
+                 - 『encodeURI()』는 전체 URL을 인코딩할 때 사용되며,
+                   이 과정에서 『/』,『:』,『?』 등과 같이 URI에서 예약된 문자는 인코딩하지 않는다.
+                   반면, 『encodeURIComponent』는 URI 컴포넌트를 인코딩하므로
+                   이러한 예약 문자들도 모두 인코딩한다.
+            */
+
+            // -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
+
+        }//window.onload
+
+        //------------[end]----------------------------------
+    </script>
+    <noscript>
+        자바스크립트가 사용되지 못할 경우 기능하는(표현되는) 영역
+    </noscript>
+</head>
+
+<!-- 이벤트 등록 방법 ① -->
+<!-- <body> -->
+<!-- <body onload="windowOnload();"> -->
+
+<body>
+
+    <div>
+        <p>사용자 정의 객체 및 프로토타입 활용</p>
+        <div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
