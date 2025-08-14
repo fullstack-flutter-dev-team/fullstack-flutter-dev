@@ -13,8 +13,7 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
     
-<!--     
-    <servlet>
+    <!-- <servlet>
         <servlet-name></servlet-name>
         <servlet-class></servlet-class>
     </servlet>
@@ -22,7 +21,6 @@
     <servlet-mapping>
         <servlet-name></servlet-name>
         <url-pattern></url-pattern>
-    </servlet-mapping> 
- -->
+    </servlet-mapping> -->
     
 </web-app>
