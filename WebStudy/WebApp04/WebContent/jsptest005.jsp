@@ -27,12 +27,12 @@ Servlet 컨테이너에 전달....?
             <!-- <form action="/WebApp04/jsptest003.jsp">--><!--method 속성 생략 시 GET방식으로 요청 -->
             <!-- <form>action 속성 생략 시 데이터 전송 및 페이지 요청을 하게되는 대상은 자기 자신이 된다.  -->
             <!-- <form action=""> --><!-- method 속성 생략 시 GET방식 -->
-            <!-- <form action="/WebApp04/jsptest003.jsp" mtehod=""> --><!-- method 속성 생략 시 GET방식 -->
-            <!-- <form action="/WebApp04/jsptest003.jsp" mtehod="post"> --><!-- -->
-            <!-- <form action="WebApp04/jsptest003.jsp" mtehod="post">--><!--(X) -->
-            <!--<form action="/jsptest003.jsp" mtehod="post"> --><!-- (X) -->
-            <!--<form action="jsptest003.jsp" mtehod="post">--><!-- (o) -->
-            <form action="/WebApp04/login" mtehod="post"><!-- (o) -->
+            <!-- <form action="/WebApp04/jsptest003.jsp" method=""> --><!-- method 속성 생략 시 GET방식 -->
+            <!-- <form action="/WebApp04/jsptest003.jsp" method="post"> --><!-- -->
+            <!-- <form action="WebApp04/jsptest003.jsp" method="post">--><!--(X) -->
+            <!--<form action="/jsptest003.jsp" method="post"> --><!-- (X) -->
+            <!--<form action="jsptest003.jsp" method="post">--><!-- (o) -->
+            <form action="/WebApp04/login" method="post"><!-- (o) -->
             <table>
                 <tr>
                     <th>아이디</th>

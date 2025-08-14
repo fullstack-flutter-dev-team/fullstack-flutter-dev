@@ -68,6 +68,40 @@ public class Test005 extends HttpServlet    //-- Type C.
         // 클라이언트로부터 데이터 수신
         String id = request.getParameter("userId");  // "superman"
         String pw = request.getParameter("userPwd"); // "java007"
+
+        // response → 응답 객체
+        // → 서버로부터 클라이언트에...
+        response.setContentType("text/html;charset=UTF-8;");
+
+        // 문자열 변수 선언(str) → 변수에 클라이언트로부터 수신한 데이터 담아내기
+        String str = "아이디 : " + id + "<br>패스워드 : " + pw;
+
+        // 응답을 출력 스트림으로 구성하기 위한 준비
+        PrintWriter out = response.getWriter();
+
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<meta charset='UTF-8'>");
+        out.println("<title>Test005.java</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("");
+        out.println("<div>");
+        out.println("<h1>Servlet 관련 실습</h1>");
+        out.println("<hr>");
+        out.println("</div>");
+        out.println("");
+        out.println("<div>");
+        out.println("<h2>HttpServlet 클래스를 이용한 서블릿 테스트</h2>");
+//        out.println("<p>결과 확인</p>");
+        out.println("<p>" + str + "</p>");
+        out.println("</div>");
+        out.println("");
+        out.println("</body>");
+        out.println("</html>");
+
+
     }
 
 

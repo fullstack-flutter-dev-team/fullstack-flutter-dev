@@ -1,6 +1,5 @@
 ### ▣▣▣ JSP(Java Server Pages) ▣▣▣
 
-
 1. JSP(Java Server Pages) : 웹 프로그램 작성 언어의 한 종류
 2. JSP(Java Server Pages)는 동적(Dynamic)인 웹 페이지를
    비교적 간단히 만들 수 있는 방법을 제공하는
@@ -146,6 +145,10 @@ class Jsp extends Servlet {
    ex) 동일한 상황에서 프로그램이 한 번만 돌아가게 되는 형식
 ```
 
+```
+    <Connector URIEncoding="UTF-8" connectionTimeout="20000" maxParameterCount="1000" port="3306" protocol="HTTP/1.1" redirectPort="8443"/>
+```
+---
 
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/

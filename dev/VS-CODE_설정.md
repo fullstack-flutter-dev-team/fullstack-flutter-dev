@@ -78,3 +78,21 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
   - []()
 - []()
 - []()
+
+### vscode jsp 실행
+
+- [Vscode tomcat 설정 json 검색](https://www.google.com/search?q=Vscode+tomcat+%EC%84%A4%EC%A0%95+json&newwindow=1&sca_esv=656b10c93ec889a4&ei=RjKdaJPWD7O3vr0PxduCCA&ved=0ahUKEwiTkYKDiomPAxWzm68BHcWtAAEQ4dUDCBA&uact=5&oq=Vscode+tomcat+%EC%84%A4%EC%A0%95+json&gs_lp=Egxnd3Mtd2l6LXNlcnAiGVZzY29kZSB0b21jYXQg7ISk7KCVIGpzb24yBRAhGKABMgUQIRigAUjXDVDeBljnC3ABeAGQAQCYAY4CoAHKCaoBAzItNbgBA8gBAPgBAZgCBqAC2wnCAgoQABiwAxjWBBhHwgIEEAAYHsICBRAAGO8FwgIIEAAYgAQYogSYAwCIBgGQBgqSBwUxLjAuNaAH1QyyBwMyLTW4B9gJwgcFMS40LjHIBws&sclient=gws-wiz-serp)
+  - [visual studio code(vscode)에서 tomcat(톰캣) 연동하기](https://blog.naver.com/PostView.nhn?blogId=tjrwlsgur4&logNo=222285029541)
+  - [VSCode에 tomcat 설치하기](https://yooloo.tistory.com/249)
+  - [VScode로 jsp 개발환경 구성하기 - Tomcat for Java 서비스 종료, Tomcat 한글 깨짐 해결](https://choijying21.tistory.com/entry/VScode%EB%A1%9C-jsp-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0-Tomcat-for-Java-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%A2%85%EB%A3%8C-Tomcat-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%ED%95%B4%EA%B2%B0)
+  - [vscode에서 tomcat 서버 세팅하기](https://bny9164.tistory.com/55)
+  - [vscode의 tomcat서버 출력로그 한글이 깨지는 경우](https://blog.naver.com/ncbomb/223301392426)
+  - []()
+  - []()
+  - []()
+  - []()
+- []()
+  - []()
+  - []()
+  - []()
+- []()
