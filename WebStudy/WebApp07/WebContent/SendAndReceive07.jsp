@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.GregorianCalendar"%>
 <%
 
 // 이전 페이지(→ SendAndReceive06.html)로 부터 넘어온 데이터 수신
@@ -26,7 +28,15 @@ try {
 	System.out.println(e.toString());
 }
 
+if (nMonth==0 || nYear==0) {
+    
+    GregorianCalendar cal = new GregorianCalendar();
+    nYear= cal.get(Calendar.YEAR);
+    nMonth = cal.get(Calendar.MONTH)+1;
+}
 
+session.setAttribute("nYear", nYear);
+session.setAttribute("nMonth", nMonth);
 
 %>
 
@@ -45,26 +55,33 @@ span {
 <script type="text/Javascript">
 window.onload = function() {
     console.log(">>>onload: ");
-    var objYear = document.getElementById("year");
-    var now = new Date();
-    var nYear = 0;
+    console.log(">>>nYear: " + <%=session.getAttribute("nYear")%>);
+    console.log(">>>nMonth: " + <%=session.getAttribute("nMonth")%>);
     
-    if (objYear.value=="") {
-        nYear = now.getFullYear();
-        for (var i=0; i<objYear.length ; i++) {
-            objYear.remove(i);
-        }
-        
-        for (var i = nYear-10; i<=(nYear+10); i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.text = String(i);
-            if (nYear == i) {
-                option.selected = "selected";
-            }
-            objYear.appendChild(option);
-        }
+ 
+    var objYear = document.getElementById("year");
+    var objMonth = document.getElementById("month");
+    var nYear = parseInt(<%=session.getAttribute("nYear")%>);
+    var nMonth = parseInt(<%=session.getAttribute("nMonth")%>);
+    
+    for (var i=0; i<objYear.length ; i++) {
+        objYear.removeChild(objYear.lastChild);
     }
+    
+    for (var i = nYear-10; i<=(nYear+10); i++) {
+        var option = document.createElement("option");
+        option.value = i;
+        option.text = String(i);
+        if (nYear == i) {
+            option.selected = "selected";
+        }
+        objYear.appendChild(option);
+    }
+    
+    
+   objMonth.options[nMonth-1].selected = true;
+    
+  
 
 }
 
@@ -96,9 +113,9 @@ function onChgYear(obj) {
     
 }
 
-function onChgMonth(objMonth) {
+function onChgMonth(obj) {
 
-    objMonth.form.submit();
+    obj.form.submit();
 }
 
 </script>
@@ -143,7 +160,11 @@ function onChgMonth(objMonth) {
 <!--         <form method="get"> --><!--  action 속성 생략시 "" 빈문자열과 동일    -->
         <form action="" method="get">
             <select id="year" name="year" class="control" onchange="onChgYear(this);">
-<!--                 <option value="2015">2015</option> -->
+                 <!-- 
+                 <option value="2025">2025</option>
+                 <option value="2026">2026</option> 
+                  -->
+                 
             </select>년
             <select id="month" name="month" class="control" onchange="onChgMonth(this);">
                 <option value="1">1</option>
@@ -175,11 +196,13 @@ function onChgMonth(objMonth) {
             ○ 물리적 파일 구성
             - Send05.html 
         --%>
-    </div>
+    </div><br>
     
+<%--     
     <div>
-        <p><%=year %>년 <%=month %>월</p>
-    </div>
+        <p><%=nYear %>년 <%=nMonth %>월</p>
+    </div> 
+--%>
 
 <%
 
@@ -188,38 +211,72 @@ int totalDays = 0;
 
 int[] m = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-for (int i=1; i<nYear; i++) {
-	if ((i/4==0 && i/100!=0) || i/400==0) {
-		leapCount++;
-	}
-}
+
 
 for (int i=1; i<nYear; i++) {
 	totalDays += 365;
+    if ((i%4==0 && i%100!=0) || i%400==0) {
+        totalDays++;
+    }
 }
 
-totalDays += leapCount;
+
+for (int i=1; i<nMonth; i++) {
+
+    if (i==2 && ((nYear%4==0 && nYear%100!=0) || nYear%400==0)) {
+    	m[i-1] = 29;
+    }
+    totalDays += m[i-1];
+}
 
 String strCal = "<table border=1>" 
-               + "<tr>"
-               + "<th>일</th>" 
-               + "<th>월</th>"
-               + "<th>화</th>"
-               + "<th>수</th>"
-               + "<th>목</th>"
-               + "<th>금</th>"
-               + "<th>토</th>"
-               + "</tr>"
-               + "<tr>"
-	               + "<td>"+ year +"</td>" 
-	               + "<td>"+ month +"</td>"
-	               + "<td>"+ leapCount +"</td>"
-	               + "<td>"+ totalDays +"</td>"
-               + "</tr>"
-               + "</table>";
+        + "<tr style='background-color:#ECFCCA;'>"
+        + "<th>일</th>" 
+        + "<th>월</th>"
+        + "<th>화</th>"
+        + "<th>수</th>"
+        + "<th>목</th>"
+        + "<th>금</th>"
+        + "<th>토</th>"
+        + "</tr>"
+        + "<tr>";
+
+int nFirstDay = (totalDays%7+1)%7;
+int nCount = 0;
+for (int i=0; i<nFirstDay; i++) {
+    strCal += "<td> </td>";
+    nCount++;
+}
+
+for (int i=1; i<=m[nMonth-1]; i++) {
+	nCount++;
+    if (nCount%7==1){
+    	 strCal += "<tr>";
+    } 
+    
+    strCal += String.format("<td style='text-align:right;'>%d</td>",i);
+    
+    if (nCount%7==0) {
+    	 strCal += "</tr>";
+    }
+}
+
+if (nCount%7!=0) {
+	for (int i=0; i<7; i++) {
+	    nCount++;
+	    strCal += "<td> </td>";
+		if (nCount%7==0) {
+			 strCal += "</tr>";
+			 break;
+		}
+	}
+}
+
+
+strCal += "</table>";
                
                
-   out.println(strCal);
+out.println(strCal);
 %>
 </body>
 </html>
