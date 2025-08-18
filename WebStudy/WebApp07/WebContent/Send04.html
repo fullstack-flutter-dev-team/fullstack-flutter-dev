@@ -58,36 +58,36 @@
         // form 재부 컨트롤에 대한 값을 변경하고
         // 이 함수를 다시 호출할 때 마다
         // 기존에 안내되었던 에러 메시지를 지우고 다시 확인할 수 있도록 처리
-        idMsg.style.display = none;
-        pwMsg.style.display = none;
-        nameMsg.style.display = none;
-        telMsg.style.display = none;
+        idMsg.style.display = "none";
+        pwMsg.style.display = "none";
+        nameMsg.style.display = "none";
+        telMsg.style.display = "none";
 
         
         if (id.value == null || id.value.length == 0) {
         // if (id.value == "") {
-            idMsg.style.display = "display:inline-table";
+            idMsg.style.display = "display:inline";
             id.focus();
             return false;
         }
         
         if (pw.value == null || pw.value.length == 0) {
         // if (pw.value == "") {
-            pwMsg.style.display = "display:inline-table";
+            pwMsg.style.display = "display:inline";
             pw.focus();
             return false; 
         }
         
         if (name.value == null || name.value.length == 0) {
         // if (name.value == "") {
-            nameMsg.style.display = "display:inline-table";
+            nameMsg.style.display = "display:inline";
             name.focus();
             return false; 
         } 
         
         if (tel.value == null || tel.value.length == 0) {
         // if (tel.value == "") {
-            telMsg.style.display = "display:inline-table";
+            telMsg.style.display = "display:inline";
             tel.focus();
             return false; //-- 현재 페이지에 그대로 잔류
         }
@@ -148,7 +148,11 @@
 
 <div>
     <!-- 
-
+        ※ form 태그의 『onsubmit』
+          : submit 액션이 발생할 경우, 이 때 호출되는 자바스크립트 함수에서
+           return true 할 경우 Receive04.jsp 로 제어권이 넘어가게 되며
+           return false 할 경우 Receive04.jsp 로 제어권이 넘어가지 않고
+           현재 페이지 Send04.html에 계속 머물게 된다.
     -->
     <!-- <form id="form" action="Receive04.jsp" method="post" onsubmit="return false;"> -->
     <!-- <form id="form" action="Receive04.jsp" method="post" onsubmit="return true;"> -->
