@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 
-// 이전 페이지(→ Send02.html)로 부터 넘어온 데이터 수신
+// 이전 페이지(Send01.html)로 부터 넘어온 데이터 수신
 // → userName, kor, eng, mat
 
 // 한글 수신을 위한 인코딩 방식 지정
@@ -14,21 +14,20 @@ request.setCharacterEncoding("UTF-8");
 //   먼저 수행되어야 한글이 깨지지 않은 상태로 사용할 수 있음)
       
 String userName = request.getParameter("userName");
-String strKor      = request.getParameter("kor");
-String strEng      = request.getParameter("eng");
-String strMat      = request.getParameter("mat");
+String kor  = request.getParameter("kor");
+String eng  = request.getParameter("eng");
+String mat  = request.getParameter("mat");
 
-int kor, eng, mat; 
-kor = eng = mat = 0;
-int tot = 0;
-double avg = 0.0;
+int nKor = 0, nEng = 0, nMat = 0, nTot = 0;
+double dAvg =0.0;
 
 try {
-	kor = Integer.parseInt(strKor);
-	eng = Integer.parseInt(strEng);
-	mat = Integer.parseInt(strMat);
-	tot = kor + eng + mat;
-	avg = tot / 3.0;  //-- check~!!!
+	nKor = Integer.parseInt(kor);
+	nKor = Integer.parseInt(kor);
+	nEng = Integer.parseInt(eng);
+	nMat = Integer.parseInt(mat);
+	nTot = nKor+nEng+nMat;
+	dAvg = nTot/3.0;
 } catch(Exception e) {
 	System.out.println(e.toString());
 }
@@ -41,12 +40,6 @@ try {
 <meta charset="UTF-8">
 <title>Receive02.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<style type="text/css">
-span {
-    color:blue;
-    font-weight:bold;
-}
-</style>
 </head>
 <body>
 
@@ -61,9 +54,9 @@ span {
             총점은 240점, 평균은 80.0 입니다.』
 -->
 <div>
-    <span><%=userName %></span>님, 성적 처리가 완료되었습니다.<br>
-    회원님의 점수는 <span>국어:<%=kor %></span>점, <span>영어:<%=eng %></span>점, <span>수학:<%=mat %></span>점 입니다.<br>
-    총점은 <span><%=tot %></span>점, 평균은 <span><%=String.format("%.1f",avg) %><span> 입니다.
+    <span style="color:blue;font-weight:bold;"><%=userName %></span>님, 성적 처리가 완료되었습니다.<br>
+    회원님의 점수는 <span style="color:blue;font-weight:bold;">국어:<%=kor %></span>점, <span style="color:blue;font-weight:bold;">영어:<%=eng %></span>점, <span style="color:blue;font-weight:bold;">수학:<%=mat %></span>점 입니다.<br>
+    총점은 <%=nTot %>점, 평균은 <%=dAvg %> 입니다.
 </div>
 
 </body>
