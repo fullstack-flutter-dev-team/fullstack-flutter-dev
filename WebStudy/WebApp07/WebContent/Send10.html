@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Send05.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+    tr {
+        height:60px;
+    }
+    
+    .msg {
+        color: red;
+        font-size: small;
+        display:none;
+    }
+</style>
+<script type="text/javascript">
+    window.onload = function() {
+
+    };
+
+
+
+  
+</script>
+
+</head>
+<body>
+<div>
+    <h1>데이터 송수신 실습 10</h1>
+    <p>포워딩 및 리다이렉트</p>
+    <hr>
+</div>
+
+
+
+
+<!--
+    ---------------------------------------------------------------------------
+    ○ 데이터 송수신 실습 10
+    ---------------------------------------------------------------------------
+        -  Send10.html → Send10Redirect.jsp → Receive10.jsp
+        -  Send10.html → Send10Forward.jsp  → Receive10.jsp
+
+        - 사용자의 최초 요청 주소는
+          http://localhost:3306/WebApp07/Send10.html 로 한다.
+          
+        ○ 물리적 파일 구성
+          - Send05.html
+          - Receive05.jsp
+-->
+
+
+<div>
+    <!-- <form action="" method="post" id="testFrom"> -->
+    <!-- action 처리에 대한 분기~!!! -->
+    <!-- <form action="Receive10.jsp" method="post" id="testFrom"> -->
+    <form action="" method="post" id="testFrom">
+        이름
+        <input type="text" name="userName" class="txt">
+        <br><br>
+        <!-- <button type="submit" class="btn" style="width: 250px">리다이렉트</button> -->
+        <button type="submit" class="btn" style="width: 250px" onclick="this.form.action='Send10Redirect.jsp'">리다이렉트</button>
+        <!-- <button type="submit" class="btn" style="width: 250px">포워드</button> -->
+        <button type="submit" class="btn" style="width: 250px"  onclick="this.form.action='Send10Forward.jsp'">포워드</button>
+
+
+    </form>
+</div>
+
+</body>
+</html>

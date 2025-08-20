@@ -67,34 +67,15 @@ if (year == null && month == null) {
 	nMonth = Integer.parseInt(month);
 }
 
-// 이전(◀)
-int preYear = nYear;
-int preMonth = nMonth-1;
-if (preMonth < 1) {
-    preYear = nYear-1;
-    preMonth = 12;
+
+if (nMonth > 12) {
+	nMonth = 1;
+	nYear++; 
+} else if (nMonth < 1) {
+	nMonth = 12;
+	nYear--;
 }
 
-// 다음(▶)
-int nextYear = nYear;
-int nextMonth = nMonth-1;
-if (nextMonth > 12) {
-    nextYear = nYear+1;
-    nextMonth = 1;
-}
-
-// 표시할 달력 세틱
-cal.set(nYear, nMonth-1, 1);
-int startDay = 1;
-int endDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-//-- 해당 연, 월의 마지막 날짜
-
-// 요일 확인
-int nWeek = cal.get(Calendar.DAY_OF_WEEK);
-
-
-
-// Type - I
 if ( calc != null) {
     if (calc.equals("+")) {
         if (selectMonth == 12) {
@@ -137,7 +118,6 @@ span {
 
 th {
     backgroundColor : #e6e6e6;
-    text-align: center;
 }
 
 td {
@@ -257,11 +237,11 @@ function next(obj) {
             <table class="table" style="text-align: center;">
                 <tr style="text-align: center;">
                     <td>
-                        <a href="SendAndReceive08.jsp?year=<%=preYear %>&month=<%=preMonth %>">◀</a>
+                        <a href="SendAndReceive08.jsp?year=<%=nYear %>&month=<%=(--nMonth) %>">◀</a>
                         <a href="javascript: prev(this);">◀</a>
                         <input type="text" id="yearMonth" name="yearMonth" class="txt" disabled="disabled" value="<%=selectYear%>년 <%=selectMonth%>월">
                         <a href="javascript: next(this);">▶</a>
-                        <a href="SendAndReceive08.jsp?year=<%=nextYear %>&month=<%=nextMonth %>">▶</a>
+                        <a href="SendAndReceive08.jsp?year=<%=nYear %>&month=<%=(nMonth+2) %>">▶</a>
                         <input type="hidden" id="calc" name="calc" value="+">
                     </td>    
                 </tr>
@@ -377,37 +357,6 @@ sb.append("</table>");
         <th>금</th>
         <th style="color: blue;">토</th>
     </tr>
-    <% 
-         int newLine = 0;
-         out.print("<tr>");
-         for (int i =1; i<nWeek; i++) {
-            out.print("<td style='background-color:$f1f3bfff;'>&nbsp;</td>");
-            newLine++;
-         }
-
-         for (int i=startDay; i<=endDay; i++) {
-            String fontColor = (newLine==0) ? "red" : (newLine==6) ? "blue" : "white";
-            String bgColor = (nowYear==nYear) && (nowMonth==nMonth) && (nowDay==i) ? "#d2d4ba" : "#f1f3bfff";
-         
-            out.print("<td style='background-color:" + bgColor + ";'><span style='color:"+ fontColor+"'>" + i + "</td>");
-            newLine++;
-
-            if (newLine==7 && i!=endDay) {
-                out.print("</tr></tr>");
-                newLine=0;
-            }
-         }
-
-         while (newLine<7) {
-            out.print("<td style='background-color:$f1f3bfff;'>&nbsp;</td>");
-            newLine++;
-         }
-
-         out.print("</tr>");
-
-
-
-    %>
 </table>
 
 </body>
