@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@page  import= "java.sql.Connection"%>
+<%@page  import= "java.sql.Statement"%>
+<%@page  import= "java.sql.ResultSet"%>
+<%@page import= "com.util.DBConn" %>
 <%
-
 //
 request.setCharacterEncoding("UTF-8");
 
@@ -15,33 +18,54 @@ System.out.printf("eng: %s\n", eng);
 System.out.printf("mat: %s\n", mat);
 
 
-response.sendRedirect("ScoreList.jsp");
+String strStatus = "";
+StringBuilder sb = new StringBuilder();
+StringBuilder sbList = new StringBuilder();
+int result = 0;
+
+try {
+    // DB connection
+    Connection conn = DBConn.getConnection();
+    
+    if (conn != null) {
+        sb.append("INSERT INTO TBL_SCORE(SID, NAME, KOR, ENG, MAT) ");
+        sb.append(" VALUES(SCORESEQ.NEXTVAL ");
+        sb.append(String.format(", '%s'",name));
+        sb.append(String.format(", %d",Integer.parseInt(kor)));
+        sb.append(String.format(", %d",Integer.parseInt(eng)));
+        sb.append(String.format(", %d",Integer.parseInt(mat)));
+        sb.append(")");
+        System.out.println(">>> sql: " + sb.toString());
+        Statement stmt = conn.createStatement();
+        result = stmt.executeUpdate(sb.toString());
+    }
+    
+} catch (Exception e) {
+	strStatus = e.toString();
+}
+
+
+// 처리 결과 분기처리
+if (result > 0) {
+	// 성적 데이터 입력 성공
+	response.sendRedirect("ScoreList.jsp");
+} else {
+	// 성적 데이터 입력 실패
+	response.sendRedirect("ScoreError.jsp");
+}
+
 
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ScoreList.jsp</title>
+<title>ScoreInsert.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<style type="text/css">
-    .msg {
-        color: red;
-        font-size: small;
-        display: none;
-    }
-    
-    .btn {
-        width: 100%;
-    }
-</style>
 </head>
 <body>
 
-
 <%-- 
-
-
         -------------------------------------------------------------
 
         이름(*)  [textbox ]      -> 이름 입력 확인
