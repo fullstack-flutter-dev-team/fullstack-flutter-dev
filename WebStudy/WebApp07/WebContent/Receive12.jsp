@@ -5,6 +5,11 @@
 // 이전 페이지(→ Send12.html → Redirect12.jsp를 통해 전달한 안내 내용)로 부터 넘어온 데이터 수신
 // →  num1, num2, op, result, resultStr
 
+// ※ check~!!
+// 직접 Redirect12.jsp 로 부터 데이터를 넘겨받는 것이 아니라
+// 클라이언트가 새로운 요청을 하는 과정에서 넘긴 값을 새롭게 수신하게 되는 개념~!!
+
+
 // 한글 수신을 위한 인코딩 방식 지정
 // request.setCharacterEncoding("UTF-8");
 //-- 웹은 UTF-8 을 기본 인코딩 방식으로 삼고 있음
@@ -31,6 +36,16 @@ System.out.println(">-2-> op : " + op);
 System.out.println(">-2-> result : " + result);
 System.out.println(">-2-> resultStr : " + resultStr);
 
+
+if (op.equals("+")) {
+
+} else if (op.equals("-")) {
+    
+} else if (op.equals("*")) {
+
+} else if (op.equals("/")) {
+    
+}
 
 %>
 
