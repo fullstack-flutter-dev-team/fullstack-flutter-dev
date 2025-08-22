@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EmmetTest.html</title>
+<title>EmmetTest01.html</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -12,150 +12,381 @@
         <hr>
     </div>
     
-    1. 태그 선택자
-	    div
-	    <div></div>
-	
-	    <div>사입할 내용</div>
-	    
-	    div{구성하여 삽입할 내용}
-	    <div>구성하여 삽입할 내용</div>
-	    
-	    a
-	    <a href=""></a>
-	    <a href="주소개재">주소로 이동</a>
-	    
-	    
-	    img
-	    
-	    <img src="" alt="" />
-	    
-	    table
-	    <table></table>
-	    
-	    span
-	    <span></span>
-	    
-	    p
-	    <p></p>
-	    
-	    <br />
-	    
-    
-    
-    2. 아이디 선택자
-        div#box
-        <div id="box"></div>
-        
-        div#box{kkk}
-        <div id="box">kkk</div>
-        
-        #box
-        <div id="box"></div>
-        
-        #box{123}
-        <div id="box">123</div>
-        
-        <br /><br />
-        
-        
-    3. 클래스 선택자
-        div.items
-        <div class="items"></div>
-        
-        div.items{kkk}
-        <div class="items">kkk</div>
-        
-        .items
-        <div class="items"></div>
-    
-        .items{kkk}
-        <div class="items">kkk</div>
-    
-    
-        <br /><br />
-    
-    4. 조합    
-        div#box.items
-        <div id="box" class="items"></div>
-        
-        
-        div#box.items.unit.control
-        <div id="box" class="items unit control"></div>
-        
-        div#box.items.unit{kkk}
-        <div id="box" class="items unit">kkk</div>
-        
-        <br /><br />
-        
-    5. 속성 선택자
-        div[title]    
-        <div title=""></div>    
-        
-        div[name='test']
-        <div name="test"></div>
+  ===========================================================================================
+1. 태그 선택자
 
-        a[href='www.naver.com' title='네이버']    
-        <a href="www.naver.com" title="네이버"></a>    
+div (입력 후 Ctrl+E 하면 아래와 같이 생성)
+<div></div>
+
+<div>넣을 내용</div>
+
+div{넣을 내용}
+<div>넣을 내용</div>
+
+div{삽입할 내용}
+<div>삽입할 내용</div>
+
+a
+<a href="주소">주소로 이동</a>
+
+a
+<a href="www.naver.com">네이버</a>
+
+img
+<img src="" alt="" />
+
+table
+<table></table>
+
+span
+<span></span>
+
+p
+<p></p>
+===========================================================================================
+2. 아이디 선택자
+
+div#box
+<div id="box"></div>
+
+div#box{test}
+<div id="box">test</div>
+
+#box
+<div id="box"></div>
+<!-- div가 레이아웃 구성에 가장 많이 사용되기 때문에 #id 만 하면 div 로 생성됨 --> 
+
+#box{1234}
+<div id="box">1234</div>
+===========================================================================================
+3. 클래스 선택자
+
+div.items
+<div class="items"></div>
+
+div.items{aaa}
+<div class="items">aaa</div>
+
+.items
+<div class="items"></div>
+
+.items{bbb}
+<div class="items">bbb</div>
+===========================================================================================
+4. 조합
+
+div#box.items
+<div id="box" class="items"></div>
+
+div#box.items.unit.control
+<div id="box" class="items unit control"></div>
+
+div#box.items.unit{aaa}
+<div id="box" class="items unit">aaa</div>
+
+#box.items.unit{bbb}
+<div id="box" class="items unit">bbb</div>
+===========================================================================================
+5. 속성 선택자
+
+div[title]
+<div title=""></div>
+
+div[title='test']
+<div title="test"></div>
+
+a[href='www.naver.com' title='네이버']
+<a href="www.naver.com" title="네이버"></a>
+
+a[href='www.naver.com' title='네이버']{해당 사이트로 이동}
+<a href="www.naver.com" title="네이버">해당 사이트로 이동</a>
+===========================================================================================
+6. PCDATA
+
+div{박스}
+<div>박스</div>
+
+a{홈페이지로 이동}
+<a href="">홈페이지로 이동</a>
+
+p{문단내용기술}
+<p>문단내용기술</p>
+===========================================================================================
+7. 반복 생성 
+
+div*5
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+img[src=images/dog.jpg]*5
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+<img src="images/dog.jpg" alt="" />
+
+.box*5
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+.box{content}*4
+<div class="box">content</div>
+<div class="box">content</div>
+<div class="box">content</div>
+<div class="box">content</div>
+
+<!-- $을 붙이면 1부터 순서대로 생성이 가능 -->
+
+#box$*5
+<div id="box1">커서가 여기서 깜빡</div>
+<div id="box2">탭키누르면 여기로</div>
+<div id="box3">다음은 여기</div>
+<div id="box4">여기</div>
+<div id="box5">끝</div>
+
+.box#box${box$}*5
+<div class="box" id="box1">box1</div>
+<div class="box" id="box2">box2</div>
+<div class="box" id="box3">box3</div>
+<div class="box" id="box4">box4</div>
+<div class="box" id="box5">box5</div>
+
+img[src=images/obj$.jpg]*5
+<img src="images/obj1.jpg" alt="" />
+<img src="images/obj2.jpg" alt="" />
+<img src="images/obj3.jpg" alt="" />
+<img src="images/obj4.jpg" alt="" />
+<img src="images/obj5.jpg" alt="" />
+
+h$*6
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+<h6></h6>
+
+h${제목$}*6
+<h1>제목1</h1>
+<h2>제목2</h2>
+<h3>제목3</h3>
+<h4>제목4</h4>
+<h5>제목5</h5>
+<h6>제목6</h6>
+===========================================================================================
+8. 연속 생성
+
+div+p
+<div></div>
+<p></p>
+
+h1{제목}+p{내용}*5
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+<p>내용</p>
+
+(h1{제목}+p{내용}*2)*5
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+<h1>제목</h1>
+<p>내용</p>
+<p>내용</p>
+
+div+a+div+p+div+img
+<div></div>
+<a href=""></a>
+<div></div>
+<p></p>
+<div></div>
+<img src="" alt="" />
+===========================================================================================
+9. 하위 생성
+
+table+
+<table>
+    <tr>
+        <td>커서가 여기에!</td>
+    </tr>
+</table>
+
+ul+
+<ul>
+    <li>커서커서</li>
+</ul>
+
+ol+
+<ol>
+    <li>커서</li>
+</ol>
+
+select+
+<select name="커서1" id="탭">
+    <option value="탭2">탭3</option>
+</select>
+===========================================================================================
+10. 자식 생성
+
+div>p
+<div>
+    <p></p>
+</div>
+
+div>p*5
+<div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+
+(div>p*2)*3
+<div>
+    <p>커서1</p>
+    <p>탭</p>
+</div>
+<div>
+    <p>탭</p>
+    <p>탭</p>
+</div>
+<div>
+    <p>탭</p>
+    <p>탭</p>
+</div>
+
+table#tbl>tr*5>td*3
+<table id="tbl">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+table#tbl>tr*3>td#label$+td.content
+<table id="tbl">
+    <tr>
+        <td id="label1"></td>
+        <td class="content"></td>
+    </tr>
+    <tr>
+        <td id="label2"></td>
+        <td class="content"></td>
+    </tr>
+    <tr>
+        <td id="label3"></td>
+        <td class="content"></td>
+    </tr>
+</table>
+
+table#tbl>(tr>th*3)+((tr>td*3)*5)
+<table id="tbl">
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 
-        a[href='www.naver.com' title='네이버']{사이트로 이동}    
-        <a href="www.naver.com" title="네이버">사이트로 이동</a>    
-    
-    
-        <br /><br />
-        
-    6. PCDATA
-       div{박스}
-       <div>박스</div>
 
-       a{홈페이지로 동}    
-       <a href="">홈페이지로 동</a>    
-    
-    7. 반복 생성
-        div*5
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        
-        img[src=images/dog.jpg]*5
-        <img src="images/dog.jpg" alt="" />
-        <img src="images/dog.jpg" alt="" />
-        <img src="images/dog.jpg" alt="" />
-        <img src="images/dog.jpg" alt="" />
-        <img src="images/dog.jpg" alt="" />
-        
-        .box*5
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        
-        #box*5
-        <div id="box"></div>
-        <div id="box"></div>
-        <div id="box"></div>
-        <div id="box"></div>
-        <div id="box"></div>
-        
-        #box$*5
-        <div id="box1"></div>
-        <div id="box2"></div>
-        <div id="box3"></div>
-        <div id="box4"></div>
-        <div id="box5"></div>
-        
-        
-        .box#box${content$}*5
-        <div class="box" id="box1">content1</div>
-        <div class="box" id="box2">content2</div>
-        <div class="box" id="box3">content3</div>
-        <div class="box" id="box4">content4</div>
-        <div class="box" id="box5">content5</div>
-    
-    
+===========================================================================================
+11. 더미 키워드
+
+<!-- 매번 다른것을 생성... -->
+<!-- 권장하지 않음 -->
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Itaque velit ab accusantium id temporibus molestias voluptates 
+sit dolorem delectus voluptas praesentium similique corrupti numquam! 
+Dicta quam cupiditate incidunt beatae cum.
+
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Nobis voluptatem dolor doloribus dolorem vitae porro rerum 
+consectetur iste quisquam sunt? Voluptatibus repellat neque laudantium 
+asperiores natus ipsam architecto ipsa voluptatem!
+
+lorem
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Quos odio similique porro magni nisi dolorum quasi rerum repudiandae eos 
+saepe eaque minima qui consequatur perspiciatis ad dignissimos aperiam corporis possimus?
+
+<!-- ※ 더미 키워드 사용시 주의 점 -->
+
+
+table>(tr>th*2)+(tr>(td{word}+td{lorem}))*3
+table>(tr>th*2)+(tr>(td{word}+td{lorem}))*3
+
+table>(tr>th*2)+(tr>(td{word}+lorem(td{desc})))*3 <!-- 이런 경우 함수쓰듯이 lorem() 사용하면 된다 -->
+table>(tr>th*2)+(tr>(td{word}+lorem(td{desc})))*3
+
+
+
+
 </body>
 </html>

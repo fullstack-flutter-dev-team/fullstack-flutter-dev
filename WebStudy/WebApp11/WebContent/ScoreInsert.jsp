@@ -31,11 +31,24 @@ score.setMat(mat);
 
 // DB 입력
 ScoreDAO dao = new ScoreDAO();
-result = dao.addScore(score);
+
+try {
+    result = dao.addScore(score);
+} catch (Exception e) {
+    
+} finally {
+    try {
+        // 데이터베이스 연결 종료
+        dao.close();
+    } catch (Exception e) {
+        System.out.println(e.toString());
+    }
+}
+
 
 // DB 처리 결과에 따른 분기 처리
 if (result == 1) {
-	response.sendRedirect("ScoreList.jsp");
+    response.sendRedirect("ScoreList.jsp");
 }
 
 %>

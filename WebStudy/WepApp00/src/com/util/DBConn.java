@@ -19,13 +19,12 @@ public class DBConn
     public static final String JDBC_USER  = "scott";
     public static final String JDBC_PW    = "tiger";
     private static Connection dbConn;
-    
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
         if (dbConn == null) {
             Class.forName(JDBC_DRIVER);
             dbConn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PW);
         }
-        
         return dbConn;
     }
     
@@ -34,7 +33,6 @@ public class DBConn
             Class.forName(JDBC_DRIVER);
             dbConn = DriverManager.getConnection(url, user, pw);
         }
-        
         return dbConn;
     }
     
@@ -44,8 +42,7 @@ public class DBConn
                 dbConn.close();
             }
         }
-        
         dbConn = null;
     }
-    
+
 }

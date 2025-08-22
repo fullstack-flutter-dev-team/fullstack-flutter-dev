@@ -6,34 +6,47 @@
 <%
 
 ScoreDAO dao = new ScoreDAO();
-
-ArrayList<ScoreDTO> scoreList = dao.listScore();
 StringBuilder sb = new StringBuilder();
 
-sb.append("<table class='table'>");
-sb.append("    <tr>");
-sb.append("        <th>번호</th>");
-sb.append("        <th>이름</th>");
-sb.append("        <th>국어점수</th>");
-sb.append("        <th>영어점수</th>");
-sb.append("        <th>수학점수</th>");
-sb.append("        <th>총점</th>");
-sb.append("        <th>평균</th>");
-sb.append("    </tr>");
+try {
+    ArrayList<ScoreDTO> scoreList = dao.listScore();
 
-for (ScoreDTO score : scoreList) {
-	sb.append("    <tr>");
-	sb.append("        <td>" + score.getSid() + "</td>");
-	sb.append("        <td>" + score.getName() + "</td>");
-	sb.append("        <td>" + score.getKor() + "</td>");
-	sb.append("        <td>" + score.getEng() + "</td>");
-	sb.append("        <td>" + score.getMat() + "</td>");
-	sb.append("        <td>" + score.getTot() + "</td>");
-	sb.append("        <td>" + score.getAvg() + "</td>");
-	sb.append("    </tr>");
+    sb.append("<table class='table'>");
+    sb.append("    <tr>");
+    sb.append("        <th>번호</th>");
+    sb.append("        <th>이름</th>");
+    sb.append("        <th>국어점수</th>");
+    sb.append("        <th>영어점수</th>");
+    sb.append("        <th>수학점수</th>");
+    sb.append("        <th>총점</th>");
+    sb.append("        <th>평균</th>");
+    sb.append("    </tr>");
+
+    for (ScoreDTO score : scoreList) {
+        sb.append("    <tr>");
+        sb.append("        <td>" + score.getSid() + "</td>");
+        sb.append("        <td>" + score.getName() + "</td>");
+        sb.append("        <td>" + score.getKor() + "</td>");
+        sb.append("        <td>" + score.getEng() + "</td>");
+        sb.append("        <td>" + score.getMat() + "</td>");
+        sb.append("        <td>" + score.getTot() + "</td>");
+        sb.append("        <td>" + score.getAvg() + "</td>");
+        sb.append("    </tr>");
+    }
+
+    sb.append("</table>");
+} catch (Exception e) {
+    System.out.println(e.toString());
+} finally {
+    try {
+        // 데이터베이스 연결 종료
+        dao.close();
+    } catch (Exception e) {
+        System.out.println(e.toString());
+    }
 }
 
-sb.append("</table>");
+
 
 %>
 
@@ -64,7 +77,7 @@ sb.append("</table>");
 <script type="text/javascript">
     function checkInput()
     {
-    	var retFlag = true;
+        var retFlag = true;
         var name = document.getElementById("name").value;
         var kor = document.getElementById("kor").value;
         var eng = document.getElementById("eng").value;
