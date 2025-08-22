@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EmmetTest.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+    <div>
+        <h1> 기능 적용 액션 키 --> Ctrl + E</h1>
+        <hr>
+    </div>
+    
+    1. 태그 선택자
+	    div
+	    <div></div>
+	
+	    <div>사입할 내용</div>
+	    
+	    div{구성하여 삽입할 내용}
+	    <div>구성하여 삽입할 내용</div>
+	    
+	    a
+	    <a href=""></a>
+	    <a href="주소개재">주소로 이동</a>
+	    
+	    
+	    img
+	    
+	    <img src="" alt="" />
+	    
+	    table
+	    <table></table>
+	    
+	    span
+	    <span></span>
+	    
+	    p
+	    <p></p>
+	    
+	    <br />
+	    
+    
+    
+    2. 아이디 선택자
+        div#box
+        <div id="box"></div>
+        
+        div#box{kkk}
+        <div id="box">kkk</div>
+        
+        #box
+        <div id="box"></div>
+        
+        #box{123}
+        <div id="box">123</div>
+        
+        <br /><br />
+        
+        
+    3. 클래스 선택자
+        div.items
+        <div class="items"></div>
+        
+        div.items{kkk}
+        <div class="items">kkk</div>
+        
+        .items
+        <div class="items"></div>
+    
+        .items{kkk}
+        <div class="items">kkk</div>
+    
+    
+        <br /><br />
+    
+    4. 조합    
+        div#box.items
+        <div id="box" class="items"></div>
+        
+        
+        div#box.items.unit.control
+        <div id="box" class="items unit control"></div>
+        
+        div#box.items.unit{kkk}
+        <div id="box" class="items unit">kkk</div>
+        
+        <br /><br />
+        
+    5. 속성 선택자
+        div[title]    
+        <div title=""></div>    
+        
+        div[name='test']
+        <div name="test"></div>
+
+        a[href='www.naver.com' title='네이버']    
+        <a href="www.naver.com" title="네이버"></a>    
+
+
+        a[href='www.naver.com' title='네이버']{사이트로 이동}    
+        <a href="www.naver.com" title="네이버">사이트로 이동</a>    
+    
+    
+        <br /><br />
+        
+    6. PCDATA
+       div{박스}
+       <div>박스</div>
+
+       a{홈페이지로 동}    
+       <a href="">홈페이지로 동</a>    
+    
+    7. 반복 생성
+        div*5
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        
+        img[src=images/dog.jpg]*5
+        <img src="images/dog.jpg" alt="" />
+        <img src="images/dog.jpg" alt="" />
+        <img src="images/dog.jpg" alt="" />
+        <img src="images/dog.jpg" alt="" />
+        <img src="images/dog.jpg" alt="" />
+        
+        .box*5
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        
+        #box*5
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        <div id="box"></div>
+        
+        #box$*5
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div id="box5"></div>
+        
+        
+        .box#box${content$}*5
+        <div class="box" id="box1">content1</div>
+        <div class="box" id="box2">content2</div>
+        <div class="box" id="box3">content3</div>
+        <div class="box" id="box4">content4</div>
+        <div class="box" id="box5">content5</div>
+    
+    
+</body>
+</html>
