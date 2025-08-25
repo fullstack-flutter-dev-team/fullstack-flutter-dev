@@ -26,11 +26,22 @@ try {
         sb.append("        <td style='width: 150px;'>"+ member.getTel()  + "</td>");
         sb.append("        <td style='width: 200px;'>");
         
-        /*  주소 문자열 구성 과정에서 따옴표 처리에 주의 할 것 check~!!! */                        
+        /*  주소 문자열 구성 과정에서 따옴표 처리에 주의 할 것 check~!!! */
+        // memberDelete(1, "고길동")
+        // "memberDelete(1, "고길동")"
+        // "... 'memberDelete(1, "고길동")'"
+        // "... 'memberDelete(1, \"고길동\")'"
+        
+        // ※ 자바스크립트에서 사용할 수 있는 따옴표의 종류
+        //    ①""  ②'' ③ \"\"
+        //    일반적으로 따옴표가 두 번 중첩되어 사용하게 되면
+        //    ①과 ②를 사용하면 된다.
+        //    하지만, 따옴표가 세 번 중첩되어 사용될 경우
+        //    ③ escape 를 사용해야한다.
         sb.append("             <a href='MemberUpdateForm.jsp?sid="+ member.getSid() + "'>");
         sb.append("                 <button type='button' class='btnSmallAct'>수정</button>");
         sb.append("             </a>");
-        sb.append("             <a href=''>");
+        sb.append("             <a href='javascript:memberDelete(" + member.getSid() + ",\"" + member.getName() + "\")'>");
         sb.append("                 <button type='button' class='btnSmallAct'>삭제</button>");
         sb.append("             </a>");
         sb.append("        </td>");
@@ -64,6 +75,28 @@ try {
 <title>MemberList.jsp</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 <link rel="stylesheet" type="text/css" href="css/MemberListScore.css">
+<script type="text/javascript">
+function memberDelete(sid, name) {
+//     alert(name);
+    console.log(">>> sid: " + sid);
+    console.log(">>> name: " + name);
+    
+    // 주소 문자열 구성 과정에서 따옴표 처리에 주의할 것~~!!! check~!!!
+    
+    var response = confirm("번호 : " + sid + ", 이름: " + name 
+                           + " \n 이 회원의 정보를 정말 삭제하시겠습니까?");
+    // confirm() 함수를 통해 호출되는 대화창은
+    // 확인(true) 또는 취소(false)를 반환하게 된다.
+    
+    if (response) {
+        window.location.href = "MemberDelete.jsp?sid=" + sid;
+    } 
+//     else {
+//         return;
+//     }
+}
+
+</script>
 </head>
 <body>
 

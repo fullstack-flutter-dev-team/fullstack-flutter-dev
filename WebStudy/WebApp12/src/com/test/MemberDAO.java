@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
 import com.util.DBConn;
 
 /**
@@ -98,6 +99,56 @@ public class MemberDAO
 
         return member;
     }
+    
+    // 회원 데이터 수정 담당 메서드
+    public int modify(MemberDTO member) throws SQLException {
+        int result = 0;
+        
+        String sql = "UPDATE TBL_MEMBER SET NAME=?, TEL=? WHERE SID=?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, member.getName());
+        pstmt.setString(2, member.getTel());
+        pstmt.setInt(3, Integer.parseInt(member.getSid()));
+        result = pstmt.executeUpdate();
+        pstmt.close();
+        return result;
+    }
+    
+    // 회원 데이터 삭제 담당 메서드
+    public int remove(String sid) throws SQLException {
+        int result = 0;
+        
+        String sql = "DELETE FROM TBL_MEMBER WHERE SID=?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, Integer.parseInt(sid));
+        result = pstmt.executeUpdate();
+        pstmt.close();
+        return result;
+    }
+    
+    // 회원 데이터 삭제 액션 처리 시
+    // 자식 테이블의 참조 데이터 레코드 수 확인
+    // → 성적 처리가 완료된 회원에 대해서는 삭제 불가 처리
+    public int refCount(String sid) throws SQLException {
+       int result = 0;
+        
+        String sql = "SELECT COUNT(*) AS COUNT FROM TBL_MEMBERSCORE WHERE SID=?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, Integer.parseInt(sid));
+        ResultSet rs = pstmt.executeQuery();
+        
+        while (rs.next()) { // if (rs.next())
+            result = rs.getInt(1);
+        }
+        
+        rs.close();
+        pstmt.close();
+        return result;
+    }
+    
 
     // 데이터베이스 연결 종료(해제) 담당 메소드
     public void close() throws SQLException

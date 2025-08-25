@@ -31,6 +31,7 @@ finally
 {
     try
     {
+        // 데이터베이스 연결 종료
         dao.close();
     }
     catch(Exception e)
@@ -99,8 +100,16 @@ function memberReset()
 
 <div>
     <!-- 회원 데이터 변경 폼 구성 -->
+<!--     <form action="MemberUpdate.jsp" method="post" id="memberForm"> -->
     <form action="MemberUpdate.jsp" method="post" id="memberForm">
         <table class="table">
+<%--             
+            <tr>
+                <th>
+                    <input type="text" id="sid" name="sid" value="<%=sid%>" disabled="disabled">
+                </th>
+            </tr> 
+--%>
             <tr>
                 <th>이름(*)</th>
                 <td>
@@ -122,7 +131,7 @@ function memberReset()
         <a href="javascript:memberSubmit()"><button type="button">수정하기</button></a>
         <a href="javascript:memberReset()"><button type="button">취소하기</button></a>
         <a href="MemberList.jsp"><button type="button">목록으로</button></a>
-        
+        <input type="hidden" name="sid" value="<%=sid%>">
     </form>
 </div>
 </body>
