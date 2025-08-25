@@ -99,7 +99,7 @@ function memberReset()
 
 <div>
     <!-- 회원 데이터 변경 폼 구성 -->
-    <form action="MemberInsert.jsp" method="post" id="memberForm">
+    <form action="MemberUpdate.jsp" method="post" id="memberForm">
         <table class="table">
             <tr>
                 <th>이름(*)</th>
