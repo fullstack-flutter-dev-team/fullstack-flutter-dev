@@ -1,0 +1,12 @@
+## JSP
+- [이클립스 콘솔에서 JSP 오류 링크 클릭시 소스 연결 방법.](https://macdev.tistory.com/170)
+- [vscode jsp 실행 검색](https://www.google.com/search?q=vscode+jsp+%EC%8B%A4%ED%96%89&oq=vscode+jsp+&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQxOTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#vhid=zephyr:0&vssid=atritem-https://plogds.tistory.com/995)
+  - [[ Editor ] VS Code : JSP 환경구성](https://nevertrustbrutus.tistory.com/245)
+  - [VScode에서 JSP 사용하기 (windows 환경)](https://pro-train.tistory.com/16)
+  - []()
+  - []()
+  - []()
+- []()
+- []()
+- []()
+- []()

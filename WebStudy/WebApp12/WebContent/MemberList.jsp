@@ -107,7 +107,7 @@ function memberDelete(sid, name) {
 </div>
 
 <div>
-    <a href="MemberScoreSelect.jsp"><button type="button">회원 성적 관리</button></a>
+    <a href="MemberScoreList.jsp"><button type="button">회원 성적 관리</button></a>
     <a href="MemberInsertForm.jsp"><button type="button">신규 회원 등록</button></a>
 </div>
 <br>

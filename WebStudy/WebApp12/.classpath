@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/_Workspace/fullstack-flutter-dev_github/WebStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/work/Catalina/localhost/WebApp12/org/apache/jsp"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

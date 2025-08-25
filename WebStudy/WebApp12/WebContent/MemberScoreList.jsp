@@ -41,15 +41,16 @@ try {
         // if (memberScore.getTot() < 0) {
         if (memberScore.getKor() == -1 && memberScore.getEng() == -1 || memberScore.getMat() == -1) 
         {
+            // 성적 데이터 입력 → 입력 불가, 수정/삭제만 가능
             sb.append("        <a href='MemberScoreInsertForm.jsp?sid="+ memberScore.getSid() + "'>");
             sb.append("            <button type='button' class='btnSmallAct'>입력</button> </a>");
-            sb.append("        <a href=''><button type='button' class='btnSmallNon'>수정</button> </a>");
-            sb.append("        <a href=''><button type='button' class='btnSmallNon'>삭제</button> </a>");
+            sb.append("        <a href=''><button type='button' class='btnSmallNon' disabled='disabled'>수정</button> </a>");
+            sb.append("        <a href=''><button type='button' class='btnSmallNon' disabled='disabled'>삭제</button> </a>");
         } else {
-            sb.append("        <a href=''><button type='button' class='btnSmallNon'>입력</button> </a>");
-            sb.append("        <a href='MemberScoreUpdateForm.jsp?sid="+ memberScore.getSid() +"'>");
+            sb.append("        <a href=''><button type='button' class='btnSmallNon' disabled='disabled'>입력</button> </a>");
+            sb.append("        <a href='MemberScoreUpdateForm.jsp?sid="+ memberScore.getSid() + "'>");
             sb.append("            <button type='button' class='btnSmallAct'>수정</button> </a>");
-            sb.append("        <a href='javascript:memberScoreDelete("+ memberScore.getSid()+ ",\"" + memberScore.getName() +"\")'>");
+            sb.append("        <a href='javascript:memberScoreDelete("+ memberScore.getSid() + ",\"" + memberScore.getName() + "\")'>");
             sb.append("            <button type='button' class='btnSmallAct'>삭제</button> </a>");
         }
         sb.append("    </td>");
@@ -82,24 +83,23 @@ try {
 <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 <link rel="stylesheet" type="text/css" href="css/MemberListScore.css">
 <script type="text/javascript">
-function memberDelete(sid, name) {
-//     alert(name);
+
+function memberScoreDelete(sid, name) {
     console.log(">>> sid: " + sid);
     console.log(">>> name: " + name);
     
     // 주소 문자열 구성 과정에서 따옴표 처리에 주의할 것~~!!! check~!!!
     
     var response = confirm("번호 : " + sid + ", 이름: " + name 
-                           + " \n 이 회원의 정보를 정말 삭제하시겠습니까?");
+                           + " \n 이 회원의 성적 데이터를 정말 삭제하시겠습니까?");
     // confirm() 함수를 통해 호출되는 대화창은
     // 확인(true) 또는 취소(false)를 반환하게 된다.
     
     if (response) {
-        window.location.href = "MemberDelete.jsp?sid=" + sid;
-    } 
-//     else {
-//         return;
-//     }
+        window.location.href = "MemberScoreDelete.jsp?sid=" + sid;
+    } else {
+        return;
+    }
 }
 
 </script>
