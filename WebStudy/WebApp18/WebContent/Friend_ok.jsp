@@ -16,9 +16,9 @@ String cp = request.getContextPath();
 String str = "";
 
 if (friend.getIdealType() != null) {
-	for (String temp : friend.getIdealType()) {
-		str += temp + " ";
-	}
+    for (String temp : friend.getIdealType()) {
+        str += temp + " ";
+    }
 }
 
 %>

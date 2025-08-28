@@ -24,7 +24,7 @@ function chkForm() {
         form.name.focus();
         return;
     } else {
-    	errMsg.style.display = "none";
+        errMsg.style.display = "none";
     }
     
     console.log(">>name : " + form.name.value);

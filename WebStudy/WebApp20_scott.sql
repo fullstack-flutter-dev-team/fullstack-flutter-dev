@@ -9,8 +9,6 @@ SCOTT
 --○ 기존 테이블 제거
 DROP TABLE TBL_BOARD PURGE;
 
---
-commit;
 
 --○ 실습 테이블 생성
 -- 테이블명 : TBL_BOARD
@@ -27,6 +25,8 @@ CREATE TABLE TBL_BOARD
 , CONSTRAINT BOARD_NUM_PK PRIMARY KEY(NUM)          -- 게시물 번호에 PK 제약조건 설정
 );
 
+--
+COMMIT;
 
 --○ 게시물 번호의 최대값을 얻어내는 쿼리문 구성
 SELECT NVL(MAX(NUM), 0) AS MAXNUM
@@ -52,6 +52,12 @@ ROLLBACK;
 --○ DB 레코드의 갯수를 가져오는 쿼리문 구성
 SELECT COUNT(*) AS COUNT
 FROM TBL_BOARD;
+/* 
+     COUNT
+----------
+      2673
+*/
+
 
 --○ 한 줄 구성
 SELECT COUNT(*) AS COUNT FROM TBL_BOARD
@@ -73,9 +79,106 @@ WHERE RNUM >= 1 AND RNUM <= 10
 ORDER BY RNUM DESC
 ;
 
+--
+SELECT *
+FROM TBL_BOARD
+ORDER BY NUM;
+
+-- 위의 구문을 테스트하기 위한 특정 게시물 삭제
+DELETE
+FROM TBL_BOARD
+WHERE NUM IN (2,4,5,8,11,12);
+
+--○ 특정 게시물 조회에 따른 조회 횟수 증가 쿼리문 구성
+UPDATE TBL_BOARD
+SET HITCOUNT = HITCOUNT + 1  -- 조회수 1 증가, HITCOUNT += 1 -- HITCOUNT++
+WHERE NUM = 1;
+
+-- 실무적 -> 접근 상세 내역 테이블 -> COUNT() -> 통계
+
+SELECT *
+FROM TBL_BOARD
+ORDER BY NUM;
 
 
---○ 
+COMMIT;
+
+--○ 특정 게시물의 내용을 읽어오는 쿼리문 구성
+-- 조회항목: 게시물번호, 작성자, 패스워드, 이메일, 제목, 내용, IP주소, 조회수, 작성일
+SELECT NUM, NAME, PWD, EMAIL, SUBJECT, CONTENT, IPADDR, HITCOUNT
+      , TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED
+    --   , TO_CHAR(CREATED, 'YYYY-MM-DD HH24:MI:SS') AS CREATED
+FROM TBL_BOARD
+WHERE NUM = 1630;
+
+
+--○ 특정 게시물을 삭제하는 쿼리문 구성
+DELETE
+FROM TBL_BOARD
+WHERE NUM = 500;
+
+-- 커밋
+COMMIT;
+
+--○ 특정 게시물을 수정하는 쿼리문 구성
+--  (게시물 상세보기 페이지 → Article.jsp 내에서의 처리)
+-- 수정가능항목: 작성자, 패스워드, 이메일, 제목, 내용
+UPDATE TBL_BOARD
+SET NAME = '도우너'
+   , PWD = '59876'
+   , EMAIL = 'dwn@test.com'
+    , SUBJECT = '수정한 제목'
+    , CONTENT = '수정한 내용'
+WHERE NUM = 22;
+
+SELECT *
+FROM TBL_BOARD
+WHERE NUM = 22;
+
+
+-- 커밋
+COMMIT;
+
+----------------------------------------------------------------------------
+-- ○ 특정 게시물(ex.50)의 다음 번호를 읽어오는 쿼리문 구성
+SELECT ROWNUM, TBL_BOARD.*
+FROM TBL_BOARD
+WHERE NUM = 50;
+-- ==>>          1         50 김길동50                       java006$             apple50@test.com                                   취미에 대해 작성한 게시물50                                                                             영화감상 관련 내용물 작성                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           211.238.142.157               2 17/10/20
+----------------------------------------------------------------------------
+SELECT ROWNUM, DATA.NUM
+FROM 
+(
+    SELECT *
+    FROM TBL_BOARD
+    WHERE NUM > 50
+    ORDER BY NUM ASC
+) DATA
+WHERE ROWNUM = 1;
+
+
+SELECT NVL(MIN(NUM), -1) AS NEXTNUM
+FROM TBL_BOARD
+WHERE NUM > 50;
+-- WHERE NUM > 2673;
+-- ORDER BY NUM ASC
+----------------------------------------------------------------------------
+-- ○ 특정 게시물(ex.50)의 이전 번호를 읽어오는 쿼리문 구성
+SELECT ROWNUM, DATA.NUM
+FROM 
+(
+    SELECT *
+    FROM TBL_BOARD
+    WHERE NUM < 50
+    ORDER BY NUM DESC
+) DATA
+WHERE ROWNUM = 1;
+
+SELECT NVL(MAX(NUM), -1) AS BEFORENUM
+FROM TBL_BOARD
+WHERE NUM < 50;
+----------------------------------------------------------------------------
+
 
 
 --○ 

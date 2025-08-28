@@ -28,20 +28,20 @@ BEGIN
         V_NUM      := V_NUM + 1;
 
         IF(MOD(V_NUM,5)=0) THEN
-                V_NAME := '홍';
-                V_PWD := 'java005$';
-                -- V_EMAIL := 'hong';
+                V_PWD := 'java006$';
+                V_CONTENT := '애니메이션 관련 내용물 작성';
+                V_IPADDR := '211.238.142.157';
+                V_NAME := '김';
                 V_SUBJECT := '취미';
-                V_CONTENT := '영화감상 관련 내용물 작성';
-                V_IPADDR := '211.238.142.50';
+                -- V_EMAIL := 'hong';
                 -- V_HITCOUNT := 30;
             ELSIF(MOD(V_NUM,3)=0) THEN
-                V_NAME := '박';
-                V_PWD := 'java003$';
+                V_PWD := 'net007$';
+                V_CONTENT := '스트레칭과 관련한 내용물 작성';
+                V_IPADDR := '211.238.142.158';
+                V_NAME := '유';
+                V_SUBJECT := '건강';
                 -- V_EMAIL := 'park';
-                V_SUBJECT := '음식';
-                V_CONTENT := '김치찌개 관련 내용물 작성';
-                V_IPADDR := '211.238.142.54';
                 -- V_HITCOUNT := 20;
             ELSIF(MOD(V_NUM,7)=0) THEN
                 V_PWD := 'java007$';
@@ -63,16 +63,16 @@ BEGIN
         
         V_NAME := V_NAME || '길동' || LTRIM(TO_CHAR(V_NUM));
         V_SUBJECT := V_SUBJECT ||'에 대해 작성한 게시물' || LTRIM(TO_CHAR(V_NUM));
-        V_EMAIL := V_EMAIL || '@test.com';
         V_CREATED := V_CREATED + 1;
+        -- V_EMAIL := V_EMAIL || '@test.com';
         
-        IF (MOD(V_NUM, 2)=0) THEN
+        IF (MOD(V_NUM, 2) = 0) THEN
             V_EMAIL := 'apple' || V_NUM || '@test.com';
             V_HITCOUNT := MOD(V_NUM, 3);
-        ELSIF (MOD(V_NUM, 3)=0) THEN
+        ELSIF (MOD(V_NUM, 3) = 0) THEN
             V_EMAIL := 'test' || V_NUM || '@test.com';
             V_HITCOUNT := MOD(V_NUM, 4);
-        ELSIF (MOD(V_NUM, 4)=0) THEN
+        ELSIF (MOD(V_NUM, 4) = 0) THEN
             V_EMAIL := 'study' || V_NUM || '@test.com';
             V_HITCOUNT := MOD(V_NUM, 5);
         ELSE 
@@ -89,8 +89,10 @@ SELECT *
 FROM TBL_BOARD;
 
 
+--○ 커밋
 COMMIT;
---○ 
+
+
 --○ 
 --○ 
 
