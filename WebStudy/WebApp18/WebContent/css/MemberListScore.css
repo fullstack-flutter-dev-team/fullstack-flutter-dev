@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/* MemberListScore.css */
+
+* {
+    font-size: 18px;
+    color: #343;
+    font-family: 맑은 고딕;
+    font-weight: bold;
+}
+
+input {
+    border-radius: 4px;
+}
+
+button:hover {
+    color: orange;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid gray;
+    border-left: 0px;
+    border-right: 0px;
+
+    padding: 3px;
+    line-height: 150%;
+    text-align: center;
+}
+
+tr:nth-child(odd):hover {
+    background-color: #d8f1c6;
+    transition-duration: 1s;
+}
+
+tr:nth-child(even):hover {
+    background-color: #a7bbf0;
+    transition-duration: 1s;
+}
+
+
+.table th {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.btnSmallAct {
+    font-size: 10pt;
+    color: blue;
+    width: 45px;
+    height: 30px;
+}
+
+.btnSmallNon {
+    font-size: 10pt;
+    color: gray;
+    width: 45px;
+    height: 30px;
+}
+
+.btnSmallNon:hover {
+    color: gray;
+}
+
+.errMsg {
+    font-size: small;
+    color: red;
+    display: none;
+}
+
+.numTh {
+    width: 50px;
+}
+
+.nameTh {
+    width: 100px;
+}
+
+.txtScore {
+    width: 100px;
+    text-align: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+.txt:focus {
+    background-color: #efffff;
+}
