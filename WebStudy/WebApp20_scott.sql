@@ -135,6 +135,15 @@ SELECT *
 FROM TBL_BOARD
 WHERE NUM = 22;
 
+-- 테스트 용도
+UPDATE TBL_BOARD
+SET  CONTENT = '수정한 내용 \n 2줄 \n 3줄 \n 4줄 \n 5줄 \n 6줄 \n 7줄 \n 8줄 \n 9줄 \n 10줄 \n 11줄 \n 12줄 \n 13줄 \n 14줄 \n 15줄 \n 16줄 \n 17줄 \n 18줄 \n 19줄 \n 20줄'
+WHERE NUM = 22;
+
+SELECT *
+FROM TBL_BOARD
+WHERE NUM = 22;
+
 
 -- 커밋
 COMMIT;
@@ -178,10 +187,19 @@ SELECT NVL(MAX(NUM), -1) AS BEFORENUM
 FROM TBL_BOARD
 WHERE NUM < 50;
 ----------------------------------------------------------------------------
+--○  실습 진행간 처리
+-- 기존 게시물 모두 삭제
+DELETE FROM TBL_BOARD;
+
+-- 확인
+SELECT *
+FROM TBL_BOARD;
+
+-- 커밋
+COMMIT;
 
 
 
---○ 
 --○ 
 --○ 
 

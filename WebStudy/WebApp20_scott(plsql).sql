@@ -61,7 +61,8 @@ BEGIN
                 -- V_HITCOUNT := 70;
         END IF;
         
-        V_NAME := V_NAME || '길동' || LTRIM(TO_CHAR(V_NUM));
+        -- V_NAME := V_NAME || '길동' || LTRIM(TO_CHAR(V_NUM));
+        V_NAME := V_NAME || '길동';
         V_SUBJECT := V_SUBJECT ||'에 대해 작성한 게시물' || LTRIM(TO_CHAR(V_NUM));
         V_CREATED := V_CREATED + 1;
         -- V_EMAIL := V_EMAIL || '@test.com';
