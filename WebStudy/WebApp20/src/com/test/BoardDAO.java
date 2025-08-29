@@ -138,7 +138,7 @@ public class BoardDAO
             sql.append(" ) DATA");
             sql.append(" )");
             sql.append(" WHERE RNUM >= ? AND RNUM <= ?");
-            sql.append(" ORDER BY RNUM DESC");
+//            sql.append(" ORDER BY RNUM DESC");
             System.out.println(">>=sql=> " + sql.toString());
             
             pstmt = conn.prepareStatement(sql.toString());

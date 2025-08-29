@@ -103,7 +103,9 @@
 <script src="js/util.js" ></script>
 </head>
 <body>
-<h1>cp: <%=cp %></h1>
+
+<%-- <h1>cp: <%=cp %></h1> --%>
+<!-- cp: /WebApp20 -->
 
 <div id="bbsList">
     <div id="bbsList_title">게시판 (JDBC연동 버전)</div>

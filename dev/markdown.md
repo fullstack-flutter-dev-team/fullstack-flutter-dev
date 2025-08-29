@@ -17,7 +17,8 @@
 ### Markdown 문법
 - [yunwoong7](https://gist.github.com/yunwoong7) / [markdown.md](https://gist.github.com/yunwoong7/83246af10e1831233a870c26104e4a1f)
 - [Velog의 마크다운(Markdown)](https://velog.io/@colorful-stars/Velog%EC%9D%98-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4Markdown)
-- []()
+- [Markdown에서 접기/펼치기(details) 사용하기](https://young-cow.tistory.com/44)
+- [Markdown 을 Github-style로 변환하는 방법](https://young-cow.tistory.com/67)
 - []()
 
 

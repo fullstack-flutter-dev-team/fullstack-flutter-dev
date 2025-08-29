@@ -73,39 +73,40 @@ DBConn.close();
 <body>
 
 <div id="bbs">
-	<div id="bbs_title">게시판 (JDBC 연동 버전)</div>
+    <div id="bbs_title">게시판 (JDBC 연동 버전)</div>
     <div id="bbsArticle">
-    	<div id="bbsArticle_header">게시물의 제목입니다.</div>
-    	<div class="bbsArticle_bottomLine">
+<!--         <div id="bbsArticle_header">게시물의 제목입니다.</div> -->
+        <div id="bbsArticle_header"><%=dto.getSubject() %></div>
+        <div class="bbsArticle_bottomLine">
 <!--             <dl> -->
-<!--             	<dt>작성자</dt> -->
-<!--             	<dt>홍길동</dt> -->
+<!--                 <dt>작성자</dt> -->
+<!--                 <dt>홍길동</dt> -->
                 
-<!--             	<dt>라인수</dt> -->
-<!--             	<dt>3</dt> -->
+<!--                 <dt>라인수</dt> -->
+<!--                 <dt>3</dt> -->
 <!--             </dl> -->
             <dl>
-            	<dt>작성자</dt>
-            	<dd><%=dto.getName() %></dd>
+                <dt>작성자</dt>
+                <dd><%=dto.getName() %></dd>
                 
-            	<dt>라인수</dt>
-            	<dd><%=nLineCount %></dd>
+                <dt>라인수</dt>
+                <dd><%=nLineCount %></dd>
             </dl>
         </div><!-- .bbsArticle_bottomLine -->
-	    <div class="bbsArticle_bottomLine">
+        <div class="bbsArticle_bottomLine">
 <!--             <dl> -->
-<!--             	<dt>등록일</dt> -->
-<!--             	<dt>2025-08-29</dt> -->
+<!--                 <dt>등록일</dt> -->
+<!--                 <dt>2025-08-29</dt> -->
                 
-<!--             	<dt>조회수</dt> -->
-<!--             	<dt>23</dt> -->
+<!--                 <dt>조회수</dt> -->
+<!--                 <dt>23</dt> -->
 <!--             </dl> -->
             <dl>
-            	<dt>등록일</dt>
-            	<dd><%=dto.getCreated() %></dd>
+                <dt>등록일</dt>
+                <dd><%=dto.getCreated() %></dd>
                 
-            	<dt>조회수</dt>
-            	<dd><%=dto.getHitCount() %></dd>
+                <dt>조회수</dt>
+                <dd><%=dto.getHitCount() %></dd>
             </dl>
         </div><!-- .bbsArticle_bottomLine -->
         
@@ -127,23 +128,25 @@ DBConn.close();
 <!--             이전글 : (54) 점심 메뉴에 대해 작성한 게시물 -->
 <%--             이전글 : (<%=prevNum %>) <%=prevContent %> --%>
             <% 
-            if (prevNum != -1) {
+               if (prevNum != -1)
+               {
             %>
                 이전글 : <a href="<%=cp%>/Article.jsp?pageNum=<%=strPageNum%>&num=<%=prevNum%>">(<%=prevNum %>) <%=prevContent %></a>
-             <% } else { %>
+            <% } else { %>
                 이전글 : 없음
-             <% } %>
+            <% } %>
         </div>
         <div class="bbsArticle_noLine">
 <!--             다음글 : (56) 주말 일정에 대해 작성한 게시물 -->
 <%--             다음글 : (<%=nextNum %>) <%=nextContent %> --%>
             <% 
-            if (nextNum != -1) {
+               if (nextNum != -1)
+               {
             %>
                 다음글 : <a href="<%=cp%>/Article.jsp?pageNum=<%=strPageNum%>&num=<%=nextNum%>">(<%=nextNum %>) <%=nextContent %></a>
-             <% } else { %>
+            <% } else { %>
                 다음글 : 없음
-             <% } %>
+            <% } %>
         </div>
     </div><!-- #bbsArticle -->
     
@@ -155,14 +158,16 @@ DBConn.close();
     <div id="bbsArticle_footer">
     
         <div id="leftFooter">
-            <input type="button" value="수정" class="btn2">  
+            <input type="button" value="수정" class="btn2"
+                onclick="javascript:location.href='<%=cp %>/Updated.jsp?num=<%=strNum %>&pageNum=<%=strPageNum %>&status=1'">  
              <!-- updated 폼에서 삭제도 같이 진행 --> 
-            <input type="button" value="삭제" class="btn2">       
+            <input type="button" value="삭제" class="btn2"
+                onclick="javascript:location.href='<%=cp %>/Updated.jsp?num=<%=strNum %>&pageNum=<%=strPageNum %>&status=2'">
         </div><!-- #leftFooter -->
         
         <div id="rightFooter">
             <input type="button" value="리스트" class="btn2"
-            onclick="javascript:location.href='<%=cp %>/List.jsp?pageNum=<%=strPageNum %>'">
+              onclick="javascript:location.href='<%=cp %>/List.jsp?pageNum=<%=strPageNum %>'">
         </div><!-- #rightFooter -->
     
     </div><!-- #bbsArticle_footer -->
