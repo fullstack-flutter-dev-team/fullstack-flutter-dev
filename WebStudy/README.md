@@ -1,0 +1,20 @@
+### WebStudy
+
+
+#### 노트
+
+01. [01_HTML.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/01_HTML.md)
+02. [02_CSS.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/02_CSS.md)
+03. [03_Javascript.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/03_Javascript.md)
+04. [04_웹_어플리케이션.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/04_웹_어플리케이션.md)
+05. [05_JSP[Java_Server_Pages].md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/05_JSP[Java_Server_Pages].md)
+06. [06_GET방식_과_POST방식.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/06_GET방식_과_POST방식.md)
+07. [07_JSP_데이터_송수신_실습.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/07_JSP_데이터_송수신_실습.md)
+08. [08_포워딩과 리다이렉트.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/08_포워딩과 리다이렉트.md)
+09. [09_JAVA_Bean[자바빈].md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/09_JAVA_Bean[자바빈].md)
+10. [10_Emmet.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/10_Emmet.md)
+11. [11.쿠키와_세션.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/11.쿠키와_세션.md)
+12. [12_JSP_액션태그[Action_Tag].md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/12_JSP_액션태그[Action_Tag].md)
+13. [13_JDBC연동_게시판_구성_실습.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/13_JDBC연동_게시판_구성_실습.md)
+14. [14_Servlet[서블릿].md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/14_Servlet[서블릿].md)
+15. [15_EL과JSTL.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/15_EL과JSTL.md)
