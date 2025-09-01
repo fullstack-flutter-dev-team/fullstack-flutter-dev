@@ -38,6 +38,33 @@
 - []()
 - []()
 
+
+### ✨✨ eclipse java system.out.println color
+- [eclipse java system.out.println color 검색](https://www.google.com/search?q=eclipse+java+system.out.println+color&newwindow=1&sca_esv=7e7ead78d89c5fa2&ei=GTm1aN3JBrrW1e8Ph_ma6AM&ved=0ahUKEwiduv3z87aPAxU6a_UHHYe8Bj0Q4dUDCBA&uact=5&oq=eclipse+java+system.out.println+color&gs_lp=Egxnd3Mtd2l6LXNlcnAiJWVjbGlwc2UgamF2YSBzeXN0ZW0ub3V0LnByaW50bG4gY29sb3IyBxAAGIAEGA0yBhAAGA0YHjIIEAAYCBgNGB4yBRAAGO8FMggQABiiBBiJBTIFEAAY7wUyBRAAGO8FSNIiUOoUWPsgcAF4AZABAJgBnAKgAfEOqgEDMi03uAEDyAEA-AEBmAICoAKYAsICChAAGLADGNYEGEeYAwCIBgGQBgqSBwUxLjAuMaAH8xuyBwMyLTG4B5ACwgcDMi0yyAcL&sclient=gws-wiz-serp)
+- [JAVA console Color (콘솔 색상 추가하기)](https://pjh-raccoon.tistory.com/16)
+-✨ [이클립스 콘솔에 색상 입히기](https://dantes.kr/534)
+  - [ANSI Escapes in the Eclipse Console](https://github.com/mihnita/ansi-econsole)
+- []()
+
+### java url encoding
+- [java url encoding 검색](https://www.google.com/search?q=java+url+encoding&newwindow=1&sca_esv=7e7ead78d89c5fa2&ei=lz-1aPe8Esrh1e8PqrWbsA8&oq=java+url&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGphdmEgdXJsKgIIADIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARI_GFQiT5Y9lNwAngBkAEBmAHxAaAB6hWqAQQyLTEyuAEDyAEA-AEBmAIKoALqDqgCA8ICChAAGLADGNYEGEfCAhQQABiABBjjBBi0AhjpBBjqAtgBAcICChAAGIAEGEMYigXCAgsQABiABBixAxiDAcICERAuGIAEGLEDGNEDGIMBGMcBwgIEEAAYA8ICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwGYAwXxBfdYcdpykMOTiAYBkAYKugYECAEYB5IHBTIuMC44oAfyQLIHAzItOLgH4Q7CBwUwLjIuOMgHJQ&sclient=gws-wiz-serp)
+  - [[JAVA] String을 URL 인코딩/디코딩하기](https://unikys.tistory.com/195)
+    - String encodeResult = URLEncoder.encode(String encodingString, String charsetName);
+    - String decodeResult = URLDecoder.decode(String decodingString, String charsetName);
+  - [JSP에서 URLEncoding 하기](https://blog.naver.com/brian2/50003176971)
+  - []()
+  - []()
+  - []()
+
+### java URLEncoder
+- [java URLEncoder 검색](https://www.google.com/search?q=java+URLEncoder&oq=java+URLEncoder&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIGCAQQABgeMgYIBRAAGB4yBggGEAAYHjIGCAcQABgeMgYICBAAGB4yBggJEAAYHtIBCDE3OTJqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8)
+  - [[Java] URLEncoder, URLDecoder 사용 방법 정리 검색](https://priming.tistory.com/179)
+  - [JAVA URL인코딩, 디코딩 – URLEncoder, URLDecoder](https://aaboo.home.blog/2019/11/01/java-url%EC%9D%B8%EC%BD%94%EB%94%A9-%EB%94%94%EC%BD%94%EB%94%A9-urlencoder-urldecoder/)
+  - []()
+- []()
+- []()
+
+
 ### java char '\0' mean
 - [java char '\0' mean 검색](https://www.google.com/search?q=java+char+%27%5C0%27+mean&oq=java+char+%27%5C0&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyBggCEEUYOdIBCDYwODRqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8)
     ```

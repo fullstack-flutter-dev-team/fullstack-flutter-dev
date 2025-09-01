@@ -12,7 +12,9 @@
         <welcome-file>default.htm</welcome-file>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
-    
+
+<!-- 서버는 servlet 목록부터 확인 -->
+
 <!--     
     <servlet>
         <servlet-name></servlet-name>
@@ -25,7 +27,8 @@
     </servlet-mapping> 
  -->
  
-    <!-- Test1클래스 → Servlet 구성 ①  -->
+    <!-- Test1클래스 → Servlet 등록(구성) ①  -->
+ <!--
     <servlet>
         <servlet-name>test1</servlet-name>
         <servlet-class>com.svt.Test1</servlet-class>
@@ -35,5 +38,62 @@
         <servlet-name>test1</servlet-name>
         <url-pattern>/test1</url-pattern>
     </servlet-mapping> 
+ -->
+    <!-- Test1클래스 → Servlet 등록(구성) ②  -->
+<!--     
+    <servlet>
+        <servlet-name>test1</servlet-name>
+        <servlet-class>com.svt.Test1</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>test1</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping> 
+ -->
+ 
+     <!-- Test1클래스 → Servlet 등록(구성) ③  -->
+    <servlet>
+        <servlet-name>Test1</servlet-name>
+        <servlet-class>com.svt.Test1</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>이하나</param-value>
+        </init-param>
+        <init-param>
+            <param-name>age</param-name>
+            <param-value>13</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test1</servlet-name>
+        <url-pattern>/test1</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Test1클래스 → Servlet 등록(구성)  ④  --> 
+    <context-param>
+        <param-name>type</param-name>
+        <param-value>유머러스</param-value>
+    </context-param>
+   
+    <!-- Test2클래스 → Servlet 등록(구성)--> 
+    <servlet>
+        <servlet-name>Test2</servlet-name>
+        <servlet-class>com.svt.Test2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Test2</servlet-name>
+        <url-pattern>/test2</url-pattern>
+    </servlet-mapping> 
+    
+    <!-- Test3클래스 → Servlet 등록(구성)--> 
+    <servlet>
+        <servlet-name>Test3</servlet-name>
+        <servlet-class>com.svt.Test3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Test3</servlet-name>
+        <url-pattern>/test3</url-pattern>
+    </servlet-mapping> 
 </web-app>

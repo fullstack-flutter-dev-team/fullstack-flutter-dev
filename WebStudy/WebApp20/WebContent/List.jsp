@@ -106,13 +106,13 @@
 <script type="text/javascript">
 
 function sendIt() {
-	var f = document.searchForm;
-	
-	// 검색 키워드에 대한 유효성 검사 코드 활용 가능~!!!
-	
-	// check~!!!
-	f.action = "<%=cp%>/List.jsp";
-	f.submit();
+    var f = document.searchForm;
+    
+    // 검색 키워드에 대한 유효성 검사 코드 활용 가능~!!!
+    
+    // check~!!!
+    f.action = "<%=cp%>/List.jsp";
+    f.submit();
 }
 
 
