@@ -33,7 +33,7 @@ public class MyUtil
         
         pageCount = dataCount / numPerPage;
         
-        if (dataCount%numPerPage != 0) {
+        if ((dataCount % numPerPage) != 0) {
             pageCount++;
         }
         
@@ -120,9 +120,9 @@ public class MyUtil
         
         /* ----------------------------------------
             ┌ 여기가 currentPageSetup
-            20   21 22 23 ... 29 30
-            10   11 12 13 ... 19 20
-             0    1  2  3 ...  9 10
+            20 →  21 22 23 ... 29 30
+            10 →  11 12 13 ... 19 20
+             0 →   1  2  3 ...  9 10
          ---------------------------------------- */
         
         //-- 만약 위 처리에서 (#113)
@@ -159,7 +159,7 @@ public class MyUtil
         //    Prev를 통해 이동하게 되는 13페이지로...
         
         if ((totalPage > numPerBlock) && (currentPageSetup > 0)) {
-            strList.append("<a href='" + listUrl + "pageNum=" + n + "'>"+ "Prev</a>");
+            strList.append("<a href='" + listUrl + "pageNum=" + n + "'>"+ "&nbsp;Prev</a>");
         }
         //-- currentPageSetup 이 0 보다 큰 경우는
         //   이미 페이지가 11 페이지 이상이라는 의미이며
@@ -177,7 +177,7 @@ public class MyUtil
         //    10 부터 시작하는 것이 아니라
         //    바로가기 페이지는 11 부터 시작해야 하기 때문이다.
         
-        while ((page <= totalPage) && (page <= (currentPageSetup+numPerBlock)))
+        while ((page <= totalPage) && (page <= (currentPageSetup + numPerBlock)))
         {
             if (page == currentPage)
             {
@@ -195,7 +195,7 @@ public class MyUtil
         n = currentPage + numPerBlock;
         if ((totalPage-currentPageSetup) > numPerBlock)
         {
-            strList.append(" <a href='" + listUrl + "pageNum=" + n + "'>Next</a>");
+            strList.append(" <a href='" + listUrl + "pageNum=" + n + "'>&nbsp;Next</a>");
         }
         
         // ◈ 마지막 페이지(맨 마지막으로) -- 유동적으로 늘어남

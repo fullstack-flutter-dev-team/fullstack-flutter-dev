@@ -43,7 +43,7 @@ BoardDAO dao = new BoardDAO(conn);
 
 int result = 0;
 
-// dao의 데이터 입력 메서드 호출
+// dao의 데이터 업데이트 메서드 호출
 result = dao.updateData(dto);
 
 // ※ result 값에 따른 분기처리 가능~!!!

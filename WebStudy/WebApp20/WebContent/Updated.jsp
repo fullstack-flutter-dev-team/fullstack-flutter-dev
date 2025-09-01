@@ -154,6 +154,37 @@ try {
     function removeIt() {
         // 확인
         console.log(">>> removeIt");
+        
+        var f = document.myForm;
+        
+        // 패스워드 입력 확인 ---------------------------------
+        // 필수 입력 항목 기재 여부 확인 및 공백 처리
+        
+        // check~!!!
+        // 추가
+        // 게시물 작성 시 설정한 패스워드와
+        // 게시물을 수정하는 과정에서 입력한 패스워드가
+        // 서로 일치하는지의 여부를 확인하여 액션 처리 수행 여부 판단..
+        str = f.pwd.value;
+        str = str.trim();
+        
+        if (!str)
+        {
+            alert("\n패스워드를 입력해야 합니다~!!!");
+            f.pwd.focus();
+            return;
+        }
+        
+        var pwdSource = f.pwdSource.value;
+        if (str != pwdSource) {
+            alert("\n패스워드가 일치하지 않습니다~!!!")
+            f.pwd.focus();
+            return;
+        }
+        // -------------------------패스워드 입력 확인
+        
+        f.action ="<%=cp %>/Delete_ok.jsp";
+        f.submit();
     }
 </script>
 </head>

@@ -84,6 +84,7 @@ public class BoardDAO
         return result;
     }
     
+/*
     // DB 레코드의 갯수를  가져오는 메서드 정의(지금은 전체 리스트)
     // ★ →  추후.... 검색 기능을 추가하게 되면...수정이 필요할 수 있는 메서드
     public int getDataCount()
@@ -105,7 +106,44 @@ public class BoardDAO
         
         return result;
     }
+*/
     
+    // DB 레코드의 갯수를  가져오는 메서드 정의(지금은 전체 리스트)
+    // ★ →  추후(0901, 2025).... 검색 기능을 추가하게 되면...수정이 필요할 수 있는 메서드
+    //                           제목/작성자/내용    사용자입력
+    public int getDataCount(String searchKey, String searchValue)
+    {
+        int result = 0;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        StringBuilder sql = new StringBuilder();
+        
+        try {
+            // check~!!!
+            searchValue = "%" + searchValue + "%";
+            
+            sql.append("SELECT COUNT(*) AS COUNT");
+            sql.append(" FROM TBL_BOARD");
+            sql.append(" WHERE " + searchKey +" LIKE ?");
+            
+            pstmt = conn.prepareStatement(sql.toString());
+            pstmt.setString(1, searchValue);
+            
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            
+            rs.close();
+            pstmt.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        return result;
+    }
+    
+/*
     // 특정 영역(시작번호~끝번호)의 게시물의 목록을 읽어오는 메서드 정의
     // ★ → 추후.... 검색 기능을 추가하게 되면...수정이 필요할 수 있는 메서드
     public List<BoardDTO> getLists(int start, int end) {
@@ -144,6 +182,72 @@ public class BoardDAO
             pstmt = conn.prepareStatement(sql.toString());
             pstmt.setInt(1, start);
             pstmt.setInt(2, end);
+            
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                BoardDTO board = new BoardDTO();
+                board.setNum(rs.getInt(1));
+                board.setName(rs.getString(2));
+                board.setSubject(rs.getString(3));
+                board.setHitCount(rs.getInt(4));
+                board.setCreated(rs.getString(5));
+                
+                result.add(board);
+            }
+            
+            rs.close();
+            pstmt.close();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        return result;
+    }
+*/
+    
+    // 특정 영역(시작번호~끝번호)의 게시물의 목록을 읽어오는 메서드 정의
+    // ★ → 추후(0901, 2025).... 검색 기능을 추가하게 되면...수정이 필요할 수 있는 메서드
+    public List<BoardDTO> getLists(int start, int end, String searchKey, String searchValue) {
+        List<BoardDTO> result = new ArrayList<BoardDTO>();
+        
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        StringBuilder sql = new StringBuilder();
+        
+        //    SELECT NUM, NAME, SUBJECT, HITCOUNT, CREATED
+        //    FROM (
+        //        SELECT ROWNUM RNUM, DATA.*
+        //        FROM(
+        //            SELECT NUM, NAME, SUBJECT, HITCOUNT, TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED
+        //            FROM TBL_BOARD
+        //            ORDER BY NUM DESC
+        //        ) DATA
+        //    )
+        //    WHERE RNUM >= 1 AND RNUM <= 10
+        //    ORDER BY RNUM DESC
+        
+        try {
+            // check~!!!
+            searchValue = "%" + searchValue + "%";
+            
+            sql.append("SELECT NUM, NAME, SUBJECT, HITCOUNT, CREATED");
+            sql.append(" FROM (");
+            sql.append("SELECT ROWNUM RNUM, DATA.*");
+            sql.append(" FROM(");
+            sql.append(" SELECT NUM, NAME, SUBJECT, HITCOUNT, TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED");
+            sql.append("  FROM TBL_BOARD");
+            sql.append("  WHERE " + searchKey + " LIKE ?"); // Check~!!! 추가 구문
+            sql.append("  ORDER BY NUM DESC");
+            sql.append(" ) DATA");
+            sql.append(" )");
+            sql.append(" WHERE RNUM >= ? AND RNUM <= ?");
+//            sql.append(" ORDER BY RNUM DESC");
+            System.out.println(">>=sql=> " + sql.toString());
+            
+            pstmt = conn.prepareStatement(sql.toString());
+            pstmt.setString(1, searchValue);   // check~!!! 추가 구문
+            pstmt.setInt(2, start);            // check~!!! 인덱스 변경
+            pstmt.setInt(3, end);              // check~!!! 인덱스 변경
             
             rs = pstmt.executeQuery();
             while (rs.next()) {

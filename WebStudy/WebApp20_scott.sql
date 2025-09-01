@@ -72,6 +72,9 @@ FROM (
     FROM(
         SELECT NUM, NAME, SUBJECT, HITCOUNT, TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED
         FROM TBL_BOARD
+        -- WHERE SUBJECT LIKE '%검색어%'
+        -- WHERE NAME LIKE '%검색어%'
+        -- WHERE CONTENT LIKE '%검색어%'
         ORDER BY NUM DESC
     ) DATA
 )
@@ -198,9 +201,32 @@ FROM TBL_BOARD;
 -- 커밋
 COMMIT;
 
+------------------------[검색 기능 추가]----------------------------------------
+--○ 검색 기능을 추가하는 과정에서 구성한 쿼리문
+--  검색 대상 : 제목, 작성자, 내용
 
+--○ DB 레코드의 갯수를 가져오는 쿼리문 구성
+SELECT COUNT(*) AS COUNT
+FROM TBL_BOARD
+WHERE SUBJECT LIKE '%검색어%'
+--WHERE NAME LIKE '%검색어%'
+--WHERE CONTENT LIKE '%검색어%'
+;
 
---○ 
+SELECT COUNT(*) AS COUNT
+FROM TBL_BOARD
+WHERE NAME LIKE '%검색어%'
+-- WHERE SUBJECT LIKE '%검색어%'
+--WHERE CONTENT LIKE '%검색어%'
+;
+
+SELECT COUNT(*) AS COUNT
+FROM TBL_BOARD
+WHERE CONTENT LIKE '%검색어%'
+-- WHERE NAME LIKE '%검색어%'
+-- WHERE SUBJECT LIKE '%검색어%'
+;
+
 --○ 
 
 

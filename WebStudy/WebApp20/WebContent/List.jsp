@@ -24,11 +24,11 @@
     }
     
     // 이전 페이지로부터 넘어온 데이터(검색 키와 검색 값) 수신
-    String searchKey = request.getParameter("serarchKey");
-    String searchValue = request.getParameter("serarchValue");
+    String searchKey = request.getParameter("searchKey");
+    String searchValue = request.getParameter("searchValue");
     
     if (searchKey != null) {
-        System.out.println(searchKey + searchValue);
+        System.out.println("srarchKey: " + searchKey + " , searchValue : "+ searchValue);
     } else { //-- 검색 기능이 아닌 기본적인 페이지 요청이 이루어졌을 경우...
         searchKey = "subject";
         searchValue = "";
@@ -39,7 +39,8 @@
     MyUtil myUtil = new MyUtil();
     
     //전체 데이터 갯수 구하기
-    int dataCount = dao.getDataCount();
+//     int dataCount = dao.getDataCount();
+    int dataCount = dao.getDataCount(searchKey, searchValue);  // check~!!!
     
     // 전체 데이터를 기준으로 총 페이지 수 계산
     int numPerPage = 10; //-- 한 페이지에 표시할 데이터 갯수
@@ -57,7 +58,8 @@
     int end = currentPage * numPerPage;
     
     //실제 리스트 가져오기
-    List<BoardDTO> lists = dao.getLists(start, end);
+//     List<BoardDTO> lists = dao.getLists(start, end);
+    List<BoardDTO> lists = dao.getLists(start, end, searchKey, searchValue);  // check~!!!
     
     // check~!!!
     // 검색 기능 구현 과정에서 추가
@@ -72,7 +74,7 @@
 
     
 //     String listUrl = "List.jsp";
-    String listUrl = "List.jsp" + param;
+    String listUrl = "List.jsp" + param;   // check~!!!
     
     String pageIndexList = myUtil.pageIndexList(currentPage, totalPage, listUrl);
     
@@ -101,6 +103,20 @@
 <link rel="stylesheet" type="text/css" href="<%=cp %>/css/list.css">
 <script type="text/javascript" ></script>
 <script src="js/util.js" ></script>
+<script type="text/javascript">
+
+function sendIt() {
+	var f = document.searchForm;
+	
+	// 검색 키워드에 대한 유효성 검사 코드 활용 가능~!!!
+	
+	// check~!!!
+	f.action = "<%=cp%>/List.jsp";
+	f.submit();
+}
+
+
+</script>
 </head>
 <body>
 
@@ -115,29 +131,27 @@
             <form action="" name="searchForm" method="post">
                 <select name="searchKey" class="selectField">
                 <!-- 정적구성 선택 옵션을 분기 -->
+<!--                     <option value="subject">제목</option> -->
+<!--                     <option value="name">작성자</option> -->
+<!--                     <option value="content">내용</option> -->
+                
+                <% if (searchKey.equals("name")){ %>            <!-- 수신한 searchKey 가 name 이라면... --> 
+                    <option value="subject">제목</option>
+                    <option value="name" selected="selected">작성자</option>
+                    <option value="content">내용</option>
+                <% } else if(searchKey.equals("content")){  %>  <!-- 수신한 searchKey 가 content 이라면... -->
+                    <option value="subject">제목</option>
+                    <option value="name">작성자</option>
+                    <option value="content" selected="selected">내용</option>             
+                <% } else {%>                                   <!-- 수신한 searchKey 가 subject 이거나... 없으면 -->
                     <option value="subject">제목</option>
                     <option value="name">작성자</option>
                     <option value="content">내용</option>
-                
-    <%--             <% if (searchKey.equals("name")){ %>            <!-- 수신한 searchKey 가 name 이라면... -->  --%>
-    <!--             <option value="subject">제목</option> -->
-    <!--             <option value="name" selected="selected">작성자</option> -->
-    <!--             <option value="content">내용</option> -->
-    <%--             <% } else if(searchKey.equals("content")){  %>  <!-- 수신한 searchKey 가 content 라면... --> --%>
-    <!--                 <option value="subject">제목</option> -->
-    <!--                 <option value="name">작성자</option> -->
-    <!--                 <option value="content" selected="selected">내용</option>              -->
-    <%--             <% } else {%>                                   <!-- 수신한 searchKey 가 subject 이거나... 없으면 --> --%>
-    <!--                 <option value="subject">제목</option> -->
-    <!--                 <option value="name">작성자</option> -->
-    <!--                 <option value="content">내용</option>              -->
-    <%--             <% } %> --%>
+                <% } %>
                 </select>
                 
-    <%--             <input type="text" name="searchValue" class="textField" value="<%=searchValue %>"> --%>
-<!--                 <input type="button" value="검색" class="btn2" onclick="sendIt()">    onclick check -->
-                <input type="text" name="searchValue" class="textField" value="">
-                <input type="button" value="검색" class="btn2" onclick="">    <!-- onclick check -->
+                <input type="text" name="searchValue" class="textField" value="<%=searchValue %>">
+                <input type="button" value="검색" class="btn2" onclick="sendIt();">    <!-- onclick check -->
             </form>
         </div><!-- #leftHeader -->
         
