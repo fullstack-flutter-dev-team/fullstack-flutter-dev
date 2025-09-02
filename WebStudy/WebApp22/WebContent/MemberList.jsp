@@ -35,6 +35,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     <!-- 이름, 전화번호, 주소 항목으로 리스트 구성 →  JSTL 활용 -->
     <table class="table">
         <tr>
+            <th>순번</th>
             <th>이름</th>
             <th>전화번호</th>
             <th>주소</th>
@@ -42,8 +43,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
  
         <%-- 컬렉션 객체를 처리하기 위한 반복문 구성 --%>
         <%-- <c:forEach var="변수" items="컬렉션"></c:forEach> --%>
-        <c:forEach var="member" items="${memberList }">
+        <c:forEach var="member" items="${memberList }" varStatus="status">
             <tr>
+                <th style="test-align: center;width: 7%;">${status.index+1}</th>
                 <td style="test-align: center;">${member.name }</td>
                 <td style="test-align: center;">${member.tel }</td>
                 <td style="test-align: center;">${member.addr }</td>

@@ -18,3 +18,5 @@
 13. [13_JDBC연동_게시판_구성_실습.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/13_JDBC연동_게시판_구성_실습.md)
 14. [14_Servlet[서블릿].md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/14_Servlet(%EC%84%9C%EB%B8%94%EB%A6%BF).md)
 15. [15_EL과JSTL.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/15_EL과JSTL.md)
+16. [16_DBCP(Database Connection Pool).md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/15_EL과JSTL.md)
+17. [17_모델2_기반의_MVC_패턴.md](https://github.com/fullstack-flutter-dev-team/fullstack-flutter-dev/blob/main/WebStudy/15_EL과JSTL.md)

@@ -8,3 +8,7 @@
 - [[HTML,CSS] table중앙 정렬하기, text-align정렬](https://wikim.tistory.com/102)
 - [Trying to center align button in td](https://stackoverflow.com/questions/22385386/trying-to-center-align-button-in-td/22385466)
 - []()
+- [HTML 기초, 테이블의 <tr><td><th>태그의 속성. align, valign (19번째)](https://artiroom.tistory.com/entry/HTML-%EA%B8%B0%EC%B4%88-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%98-trtdth%ED%83%9C%EA%B7%B8%EC%9D%98-%EC%86%8D%EC%84%B1-align-valign-19%EB%B2%88%EC%A7%B8)
+- []()
+- [css 스타일 적용 시간 trasi](https://www.google.com/search?q=css+%EC%8A%A4%ED%83%80%EC%9D%BC+%EC%A0%81%EC%9A%A9+%EC%8B%9C%EA%B0%84+trasi&oq=css+%EC%8A%A4%ED%83%80%EC%9D%BC+%EC%A0%81%EC%9A%A9+%EC%8B%9C%EA%B0%84+trasi+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCTI0NDA1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+- []()

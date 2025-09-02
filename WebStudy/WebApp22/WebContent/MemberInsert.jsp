@@ -19,7 +19,11 @@ String COLOR_BLUE     = "\u001B[34m" ;
 //-- 구성된 자료구조 전달(→ MemberList.jsp)
 
 ArrayList<MemberDTO> memberList = new ArrayList<MemberDTO>();
-MemberDTO member = new MemberDTO();
+MemberDTO member1 = new MemberDTO();
+MemberDTO member2 = new MemberDTO();
+MemberDTO member3 = new MemberDTO();
+MemberDTO member4 = new MemberDTO();
+MemberDTO member5 = new MemberDTO();
 
 String name = "";
 String tel = "";
@@ -45,41 +49,40 @@ String addr = "";
 
    <c:forEach var="i" begin="1" end="5" step="1">
        <c:if test="${i==1 }">
-         <c:set var="mdto" value="<%= member %>"/>
+         <c:set var="mdto" value="<%= member1 %>"/>
          <c:set target="${mdto}" property="name" value="${param.name1}"/>
          <c:set target="${mdto}" property="tel" value="${param.tel1}"/>
          <c:set target="${mdto}" property="addr" value="${param.addr1}"/>
+         <% memberList.add(member1); %>   
        </c:if>
        <c:if test="${i==2 }">
-       <c:set var="mdto" value="<%= member %>"/>
+       <c:set var="mdto" value="<%= member2 %>"/>
          <c:set target="${mdto}" property="name" value="${param.name2}"/>
          <c:set target="${mdto}" property="tel" value="${param.tel2}"/>
          <c:set target="${mdto}" property="addr" value="${param.addr2}"/>
+         <% memberList.add(member2); %>   
        </c:if>
        <c:if test="${i==3 }">
-       <c:set var="mdto" value="<%= member %>"/>
+       <c:set var="mdto" value="<%= member3 %>"/>
          <c:set target="${mdto}" property="name" value="${param.name3}"/>
          <c:set target="${mdto}" property="tel" value="${param.tel3}"/>
          <c:set target="${mdto}" property="addr" value="${param.addr3}"/>
+         <% memberList.add(member3); %>   
        </c:if>
        <c:if test="${i==4 }">
-       <c:set var="mdto" value="<%= member %>"/>
+       <c:set var="mdto" value="<%= member4 %>"/>
          <c:set target="${mdto}" property="name" value="${param.name4}"/>
          <c:set target="${mdto}" property="tel" value="${param.tel4}"/>
          <c:set target="${mdto}" property="addr" value="${param.addr4}"/>
+         <% memberList.add(member4); %>   
        </c:if>
        <c:if test="${i==5 }">
-         <c:set var="mdto" value="<%= member %>"/>
+         <c:set var="mdto" value="<%= member5 %>"/>
          <c:set target="${mdto}" property="name" value="${param.name5}"/>
          <c:set target="${mdto}" property="tel" value="${param.tel5}"/>
          <c:set target="${mdto}" property="addr" value="${param.addr5}"/>
+         <% memberList.add(member5); %>   
        </c:if>
-       <%
-       System.out.println("name:" + member.getName());
-       System.out.println("tel:" + member.getTel());
-       System.out.println("addr:" + member.getAddr());
-       memberList.add(member);
-       %>   
        
     </c:forEach>
     
