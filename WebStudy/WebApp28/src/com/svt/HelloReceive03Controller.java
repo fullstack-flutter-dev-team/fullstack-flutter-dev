@@ -1,6 +1,6 @@
 /**
  * =====================================================
- *   SampleServlet.java
+ *   HelloReceive03Controller.java
  * =====================================================
  */
 package com.svt;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author sist
  *
  */
-public class SampleServlet extends HttpServlet
+public class HelloReceive03Controller extends HttpServlet
 {
 
     /**
@@ -39,6 +39,7 @@ public class SampleServlet extends HttpServlet
     protected void doGetPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         // 서블릿 관련 코드 구성
+        request.setCharacterEncoding("UTF-8");
     }
 
 }

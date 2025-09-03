@@ -1,3 +1,15 @@
+### jsp model 2
+- [jsp model 2 검색](https://www.google.com/search?q=jsp+model+2&oq=jsp+model+2&gs_lcrp=EgZjaHJvbWUyCAgAEEUYHhg5MgcIARAAGIAEMgYIAhAAGB4yBggDEAAYHjIGCAQQABgeMgYIBRAAGB4yBggGEAAYHjIGCAcQABgeMgYICBAAGB4yBggJEAAYHtIBCDY5OTNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [JSP Model1, Model2, Spring MVC pattern 차이](https://velog.io/@chamroro/JSP-Model1-Model2-Spring-MVC-pattern-%EC%B0%A8%EC%9D%B4)
+  - [[jsp] MVC Model2을 이용하여 게시판 만들기 [1편]](https://leeprogramer.tistory.com/35)
+  - [JSP 모델1과 모델2, 그리고 MVC 패턴](https://hsp1116.tistory.com/9)
+  - [[DevCourse] 생성형 AI 활용 백엔드 데브코스 44일차](https://codingga-dingga.tistory.com/386)
+  - []()
+- []()
+- []()
+- []()
+
+
 ## JSP
 - [이클립스 콘솔에서 JSP 오류 링크 클릭시 소스 연결 방법.](https://macdev.tistory.com/170)
 - [vscode jsp 실행 검색](https://www.google.com/search?q=vscode+jsp+%EC%8B%A4%ED%96%89&oq=vscode+jsp+&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQxOTBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#vhid=zephyr:0&vssid=atritem-https://plogds.tistory.com/995)
@@ -42,8 +54,8 @@
   - ⭐⭐ [[JSP] JSTL 사용 방법 - 주요 태그 문법 정리](https://atoz-develop.tistory.com/entry/JSP-JSTL-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95-%EC%A3%BC%EC%9A%94-%ED%83%9C%EA%B7%B8-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC)
 - [jstl c:forEach index 검색](https://www.google.com/search?q=jstl+c%3AforEach+index&oq=jstl+c%3AforEach+index&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCTQwNzA4ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
   - [[JSTL] forEach 인덱스](https://bangyee.tistory.com/12)
-  - []()
-  - []()
+- [jstl foreach 검색](https://www.google.com/search?q=jstl+foreach&oq=jstl+foreach&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyBggHEEUYPdIBCTEwNzA1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+  - [JSTL 반복문(forEach) 사용법 정리](https://thefif19wlsvy.tistory.com/61)
   - []()
 - [jstl set dto 검색](https://www.google.com/search?q=jstl+set+dto&newwindow=1&sca_esv=fcb56211a55ba89b&ei=f122aMqREqmM2roPgLOQuQg&ved=0ahUKEwiKzZ7hirmPAxUphlYBHYAZJIcQ4dUDCBA&oq=jstl+set+dto&gs_lp=Egxnd3Mtd2l6LXNlcnAiDGpzdGwgc2V0IGR0bzILEAAYgAQYsAMYogQyCBAAGLADGO8FMggQABiwAxjvBTILEAAYgAQYsAMYogQyCBAAGLADGO8FSKMIUABYAHABeACQAQCYAQCgAQCqAQC4AQzIAQCYAgGgAgaYAwCIBgGQBgWSBwExoAcAsgcAuAcAwgcDMi0xyAcF&sclient=gws-wiz-serp)
   - [JSTL을 이용한 DTO 객체 출력](https://languagestory.tistory.com/35)

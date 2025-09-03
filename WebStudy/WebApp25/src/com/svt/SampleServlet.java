@@ -19,11 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 public class SampleServlet extends HttpServlet
 {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -38,7 +33,7 @@ public class SampleServlet extends HttpServlet
     
     protected void doGetPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // 서블릿 관련 코드 구성
+        // TODO Auto-generated method stub
     }
 
 }
