@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class HelloReceive03Model
 {
-    public process(HttpServletRequest request, HttpServletResponse response) {
+    public String process(HttpServletRequest request, HttpServletResponse response) {
         String result = "";
         
         return result;
