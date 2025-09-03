@@ -33,5 +33,16 @@
     <servlet-mapping>
         <servlet-name>SendController</servlet-name>
         <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    
+    <!-- ReceiveController -->
+    <servlet>
+        <servlet-name>ReceiveController</servlet-name>
+        <servlet-class>com.svt.HelloReceive03Controller</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ReceiveController</servlet-name>
+        <url-pattern>/receive</url-pattern>
     </servlet-mapping> 
 </web-app>
