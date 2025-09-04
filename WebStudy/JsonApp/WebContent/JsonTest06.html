@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest06.html</title>
+<script type="text/javascript">
+
+    var myJsonObject6   = ["test"];
+    var myJsonObject6_1 = ["test", "test2"];
+    var myJsonObject6_2 = ["test", "test2", 123, 123.456, 123+1, true, null];
+
+    // onclick="eval('a=' + myJsonObject6.test); a();"
+    var t = myJsonObject6.test;
+
+</script>
+</head>
+<body>
+
+<form>
+
+    <input type="button" value="click1" onclick="console.log(myJsonObject6);">
+    <!-- ['test'] → dummy 값 -->
+    <input type="button" value="click2" onclick="console.log(myJsonObject6_1);">
+    <!-- ['test', 'test2']  → dummy 값 -->
+    <input type="button" value="click3" onclick="console.log(myJsonObject6_2);"><br>
+    <!--  ['test', 'test2', 123, 123.456, 124, true, null]  → dummy 값 -->
+    
+    <input type="button" value="click4" onclick="console.log(typeof myJsonObject6);">
+    <!-- object -->
+    <input type="button" value="click5" onclick="console.log(typeof myJsonObject6_1);">
+    <!-- object -->
+    <input type="button" value="click6" onclick="console.log(typeof myJsonObject6_2);"><br>
+    <!-- object -->
+    
+    <input type="button" value="click7" onclick="console.log(typeof myJsonObject6[0]);">
+    <!-- string -->
+    <input type="button" value="click8" onclick="console.log(myJsonObject6[1]);">
+    <!-- undefined -->
+    <!-- 
+        undefined :  myJsonObject6[1]  → 값이 없기 때문에 undefined
+    -->
+    <input type="button" value="click9" onclick="console.log(typeof myJsonObject6[1]);"><br>
+    <!-- undefined -->
+
+    <input type="button" value="click10" onclick="console.log(myJsonObject6_1[0] + myJsonObject6_1[1]);">
+    <!-- testtest2 -->
+    <input type="button" value="click11" onclick="console.log(typeof (myJsonObject6_1[0] + myJsonObject6_1[1]));"><br>
+    <!-- string -->
+    
+    <input type="button" value="click12" onclick="console.log(myJsonObject6_2[2] + myJsonObject6_2[3]);">
+    <!-- 246.45600000000002 -->
+    <input type="button" value="click13" onclick="console.log(typeof (myJsonObject6_2[2] + myJsonObject6_2[3]));"><br>
+    <!-- number -->
+    
+    <input type="button" value="click14" onclick="console.log((myJsonObject6_1[0] + myJsonObject6_1[2]));">
+    <!-- testundefined -->
+    <input type="button" value="click15" onclick="console.log(typeof (myJsonObject6_1[0] + myJsonObject6_1[2]));"><br>
+    <!-- string -->
+    
+    <input type="button" value="click16" onclick="console.log((myJsonObject6_2[3] + myJsonObject6_1[7]));">
+    <!-- NaN (→ Not a Number) -->
+    
+    <input type="button" value="click17" onclick="console.log(typeof(myJsonObject6_2[3] + myJsonObject6_1[7]));">
+    <!-- 
+        number : NaN
+        string + undefined = NaN
+        123.456 + undefined = NaN
+        123 + undefined = NaN
+        NaN 은 숫자형이다.
+    -->
+
+</form>
+
+</body>
+</html>

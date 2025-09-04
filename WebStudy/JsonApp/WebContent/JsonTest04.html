@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest04.html</title>
+<script type="text/javascript">
+
+    var myJsonObject4 = {
+            // "test": 기능, 동작, 행위, //-- 익명 함수
+            "test": function(args) {
+                // console.log(">>>> 익명 함수 호출됨~!!!");
+                console.log(">>>> Method Test: " + args);
+            },
+    };
+
+    // onclick="eval('a=' + myJsonObject4.test); a();"
+    var t = myJsonObject4.test;
+
+</script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="click1" onclick="console.log(myJsonObject4);">
+    <input type="button" value="click2" onclick="console.log(typeof myJsonObject4);">
+    <input type="button" value="click3" onclick="console.log(myJsonObject4.test);"><br>
+    <!-- 
+            ƒ (args) {
+                // console.log(">>>> 익명 함수 호출됨~!!!");
+                console.log(">>>> Method Test: " + args);
+            }
+    -->
+    <input type="button" value="click4" onclick="console.log(myJsonObject4.test('이하나'));"><br>
+    <input type="button" value="click5" onclick="console.log(myJsonObject4.test.call('이하나'));"><br>
+    
+    <!-- eval() : 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해 주는 함수 -->
+    <input type="button" value="click6" onclick="t('홍길동');"><br>
+    <!-- >>>> Method Test: 홍길동 -->
+    <input type="button" value="click7" onclick="eval('var a=' + myJsonObject4.test); a('홍길동');"><br>
+    <!-- >>>> Method Test: 홍길동 -->
+    <input type="button" value="click8" onclick="eval('(' + myJsonObject4.test +')(\'홍길동\')')"><br>
+    <!-- >>>> Method Test: 홍길동 -->
+</form>
+
+</body>
+</html>

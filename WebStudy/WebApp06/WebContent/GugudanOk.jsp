@@ -1,29 +1,29 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%! 
     String calcDan(int dan) {
-	   String result = "";
-	   
-	   for (int i=1;i<=9;i++) {
-		   result += dan + " * " + i + " = " + (dan*i) + "<br>";
-	   }
-	
-	   return result;
-	
+       String result = "";
+       
+       for (int i=1;i<=9;i++) {
+           result += dan + " * " + i + " = " + (dan*i) + "<br>";
+       }
+    
+       return result;
+    
     }
 %>
 
 <%
-	// 스크립트릿 영역
-	
-	// ※ 이번에 수신하게 되는 내용을... 한글 데이터가 포함된 형태
-	request.setCharacterEncoding("UTF-8"); //-- check~!!!
-	
-	// 이전 페이지(CheckArea.jsp)로부터 넘어온 데이터 수신
-	//  → dan
-	
-	// 이름 데이터 수신
-	String dan = request.getParameter("dan");     //-- 텍스트박스... 단일값 수신
-	System.out.println(">>> dan : " + dan);
+    // 스크립트릿 영역
+    
+    // ※ 이번에 수신하게 되는 내용을... 한글 데이터가 포함된 형태
+    request.setCharacterEncoding("UTF-8"); //-- check~!!!
+    
+    // 이전 페이지(CheckArea.jsp)로부터 넘어온 데이터 수신
+    //  → dan
+    
+    // 이름 데이터 수신
+    String dan = request.getParameter("dan");     //-- 텍스트박스... 단일값 수신
+    System.out.println(">>> dan : " + dan);
 
     int n = 0;
 
@@ -32,8 +32,8 @@
     } catch (Exception e) {
         System.out.println(e.toString());
     }
-	
-//	String resultCalcDan = calcDan(dan);
+    
+//    String resultCalcDan = calcDan(dan);
 
 %>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
 <%--
         // 스크립트릿 영역
         for (int i = 1; i<=9; i++) {
-        	out.print(n + " * " + i + " = " + (n*i) + "<br>");
+            out.print(n + " * " + i + " = " + (n*i) + "<br>");
         }
 --%>
 

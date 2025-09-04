@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest07.html</title>
+<script type="text/javascript">
+
+    var myJsonObject7   = {
+        "test" : [
+            "ccc" , "ddd"
+        ],
+        "exam" : [
+            "kkk" , "ppp"
+        ]
+
+    }
+    // onclick="eval('a=' + myJsonObject7.test); a();"
+    var t = myJsonObject7.test;
+
+</script>
+</head>
+<body>
+
+<form>
+
+    <input type="button" value="click1" onclick="alert(myJsonObject7);">
+    <!-- [object Object] -->
+    <input type="button" value="click2" onclick="console.log(myJsonObject7);">
+    <!-- {test: Array(2), exam: Array(2)} → dummy 값 -->
+    <input type="button" value="click3" onclick="console.log(myJsonObject7.test)">
+    <input type="button" value="click4" onclick="typeof myJsonObject7.test">
+    <input type="button" value="click5" onclick="console.log(myJsonObject7.test[0])">
+    <input type="button" value="click6" onclick="typeof myJsonObject7.test[0]">
+    <input type="button" value="click7" onclick="console.log(myJsonObject7.test[0][0])">
+    <input type="button" value="click8" onclick="typeof myJsonObject7.test[0][0]">
+    
+    <!-- 
+        ※ 객체 구조상...2차원 배열의 형태로 볼 수 있지만,
+        다음과 같은 접근이나 처리는 불가능하다.
+        구조가 배열과 유사하다고 해서 배열은 아니다.
+        -->
+    <input type="button" value="click9" onclick="console.log(myJsonObject7.[0][0])">
+    <!-- X -->
+    <input type="button" value="click10" onclick="console.log(myJsonObject7.[1][0])">
+    <!-- X -->
+    
+</form>
+
+</body>
+</html>

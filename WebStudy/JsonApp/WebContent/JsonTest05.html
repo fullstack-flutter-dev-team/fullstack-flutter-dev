@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest05.html</title>
+<script type="text/javascript">
+
+    var myJsonObject5 = {
+            // "test": 기능, 동작, 행위, //-- 익명 함수
+            "test": 123,
+            "test2": 123.456,
+            "test3": true,
+            "test4": null,
+    };
+
+    // onclick="eval('a=' + myJsonObject5.test); a();"
+    var t = myJsonObject5.test;
+
+</script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="click1" onclick="console.log(myJsonObject5);"><br>
+    <input type="button" value="click2" onclick="console.log(typeof myJsonObject5);"><br>
+    <input type="button" value="click3" onclick="console.log(myJsonObject5.test);"><br>
+    <input type="button" value="click4" onclick="console.log(typeof myJsonObject5.test + ' : '+ myJsonObject5.test);"><br>
+    <input type="button" value="click5" onclick="console.log(typeof myJsonObject5.test2 + ' : '+ myJsonObject5.test2);"><br>
+    <input type="button" value="click6" onclick="console.log(typeof myJsonObject5.test3 + ' : '+ myJsonObject5.test3);"><br>
+    <input type="button" value="click7" onclick="console.log(typeof myJsonObject5.test4 + ' : '+ myJsonObject5.test4);"><br>
+    <!-- object : null -->
+
+    <input type="button" value="click8" onclick="myJsonObject5.test=false; console.log(typeof myJsonObject5.test  + ' : '+ myJsonObject5.test);"><br>
+    <!-- boolean : false -->
+    <input type="button" value="click9" onclick="myJsonObject5.test=123; console.log(typeof myJsonObject5.test  + ' : '+ myJsonObject5.test);"><br>
+    <!-- number : 123 -->
+    <input type="button" value="click10" onclick="myJsonObject5.test='123'; console.log(typeof myJsonObject5.test  + ' : '+ myJsonObject5.test);"><br>
+    <!-- string : 123 -->
+</form>
+
+</body>
+</html>

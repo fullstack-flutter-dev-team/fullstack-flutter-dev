@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest03.html</title>
+<script type="text/javascript">
+
+    var myJsonObject3 = {
+            // "test": 기능, 동작, 행위, //-- 익명 함수
+            "test": function() {
+                console.log(">>>> 익명 함수 호출됨~!!!");
+            },
+    }
+
+</script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="click1" onclick="console.log(myJsonObject3);">
+    <input type="button" value="click2" onclick="console.log(typeof myJsonObject3);">
+    <input type="button" value="click3" onclick="console.log(myJsonObject3.test);"><br>
+    <!-- 
+            ƒ () {
+                console.log(">>>> 익명 함수 호출됨~!!!");
+            }
+    -->
+    <input type="button" value="click4" onclick="console.log(myJsonObject3.test());"><br>
+    <!-- undefined -->
+    <input type="button" value="click5" onclick="console.log(myJsonObject3.test.apply());"><br>
+    
+    <!-- eval() : 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해 주는 함수 -->
+    <input type="button" value="click6" onclick="eval('a=' + myJsonObject3.test); a();"><br>
+    <input type="button" value="click7" onclick="eval(myJsonObject3.test);"><br>
+
+    <!-- <input type="button" value="click4" onclick="console.log('>>> test1 : ' + myJsonObject3.test1);">
+    <input type="button" value="click5" onclick="console.log('>>> test2 : ' + myJsonObject3.test2);">
+    <input type="button" value="click6" onclick="console.log('>>> test3 : ' + myJsonObject3.test3);"><br>
+
+    <input type="button" value="click7" onclick="console.log('>>> typeof test1 : ' + typeof myJsonObject3.test1);">
+    <input type="button" value="click8" onclick="console.log('>>> typeof test2 : ' + typeof myJsonObject3.test2);">
+    <input type="button" value="click9" onclick="console.log('>>> typeof test3 : ' + typeof myJsonObject3.test3);"><br>
+
+    <input type="button" value="click100" onclick="myJsonObject3.test1='new value'; alert(myJsonObject3.test1);"> -->
+</form>
+
+</body>
+</html>

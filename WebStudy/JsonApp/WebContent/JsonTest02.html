@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest02.html</title>
+<script type="text/javascript">
+
+    var myJsonObject2 = {
+            "test1":"Hello World",
+            "test2":"quantum world",
+            "test3":100,
+    }
+
+</script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="click1" onclick="alert(myJsonObject2);">
+    <!-- [object Object] -->
+    
+    <input type="button" value="click2" onclick="alert(typeof myJsonObject2);">
+    <!-- object -->
+    
+    <input type="button" value="click3" onclick="alert(myJsonObject2.test1);">
+    <!-- Hello World -->
+
+    <input type="button" value="click4" onclick="console.log('>>> test1 : ' + myJsonObject2.test1);">
+    <input type="button" value="click5" onclick="console.log('>>> test2 : ' + myJsonObject2.test2);">
+    <input type="button" value="click6" onclick="console.log('>>> test3 : ' + myJsonObject2.test3);"><br>
+
+    <input type="button" value="click7" onclick="console.log('>>> typeof test1 : ' + typeof myJsonObject2.test1);">
+    <input type="button" value="click8" onclick="console.log('>>> typeof test2 : ' + typeof myJsonObject2.test2);">
+    <input type="button" value="click9" onclick="console.log('>>> typeof test3 : ' + typeof myJsonObject2.test3);"><br>
+
+
+
+    <input type="button" value="click100" onclick="myJsonObject2.test1='new value'; alert(myJsonObject2.test1);">
+    <!-- new value -->
+</form>
+
+</body>
+</html>
