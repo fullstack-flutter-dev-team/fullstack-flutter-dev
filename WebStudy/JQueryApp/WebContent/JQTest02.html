@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    function test() {
+        console.log(">>>> test() 함수 호출~!!!!");
+    }
+
+    // jquery();
+    // jquery(document).ready(동작);
+    // jquery(document).ready(함수정의);
+    // jquery(document).ready(이름없는함수정의);
+    // jquery(document).ready(function() { ... });
+    // $(document).ready(동작할 함수);
+    // $();
+
+    //jquery();     
+    //jquery(document).ready(); //-- 위와 동일한 구문
+    //-- jquery 라는 말이 반복 -> 줄여서 $ 로 씀
+    //$(document).ready();  //-- (document).ready 도 기본적으로 사용되기 때문에 생략되게 함
+    //$();
+    //-- javascript 엔진에 의해서 해당 페이지가 요청되면 바로 탑재됨     
+    
+    /*
+    //-- 호출하지 않고 기능하게만 하기 위해서 이름 없는 함수 정의
+    $(document).ready(function()
+    {
+        alert("함수 호출 확인");
+        // ※ 우리가.. 도는 이 페이지를 이용하는 사용자가
+        //    뭔가 건드리지 않아도(특별한 이벤트를 발생시키지 않아도)
+        //    자동으로 처리할 수 있는 영역 구성
+        
+    });
+
+    */
+
+    $(function()
+    {
+        // alert("함수 호출 확인");
+        // ※ 우리가.. 도는 이 페이지를 이용하는 사용자가
+        //    뭔가 건드리지 않아도(특별한 이벤트를 발생시키지 않아도)
+        //    자동으로 처리할 수 있는 영역 구성
+
+        // test();
+
+        /* 
+        // h1 태그를 클릭했을 때 특정 동작을 수행하도록 처리
+        //                           ↓
+        //$("h1").click(h1이 클릭되었을 때 수행되어야 할 기능, 동작, 행위);
+        //                           ↓
+        //$("h1").click(h1이 클릭되었을 호출되어야 할 함수 정의);
+        //                           ↓
+        //$("h1").click(이름이 필요없는 함수 정의);
+        //                           ↓
+        // 이전과는 달리 원격지에서 행동 -> ~ 하겠다 하는 것
+        //                           ↓
+        $("h1").click(function()
+        {
+            console.log(">>>> h1 태그 클릭됨~!!!");
+            //alert($(this).html());
+            //     ------- 선택된 해당 객체 -> 즉, 클릭된 h1 태그 객체의 html 을 반환
+            
+            //$(this).html("어떻게 될까요?");
+            // 선택된 해당 객체의 글이 () 괄호 안의 내용으로 변경 됨
+            
+            // $(this).html("어떻게 될까요?");
+            $(this).html($(this).html()+"♥");
+            // $(this).html("★"+$(this).html()+"★");
+            // 클릭을 하면 할수록 별의 갯수가 늘어감
+            
+            console.log(">>>> " + $(this).text());
+        });
+        */
+
+        //$("h1").on();
+        //$("h1").on("이벤트", 동작);
+        //$("h1").on("onclick", 동작); //-- (X)
+        //$("h1").on("click", 동작);   //-- (O)
+
+        //$("h1").on("click", 기능);
+        //$("h1").on("click", 함수정의);
+        //$("h1").on("click", 함수호출);
+        // 기능 부분에 함수 정의뿐 아니라, 함수호출도 가능
+
+
+        /*
+        //$("h1").on("click", 기능);
+        $("h1").on("click", function()
+        {
+            //alert("클릭");
+            //alert($(this).html());
+            $(this).html($(this).html()+"굿");
+        });
+        */
+
+        //$("h1").one("click", 기능);
+        //$("h1").one("click", 함수정의);
+        //$("h1").one("click", 함수호출);
+        // 기능 부분에 함수 정의뿐 아니라, 함수호출도 가능
+
+        // $("h1").one("click", function()     // 한 번만 실행
+        // {
+        //     //alert("클릭");        
+        //     //alert($(this).html());        
+    
+        //     //$(this).html(기능);
+        //     $(this).html(function(index, html)
+        //     {
+        //         //alert(html);
+        //         //alert(index);
+        //         return html + "★";
+        //     });
+            
+        // });
+
+        // $("h1").on("click", function() {
+        //     console.log(">>>> h1 태그 클릭됨~!!!");
+        //     $(this).html($(this).html()+"♥");
+        // });
+
+        $("h1").on("click", function() {
+            console.log(">>>> h1 태그 클릭됨~!!!");
+            $(this).html(function(index, html) {
+                return html + "★" + index; //
+            });
+        });
+
+        $("h1").hover(
+            function() {
+                // 마우스가 올라갔을 때
+                $(this).css("color", "red");
+            },
+            function() {
+                // 마우스가 벗어났을 때
+                $(this).css("color", "black");
+            }
+        );
+    });
+    
+    
+    </script>
+
+</head>
+<body>
+
+<!-- <h1 onclick="test();">홍길동</h1> -->
+<h1>홍길동</h1>
+<h1>이하나</h1>
+<h1>삼하나</h1>
+<h1>사하나</h1>
+<h1>오하나</h1>
+
+</body>
+</html>
