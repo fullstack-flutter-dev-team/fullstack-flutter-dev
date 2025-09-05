@@ -12,3 +12,6 @@
 - []()
 - [css 스타일 적용 시간 trasi](https://www.google.com/search?q=css+%EC%8A%A4%ED%83%80%EC%9D%BC+%EC%A0%81%EC%9A%A9+%EC%8B%9C%EA%B0%84+trasi&oq=css+%EC%8A%A4%ED%83%80%EC%9D%BC+%EC%A0%81%EC%9A%A9+%EC%8B%9C%EA%B0%84+trasi+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCTI0NDA1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
 - []()
+- []()
+- [HTML) details 와 summary 태그활용해 접기와 펼치기 간단 구현](https://shanepark.tistory.com/298)
+- []()
