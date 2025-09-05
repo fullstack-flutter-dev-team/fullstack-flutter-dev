@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <title>JQTest02.html</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+    .item
+    {
+        border : solid 1px red;
+        color : white;
+        background : black;
+    }
+</style>
 <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
@@ -124,14 +132,95 @@
         //     console.log(">>>> h1 태그 클릭됨~!!!");
         //     $(this).html($(this).html()+"♥");
         // });
-
+/* 
         $("h1").on("click", function() {
             console.log(">>>> h1 태그 클릭됨~!!!");
             $(this).html(function(index, html) {
                 return html + "★" + index; //
             });
-        });
+        }); 
+ */
 
+        // javascript 에서 다중 속성을 표기할 때
+        // {속성명1:속성값1, 속성명2:속성값2, 속성명3:속성값3, ...}  ← JSON 표기법
+    
+        // $("h1").click();
+        // $("h1").key...();
+        // $("h1").mouse...();
+
+        // $("h1").on({이벤트1:동작1, 이벤트2:동작2, ...});
+       
+        /*
+        $("h1").on(
+        {
+            이벤트1:동작1, 이벤트2:동작2, ...
+        });
+        */
+        
+        /*
+        $("h1").on(
+        {
+              이벤트1 : function() {기능구현내용;}
+            , 이벤트2 : function() {기능구현내용;}
+        });
+        */
+        
+        /*
+        $("h1").on(
+        {
+            // mouseenter : 특정 동작을 수행하도록 처리하겠다. → 마우스 커서 진입할 때
+            // mouseleave : 특정 동작을 수행하도록 처리하겠다. → 마우스 커서 빠져나올 때 (떠날 때)
+            //           ↓ 
+              mouseenter:function() {기능구현내용;}
+            , mouseleave:function() {기능구현내용;}
+        });
+        */
+        
+        /*
+        $("h1").on(
+        {
+            // mouseenter : 특정 동작을 수행하도록 처리하겠다. → 마우스 커서 진입할 때
+            // mouseleave : 특정 동작을 수행하도록 처리하겠다. → 마우스 커서 빠져나올 때 (떠날 때)
+            //           ↓ 
+              mouseenter: 함수 정의
+            , mouseleave: 함수 정의
+            //           ↓ 
+              mouseenter:function() {마우스 진입대상에 item 클래스 추가;}
+            , mouseleave:function() {마우스 진입대상에 item 클래스 제거;}
+            //           ↓ 
+              mouseenter:function() {$(this).addClass("item");}
+            , mouseleave:function() {$(this).removeClass("item");}
+        });
+        */
+/*         
+        $("h1").on(
+        {
+              mouseenter:function() {$(this).addClass("item");}
+            , mouseleave:function() {$(this).removeClass("item");}
+        });
+*/
+    
+        // mouseenter, mouseleave 이벤트 처리
+        // $("h1").hover(행위)
+        // $("h1").hover(
+        //     function() {
+        //         // 마우스가 올라갔을 때
+        //         $(this).addClass("item");
+        //     }
+        // );
+        // $("h1").hover(행위. 행위)
+        $("h1").hover(
+            function() {
+                // 마우스가 올라갔을 때
+                $(this).addClass("item");
+            },
+            function() {
+                // 마우스가 벗어났을 때
+                $(this).removeClass("item");
+            }
+        );
+
+        /*      
         $("h1").hover(
             function() {
                 // 마우스가 올라갔을 때
@@ -142,7 +231,11 @@
                 $(this).css("color", "black");
             }
         );
-    });
+        */
+
+        
+
+    });//--   $(function() {
     
     
     </script>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest05.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<style type="text/css">
+    .outer {
+        width: 200px;
+        height: 200px;
+        background: orange;
+        padding: 50px;
+        margin: 10px;
+    }
+
+    .inner {
+        width: 100%;
+        height: 100%;
+        background: red;
+    }
+</style>
+
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+    // jQUERY 기본 문법
+    // $();  //-- jquery 함수 
+    // jquery(docoment).ready(함수정의);
+    // $(document).ready(함수정의);
+    // $(document).ready(function() { ... });
+    // $(function() {
+    // $(document).ready(function() {
+    
+    // $(document).ready(동작할 함수);
+    // $(function() {
+    $(document).ready(function() {
+        console.log(">>>> jQuery 시작~!!!!");
+        
+        // attr : html 엘리먼트의 속성값을 가져오거나 설정하는 함수
+        // prop : dom 엘리먼트의 속성값을 가져오거나 설정하는 함수
+        // ※ attr, prop 함수는 거의 동일하게 동작함
+        // $("#textarea").attr("disabled", false);  //해당 요소의 disabled 속성 변경(false)
+        // var dataParam = $("#searchForm").serialize();  //데이터 serialize 
+        // $("#textarea").attr("disabled", true);  //해당 요소의 disabled 속성 변경(true)
+
+        // 키보드 관련 이벤트
+        // $("textarea").keydown(기능);
+        // $("textarea").keydown(함수정의);
+        // $("textarea").keydown(function() { ... });
+        // 
+        // $("textarea").keydown(function(event) {
+        // $("textarea").keypress(function(event) {
+        $("textarea").keyup(function(event) {
+            // 키가 눌렸을 때
+            // console.log(">>> keydown : " + event);
+            // console.log(">>> keydown : " + event.which);
+            // console.log(">>> keydown : " + event.key);
+            // console.log(">>> keydown : " + event.code);
+            // console.log(">>> keydown : " + event.which + ", " + event.key);
+
+            // key : 눌린 키의 문자
+            // which : 눌린 키의 코드값(숫자)
+            // code : 눌린 키의 코드값(문자)
+            // ※ code 값은 브라우저마다 다를 수 있음(권장하지 않음)
+            //    -> which 값은 거의 동일함(권장)   
+            //    -> key 값은 특수키(Shift, Ctrl, Alt 등등..)는 빈 값으로 나옴(권장하지 않음)
+            //    -> 영문자, 숫자, 특수문자 등은 key 값은 거의 동일함(권장)
+            //    -> 특수키(Shift, Ctrl, Alt 등등..)는 which 값이 거의 동일함(권장)
+            //    -> 영문자, 숫자, 특수문자 등은 which 값이 거의 동일함(권장)
+            //    -> 영문자, 숫자, 특수문자 등은 key 값이 거의 동일함(권장)
+            //    -> 영문자, 숫자, 특수문자 등은 code 값이 거의 동일함(권장)
+
+            // alert(">>> keydown : " + event.which + ", " + event.key + ", " + event.code);
+            // console.log(">>> keydown : " + event.which + ", " + event.key + ", " + event.code);
+       
+            // 입력 컨트롤(textarea에 입력된 값을 경고창을 통해 확인
+            // console.log(">>> keydown .html() : " + $("textarea").html()); //-- html() → (X)
+            // console.log(">>> keydown .text() : " + $("textarea").text()); //-- text() → (X)
+            // console.log(">>> keydown .val() : "  + $("textarea").val());  //--  val() → (O)
+            console.log(">>> keyup .val() : "  + $("textarea").val());  //--  val() → (O)
+            console.log(">>> keyup .val().length : "  + $("textarea").val().length);  //--  val() → (O)
+
+            var len = $("textarea").val().length;
+            var remain = 30 - len;
+            console.log(">>> keyup  len: "  + len);  //--  val() → (O)
+            console.log(">>> keyup  remain: "  + remain);  //--  val() → (O)
+            $("h1").last().html(remain);
+            // $("h1").text(remain);
+
+            // remain 값이 0 보다 작으면 빨간색으로 표시
+            // remain 값이 0 보다 크거나 같으면 검정색으로 표시 
+            // remain < 0 ? "red" : "black";
+            // remain < 0 ? $("h1").css("color", "red") : $("h1").css("color", "black");
+            // $("h1").css("color", remain < 0 ? "red" : "black");
+            // $("h1").last().css("color", remain < 0 ? "red" : "black");
+            // remain 이 0이 되었을 경우 입력ㄷ을 막는다든지...
+            // 경고창을 띄운다든지..
+            // 등의 추가적인 액션 처리를 할 수 있다.
+            if (remain <= 10 && remain >= 1) {
+                $("h1").last().css("color", "orange");
+            } else if (remain <= 0) {
+                // $("h1").last().css("color", "red");
+                $("h1").last().css("color", "red").html("더 이상 입력 불가 ~!!!");
+                $("button.btn").attr("disabled", false);
+                var str = $("textarea").val().substring(0, 30);
+                // $("h1").last().html("Remain : " + remain);
+                $("textarea").val("");
+                $("textarea").val(str);
+                $(this).attr("disabled", true);
+            } else {
+                $("h1").last().css("color", "black");
+            }
+            // if (remain < 0) {
+            //     $("h1").last().css("color", "red");
+            // } else {
+            //     $("h1").last().css("color", "black");
+            // }
+
+        }); //-- $("textarea").keyup(function(event) {
+
+        $("button.btn").click(function() {
+            // alert(">>> 버튼 클릭됨~!!!");
+            // $("textarea").attr("disabled", false);
+            $("textarea").removeAttr("disabled");
+            $("textarea").focus();
+        });
+         
+       // $("button").click(동작);
+//         $("button[type=button]").click(function()
+//         {
+//             $("textarea").removeAttr("disabled");
+//             $("textarea").focus();
+//         });
+        
+        // 마우스 관련 이벤트 처리
+        //$(".outer").mouseover(동작);
+        /*
+        $(".outer").mouseover(function()
+        {
+            //$("body").append("test");
+            //--> outer 경계선 , inner 경계선 둘 다 이벤트 발생 -> 입체적으로 생각
+            $("body").append($("<div>mouseover</div>").css("color","orange"));
+        });
+        */
+
+        // 마우스 관련 이벤트
+        // mouseenter / mouseleave / mousemove / mouseout / mouseover / mouseup 등
+        // $(".outer").mouseover(기능);
+        // $(".outer").mouseover(함수정의);
+        // $(".outer").mouseover(동작).mouseenter(동작);
+        // $(".outer").mouseover(function() { ... });
+        $(".outer").mouseover(function() {
+            // 마우스가 들어왔을 때
+            console.log(">>> mouseover : " + event);
+            // $(this).css("background", "yellow");
+            $("body").append("<div>mouseover</div>").css("color","blue");
+        }).mouseenter(function() {
+            // 마우스가 들어왔을 때
+            console.log(">>> mouseenter : " + event);
+            // $(this).css("background", "orange");
+            $("body").append("<div>mouseenter</div>").css("color","red");
+        });
+        // .mouseleave(function() {
+        //     // 마우스가 벗어났을 때
+        //     console.log(">>> mouseleave : " + event);
+        //     $(this).css("background", "orange");
+        // }).mouseout(function() {
+        //     // 마우스가 벗어났을 때
+        //     console.log(">>> mouseout : " + event);
+        //     $(this).css("background", "orange");
+        // }).mousemove(function(event) {
+        //     // 마우스가 움직일 때
+        //     console.log(">>> mousemove : " + event);
+        //     // $(this).css("background", "green");
+        // }).mouseup(function(event) {
+        //     // 마우스가 올라왔을 때
+        //     console.log(">>> mouseup : " + event);
+        //     $(this).css("background", "orange");
+        // });
+
+        // $(".inner").mouseenter(기능);
+        // $(".inner").mouseenter(함수정의);
+        // $(".inner").mouseenter(function() { ... });
+        /*
+        $(".inner").mouseenter(function() {
+            // 마우스가 들어왔을 때
+            console.log(">>> mouseenter : " + event);
+            $(this).css("background", "yellow");
+        });
+        */
+        /*
+        $(".inner").mouseleave(function() {
+            // 마우스가 벗어났을 때
+            console.log(">>> mouseleave : " + event);
+            $(this).css("background", "red");
+        });
+        */
+        /*
+        $(".inner").mousemove(function(event) {
+            // 마우스가 움직일 때
+            console.log(">>> mousemove : " + event);
+            $(this).css("background", "green");
+        });
+        */
+        /*
+        $(".inner").mouseout(function(event) {
+            // 마우스가 벗어났을 때
+            console.log(">>> mouseout : " + event);
+            $(this).css("background", "red");
+        });
+        */
+        /*
+        $(".inner").mouseover(function(event) {
+            // 마우스가 들어왔을 때
+            console.log(">>> mouseover : " + event);
+            $(this).css("background", "yellow");
+        });
+        */
+        /*
+        $(".inner").mouseup(function(event) {
+            // 마우스가 올라왔을 때
+            console.log(">>> mouseup : " + event);
+            $(this).css("background", "red");
+        });
+        */
+        /*
+        $(".inner").on(
+        {
+              mouseenter:function(event) {
+                // 마우스가 들어왔을 때
+                console.log(">>> mouseenter : " + event);
+                $(this).css("background", "yellow");
+              }
+            , mouseleave:function(event) {
+                // 마우스가 벗어났을 때
+                console.log(">>> mouseleave : " + event);
+                $(this).css("background", "red");
+              }
+            , mousemove:function(event) {
+                // 마우스가 움직일 때
+                console.log(">>> mousemove : " + event);
+                $(this).css("background", "green");
+              }
+            , mouseout:function(event) {
+                // 마우스가 벗어났을 때
+                console.log(">>> mouseout : " + event);
+                $(this).css("background", "red");
+              }
+            , mouseover:function(event) {
+                // 마우스가 들어왔을 때
+                console.log(">>> mouseover : " + event);
+                $(this).css("background", "yellow");
+              }
+            , mouseup:function(event) {
+                // 마우스가 올라왔을 때
+                console.log(">>> mouseup : " + event);
+                $(this).css("background", "red");
+              }
+        });
+        */  
+    }); //-- $(document).ready(function() {
+
+    
+</script>
+
+</head>
+<body>
+
+    <h2>키보드 관련 이벤트</h2>
+    1. keydown / 2. keypress / 3.keyup 순으로 이벤트 발생
+    <hr>
+    <details>
+        <summary>※ 키보드 관련 이벤트 종류</summary>
+        1. keydown : 키가 눌렸을 때<br>
+        2. keypress : 키가 눌려져 있을 때<br>
+        3. keyup : 키가 올라왔을 때<br>
+        <hr>
+        
+        <div>
+            <p>남기고 싶은 말</p>
+            <h1>30</h1>
+            <textarea name="" id="" cols="70" rows="5"></textarea>
+            <br />
+    
+            <button type="button" class="btn">해제</button>
+        </div>
+    </details>
+    <br>
+
+    <h2>마우스 관련 이벤트</h2>
+    mouseenter / mouseleave / mousemove / mouseout / mouseover / mouseup 등
+    <hr>
+    <details>
+        <summary>※ 마우스 관련 이벤트 종류</summary>
+        <div class="outer">
+            <div class="inner"></div>
+        </div>
+
+    </details>
+
+</body>
+</html>

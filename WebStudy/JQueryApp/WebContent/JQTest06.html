@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest06.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<style type="text/css">
+ 
+</style>
+
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+    // jQUERY 기본 문법
+    // $();  //-- jquery 함수 
+    // jquery(docoment).ready(함수정의);
+    // $(document).ready(함수정의);
+    // $(document).ready(function() { ... });
+    // $(function() {
+    // $(document).ready(function() {
+    
+    // $(document).ready(동작할 함수);
+    // $(function() {
+    $(document).ready(function() {
+        console.log(">>>> jQuery 시작~!!!!");
+        
+        // 초기 게시물 구성 → 스크롤 생성 --------------------------------------
+
+        var docHeight = $(document).height();
+        console.log(">>> docHeight : " + docHeight);
+
+        var winHeight = $(window).height();
+        console.log(">>> winHeight : " + winHeight);
+
+        var scrollHeight = docHeight - winHeight;
+        console.log(">>> scrollHeight : " + scrollHeight);
+
+        var scrollTop = $(window).scrollTop();
+        console.log(">>> scrollTop : " + scrollTop);
+
+        var scrollHeight = scrollTop + winHeight;
+        console.log(">>> scrollHeight : " + scrollHeight);
+
+        for (var i = 1; i <= 30; i++) {
+            $("<h6>기존의 읽어온 게시물 " + i
+                + " (스크롤 높이 : " + scrollHeight
+                + ", 문서 높이 : " + docHeight
+                + ", 창 높이 : " + winHeight 
+                + ")</h6>").appendTo($("body"));
+        }
+        // -------------------------------------- 초기 게시물 구성 → 스크롤 생성
+
+        // 스크롤 이벤트 발생 시 처리 --------------------------------------
+        $(window).scroll(function() {
+            // 스크롤이 발생했을 때
+            console.log(">>> scroll 이벤트 발생~!!!");
+
+            var docHeight = $(document).height();
+            console.log(">>> docHeight : " + docHeight);
+
+            var winHeight = $(window).height();
+            console.log(">>> winHeight : " + winHeight);
+
+            var scrollTop = $(window).scrollTop();
+            console.log(">>> scrollTop : " + scrollTop);
+
+            var scrollHeight = scrollTop + winHeight;
+            console.log(">>> scrollHeight : " + scrollHeight);
+
+            // if (scrollHeight >= docHeight) {
+            // 스크롤이 바닥으로 도달했을 때
+            if (scrollHeight == docHeight) {
+                // 스크롤이 바닥에 도달했을 때
+                console.log(">>> 스크롤이 바닥에 도달했음~!!!");
+
+                // 게시물 10개 추가 구성 → 스크롤 생성 --------------------------------------
+                for (var i = 1; i <= 10; i++) {
+                    $("<h6>추가로 읽어온 게시물 " + i
+                        + " (스크롤 높이 : " + scrollHeight
+                        + ", 문서 높이 : " + docHeight
+                        + ", 창 높이 : " + winHeight 
+                        + ")</h6>").appendTo($("body"));
+                }
+                // -------------------------------------- 추가 게시물 구성 → 스크롤 생성
+
+            }
+
+        });
+        
+
+
+    }); //-- $(document).ready(function() {
+
+    
+</script>
+
+</head>
+<body>
+
+    <h2>뷰테스트(100% 고정 후) 무한스크롤 확인</h2>
+     
+    <hr>
+    <details>
+        <summary>※ 키보드 관련 이벤트 종류</summary>
+        <hr>
+        
+        <div>
+            <p>남기고 싶은 말</p>
+            <h1>30</h1>
+            <textarea name="" id="" cols="70" rows="5"></textarea>
+            <br />
+    
+            <button type="button" class="btn">해제</button>
+        </div>
+    </details>
+    <br>
+
+
+</body>
+</html>
