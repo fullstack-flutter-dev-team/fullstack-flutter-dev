@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest08.html</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<style type="text/css">
+    div.page {
+        border: 1px solid gray;
+        padding: 3px;
+        margin: 2px;
+        position: absolute;
+        right: 10px;
+        top: 80px;
+    }
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+    // jQUERY 기본 문법
+    // $();  //-- jquery 함수 
+    // jquery(docoment).ready(함수정의);
+    // $(document).ready(함수정의);
+    // $(document).ready(function() { ... });
+    // $(function() {
+    // $(document).ready(function() {
+    
+    // $(document).ready(동작할 함수);
+    // $(function() {
+    $(document).ready(function() {
+        console.log(">>>> jQuery 시작~!!!!");
+
+        $("button").css({"width": "400px", "display": "block"});
+
+        $("button").click(function() {
+            // 클릭한 버튼의 다음 요소를 찾아서 토글
+            // $(this).next().toggle(); //-- show()/hide() 토글
+            // $(this).next().slideToggle(); //-- slideDown()/slideUp() 토글
+            // $(this).next().fadeToggle(); //-- fadeIn()/fadeOut() 토글
+
+            // $(".page").toggle("slow"); //-- show()/hide() 토글
+            //$(".page").toggle("slow");
+
+            // ※ 『$("선택자").next()』 : document 구조의 다음 엘리먼트
+            //$(this).next(); 
+            //-- 해당 클릭된 토글 버튼의 next -> div 블록을 의미
+            // $(this).next().toggle("slow");
+            // $(this).next().toggle(100);
+            // $(this).next().toggle(1000, 동작);
+            $(this).next().toggle(1000, function() {
+                console.log(">>> 토글 동작 완료~!!!");
+            });
+    });
+        
+
+    }); //-- $(document).ready(function() {
+
+    
+</script>
+
+</head>
+<body>
+
+    <h2>show()/hide()/toggle()<br>slideDown()/slideUp()/slideToggle()<br>fadeIn()/fadeOut()/fadeToggle()</h2>
+     
+    <hr>
+    <details open>
+        <summary>Toggle(토글) 버튼</summary>
+        <hr>
+
+        <button>Toggle(토글) 버튼</button>
+        <div class="page">
+            <h1>jQuewy Toggle</h1>
+            <p>
+                show()/hide()<br>
+                toggle()<br>
+                slideDown()/slideUp()<br>
+                slideToggle()<br>
+                fadeIn()/fadeOut()<br>
+                fadeToggle()<br>
+            </p>
+        </div>
+
+        <button>Toggle(토글) 버튼</button>
+        <div class="page">
+            <h1>jQuewy Toggle</h1>
+            <p>
+                show()/hide()<br>
+                toggle()<br>
+                slideDown()/slideUp()<br>
+                slideToggle()<br>
+                fadeIn()/fadeOut()<br>
+                fadeToggle()<br>
+            </p>
+        </div>
+
+        <button>Toggle(토글) 버튼</button>
+        <div class="page">
+            <h1>jQuewy Toggle</h1>
+            <p>
+                show()/hide()<br>
+                toggle()<br>
+                slideDown()/slideUp()<br>
+                slideToggle()<br>
+                fadeIn()/fadeOut()<br>
+                fadeToggle()<br>
+            </p>
+        </div>
+
+        <button>Toggle(토글) 버튼</button>
+        <div class="page">
+            <h1>jQuewy Toggle</h1>
+            <p>
+                show()/hide()<br>
+                toggle()<br>
+                slideDown()/slideUp()<br>
+                slideToggle()<br>
+                fadeIn()/fadeOut()<br>
+                fadeToggle()<br>
+            </p>
+        </div>
+
+        <button>Toggle(토글) 버튼</button>
+        <div class="page">
+            <h1>jQuewy Toggle</h1>
+            <p>
+                show()/hide()<br>
+                toggle()<br>
+                slideDown()/slideUp()<br>
+                slideToggle()<br>
+                fadeIn()/fadeOut()<br>
+                fadeToggle()<br>
+            </p>
+        </div>
+         
+    </details>
+    <br>
+
+
+</body>
+</html>
