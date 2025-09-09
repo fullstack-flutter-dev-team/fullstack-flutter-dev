@@ -7,3 +7,15 @@
 - []()
 - []()
 - []()
+
+### AJAX
+- [javascript ajax 검색](https://www.google.com/search?q=javascript+ajax&oq=javascript+ajax&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDY4ODFqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [[JS] AJAX를 이용한 비동기 통신](https://velog.io/@merci/JS-%EA%B0%84%EB%8B%A8%ED%95%9C-ajax)
+  - [[JS] AJAX 처리 방법](https://blog.naver.com/comma_dev/223460596218)
+  - []()
+  - []()
+- []()
+- []()
+- []()
+- []()
+- []()

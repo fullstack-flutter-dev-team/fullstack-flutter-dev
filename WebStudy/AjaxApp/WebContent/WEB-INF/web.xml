@@ -13,7 +13,7 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
     
-<!--     
+<!--
     <servlet>
         <servlet-name></servlet-name>
         <servlet-class></servlet-class>
@@ -22,7 +22,49 @@
     <servlet-mapping>
         <servlet-name></servlet-name>
         <url-pattern></url-pattern>
-    </servlet-mapping> 
- -->
+    </servlet-mapping>
+-->
+
+    <!-- AJAX 관련 실습-2 → 페이지 내 컨트롤 확인 -->
+    <servlet>
+        <servlet-name>Test02send</servlet-name>
+        <servlet-class>com.test.Test02send</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test02send</servlet-name>
+        <url-pattern>/test02send.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Test02</servlet-name>
+        <servlet-class>com.test.Test02</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test02</servlet-name>
+        <url-pattern>/test02.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- AJAX 관련 실습-3 → 아이디 중복 검사 -->
+    <servlet>
+        <servlet-name>Test03send</servlet-name>
+        <servlet-class>com.test.Test03send</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test03send</servlet-name>
+        <url-pattern>/test03send.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Test03</servlet-name>
+        <servlet-class>com.test.Test03</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test03</servlet-name>
+        <url-pattern>/test03.do</url-pattern>
+    </servlet-mapping>
     
 </web-app>
