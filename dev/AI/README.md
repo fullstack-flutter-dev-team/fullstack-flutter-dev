@@ -165,10 +165,22 @@
 - []()
 
 ### 독서 관련
-- [독서 토론 챗봇 검색](https://www.google.com/search?q=%EB%8F%85%EC%84%9C+%ED%86%A0%EB%A1%A0+%EC%B1%97%EB%B4%87&newwindow=1&sca_esv=453f87096d44fbd1&ei=AHi_aMjeMb7r1e8P-q3noAo&start=10&sa=N&sstk=Ac65TH6nhYT1yRcNXvhQEGTCu-zRKkqc3SS8c93Cke7iq8lZt_-lWTPXZSRMWk7EGjxhdUVKjVDPmQMhWx80_zVjb6ZOkGX9S1xlYQ&ved=2ahUKEwjI3ummucqPAxW-dfUHHfrWGaQQ8tMDegQICRAE&biw=2281&bih=1198&dpr=0.8)
+-  ⭐ [독서 토론 챗봇 검색](https://www.google.com/search?q=%EB%8F%85%EC%84%9C+%ED%86%A0%EB%A1%A0+%EC%B1%97%EB%B4%87&newwindow=1&sca_esv=453f87096d44fbd1&ei=AHi_aMjeMb7r1e8P-q3noAo&start=10&sa=N&sstk=Ac65TH6nhYT1yRcNXvhQEGTCu-zRKkqc3SS8c93Cke7iq8lZt_-lWTPXZSRMWk7EGjxhdUVKjVDPmQMhWx80_zVjb6ZOkGX9S1xlYQ&ved=2ahUKEwjI3ummucqPAxW-dfUHHfrWGaQQ8tMDegQICRAE&biw=2281&bih=1198&dpr=0.8)
   - [2025년 주목해야 할 인공지능 기반 독서 자동화 앱 소개](https://plantlover97.tistory.com/251)
   - []()
   - []()
 - []()
+- []()
+- []()
+
+
+### 프로젝트
+- [[구름톤] 풀스택 7회차 파이널 프로젝트 회고록 & 수료식 후기](https://nshcoding.tistory.com/11)
+- [프로젝트 제안서 작성 방법 [예제가 포함된 단계별 가이드]](https://textcortex.com/ko/post/how-to-write-a-project-proposal)
+- [[프로젝트 기획 및 준비작업] 기술 스택 선정](https://libertegrace.tistory.com/entry/Final-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-%EC%84%A0%EC%A0%95-Nov-9-2020-%ED%9A%8C%EA%B3%A0)
+- [Flutter Web + NestJS 풀스택 포트폴리오 프로젝트 개요 및 기술 스택 선택](https://twentytwentyone.tistory.com/623)
+- [[Final Project] #1-1 개인 기획서 제출 1편](https://ddcloud.tistory.com/entry/Final-Project-1-1-%EA%B0%9C%EC%9D%B8-%EA%B8%B0%ED%9A%8D%EC%84%9C-%EC%A0%9C%EC%B6%9C-1%ED%8E%B8)
+- [[Final Project] #1-2 개인 기획서 제출 2편(완성)](https://ddcloud.tistory.com/entry/Final-Project-1-2-%EA%B0%9C%EC%9D%B8-%EC%A0%9C%EC%95%88%EC%84%9C-%EC%99%84%EC%84%B1)
+- [교수제안 프로젝트 제안서(예시)](https://www.hansung.ac.kr/CrossEditor/binary/files/000003/%EC%96%91%EC%98%A5%EC%88%98_%EA%B5%90%EC%88%98%EC%A0%9C%EC%95%88_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%A0%9C%EC%95%88%EC%84%9C.pdf)
 - []()
 - []()

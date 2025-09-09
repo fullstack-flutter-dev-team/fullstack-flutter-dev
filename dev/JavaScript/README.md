@@ -15,7 +15,7 @@
   - []()
   - []()
 - []()
-- []()
+- [Get Selected Text from Select Control](https://community.wappler.io/t/get-selected-text-from-select-control/26240)
 - []()
 - []()
 - []()

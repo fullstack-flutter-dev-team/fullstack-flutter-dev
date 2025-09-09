@@ -67,4 +67,26 @@
         <url-pattern>/test03.do</url-pattern>
     </servlet-mapping>
     
+
+    <!-- AJAX 관련 실습-4 → 우편번호 검색 -->
+    <servlet>
+        <servlet-name>Test04send</servlet-name>
+        <servlet-class>com.test.Test04send</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test04send</servlet-name>
+        <url-pattern>/test04send.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Test04</servlet-name>
+        <servlet-class>com.test.Test04</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Test04</servlet-name>
+        <url-pattern>/test04.do</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
