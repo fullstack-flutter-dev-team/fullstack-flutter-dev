@@ -154,7 +154,7 @@
 - [FastAPI 기반 로컬 LLM + RAG 챗봇 만들기 – Ollama를 활용한 로컬 LLM 개념 및 활용](https://twentytwentyone.tistory.com/279)
 - [FastAPI 기반 로컬 LLM + RAG 챗봇 만들기 – Python 및 필수 라이브러리 설치](https://twentytwentyone.tistory.com/281)
 - [Bllossom](https://github.com/MLP-Lab/Bllossom)
-- ⭐[로컬 호스트 LLM 오픈소스 OLLAMA 기반 PDF 지식 챗봇 서비스 간단히 만들어보기](https://daddynkidsmakers.blogspot.com/2024/02/github-copilot-ai.html)
+- ⭐⭐[로컬 호스트 LLM 오픈소스 OLLAMA 기반 PDF 지식 챗봇 서비스 간단히 만들어보기](https://daddynkidsmakers.blogspot.com/2024/02/github-copilot-ai.html)
   - ⭐[오픈소스 기반 LLM의 민주화, LLAMA-2 논문 분석 및 기술 요약하기](https://daddynkidsmakers.blogspot.com/2024/02/llama-2.html)
   - []()
 - []()

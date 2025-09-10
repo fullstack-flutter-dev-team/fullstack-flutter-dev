@@ -24,25 +24,23 @@
         <url-pattern></url-pattern>
     </servlet-mapping> 
  -->
- 
     <servlet>
         <servlet-name>Loadtest03send</servlet-name>
-        <servlet-class>com.test.ajax.Loadtest03send</servlet-class>
+        <servlet-class>com.test.Loadtest03send</servlet-class>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>Loadtest03send</servlet-name>
-        <url-pattern>/loadtest03send.do</url-pattern>
+        <url-pattern>loadtest03send.do</url-pattern>
     </servlet-mapping> 
+<!--     <servlet> -->
+<!--         <servlet-name>Loadtest03</servlet-name> -->
+<!--         <servlet-class>com.test.Loadtest03</servlet-class> -->
+<!--     </servlet> -->
     
-    <servlet>
-        <servlet-name>Loadtest03</servlet-name>
-        <servlet-class>com.test.ajax.Loadtest03</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>Loadtest03</servlet-name>
-        <url-pattern>/loadtest03.do</url-pattern>
-    </servlet-mapping> 
+<!--     <servlet-mapping> -->
+<!--         <servlet-name>Loadtest03</servlet-name> -->
+<!--         <url-pattern>loadtest03.do</url-pattern> -->
+<!--     </servlet-mapping>  -->
     
 </web-app>
