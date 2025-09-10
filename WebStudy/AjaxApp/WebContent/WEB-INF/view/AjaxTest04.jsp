@@ -29,6 +29,14 @@ String COLOR_BLUE     = "\u001B[34m" ;
         /* display: none; */
         display: inline-block;
     }
+
+    #addrResult {
+        width: 800px;
+    }
+    
+    #addr2 {
+        width: 800px;
+    }
 </style>
 <script type="text/javascript" src="<%=cp%>/js/ajax.js"></script>
 <script type="text/javascript">
@@ -91,13 +99,13 @@ String COLOR_BLUE     = "\u001B[34m" ;
         // 데이터 수집
         var addr = document.getElementById("addr").value;
 
-        // 요청 url 준비
+        // 요청 URL 준비
         var url = "test04.do?addr=" + addr;
         
         console.log(">>> url : " + url);
 
-        // XMLHttpRequest 객체 (AJAX 객체) 생성
-        ajax = createAjax();
+        // XMLHttpRequest 객체 (→ AJAX 객체) 생성
+        ajax = createAjax(); //-- ajax.js
 
         // 설정
         ajax.open("GET", url, true);
@@ -143,32 +151,59 @@ String COLOR_BLUE     = "\u001B[34m" ;
         
         // 검색 결과 확인
         if (itemList.length == 0) { //-- 데이터를 수신하지 못한 경우
-            strAddrOptions = "<option>주소를 입력하세요</option>";
+            <%-- strAddrOptions = "<option>주소를 입력하세요</option>"; --%>
+            addResult.innerHTML = "<option>주소를 입력하세요</option>";
         } else {
-            strAddrOptions = "<option value='0'>주소를 선택하세요</option>";
-            for (var i = 1; i< itemList.length;i++) {
+            <%-- strAddrOptions = "<option value='0'>주소를 선택하세요</option>"; --%>
+            addResult.innerHTML  = "<option value='0'>주소를 선택하세요</option>";
+
+            // 검색 결과가 존재할 경우.... 반복문을 순환하며 각 데이터 가져오기
+            for (var i = 0; i< itemList.length;i++) { //-- 수신한 아이템의 갯수만큼 반복 순환
 //                 console.log(">>addr : " + itemList[i].children[1].innerHTML);
-                strAddrOptions += "<option value='"
+                <%--                 
+                    strAddrOptions += "<option value='"
                                    + itemList[i].children[0].innerHTML
-                                   + "'>"
+                                   + "'>["
+                                   + itemList[i].children[0].innerHTML
+                                   + "] "
                                    + itemList[i].children[1].innerHTML
-                                   + "</option>";
+                                   + "</option>"; 
+                --%>
+
+                var zipCode = itemList[i].getElementsByTagName("zipcode")[0];
+                var address = itemList[i].getElementsByTagName("address")[0];
+
+                // * 태그가 가지는 텍스트는 태그의 첫 번째 자식이고(→ firstChild)...
+                //    텍스트 노드의 값은  『nodeValue』  로 가져온다.
+                var zipCodeText = zipCode.firstChild.nodeValue;
+                var addressText = address.firstChild.nodeValue;
+
+                // 가져온 데이터를 select box에 아이템 추가
+                addResult.innerHTML += "<option value='" + zipCodeText + "/" + addressText
+                                      + "'>[" + zipCodeText + "] " + addressText + "</option>";
             }
         }
         
-        addResult.innerHTML = strAddrOptions;
+        <%-- addResult.innerHTML = strAddrOptions; --%>
     }
 
-    function selAddr1(obj) {
-        var zipCode = obj.options[obj.selectedIndex].value;
-        var strAddr1 = obj.options[obj.selectedIndex].text;
-        console.log(">>> selAddr1 - zipCode :" + zipCode);
-        console.log(">>> selAddr1 - strAddr1 :" + strAddr1);
-        var zipcode = document.getElementById("addr1");
-        var addr1 = document.getElementById("addr2");
-        zipcode.value = zipCode;
-        addr1.value = strAddr1;
-
+    function selectZipCode(obj) {
+        var address = obj.options[obj.selectedIndex].value;
+        
+        if (address != 0) {
+            var zipCodeText  = address.substring(0, address.indexOf("/"));
+            var strAddr1Text = address.substring(address.indexOf("/")+1);
+            console.log(">>> selAddr1 - zipCodeText :" + zipCodeText);
+            console.log(">>> selAddr1 - strAddr1Text :" + strAddr1Text);
+            var addr1 = document.getElementById("addr1");
+            var addr2 = document.getElementById("addr2");
+            var addr3 = document.getElementById("addr3");
+//             addr1.value = zipCodeText;
+//             addr2.value = strAddr1Text;
+            addr1.value = address.split("/")[0];
+            addr2.value = address.split("/")[1];
+            addr3.focus();
+        }
     }
 
 </script>
@@ -223,7 +258,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 <input type="text" id="addr" class="txt control" placeholder="동 입력">
                 <input type="button"  value="검색하기" class="btn control" onclick="search();">
                 <br>
-                <select id="addrResult" class="control" onchange="selAddr1(this);">
+                <select id="addrResult" class="control" onchange="selectZipCode(this);">
                     <option>주소를 입력하세요.</option>
                 </select>
             </td>
@@ -232,7 +267,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
             <th>주소 검색 결과</th>
             <td>
                 <input type="text"  id="addr1" class="txt control" readonly="readonly" style="width:200px;"><br>
-                <input type="text"  id="addr2" class="txt control" readonly="readonly" style="width:500px;"><br>
+                <input type="text"  id="addr2" class="txt control" readonly="readonly"><br>
                 <input type="text"  id="addr3" class="txt control" placeholder="상세주소를 입력하세요."  style="width:500px;">
             
             

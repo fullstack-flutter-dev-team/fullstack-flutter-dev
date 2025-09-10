@@ -160,7 +160,7 @@
 - []()
   - []()
   - []()
-- []()
+- [스프링부트를 활용한 AI 개발의 주요 흐름 알아보기](https://yulsfamily.tistory.com/389)
 - []()
 - []()
 
@@ -184,3 +184,11 @@
 - [교수제안 프로젝트 제안서(예시)](https://www.hansung.ac.kr/CrossEditor/binary/files/000003/%EC%96%91%EC%98%A5%EC%88%98_%EA%B5%90%EC%88%98%EC%A0%9C%EC%95%88_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%A0%9C%EC%95%88%EC%84%9C.pdf)
 - []()
 - []()
+
+
+
+### 기획서 작성
+
+
+
+### 앱 로고 작성
