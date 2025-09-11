@@ -15,3 +15,8 @@
   - [[jquery] checkbox 체크여부 확인하기](https://bsssss.tistory.com/688)
   - [[jQuery] Checkbox 컨트롤 (체크, 체크여부, 전체체크 등)](https://ming9mon.tistory.com/149)
 - []()
+
+### AJAX
+- [⭐ jQuery.ajax()](https://api.jquery.com/jQuery.ajax/#jQuery-ajax-url-settings)
+  - ```jQuery.ajax( url [, settings ] )```
+- []()
