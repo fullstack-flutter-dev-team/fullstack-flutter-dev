@@ -163,6 +163,9 @@
 - [스프링부트를 활용한 AI 개발의 주요 흐름 알아보기](https://yulsfamily.tistory.com/389)
 - []()
 - []()
+- ⭐⭐[무료로 한국어🇰🇷 파인튜닝 모델 받아서 나만의 로컬 LLM 호스팅 하기(LangServe) + RAG 까지!!](https://github.com/teddylee777/langserve_ollama)
+- []()
+- []()
 
 ### 독서 관련
 -  ⭐ [독서 토론 챗봇 검색](https://www.google.com/search?q=%EB%8F%85%EC%84%9C+%ED%86%A0%EB%A1%A0+%EC%B1%97%EB%B4%87&newwindow=1&sca_esv=453f87096d44fbd1&ei=AHi_aMjeMb7r1e8P-q3noAo&start=10&sa=N&sstk=Ac65TH6nhYT1yRcNXvhQEGTCu-zRKkqc3SS8c93Cke7iq8lZt_-lWTPXZSRMWk7EGjxhdUVKjVDPmQMhWx80_zVjb6ZOkGX9S1xlYQ&ved=2ahUKEwjI3ummucqPAxW-dfUHHfrWGaQQ8tMDegQICRAE&biw=2281&bih=1198&dpr=0.8)
@@ -195,3 +198,34 @@
 
 
 ### 앱 로고 작성
+
+
+
+- [지극히 사적인 나만의 LLM, 가질 수 있을까? [1편 - 파인튜닝]](https://blog.sionic.ai/finetuning_llama)
+- [[Python] Llama3를 파인튜닝을 통해 나만의 데이터로 학습 및 Huggingface에 적재해보자.](https://unfinishedgod.netlify.app/2024/05/24/python/)
+- [llama fine tuning 방법 #1 – gguf 파일 변환과 Ollama 모델 생성](https://paulsmediaset.com/llama-fine-tuning-%EB%B0%A9%EB%B2%95-1-gguf-%ED%8C%8C%EC%9D%BC-%EB%B3%80%ED%99%98%EA%B3%BC-ollama-%EB%AA%A8%EB%8D%B8-%EC%83%9D%EC%84%B1/)
+- [llama 3.2 1b 파인튜닝으로 한국어 능력 향상시키기 #4](https://paulsmediaset.com/llama-3-2-1b-%ed%8c%8c%ec%9d%b8%ed%8a%9c%eb%8b%9d%ec%9c%bc%eb%a1%9c-%ed%95%9c%ea%b5%ad%ec%96%b4-%eb%8a%a5%eb%a0%a5-%ed%96%a5%ec%83%81%ec%8b%9c%ed%82%a4%ea%b8%b0-4/)
+- [파인 튜닝(llama fine tuning) 방법 #3 – 저사양 PC도 가능한 파인 튜닝](https://paulsmediaset.com/%ed%8c%8c%ec%9d%b8-%ed%8a%9c%eb%8b%9dllama-fine-tuning-%eb%b0%a9%eb%b2%95-3-%ec%a0%80%ec%82%ac%ec%96%91-pc%eb%8f%84-%ea%b0%80%eb%8a%a5%ed%95%9c-%ed%8c%8c%ec%9d%b8-%ed%8a%9c%eb%8b%9d/)
+- [Python으로 LLM Fine-Tuning 쉽게 시작하기: Unsloth + Ollama 완벽 가이드](https://jjeongil.tistory.com/3095)
+- [Ollama로 Local LLM구축하기](https://kosate.github.io/blog/llm/how-to-install-local-llms-using-ollama/)
+- [Ollama 사용법 - 개인 로컬 환경에서 LLM 모델 실행 및 배포하기](https://lsjsj92.tistory.com/666)
+- [PyTorch 다운로드 및 설치하는 방법](https://leapcell.io/blog/ko/pytorch-dounrodeu-mich-seolcihaneun-bangbeop)
+- [[yongggg's] Ollama local model serving](https://yongggg.tistory.com/90)
+- [EEVE-Korean-Instruct-10.8B-v1.0-gguf](https://huggingface.co/teddylee777/EEVE-Korean-Instruct-10.8B-v1.0-gguf)
+- [[오픈 소스 AI] [로컬 환경] 야놀자에서 개발한 AI 모델, EEVE 실행하기 1탄](https://marcus-story.tistory.com/27)
+- [LangServe 시스템 구성 메뉴얼](https://vittorio-lee.tistory.com/155)
+- [heegyu/EEVE-Korean-Instruct-10.8B-v1.0-GGUF 검색](https://www.google.com/search?q=heegyu/EEVE-Korean-Instruct-10.8B-v1.0-GGUF&newwindow=1&sca_esv=af47de9c40b911ed&ei=X2bCaOyEIOrm2roPlf6iyA4&start=10&sa=N&sstk=Ac65TH5z5He8SCDTEbarqvHJ3w4JPRUoJ3HP0p7pnXjUczXvNU7L-hgmLsnfEU6KuPva7D8_NcdZnSlFVqGHCyJPJqaWoqr5_KQUgQ&ved=2ahUKEwissNz0hNCPAxVqs1YBHRW_COkQ8tMDegQICBAE&biw=2260&bih=1198&dpr=0.8)
+- [무료로 한국어🇰🇷 파인튜닝 모델 받아서 나만의 로컬 LLM 호스팅 하기(LangServe) + RAG 까지!!](https://github.com/teddylee777/langserve_ollama)
+- [LightKorLLM](https://github.com/m4a1carbin4/LightKorLLM)
+- [LLM-project](https://github.com/yammayamm/LLM-project?tab=readme-ov-file)
+- [쉽게 LLM을 파인튜닝할 수 있는 - Axolotl.](https://velog.io/@hero981001/%EC%89%BD%EA%B2%8C-LLM%EC%9D%84-%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-Axolotl)
+- [LLM 기반 BIM 지식 모델 학습 데이터셋 자동 생성 및 LLM 파인튜닝 도구 소개](https://daddynkidsmakers.blogspot.com/2025/01/llm-bim-llm.html)
+- [PDF2LLM-Tuning-Studio](https://github.com/hyeonsangjeon/PDF2LLM-Tuning-Studio)
+- [LangChain | 한국어 llm 모델, LangServe, local ollama, NGROK 배포](https://normalstory.tistory.com/entry/LangChain-%ED%85%8C%EB%94%94%EB%85%B8%ED%8A%B8-%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0-LangServe%EC%88%98%EC%A0%95%EB%B3%B8)
+- [랭체인(langchain) + PDF 문서요약, Map-Reduce (7)](https://teddylee777.github.io/langchain/langchain-tutorial-07/)
+- [[LLM] Ko-LLM 리뷰, LLaMA2 기반 한국어 파인튜닝 모델 인퍼런스](https://didi-universe.tistory.com/entry/LLM-Ko-LLM-LLaMA2-%EA%B8%B0%EB%B0%98-%ED%95%9C%EA%B5%AD%EC%96%B4-%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D-%EB%AA%A8%EB%8D%B8%EB%93%A4)
+- [[LLM] LLM 모델 로컬 경로에 저장하기 + git LFS](https://didi-universe.tistory.com/entry/LLM-LLM-%EB%AA%A8%EB%8D%B8-%EB%A1%9C%EC%BB%AC-%EA%B2%BD%EB%A1%9C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0-git-LFS)
+- [Gemma 한국어 요약 모델 파인튜닝 빠르게 해보기](https://devocean.sk.com/blog/techBoardDetail.do?ID=165703)
+- [안드로이드에서 Gemma2 파인튜닝 모델 실행하기](https://devocean.sk.com/blog/techBoardDetail.do?ID=167019&boardType=techBlog)
+- [로컬 llm pdf 파인튜닝 github](https://www.google.com/search?q=%EB%A1%9C%EC%BB%AC+llm+pdf+%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D+github&newwindow=1&sca_esv=af47de9c40b911ed&ei=eXzCaITnOIag0-kP8om8oQQ&start=40&sa=N&sstk=Ac65TH51ul9Q8ByPUy5jZBKW-SQthhemihxGCmEMmtR_F-GLzxV3rXojTIta2cy1b4EKBWReIhNEbksGXg-axcNqs8MoKnWwHySVcjiX_rncqy9T_02u85RzaHT7caN-H9OrbmAd9Ab0rG1MdVM3GjJ31BLz4412cu0&ved=2ahUKEwjEh-7-mdCPAxUG0DQHHfIEL0Q4FBDy0wN6BAgIEAs&biw=2260&bih=1198&dpr=0.8)
+- []()
