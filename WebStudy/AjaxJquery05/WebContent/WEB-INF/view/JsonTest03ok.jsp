@@ -14,10 +14,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <%
     // JsonTest03ok.jsp
     
-    
     String su1 = request.getParameter("su1");
     String su2 = request.getParameter("su2");
-    String oper = request.getParameter("oper");
+//     String oper = request.getParameter("oper");
     String op = (String)request.getAttribute("op");
     String result = (String)request.getAttribute("result");
     
@@ -30,11 +29,10 @@ String COLOR_BLUE     = "\u001B[34m" ;
 
     // check~!!!
     // * 따옴표 구성에 유의할 것~!!!
-    sb.append("{\"su1\":\"" + su1 + "\"");           //  → {"num" : "1"
-    sb.append(",\"su2\":\"" + su2 + "\"");       //  →  , "name" : "xx"
-    sb.append(",\"oper\":\"" + op + "\"");       //  →  , "name" : "xx"
-    sb.append(",\"result\":\"" + result + "\"}");//  →  , "content" : "xxx"}
-    
+    sb.append("{\"su1\":\"" + su1 + "\"");        //  → {"su1" : "1"
+    sb.append(",\"su2\":\"" + su2 + "\"");        //  →  , "su2" : "xx"
+    sb.append(",\"op\":\"" + op + "\"");        //  →  , "oper" : "xx"
+    sb.append(",\"result\":\"" + result + "\"}"); //  →  , "result" : "xxx"}
     
     ret = sb.toString();
     System.out.println(COLOR_GREEN+">>> result : " + ret);

@@ -24,18 +24,18 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <script type="text/javascript">
 
     $(function() {
-        
         $("#sendBtn").click(function() {
-            console.log(">>>>");
+            console.log(">>>> sendBtn Click~!!!");
+            
             // 데이터 구성
-            var params = "su1=" + $.trim($("#su1").val()) 
-                    + "&su2=" + $.trim($("#su2").val())
-                    + "&oper=" + $.trim($("#oper").val());
+            var param = "su1=" + $.trim($("#su1").val()) 
+                        + "&su2=" + $.trim($("#su2").val())
+                        + "&oper=" + $.trim($("#oper").val());
 
             $.ajax({
-                type: "post",
+                type: "post",    //-- 대/소문자 구분없음
                 url: "jsontest03ok.do",
-                data: params,
+                data: param,
                 dataType: "json",      //-- check~!!!
                 success: function(jsonObj) {
                     var out = "";
@@ -43,31 +43,31 @@ String COLOR_BLUE     = "\u001B[34m" ;
                     // check~!!!
                     var su1 = jsonObj.su1;
                     var su2 = jsonObj.su2;
-                    var oper = jsonObj.oper;
+                    var op  = jsonObj.op;
                     var result = jsonObj.result;
 
                     out += "<br>==========================";
                     out += "<br> - su1 : " + su1;
                     out += "<br> - su2 : " + su2;
-                    out += "<br> - oper : " + oper;
+                    out += "<br> - op : " + op;
                     out += "<br> - result : " + result;
                     out += "<br>==========================";
-                    out += "<br>" + su1 + oper + su2 + " = " + result;
+                    out += "<h3>" + su1 + op + su2 + " = " + result + "</h3>";
                     out += "<br>==========================";
                    
                     $("#resultDiv").html(out);
-              
                 },
                 beforeSend: function() {
                     var flag = true;
 
                     if (!$.trim($("#su1").val())) {
-                        alert("su1을 입력해야 합니다.");
+                        alert("첫 번째 정수를 입력해야 합니다.");
                         $("#su1").focus();
                         flag = false;
                     }
+                    
                     if (!$.trim($("#su2").val())) {
-                        alert("su2를 입력해야 합니다.");
+                        alert("두 번째 정수를 입력해야 합니다.");
                         $("#su2").focus();
                         flag = false;
                     }
@@ -77,12 +77,14 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 error: function(e) {
                     alert(e.responseText);
                 }
-            });
+            });//$.ajax({
         });//$("#sendBtn").click(function() {
     });//$(function() {
+
 </script>
 </head>
 <body>
+
 <!-- 
     jsontest03.do → com.test.ajax.JsonTest03Controller.java
                  (→ WEB-INF/view/JsonTest03.jsp)
@@ -107,7 +109,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
         </select>
         <input type="text" id="su2" class="txt txtNum"/>
         <br><br>
-        <input type="button" value="결과 확인" id="sendBtn" class="btn" style="width: 700px;"/>
+        <input type="button" value="결과 확인" id="sendBtn" class="btn" style="width: 630px;"/>
     </div>
     
     

@@ -41,7 +41,6 @@ public class JsonTest03Controller extends HttpServlet
     {
         // 서블릿 관련 코드 구성
         
-        
         String view = "WEB-INF/view/JsonTest03.jsp";
         
         RequestDispatcher rd = request.getRequestDispatcher(view);

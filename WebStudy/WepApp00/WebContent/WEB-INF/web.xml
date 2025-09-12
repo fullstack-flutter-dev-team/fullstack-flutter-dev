@@ -18,7 +18,6 @@
         <servlet-name></servlet-name>
         <servlet-class></servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name></servlet-name>
         <url-pattern></url-pattern>

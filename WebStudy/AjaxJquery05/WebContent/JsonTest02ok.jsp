@@ -56,9 +56,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
          
     */
 
-    StringBuilder sb = new StringBuilder();
 
     for (int i=1; i<=5; i++) {  //-- i : 1 ~ 5
+        StringBuilder sb = new StringBuilder();
         sb.append("{\"num\":\"" + i + "\"");
         sb.append(",\"name\":\"" + name + i + "\"");
         sb.append(",\"content\":\"" + content + i + "\"},"); //-- check~!!!! 『,』

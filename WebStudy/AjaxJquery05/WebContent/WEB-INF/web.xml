@@ -29,7 +29,6 @@
         <servlet-name>jsontest03</servlet-name>
         <servlet-class>com.test.ajax.JsonTest03Controller</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>jsontest03</servlet-name>
         <url-pattern>/jsontest03.do</url-pattern>
@@ -41,7 +40,6 @@
         <servlet-name>jsontest03ok</servlet-name>
         <servlet-class>com.test.ajax.JsonTest03okController</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>jsontest03ok</servlet-name>
         <url-pattern>/jsontest03ok.do</url-pattern>
