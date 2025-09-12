@@ -26,7 +26,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     $(function() {
         
         $("#sendBtn").click(function() {
-        	console.log(">>>>");
+            console.log(">>>>");
             // 데이터 구성
             var params = "su1=" + $.trim($("#su1").val()) 
                     + "&su2=" + $.trim($("#su2").val())
