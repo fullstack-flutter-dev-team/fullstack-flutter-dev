@@ -44,4 +44,26 @@
         <url-pattern>/ajaxtest02ok.do</url-pattern>
     </servlet-mapping> 
     
+    <!-- AjaxTest04Controller -->
+    <servlet>
+        <servlet-name>ajaxtest04</servlet-name>
+        <servlet-class>com.test.ajax.AjaxTest04Controller</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ajaxtest04</servlet-name>
+        <url-pattern>/ajaxtest04.do</url-pattern>
+    </servlet-mapping> 
+    
+    <!-- AjaxTest04okController -->
+    <servlet>
+        <servlet-name>ajaxtest04ok</servlet-name>
+        <servlet-class>com.test.ajax.AjaxTest04okController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ajaxtest04ok</servlet-name>
+        <url-pattern>/ajaxtest04ok.do</url-pattern>
+    </servlet-mapping> 
+    
 </web-app>

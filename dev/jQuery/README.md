@@ -19,4 +19,7 @@
 ### AJAX
 - [⭐ jQuery.ajax()](https://api.jquery.com/jQuery.ajax/#jQuery-ajax-url-settings)
   - ```jQuery.ajax( url [, settings ] )```
+- [[jQuery]ajax 사용법 정리](https://m.blog.naver.com/hj_kim97/222881703185)
+- []()
+- []()
 - []()
