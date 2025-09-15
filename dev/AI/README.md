@@ -161,7 +161,7 @@
   - []()
   - []()
 - [스프링부트를 활용한 AI 개발의 주요 흐름 알아보기](https://yulsfamily.tistory.com/389)
-- []()
+- ⭐⭐[GPT4ALL로 메타 라마3.1 파인튜닝 하기](https://pagichacha.tistory.com/329)
 - []()
 - ⭐⭐[무료로 한국어🇰🇷 파인튜닝 모델 받아서 나만의 로컬 LLM 호스팅 하기(LangServe) + RAG 까지!!](https://github.com/teddylee777/langserve_ollama)
 - []()
