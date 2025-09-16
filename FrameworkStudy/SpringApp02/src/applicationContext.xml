@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- ※ 스프링이 제공하는 환경 설정 XMl 파일 샘플 -->
+    <!--    → 스프링이 생성하고 관리해야 할 객체들에 대한 정보를 전달 -->
+
+    <!-- RecordImpl1 (Record) 클래스에 대한 객체 정보 전달 -->
+    <bean id="record1" class="com.test.spr.RecordImpl1"></bean>
+    <!-- → 『com.test.spr.RecordImpl1 record1 = new com.test.spr.RecordImpl1();』 -->
+    <!--  구문을 수행할 수 있도록 관련 정보를 스프링 컨테이너에 전달 -->
+    
+    <!-- RecordImpl2 (Record) 클래스에 대한 객체 정보 전달 -->
+    <bean id="record2" class="com.test.spr.RecordImpl2"></bean>
+    
+    <!-- RecordViewImpl(RecordView) 클래스에 대한 객체 생성 정보 전달 -->
+    <bean id="view" class="com.test.spr.RecordViewImpl">
+        <!-- ※ RecordViewImpl 은 Record 인터페이스 타입의 객체를 필요로 하는 상황~!!! -->
+        
+        <!-- ( ※ RecordViewImpl 내부의 속성변수명과 name을 동일하게 구성 )-->
+        <!-- RecordImpl1 또는 RecordImpl2 객체 에 대한 DI 설정 정보 전달 -->
+        
+        <!-- 『property』 엘리먼트는 setter 메소드에 대한 구성 -->
+        <!-- 즉, 『setXxx()』 메소드인 경우 『<property name="xxx"></property>』와 같이 설정한다. -->
+        
+        <!-- 인터페이스 Record 클래스에 대한 set을 진행한다. 
+        → ref bean="record1" Record1 객체 참조.  -->
+            
+        <!-- RecordImpl1 또는 RecordImpl2 객체 에 대한 객체(→ 의존 객체) -->
+        <!-- 에 대한 DI(Dependency Injection) 설정 -->
+        <!-- 『ref』 엘리먼트에 의해 DI 객체에 대한 참조 지정 -->
+        <property name="record">
+            <ref bean="record1"/>
+        </property>
+        
+        <!-- ※ 위 구문은 -->
+        <!--    『<property name="record" ref="record1"></property>』 -->
+        <!--     와 같은 형태로 작성해도 된다. -->
+    </bean>
+</beans>
