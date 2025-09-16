@@ -256,7 +256,7 @@
 - [Shopping mall](https://github.com/Lee-jisang/ShoppingMall_springprj)
 - [Shopping Mall Project](https://github.com/knavoid/shopping-mall)
 - [스프링 부트로 만드는 쇼핑몰 프로젝트](https://github.com/didrlgus/springboot-shoppingmall?tab=readme-ov-file)
-- []()
+- [train_easyocr](https://github.com/KimRass/train_easyocr)
 - []()
 - []()
 - []()
