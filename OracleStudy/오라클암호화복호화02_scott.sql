@@ -66,7 +66,7 @@ END CRYPTPACK;
 --    - RAW_INPUT RAW(128) : UTL_RAW.CAST_TO_RAW(INPUT_STRING);
 --    - STR     VARCHAR2(30) := UTL_RAW.CAST_TO_RAW(RAW_INPUT);
 --
---※ 프로스저를 구성하는 매개변수가 많을 경우
+--※ 프로시저를 구성하는 매개변수가 많을 경우
 --   이 프로시저를 실행할 때 매개변수 값의 갯수나 순서를
 --   혼동하게 될 가능성이 매우 크다.
 --   이와 같은 경우에는 다음과 같은 형태로
