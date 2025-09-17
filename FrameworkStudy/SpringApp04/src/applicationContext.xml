@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- ※ 스프링이 제공하는 환경 설정 XML 파일 샘플 -->
+    <!--    → 스프링이 생성하고 관리해야 할 객체들에 대한 정보 전달 -->
+
+    <!-- OracleDAO 객체에 대한 정보 전달 -->
+    <!--  → 스프링이 자체적으로 이 정보를 활용해서(이용하여) -->
+    <!--    객체를 생성하고 생명주기 및 의존관계 등을 관리할 수 있도록... -->
+    <bean id="oracleDAO" class="com.test.spr.OracleDAO"></bean>
+
+    <!-- MssqlDAO 객체에 대한 정보 전달 -->
+    <bean id="mssqlDAO" class="com.test.spr.MssqlDAO"></bean>
+
+    <!-- 클래스 추가시 기존 소스와 유연한 관계를 유지. -->
+    <bean id="mysqlDAO" class="com.test.spr.MssqlDAO"></bean>
+    
+    <!-- MemberList 객체에 대한 정보 전달 -->
+    <!--  → 의존 객체 주입에 대한 설정 정보 전달 -->
+    <bean id="member" class="com.test.spr.MemberList">
+      <!-- 속성의 이름을 지정하여 -->
+      <!-- 이 속성과 관련한 setter 메서드 호출을 통한 DI 처리 의뢰 -->
+      <!-- <property name="dao" ref="oracleDAO"></property> -->
+      <property name="dao">
+        <!-- <ref bean="oracleDAO"></ref> -->
+        <!-- <ref bean="mysqlDAO"></ref> -->
+        <ref bean="mssqlDAO"></ref>
+      </property>
+    </bean>
+
+</beans>

@@ -93,7 +93,83 @@
   5. RecordViewImpl.java → 클래스, RecordView 인터페이스를 구현하는 클래스 → 기존 소스코드(SpringApp01) 활용
   6. Main.java → 클래스, main() 메소드를 포함하는 테스트 클래스  → 수정(check~!!!)
   7. applicationContext.xml  → 프로젝트 > src 폴더 하위에 생성(현재 파일의 이름은 임의로 지정 가능)
+---
+### ■■■ IoC/DI 관련 실습 03 ■■■
 
+※ 스프링 프레임워크 없이 IoC/DI 개념 실습
+
+○ 실습 성격 및 주요사항
+   1. 콘솔 프로젝트
+   2. 데이터베이스 연동 프로젝트 구성
+   3. SpringApp03
+   4. 오라클 암호화 / 복호화 적용
+
+○ 물리적 파일 구성
+   1. MemberDTO.java        → DTO 역할  → TBL_MEMBERLIST 테이블 레코드 참조
+   2. IDAO.java             → 인터페이스
+   3. OracleDAO.java        → DAO 역할 → 실습 진행간에는 계정 설정만 다르게 연결 진행
+   4. MssqlDAO.java         → DAO 역할 → 실습 진행간에는 계정 설정만 다르게 연결 진행
+   5. MemberList.java       → DAO 클래스를 참조하는 클래스 → 의존관계 설정.→ 리스트 출력 메소드(→ print()) 구현.
+   6. Main.java             → 클래스   → main() 메소드를 포함하는 테스트 클래스
+   7. SpringPrj03_scott.sql → 데이터베이스 관련 준비 작업.(테이블 생성 및 데이터 입력 쿼리문 구성 등)
+
+- ※ 오라클 암호화 / 복호화 개념도 추가하여 실습 진행
+---
+### ■■■ IoC/DI 관련 실습 04 ■■■
+
+※ 스프링 프레임워크 적용 IoC/DI 개념 실습
+
+○ 실습 성격 및 주요사항
+   1. 콘솔 프로젝트
+   2. 데이터베이스 연동 프로젝트 구성
+   3. SpringApp04
+   4. 오라클 암호화 / 복호화 적용
+
+○ 물리적 파일 구성
+   1. MemberDTO.java         → DTO 역할  → TBL_MEMBERLIST 테이블 레코드 참조
+   2. IDAO.java              → 인터페이스
+   3. OracleDAO.java         → DAO 역할 → 실습 진행간에는 계정 설정만 다르게 연결 진행
+   4. MssqlDAO.java          → DAO 역할 → 실습 진행간에는 계정 설정만 다르게 연결 진행
+   5. MemberList.java        → DAO 클래스를 참조하는 클래스 → 의존관계 설정.→ 리스트 출력 메소드(→ print()) 구현.
+   6. Main.java              → 클래스   → main() 메소드를 포함하는 테스트 클래스
+   7. SpringPrj03_scott.sql  → 데이터베이스 관련 준비 작업.(테이블 생성 및 데이터 입력 쿼리문 구성 등)
+   8. applicationContext.xml → 스프링의 환경 설정 파일 → 객체 생성에 대한 정보 전달 및 DI 설정 구문 구성.
+
+※ 오라클 암호화 / 복호화 개념도 추가하여 실습 진행
+
+※ 스프링 자원을 활용할 수 있도록 기본 환경 구성
+   1. 프로젝트 명 마우스 우클릭
+   2. Build Path > Configure Build Path ... 메뉴 선택
+   3. Libraries 탭 선택 > Add External JARs ...버튼 선택
+   4. 필요한 jar 파일을 해당 프로젝트에 외부 라이브러리로 등록
+      - 경로 1 → ```C:\spring-framework-3.0.2-with-docs\dist```
+        - 파일 1 → **org.springframework.asm-3.0.2.RELEASE.jar**
+        - 파일 2 → **org.springframework.beans-3.0.2.RELEASE.jar**
+        - 파일 3 → **org.springframework.context-3.0.2.RELEASE.jar**
+        - 파일 4 → **org.springframework.core-3.0.2.RELEASE.jar**
+        - 파일 5 → **org.springframework.expression-3.0.2.RELEASE.jar**
+      - 경로 2 → ```C:\spring-framework-3.0.2-dependencies\org.apache.commons```
+          - ```C:\spring-framework-3.0.2-dependencies\org.apache.commons```
+            - ```\com.springsource.org.apache.commons.logging\1.1.1```
+        - 파일 6 → **com.springsource.org.apache.commons.logging-1.1.1.jar**
+      - 경로 3 → ```"C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar"```
+        - 파일 7 → ojdbc6.jar
+   5. **스프링 프레임워크의 환경 설정 파일은 기본적으로 XML 형식으로 생성**
+        - annotation 방식은 유연성을 해침. XML 형식으로 사용 권장
+        - 생성 위치는 프로젝트 하위의 src 디렉터리 (현재 실습 환경은 콘솔이므로...)
+        - 현재 실습 환경에서의 파일 이름은 사용자가 임의로 부여해서 생성하는 것이 가능한 상황
+        - → 『src > **applicationContext.xml**』
+   6. 생성한 applicationContext.xml 파일에
+        - 스프링이 관리하게(참조하게) 될 객체에 대한 정보와 DI 설정을 추가하게 되며
+      이와 같은 문서의 구성을 위해 스프링에서 제공하는 문서 참조
+        - 참조 경로 → ```C:\spring-framework-3.0.2-with-docs\docs\spring-framework-reference\htmlsingle```
+        - 참조 파일 → spring-framework-reference.xml
+        - 참조 위치 → ```III. Core Technologies```
+          - ```3. The IoC container```
+          - ```3.2 Container overview```
+          - ```3.2.1. Configuration metadata```
+          - → 링크로 이동하면 xml 샘플 파일을 확인할 수 있으며,
+            - 이 내용을 복사하여 applicationContext.xml에 덮어쓰기(전체 선택 후 붙여넣기)
 ---
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
