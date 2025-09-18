@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <!-- ※ 스프링이 제공하는 환경 설정 XML 파일 샘플 -->
+    <!--    → 스프링이 생성하고 관리해야 할 객체들에 대한 정보 전달 -->
+    <!--    → 스프링이 자체적으로 우리가 전달한 이 정보를 활용하여 -->
+    <!--       객체를 생성하고, 생명주기를 관리하고, 의존관계를 구성할 수 있다. -->
+
+    <!-- CalculatorImpl 클래스의 객체 정보 전달 -->
+    <bean id="cal" class="com.test.spr.CalculatorImpl"></bean>
+
+    <!-- CalculatorAspect 클래스의 객체 생성 및 관리를 위한 정보 전달 -->
+    <bean id="aspect" class="com.test.spr.CalculatorAspect"></bean>
+    
+    <!-- check~!!! -->
+    <!-- 추가 --> 
+    <!-- → SpringApp07 의 내용과 비교하여 추가되는 코드 -->
+    <!-- CalculatorBeforeAdvice 클래스의 객체 생성 및 관리를 위한 정보 전달 -->
+    <bean id="before" class="com.test.spr.CalculatorBeforeAdvice"></bean>
+    
+    <!-- CHECK!!!!! -->
+    <!-- 추가 --> 
+    <!-- → SpringApp08 의 내용과 비교하여 추가되는 코드 --> 
+    <!-- CalculatorAfterThrowing 클래스의 객체 생성 및 관리를 위한 정보 전달 -->
+    <bean id="afterThrowing" class="com.test.spr.CalculatorAfterThrowing"></bean>
+    
+    <!-- check~!!! -->
+    <!-- ※ 스프링이 제공하는 가짜 객체(Proxy) 클래스의 객체 생성 및 관리를 위한 정보 전달 -->
+    <!--    → 『ProxyFactoryBean』   -->
+    <!-- 다른 메소드에서 위 이름으로 인텔리전스 기능 이용하여 import 주소 가져와서 class 에 붙여넣기 -->
+    <!-- Proxy.newProxyInstance(ⓐ, ⓑ, ⓒ); -->
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        
+        <!-- ⓐ 주 업무 클래스(→ target)의 객체 정보 제공 -->
+        <!--    → 『target』 -->
+        <!-- 위에서 만든 인스턴스의 정보를 참조하게 끔 설정해줌 -->
+        <property name="target" ref="cal"></property>
+    
+        <!-- ⓑ 주 업무 클래스(→ target)의 인터페이스들 정보 제공 → 복수(list) -->
+        <!--    → 『proxyInterfaces』 -->
+        <property name="proxyInterfaces">
+            <list>
+                <value>com.test.spr.Calculator</value>
+                <!-- 여러개로 구성할 때 
+                <value>두 번째 인터페이스</value>
+                <value>세 번째 인터페이스</value>
+                -->
+            </list>
+        </property>
+        
+        <!-- ⓒ 보조 업무 클래스의 객체 정보 제공 → 복수(list) -->
+        <!--    → 『interceptorNames』 -->
+        <property name="interceptorNames">
+            <list>
+                <!-- 위에서 이미 구성해 둔 aspect 값으로 구성 -->
+                <!-- 여러 보조 업무 들로 적용 가능 -->
+                <!-- Around Advice -->
+                <value>aspect</value>
+                 <!-- 여러개로 구성할 때 
+                <value>두 번째 보조 업무</value>
+                <value>세 번째 보조 업무</value>
+                -->
+                
+                <!-- 추가~!!! -->
+                <!-- → SpringApp07 의 내용과 비교하여 추가되는 코드 -->
+                <!-- Before Advice : 순서는 상관이 없음. 사전적인 약속이 더 중요  -->
+                <value>before</value>
+                
+                <!-- 추가~!!! -->
+                <!-- → SpringApp08 의 내용과 비교하여 추가되는 코드 -->
+                <!-- After Throwing Advice -->
+                <value>afterThrowing</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
