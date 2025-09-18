@@ -101,7 +101,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     
     <div id="loading" style="display: none">
         기다려주세요....
-        <img alt="loading" src=<%=cp %>/images/loading_01.gif>
+        <img alt="loading" src="<%=cp %>/images/loading_01.gif">
     </div>
     
     <!-- AJAX 처리 결과 수신 -->

@@ -191,10 +191,25 @@
   - [spring-ai-starter-model-ollama 검색](https://www.google.com/search?q=spring-ai-starter-model-ollama&newwindow=1&sca_esv=ff65319911ef3232&ei=hF7KaIzYEaOA1e8P-PWRyQ4&start=0&sa=N&sstk=Ac65TH5Ulz9pquiWPaF_WuYWqtwdTYKPOTCKXt65VSDivd69zsgABWKGEmoh-TF8HvKHJ1j3WufeRAVmaeHsDBV8A60bTqby2ean0UyB34QZjtF4Cw4aSIvt-q3OOOCB5iqo&ved=2ahUKEwiMqtjFnt-PAxUjQPUHHfh6JOk4ChDy0wN6BAgJEAQ&biw=2260&bih=1198&dpr=0.8)
   - ⭐ [Spring AI로 LLM 연결하기(Feat: ollama)](https://zero-human.tistory.com/9)
   - [chrome rest api](https://www.google.com/search?q=chrome+rest+api&oq=chrome+rest+api+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIGCAUQABgeMgYIBhAAGB4yBggHEAAYHjIICAgQABgKGB4yBggJEAAYHtIBCDU3MTVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+  - [Building a Simple RAG application using Spring AI using Ollama](https://medium.com/@m.shivamrao/building-a-simple-rag-application-using-spring-ai-using-ollama-566aefcbdca0)
+  - [[오픈소스 AI] Qwen3 모델 사용법｜로컬 환경에서 직접 실행하기](https://marcus-story.tistory.com/180)
+  - [Qwen3: 더 깊게 사고하고, 더 빠르게 반응하는 대규모 언어 모델](https://discuss.pytorch.kr/t/qwen3/6880)
+  - [Ollama와 LangChain으로 RAG 구현하기 (with Python)](https://velog.io/@cathx618/Ollama%EC%99%80-LangChain%EC%9C%BC%EB%A1%9C-RAG-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-with-Python)
+  - [Building RAG Systems with LangChain4j and DeepSeek R1](https://medium.com/@giuseppetrisciuoglio/building-rag-systems-a-complete-guide-to-langchain4j-and-deepseek-r1-e5212aefb8d4)
+  - [생성형 AI, 그리고 LLM](https://brunch.co.kr/@enzfot/5)
+  - [생성형 AI, 이제는 성능 싸움이다! LLM(거대언어모델)의 모든 것](https://news.lginnotek.com/1387)
+  - [Ollama 설치 및 기초 사용방법 (feat 로컬 LLM 환경 구축해보기)](https://goddaehee.tistory.com/381)
+  - [Ollama 사용법 - 개인 로컬 환경에서 LLM 모델 실행 및 배포하기](https://lsjsj92.tistory.com/666)
+  - [생성형 AI 시대: 거대 언어 모델(LLM)의 기술 방향성](https://www.lgresearch.ai/blog/view?seq=351)
+  - [생성형 AI, LLM, 머신러닝, 딥러닝, 자연어처리··· AI 관련 용어 정리](https://blog.naver.com/fs0608/223167705267)
+  - [Building a Simple RAG application using Spring AI using Ollama](https://www.google.com/search?q=ollama+Qwen3&oq=ollama+Qwen3&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIJCAYQABgKGIAEMgcIBxAAGIAEMgkICBAAGAoYgAQyBwgJEAAYgATSAQgzMzAwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
   - []()
-  - []()
-  - []()
-  - []()
+
+### Vector Database
+- [Spring Boot 서비스에 AI 인공지능, LLM, Vector DB 적용하기](https://blog.leaphop.co.kr/blogs/89/Spring_Boot_%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90_AI_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5__LLM__Vector_DB_%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
+- [Spring AI 시리즈 7화 – RAG 구축하기 (2): Chroma 연동 실습과 문서 기반 검색](https://bcuts.tistory.com/454)
+- [[DB]. 벡터 데이터베이스(Vector database) ChromaDB 사용해보기](https://velog.io/@acdongpgm/DB.-%EB%B2%A1%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4Vector-database-ChromaDB-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0)
+- []()
 
 ### LangChain4j
 - [langchain4j.dev](https://docs.langchain4j.dev/)
