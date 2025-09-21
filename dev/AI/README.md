@@ -211,6 +211,21 @@
 - [[DB]. 벡터 데이터베이스(Vector database) ChromaDB 사용해보기](https://velog.io/@acdongpgm/DB.-%EB%B2%A1%ED%84%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4Vector-database-ChromaDB-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0)
 - []()
 
+### LangChain
+- [랭체인 시도해보기](https://myinbox.tistory.com/256)
+- [[가이드] Ollama + LangChain 실전 가이드 - ChatOllama 사용하기](https://velog.io/@euisuk-chung/%EA%B0%80%EC%9D%B4%EB%93%9C-Ollama-LangChain-%EC%8B%A4%EC%A0%84-%EA%B0%80%EC%9D%B4%EB%93%9C-ChatOllama-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+- [[LLM][RAG] RAG(Retrieval-Augmented Generation) 소개 및 설명](https://dwin.tistory.com/172)
+- [Ollama와 LangChain으로 RAG 구현하기 (with Python)](https://velog.io/@cathx618/Ollama%EC%99%80-LangChain%EC%9C%BC%EB%A1%9C-RAG-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-with-Python)
+- [LangChain이란? | 파이썬으로 LangChain 시작하기](https://littlefoxdiary.tistory.com/114)
+- [Ollama with FastAPI](https://medium.com/@simeon.emanuilov/ollama-with-fastapi-7f43cf532c43)
+- [FastAPI 환경 구축 with VSCode](https://jaehyeon-blog.tistory.com/25)
+- [AI로 글쓰기 & 요약 자동화 실습](https://twentytwentyone.tistory.com/434S)
+- []()
+- []()
+- []()
+
+
+
 ### LangChain4j
 - [langchain4j.dev](https://docs.langchain4j.dev/)
 - []()
