@@ -26,9 +26,17 @@ public class ReceiveController implements Controller
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
         request.setCharacterEncoding("utf-8");
+        
+        // 이전 페이지(→ Send.jsp)로부터 넘어온 데이터 수신
+        //-- userName
         String name = request.getParameter("userName");
+        String view = "/WEB-INF/view/Receive.jsp";
+        
+        // 뷰 페이지에 넘겨줄 데이터 구성
         mav.addObject("name", name);
-        mav.setViewName("/WEB-INF/view/Receive.jsp");
+        
+        // 데이터 넘겨줄 뷰 페이지 지정
+        mav.setViewName(view);
         //-------------------------------------------------------
         return mav;
     }

@@ -30,7 +30,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
 </div>
 
 <div>
-<h2>안녕하세요, <span style="color: blue;">${name }</span>님 반갑습니다.</h2>
+<h2>안녕하세요, <span style="color: blue;font-size:16pt;">${name }</span>님 반갑습니다.</h2>
 </div>
 
 </body>

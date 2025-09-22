@@ -1,6 +1,6 @@
 /**
  * ========================================
- *   SendController.java
+ *   SampleController.java
  *    - 사용자 정의 컨트롤러 클래스
  * ========================================
  */
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.Controller;
 // ※ Spring MVC 의 『Controller』 인터페이스를 구현하는 방법을 통해
 //    사용자 정의 컨트롤러 클래스를 구성할 수 있도록 한다.
 
-public class SendController implements Controller
+public class SampleController implements Controller
 {
 
     @Override
@@ -26,7 +26,6 @@ public class SendController implements Controller
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
         
-        mav.setViewName("send.do");
         
         //-------------------------------------------------------
         return mav;
