@@ -17,14 +17,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 
 public class EmployeeDAO implements IEmployeeDAO
 {
-    private SimpleDriverDataSource dataSource;
+    private DataSource dataSource;
     
-    public EmployeeDAO(SimpleDriverDataSource dataSource)
+    
+    public void setDataSource(DataSource dataSource)
     {
         this.dataSource = dataSource;
     }
@@ -43,21 +46,23 @@ public class EmployeeDAO implements IEmployeeDAO
         
         while (rs.next()) {
             Employee emp = new Employee();
+            
             emp.setEmployeeId(rs.getString(1));
             emp.setName(rs.getString(2));
-            emp.setBirthday(rs.getString(3));
-            emp.setLunar(rs.getInt(4));
-            emp.setLunarName(rs.getString(5));
-            emp.setTelephone(rs.getString(6));
-            emp.setDepartmentId(rs.getString(7));
-            emp.setDepartmentName(rs.getString(8));
-            emp.setPositionId(rs.getString(9));
-            emp.setPositionName(rs.getString(10));
-            emp.setRegionId(rs.getString(11));
-            emp.setRegionName(rs.getString(12));
-            emp.setBasicPay(rs.getInt(13));
-            emp.setExtraPay(rs.getInt(14));
-            emp.setPay(rs.getInt(15));
+            emp.setSsn(rs.getString(3));
+            emp.setBirthday(rs.getString(4));
+            emp.setLunar(rs.getInt(5));
+            emp.setLunarName(rs.getString(6));
+            emp.setTelephone(rs.getString(7));
+            emp.setDepartmentId(rs.getString(8));
+            emp.setDepartmentName(rs.getString(9));
+            emp.setPositionId(rs.getString(10));
+            emp.setPositionName(rs.getString(11));
+            emp.setRegionId(rs.getString(12));
+            emp.setRegionName(rs.getString(13));
+            emp.setBasicPay(rs.getInt(14));
+            emp.setExtraPay(rs.getInt(15));
+            emp.setPay(rs.getInt(16));
             
             employeeList.add(emp);
         }
@@ -183,15 +188,26 @@ public class EmployeeDAO implements IEmployeeDAO
         int result = 0;
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
-        sb.append("");
-        sb.append("");
-        sb.append("");
-        sb.append("");
-        sb.append("");
-        sb.append("");
+        sb.append("INSERT INTO EMPLOYEE(EMPLOYEEID, NAME, SSN1, SSN2, BIRTHDAY, LUNAR");
+        sb.append("  , TELEPHONE, DEPARTMENTID, POSITIONID, REGIONID");
+        sb.append("  , BASICPAY, EXTRAPAY)");
+        sb.append(" VALUES(EMPLOYEESEQ.NEXTVAL, ?, ?, CRYPTPACK.ENCRYPT(?, ?)");
+        sb.append("  , TO_DATE(?, 'YYYY-MM-DD'), ?, ?, ?, ?, ?");
+        sb.append("  , ?, ?)");
         
         PreparedStatement pstmt = conn.prepareStatement(sb.toString());
-        pstmt.setInt(1, Integer.parseInt(employeeId));
+        pstmt.setString(1, employee.getName());
+        pstmt.setString(2, employee.getSsn1());
+        pstmt.setString(3, employee.getSsn2());
+        pstmt.setString(4, employee.getSsn2());
+        pstmt.setString(5, employee.getBirthday());
+        pstmt.setInt(6, employee.getLunar());
+        pstmt.setString(7, employee.getTelephone());
+        pstmt.setInt(8, Integer.parseInt(employee.getDepartmentId()));
+        pstmt.setInt(9, Integer.parseInt(employee.getPositionId()));
+        pstmt.setInt(10, Integer.parseInt(employee.getRegionId()));
+        pstmt.setInt(11, employee.getBasicPay());
+        pstmt.setInt(12, employee.getExtraPay());
         
         result = pstmt.executeUpdate();
         
