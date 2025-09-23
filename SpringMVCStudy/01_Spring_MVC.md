@@ -518,7 +518,7 @@
 
 - ○ 사전 작업
    - → 테이블 및 시퀀스, 주요 쿼리문, 샘플 데이터 등 구성
-     - EMPLOYEES → 직원
+     - EMPLOYEE  → 직원
      - REGION    → 지역
      - DEPARTMEN → 부서
      - POSITION  → 직위
@@ -582,16 +582,16 @@
    - #00. mvcApp04_scott.sql 
      - → 데이터베이스 관련 객체 구성 및 실습 데이터 준비
    - #01. Employee.java
-     - → DTO 계층.  
+     - DTO 개념 활용 (→ DTO 계층)
      - 직원 데이터 자료형 클래스.
    - #02. Department.java 
-     - → DTO 계층.  
+     - DTO 개념 활용 (→ DTO 계층)
      - 부서 데이터 자료형 클래스.
    - #03. Region.java 
-     - → DTO 계층.  
+     - DTO 개념 활용 (→ DTO 계층)
      - 지역 데이터 자료형 클래스.
    - #04. Position.java 
-     - → DTO 계층.  
+     - DTO 개념 활용 (→ DTO 계층)
      - 직위 데이터 자료형 클래스.
    - #05. IEmployeeDAO.java 
      - → 인터페이스.
@@ -603,7 +603,7 @@
      - → 인터페이스.
    - #09 EmployeeDAO.java 
       - → 데이터베이스 액션 처리 클래스
-      - 직원 데이터 CRUD 액션
+      - 직원 데이터 CRUD 액션(직원 데이터 출력, 입력, 수정, 삭제 액션)
       - Connection 객체에 대한 의존성 주입 준비
       - (인터페이스 속성 구성 / setter 구성)
 
