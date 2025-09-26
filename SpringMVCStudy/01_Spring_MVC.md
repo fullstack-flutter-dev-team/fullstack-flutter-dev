@@ -641,12 +641,16 @@
 
    - #17. EmployeeListController.java
        - → 사용자 정의 컨트롤러 클래스
-       - (employeelist.action)         리스트 출력 액션
-       - DAO 객체에 대한 의존성 주입 
+       - 직원 리스트 컨트롤러 
+       - 리스트 페이지 요청에 대한 액션 처리
+       - (employeelist.action) 리스트 출력 액션
        - (의존성 주입을 위한 준비 필요)
+       - DAO 객체에 대한 의존성 주입(DI)을 위한 준비
+         - 인터페이스 형태의 자료형 속성으로 구성
+         - setter 구성 
 
    - #17. IMemberDAO.java → 인터페이스
-   - MemberDAO.java 
+     - MemberDAO.java 
      - → 데이터베이스 액션 처리 클래스
       - Connection 객체에 대한 의존성 주입
       - (의존성 주입을 위한 준비 필요)
@@ -671,11 +675,14 @@
    - #22. AjaxController.java
       - (ajax.action)
       - AJAX 요청 컨트롤러
+  
+   - #23. Ajax.jsp
+      - 
 
    - #23. EmployeeInsertController.java
       - (employeeinsert.action)
       - 직원 데이터 입력 액션 컨트롤러
-  
+    - 
    - #24. EmployeeUpdateForm.jsp
      - 직원 데이터 수정 폼 뷰 페이지
 

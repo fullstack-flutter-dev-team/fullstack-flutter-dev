@@ -24,20 +24,24 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 public class EmployeeDAO implements IEmployeeDAO
 {
+    // 주요 속성 구성 → 인터페이스 형태
     private DataSource dataSource;
     
-    
+    // setter 구성
     public void setDataSource(DataSource dataSource)
     {
         this.dataSource = dataSource;
     }
 
+    // 직원 리스트
     @Override
     public ArrayList<Employee> list() throws SQLException
     {
         ArrayList<Employee> employeeList = new ArrayList<Employee>();
         StringBuffer sb = new StringBuffer();
         Connection conn = dataSource.getConnection();
+        
+        // EMPLOYEEVIEW 테이블 조회
         sb.append("SELECT * FROM EMPLOYEEVIEW");
         
         PreparedStatement pstmt = conn.prepareStatement(sb.toString());
@@ -74,11 +78,14 @@ public class EmployeeDAO implements IEmployeeDAO
         return employeeList;
     }
 
+    // 지역 리스트
     @Override
     public ArrayList<Region> regionList() throws SQLException
     {
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
+        
+        // REGIONVIEW 테이블 조회
         sb.append("SELECT * FROM REGIONVIEW");
         ArrayList<Region> regionList = new ArrayList<Region>();
         
@@ -105,29 +112,30 @@ public class EmployeeDAO implements IEmployeeDAO
     @Override
     public ArrayList<Department> departmentList() throws SQLException
     {
+        ArrayList<Department> deptList = new ArrayList<Department>();
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
-        sb.append("SELECT * FROM DEPARTMENTVIEW");
-        ArrayList<Department> departmentList = new ArrayList<Department>();
+        sb.append("SELECT DEPARTMENTID, DEPARTMENTNAME, DELCHECK");
+        sb.append(" FROM DEPARTMENTVIEW");
+        sb.append(" ORDER BY DEPARTMENTID");
         
         PreparedStatement pstmt = conn.prepareStatement(sb.toString());
-        
         ResultSet rs = pstmt.executeQuery();
         
         while (rs.next()) {
-            Department department = new Department();
-            department.setDepartmentId(rs.getString(1));
-            department.setDepartmentName(rs.getString(2));
-            department.setDelCheck(rs.getInt(3));
+            Department dept = new Department();
+            dept.setDepartmentId(rs.getString(1));
+            dept.setDepartmentName(rs.getString(2));
+            dept.setDelCheck(rs.getInt(3));
             
-            departmentList.add(department);
+            deptList.add(dept);
         }
         
         rs.close();
         pstmt.close();
         conn.close();
         
-        return departmentList;
+        return deptList;
     }
 
     @Override
@@ -146,7 +154,8 @@ public class EmployeeDAO implements IEmployeeDAO
             Position position = new Position();
             position.setPositionId(rs.getString(1));
             position.setPositionName(rs.getString(2));
-            position.setDelCheck(rs.getInt(3));
+            position.setMinBasicPay(rs.getInt(3));
+            position.setDelCheck(rs.getInt(4));
             
             positionList.add(position);
         }
@@ -158,6 +167,7 @@ public class EmployeeDAO implements IEmployeeDAO
         return positionList;
     }
 
+    // 직위 아이디에 따른 최소 기본급 확인/검색
     @Override
     public int getMinBasicPay(String positionId) throws SQLException
     {
@@ -182,6 +192,8 @@ public class EmployeeDAO implements IEmployeeDAO
         return result;
     }
 
+    
+    // 직원 데이터 추가
     @Override
     public int add(Employee employee) throws SQLException
     {
@@ -217,6 +229,7 @@ public class EmployeeDAO implements IEmployeeDAO
         return result;
     }
 
+    // 직원 데이터 삭제
     @Override
     public int remove(String employeeId) throws SQLException
     {
@@ -236,6 +249,7 @@ public class EmployeeDAO implements IEmployeeDAO
         return result;
     }
 
+    // 직원 데이터 수정
     @Override
     public int modify(Employee employee) throws SQLException
     {
@@ -279,6 +293,7 @@ public class EmployeeDAO implements IEmployeeDAO
         return result;
     }
 
+    // 아이디로 직원 검색
     @Override
     public Employee searchId(String employeeId) throws SQLException
     {
@@ -320,10 +335,20 @@ public class EmployeeDAO implements IEmployeeDAO
         return employee;
     }
 
+    // 일반 직원 로그인
     @Override
     public String login(String id, String pw) throws SQLException
     {
-        String resutName = "";
+        //String resutName = "";
+        String resutName = null;
+        // 【check~!!!】
+        //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+        // 결과값으로 반환할 값을 절대로 빈 문자열로 하지 말고
+        // null 로 해야한다!!
+        // 반환한 것이 null 일 때 로그인 실패를 처리해야 하는데
+        // 빈 문자열이 들어가 있으면 null 이 아니므로~!!!
+        //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+        
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         
@@ -351,10 +376,20 @@ public class EmployeeDAO implements IEmployeeDAO
         return resutName;
     }
 
+    // 관리자 로그인
     @Override
     public String loginAdmin(String id, String pw) throws SQLException
     {
-        String resutName = "";
+        //String resutName = "";
+        String resutName = null;
+        // 【check~!!!】
+        //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+        // 결과값으로 반환할 값을 절대로 빈 문자열로 하지 말고
+        // null 로 해야한다!!
+        // 반환한 것이 null 일 때 로그인 실패를 처리해야 하는데
+        // 빈 문자열이 들어가 있으면 null 이 아니므로~!!!
+        //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+        
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         
