@@ -42,19 +42,34 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <property name="password" value="tiger"></property>
     </bean>
     
-    <!-- 테스트 용도 -->
-    <bean name="/test.action" class="com.test.mvc.TestController">
-        <property name="dao" ref="employeeDAO"></property>
-    </bean>
     
     <!-- EmployeeDAO 등록 -->
     <bean id="employeeDAO" class="com.test.mvc.EmployeeDAO">
         <property name="dataSource" ref="localDataSource"></property>
     </bean>
-
     
-    <!-- 직원 리스트 조회 -->
+    <!-- PositionDAO 등록 -->
+<!--     <bean id="positionDAO" class="com.test.mvc.PositionDAO"> -->
+<!--         <property name="dataSource" ref="localDataSource"></property> -->
+<!--     </bean> -->
+
+    <!-- 테스트 용도 -->
+    <bean name="/test.action" class="com.test.mvc.TestController">
+        <property name="dao" ref="employeeDAO"></property>
+    </bean>
+    
+    <!-- EmployeeListController 등록 → 직원 리스트 조회 -->
     <bean name="/employeelist.action" class="com.test.mvc.EmployeeListController">
+        <property name="employeeDAO" ref="employeeDAO"></property>
+    </bean>
+    
+    <!-- EmployeeInsertFormController 등록 → 직원 등록 -->
+    <bean name="/employeeinsertform.action" class="com.test.mvc.EmployeeInsertFormController">
+        <property name="employeeDAO" ref="employeeDAO"></property>
+    </bean>
+    
+    <!--  AjaxController 등록 →  -->
+    <bean name="/ajax.action" class="com.test.mvc.AjaxController">
         <property name="employeeDAO" ref="employeeDAO"></property>
     </bean>
 
