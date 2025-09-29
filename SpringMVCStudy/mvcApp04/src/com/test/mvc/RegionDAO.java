@@ -21,11 +21,13 @@ import javax.sql.DataSource;
 public class RegionDAO implements IRegionDAO
 {
     // 주요 속성 구성
-    private DataSource datasource;
+    private DataSource dataSource;
 
-    public void setDatasource(DataSource datasource)
+
+
+    public void setDataSource(DataSource dataSource)
     {
-        this.datasource = datasource;
+        this.dataSource = dataSource;
     }
 
     // 지역 리스트 조회
@@ -37,7 +39,7 @@ public class RegionDAO implements IRegionDAO
          */
         
         ArrayList<Region> regList  = new ArrayList<Region>();
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("SELECT REGIONID, REGIONNAME, DELCHECK");
         sb.append(" FROM REGIONVIEW");
@@ -68,7 +70,7 @@ public class RegionDAO implements IRegionDAO
     {
         // INSERT INTO REGION(REGIONID, REGIONNAME) VALUES(REGIONSEQ.NEXTVAL, '강원')
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO REGION(REGIONID, REGIONNAME) ");
         sb.append(" VALUES(REGIONSEQ.NEXTVAL, ?)");
@@ -94,7 +96,7 @@ public class RegionDAO implements IRegionDAO
          * DELETE FROM REGION WHERE REGIONID=3;
          */
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("DELETE");
         sb.append(" FROM REGION");
@@ -119,7 +121,7 @@ public class RegionDAO implements IRegionDAO
          * UPDATE REGION SET REGIONNAME='제주' WHERE REGIONID=4;
          */
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE REGION");
         sb.append(" SET REGIONNAME=?");

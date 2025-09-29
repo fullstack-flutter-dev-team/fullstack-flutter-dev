@@ -18,7 +18,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EmployeeInsertForm.jsp</title>
+<title>EmployeeUpdateForm.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
@@ -116,9 +116,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
 
 <!-- 
 ===============================================
-       - #21. 
-          - EmployeeInsertForm.jsp
-          - 직원 데이터 입력 폼 뷰 페이지
+       - #24. 
+          - EmployeeUpdateForm.jsp
+          - 직원 데이터 수정 폼 뷰 페이지
           - 관리자만 접근 허용
 ===============================================
 -->
@@ -136,43 +136,59 @@ String COLOR_BLUE     = "\u001B[34m" ;
         <h1>[ 직원 추가 (관리자 전용) ]</h1>
         <hr>
         
-        <form action="employeeinsert.action" method="post" id="employeeForm">
+        <form action="employeeupdate.action" method="post" id="employeeForm">
             <table>
+                <!-- 기본 입력 폼과 비교했을 때 추가되는 항목 -->
+                <!-- → 사원번호 -->
+                <tr>
+                    <th>사원번호</th>
+                    <td>
+                        <input type="text" id="employeeId" name="employeeId" placeholder="사원번호" readonly="readonly" value="${employee.employeeId }">
+                    </td>
+                </tr>
                 <tr>
                     <th>이름</th>
                     <td>
-                        <input type="text" id="name" name="name" placeholder="사원명">
+                        <input type="text" id="name" name="name" placeholder="사원명" value="${employee.name }">
                     </td>
                 </tr>
                 <tr>
                     <th>주민번호</th>
                     <td>
                         <input type="text" id="ssn1" name="ssn1" style="width: 110px;" maxlength="6"
-                            placeholder="앞 6자리">
+                            placeholder="앞 6자리" value="${employee.ssn1 }">
                             -
                         <input type="password" id="ssn2" name="ssn2" style="width: 160px;" maxlength="7"
-                            placeholder="뒤 7자리">
+                            placeholder="뒤 7자리" value="${employee.ssn2 }">
                     </td>
                 </tr>
                 <tr>
                     <th>생년월일</th>
                     <td>
-                        <input type="text" id="birthday" name="birthday" placeholder="생년월일">
+                        <input type="text" id="birthday" name="birthday" placeholder="생년월일" value="${employee.birthday }">
                     </td>
                 </tr>
                 <tr>
                     <th>양/음력</th>
                     <td>
+                    <c:if test = "${employee.lunar == 0}">
                         <input type="radio" value="0" name="lunar" id="lunar0" checked="checked">
                         <label for="lunar0">양력</label>
                         <input type="radio" value="1" name="lunar" id="lunar1">
                         <label for="lunar1">음력</label>
+                    </c:if>
+                    <c:if test = "${employee.lunar == 1}">
+                        <input type="radio" value="0" name="lunar" id="lunar0">
+                        <label for="lunar0">양력</label>
+                        <input type="radio" value="1" name="lunar" id="lunar1" checked="checked">
+                        <label for="lunar1">음력</label>
+                    </c:if>
                     </td>
                 </tr>
                 <tr>
                     <th>전화번호</th>
                     <td>
-                        <input type="tel" id="telephone" name="telephone" placeholder="전화번호">
+                        <input type="tel" id="telephone" name="telephone" placeholder="전화번호" value="${employee.telephone}">
                     </td>
                 </tr>
                 <tr>
@@ -180,7 +196,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
                     <td>
                         <select id="regionId" name="regionId">
                             <c:forEach var="region" items="${regionList }">
-                                <option value="${region.regionId }">${region.regionName }</option>
+                                <c:if test = "${employee.regionId == region.regionId}">
+                                    <option value="${region.regionId }" selected="selected">${region.regionName }</option>
+                                </c:if>
+                                <c:if test = "${employee.regionId != region.regionId}">
+                                    <option value="${region.regionId }">${region.regionName }</option>
+                                </c:if>
                             </c:forEach>
                             <!-- 
                             <option value="1">관악구</option>
@@ -197,7 +218,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
                     <td>
                         <select id="departmentId" name="departmentId">
                             <c:forEach var="department" items="${departmentList }">
-                                <option value="${department.departmentId }">${department.departmentName }</option>
+                                <c:if test = "${employee.departmentId == department.departmentId}">
+                                    <option value="${department.departmentId }" selected="selected">${department.departmentName }</option>
+                                </c:if>
+                                <c:if test = "${employee.departmentId != department.departmentId}">
+                                    <option value="${department.departmentId }">${department.departmentName }</option>
+                                </c:if>
                             </c:forEach>
                             <!-- 
                             <option value="1">축구부</option>
@@ -213,7 +239,14 @@ String COLOR_BLUE     = "\u001B[34m" ;
                     <td>
                         <select id="positionId" name="positionId">
                             <c:forEach var="position" items="${positionList }">
-                                <option value="${position.positionId }">${position.positionName }</option>
+                              <%-- <c:if test = "${employee.positionId == position.positionId}">
+                                 <option value="${position.positionId }" selected="selected">${position.positionName }</option>
+                                </c:if>
+                                <c:if test = "${employee.positionId != position.positionId}">
+                                 <option value="${position.positionId }">${position.positionName }</option>
+                                </c:if> 
+                             --%>
+                                <option value="${position.positionId }" ${employee.positionId == position.positionId ? "selected=\"selected\"" : "" } }>${position.positionName }</option>
                             </c:forEach>
                             <!-- 
                             <option value="1">팀장</option>
@@ -228,14 +261,14 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 <tr>
                     <th>기본급</th>
                     <td>
-                        <input type="text" id="basicPay" name="basicPay">
+                        <input type="text" id="basicPay" name="basicPay" value="${employee.basicPay }">
                         (최소 기본급 <span id="minBasicPay" style="color: red; font-weight: bold;">0</span>원)
                     </td>
                 </tr>
                 <tr>
                     <th>수당</th>
                     <td>
-                        <input type="text" id="extraPay" name="extraPay">
+                        <input type="text" id="extraPay" name="extraPay" value="${employee.extraPay }">
                     </td>
                 </tr>
                 
@@ -244,7 +277,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
                         <br><br>
                         
                         <button type="button" class="btn" id="submitBtn"
-                        style="width: 40%; height: 50%;">직원 추가</button>
+                        style="width: 40%; height: 50%;">직원 변경</button>
                         
                         <button type="button" class="btn" id="listBtn"
                             style="width: 40%; height: 50%;"

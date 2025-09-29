@@ -22,6 +22,27 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <title>EmployeeList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(function() {
+        // 수정 버튼 클릭 시 액션 처리
+        $(".updateBtn").click(function() {
+            console.log(">>>> updateBtn : " + $(this).val());
+            
+            // 수정 폼 페이지 요청
+            //-- 요청하며 employeeId 넘겨주기
+            $(location).attr("href", "employeeupdateform.action?employeeId=" + $(this).val());
+            //-- location.href="...";
+        });
+        
+        // 삭제 버튼 클릭 시 액션 처리
+        $(".deleteBtn").click(function() {
+            console.log(">>>> deleteBtn : " + $(this).val());
+            $(location).attr("href", "employeedeleteform.action?employeeId=" + $(this).val());
+        });
+    });// $(function() {
+
+</script>
 
 </head>
 <body>

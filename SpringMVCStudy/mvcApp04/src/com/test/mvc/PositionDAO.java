@@ -26,18 +26,20 @@ public class PositionDAO implements IPositionDAO
 {
 
     // 주요 속성 구성 
-    private DataSource datasource;
+    private DataSource dataSource;
     
-    public void setDatasource(DataSource datasource)
+    
+
+    public void setDataSource(DataSource dataSource)
     {
-        this.datasource = datasource;
+        this.dataSource = dataSource;
     }
 
     @Override
     public ArrayList<Position> list() throws SQLException
     {
         ArrayList<Position> posList = new ArrayList<Position>();
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT POSITIONID, POSITIONNAME, MINBASICPAY, DELCHECK");
         sql.append(" FROM POSITIONVIEW");
@@ -71,7 +73,7 @@ public class PositionDAO implements IPositionDAO
          * VALUES(POSITIONSEQ.NEXTVAL, '상무', 5000000)
          */
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sql = new StringBuffer();
         sql.append("INSERT INTO POSITION(POSITIONID, POSITIONNAME, MINBASICPAY) ");
         sql.append("  VALUES(POSITIONSEQ.NEXTVAL, ?, ?)");
@@ -92,7 +94,7 @@ public class PositionDAO implements IPositionDAO
     public int remove(String positionId) throws SQLException
     {
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sql = new StringBuffer();
         sql.append("DELETE FROM POSITION WHERE POSITIONID=? ");
         
@@ -111,7 +113,7 @@ public class PositionDAO implements IPositionDAO
     public int modify(Position position) throws SQLException
     {
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sql = new StringBuffer();
         
         sql.append("UPDATE POSITION");

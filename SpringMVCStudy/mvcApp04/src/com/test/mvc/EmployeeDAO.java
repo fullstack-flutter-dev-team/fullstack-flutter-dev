@@ -257,7 +257,7 @@ public class EmployeeDAO implements IEmployeeDAO
         Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE EMPLOYEE");
-        sb.append("SET NAME=?");
+        sb.append(" SET NAME=?");
         sb.append(" , BIRTHDAY=TO_DATE(?, 'YYYY-MM-DD')");
         sb.append("  , LUNAR=?");
         sb.append("  , TELEPHONE=?");

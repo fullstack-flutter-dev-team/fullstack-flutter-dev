@@ -21,20 +21,18 @@ import javax.sql.DataSource;
 public class DepartmentDAO implements IDepartmentDAO
 {
     // 주요 속성 구성 → 인터페이스 형태
-    private DataSource datasource;
+    private DataSource dataSource;
 
     // setter 구성
-    public void setDatasource(DataSource datasource)
-    {
-        this.datasource = datasource;
-    }
+ 
+
 
     // 전체 부서 리스트 조회
     @Override
     public ArrayList<Department> list() throws SQLException
     {
         ArrayList<Department> deptList = new ArrayList<Department>();
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("SELECT DEPARTMENTID, DEPARTMENTNAME, DELCHECK");
         sb.append(" FROM DEPARTMENTVIEW");
@@ -59,12 +57,19 @@ public class DepartmentDAO implements IDepartmentDAO
         return deptList;
     }
 
+
+    public void setDataSource(DataSource dataSource)
+    {
+        this.dataSource = dataSource;
+    }
+
+
     // 부서 데이터 등록(입력, 추가)
     @Override
     public int add(Department department) throws SQLException
     {
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO DEPARTMENT(DEPARTMENTID, DEPARTMENTNAME) ");
         sb.append(" VALUES(DEPARTMENTSEQ.NEXTVAL, ?)");
@@ -84,7 +89,7 @@ public class DepartmentDAO implements IDepartmentDAO
     public int remove(String departmentId) throws SQLException
     {
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("DELETE");
         sb.append(" FROM DEPARTMENT");
@@ -105,7 +110,7 @@ public class DepartmentDAO implements IDepartmentDAO
     public int modify(Department department) throws SQLException
     {
         int result = 0;
-        Connection conn = datasource.getConnection();
+        Connection conn = dataSource.getConnection();
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE DEPARTMENT");
         sb.append(" SET DEPARTMENTNAME=?");
