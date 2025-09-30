@@ -679,44 +679,57 @@
    - #23. Ajax.jsp
       - 
 
-   - #23. EmployeeInsertController.java
+   - #24. EmployeeInsertController.java
       - (employeeinsert.action)
       - 직원 데이터 입력 액션 컨트롤러
     - 
-   - #24. EmployeeUpdateForm.jsp
+   - #25. EmployeeUpdateForm.jsp
      - 직원 데이터 수정 폼 뷰 페이지
 
-   - #25. EmployeeUpdateFormController.java
+   - #26. EmployeeUpdateFormController.java
      - (employeeupdateform.action)
      - 직원 데이터 수정 폼 컨트롤러
 
-   - #26. EmployeeUpdateController.java
+   - #27. EmployeeUpdateController.java
      - (employeeupdate.action)
      - 직원 데이터 수정 액션 컨트롤러
   
-   - #27. EmployeeDeleteController.java
+   - #28. EmployeeDeleteController.java
      - (employeedelete.action)
      - 직원 데이터 삭제 액션 컨트롤러
 
-   - #28. LoginForm.jsp
+   - #29. LoginForm.jsp
      - 관리자, 일반사원 로그인 폼 뷰 페이지
      - ID(employeeId), PW(주민번호 뒤 7자리) 입력
 
-   - #29. LoginFormController.java
+   - #30. LoginFormController.java
      - 로그인 폼 컨트롤러
      - loginform.action
   
-   - #30. LoginController.java
+   - #31. LoginController.java
      - 로그인 액션 컨트롤러
      - login.action
+```
+로그인 →  관리자   → employeelist.action
+         일반직원  → emplist.action
+```
 
    - employeelist.action → 이클립스 실행 과정에서 요청을 위한 빈 파일
 
    - Ajax.jsp
 
-   - LogoutController.java
+   - #32. LogoutController.java
+     - 로그아웃 액션 컨트롤러
+     - logout.action
 
-   - EmpList.jsp
+   - #33. EmpList.jsp
+     - 직원 리스트 출력 페이지
+     - 일반 직원이 접근하는 직원 데이터 출력 페이지
+     - emplist.action
+
+   - #34. EmpListController.java
+     - 직원 리스트 출력 액션 컨트롤러
+     - emplist.action
   
   - dispatcher-servlet.xml 
       - → 컨트롤러 객체 등록

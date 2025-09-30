@@ -33,7 +33,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
 ------------------------------->
 
 <!-- 테스트 -->
-<%-- <span>${sessionScope.admin==null ? "normal" : "admin" }</span> --%>
+<span>${sessionScope.admin==null ? "normal" : "admin" }</span>
 
 <div id="menu">
     <ul>
@@ -55,11 +55,10 @@ String COLOR_BLUE     = "\u001B[34m" ;
         </li> 
         -->
 
-        <%--
         <c:choose>
             <c:when test="${sessionScope.admin==null}">
                 <li>
-                    <a href="employeelist.action" class="menu">직원 정보</a>
+                    <a href="emplist.action" class="menu">직원 정보</a>
                 </li>
                 <li>
                     <a href="reglist.action" class="menu">지역 정보</a>
@@ -72,7 +71,6 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 </li>
             </c:when>   
             <c:otherwise>          
-          --%>
                 <li>
                     <a href="employeelist.action" class="menu">직원 관리</a>
                 </li>
@@ -85,10 +83,8 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 <li>
                     <a href="positionlist.action" class="menu">직위 관리</a>
                 </li>
-        <%--               
             </c:otherwise>
         </c:choose>
-        --%>
 
         <li>
             <a href="logout.action" class="menu">로그 아웃</a>

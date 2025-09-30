@@ -67,6 +67,7 @@ public class EmployeeDAO implements IEmployeeDAO
             emp.setBasicPay(rs.getInt(14));
             emp.setExtraPay(rs.getInt(15));
             emp.setPay(rs.getInt(16));
+            emp.setGrade(rs.getInt(17));
             
             employeeList.add(emp);
         }
@@ -407,7 +408,7 @@ public class EmployeeDAO implements IEmployeeDAO
         ResultSet rs = pstmt.executeQuery();
         
         while (rs.next()) {
-            resutName = rs.getString(1);
+            resutName = rs.getString("NAME");
         }
         
         rs.close();

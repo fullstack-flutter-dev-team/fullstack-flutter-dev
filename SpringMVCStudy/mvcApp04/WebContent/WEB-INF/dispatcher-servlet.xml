@@ -72,11 +72,17 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <property name="dao" ref="employeeDAO"></property>
     </bean>
     
+    <!-- Employee 관련 컨트롤러 등록 -->
     <!-- EmployeeListController 등록 → 직원 리스트 조회 -->
     <bean name="/employeelist.action" class="com.test.mvc.EmployeeListController">
         <property name="employeeDAO" ref="employeeDAO"></property>
     </bean>
     
+    <!--  EmpListController 등록 →  -->
+    <bean name="/emplist.action" class="com.test.mvc.EmpListController">
+        <property name="employeeDAO" ref="employeeDAO"></property>
+    </bean>
+
     <!-- EmployeeInsertFormController 등록 → 직원 등록 -->
     <bean name="/employeeinsertform.action" class="com.test.mvc.EmployeeInsertFormController">
         <property name="employeeDAO" ref="employeeDAO"></property>
@@ -104,4 +110,107 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <bean name="/employeeupdate.action" class="com.test.mvc.EmployeeUpdateController">
         <property name="employeeDAO" ref="employeeDAO"></property>
     </bean>
+    
+    <!--  EmployeeDeleteController 등록 →  -->
+    <bean name="/employeedelete.action" class="com.test.mvc.EmployeeDeleteController">
+        <property name="employeeDAO" ref="employeeDAO"></property>
+    </bean>
+
+    <!--  LoginFormController 등록 →  -->
+    <bean name="/loginform.action" class="com.test.mvc.LoginFormController"></bean>
+
+    <!--  LoginController 등록 →  -->
+    <bean name="/login.action" class="com.test.mvc.LoginController">
+        <property name="employeeDAO" ref="employeeDAO"></property>
+    </bean>
+    
+    <!--  LogoutController 등록 →  -->
+    <bean name="/logout.action" class="com.test.mvc.LogoutController"></bean>
+    
+    
+    <!-- Region 관련 컨트롤러 등록 -->
+    <!-- RegionListController 등록 → 지역 리스트 조회 -->
+    <bean name="/regionList.action" class="com.test.mvc.RegionListController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- RegionInsertFormController 등록 → 지역 등록폼 -->
+    <bean name="/regionInsertFrom.action" class="com.test.mvc.RegionInsertFormController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- RegionInsertController 등록 → 지역 등록 -->
+    <bean name="/regionInsert.action" class="com.test.mvc.RegionInsertController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- RegionUpdateFormController 등록 → 지역 변경 조회 -->
+    <bean name="/regionUpdateForm.action" class="com.test.mvc.RegionUpdateFormController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- RegionUpdateController 등록 → 지역 변경 조회 -->
+    <bean name="/regionUpdate.action" class="com.test.mvc.RegionUpdateController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+    <!-- RegionDeleteController 등록 → 지역 삭제 조회 -->
+    <bean name="/regionDelete.action" class="com.test.mvc.RegionDeleteController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- Department 관련 컨트롤러 등록 -->
+    <!-- DepartmentListController 등록 → 부서 리스트 조회 -->
+    <bean name="/departList.action" class="com.test.mvc.DepartmentListController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+
+    <!-- DepartmentInsertFormController 등록 → 부서 등록폼 -->
+    <bean name="/departInsertForm.action" class="com.test.mvc.DepartmentInsertFormController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+
+    <!-- DepartmentInsertController 등록 → 부서 등록 -->
+    <bean name="/departInsert.action" class="com.test.mvc.DepartmentInsertController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+
+    <!-- DepartmentUpdateFormController 등록 → 부서 변경 조회 -->
+    <bean name="/departUpdateForm.action" class="com.test.mvc.DepartmentUpdateFormController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+    <!-- DepartmentUpdateController 등록 → 부서 변경 조회 -->
+    <bean name="/departUpdate.action" class="com.test.mvc.DepartmentUpdateController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+    <!-- DepartmentDeleteController 등록 → 부서 삭제 조회 -->
+    <bean name="/departDelete.action" class="com.test.mvc.DepartmentDeleteController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+
+    <!-- Position 관련 컨트롤러 등록 -->
+     <!-- PositionListController 등록 → 직위 리스트 조회 -->
+    <bean name="/positionList.action" class="com.test.mvc.PositionListController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+    <!-- PositionInsertFormController 등록 → 직위 변경폼-->
+    <bean name="/positionInsertForm.action" class="com.test.mvc.PositionInsertFormController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+    <!-- PositionInsertController 등록 → 직위 변경폼-->
+    <bean name="/positionInsert.action" class="com.test.mvc.PositionInsertController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+    <!-- PositionUpdateFormController 등록 → 직위 변경폼-->
+    <bean name="/positionUpdateForm.action" class="com.test.mvc.PositionUpdateFormController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+    <!-- PositionUpdateController 등록 → 직위 변경 -->
+    <bean name="/positionUpdate.action" class="com.test.mvc.PositionUpdateController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+    <!-- PositionDeleteController 등록 → 직위 삭제 조회 -->
+    <bean name="/positionDelete.action" class="com.test.mvc.PositionDeleteController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+
 </beans>

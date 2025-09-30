@@ -38,7 +38,13 @@ String COLOR_BLUE     = "\u001B[34m" ;
         // 삭제 버튼 클릭 시 액션 처리
         $(".deleteBtn").click(function() {
             console.log(">>>> deleteBtn : " + $(this).val());
-            $(location).attr("href", "employeedeleteform.action?employeeId=" + $(this).val());
+            if (confirm("현재 선택한 데이터를 정말 삭제하시겠습니까?"))
+            {
+                // 테스트
+                //alert("삭제 처리");
+                $(location).attr("href", "employeedelete.action?employeeId=" + $(this).val());
+            }
+            
         });
     });// $(function() {
 

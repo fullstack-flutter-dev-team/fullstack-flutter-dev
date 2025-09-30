@@ -1,19 +1,13 @@
 /**
  * ========================================
- *   EmployeeListController.java
- *    → 사용자 정의 컨트롤러 클래스
- *    → 직원 리스트 컨트롤러 
- *    → 리스트 페이지 요청에 대한 액션 처리
- *        - (employeelist.action) 리스트 출력 액
- *    → DAO 객체에 대한 의존성 주입(DI)을 위한 준비
- *        - 인터페이스 형태의 자료형 속성으로 구성
- *        - setter 구성 
+ *   EmployeeDeleteController.java
+ *    - 사용자 정의 컨트롤러 클래스
+ *    - (employeedelete.action)
+ *    - 직원 데이터 삭제 액션 컨트롤러
  * ========================================
  */
 
 package com.test.mvc;
-
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,15 +19,16 @@ import org.springframework.web.servlet.mvc.Controller;
 // ※ Spring MVC 의 『Controller』 인터페이스를 구현하는 방법을 통해
 //    사용자 정의 컨트롤러 클래스를 구성할 수 있도록 한다.
 
-public class EmployeeListController implements Controller
+public class EmployeeDeleteController implements Controller
 {
-    // 주요 속성 구성 → 인터페이스 형태의 자료형 속성으로 구성
     private IEmployeeDAO employeeDAO;
+    
 
     public void setEmployeeDAO(IEmployeeDAO employeeDAO)
     {
         this.employeeDAO = employeeDAO;
     }
+
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -62,28 +57,25 @@ public class EmployeeListController implements Controller
             // 로그인 폼으로 다시 보내버린다.
             mav.setViewName("redirect:logout.action");
             return mav;  //-- 메소드 종료
-        }   
-
-        // -------------------------------------- [자격 검증]
-
+        }
+        // -------------------------------------------- [자격 검증]
         
-        String viewName = "/WEB-INF/view/EmployeeList.jsp";
-        ArrayList<Employee> empList = new ArrayList<Employee>();
+        String viewName = "redirect:/employeelist.action";
+        
+        // 이전 페이지()로 부터 넘어온 데이터 수신
+        //-- employeeId
+        String employeeId  = request.getParameter("employeeId");
         
         try {
-            empList = employeeDAO.list();
+            employeeDAO.remove(employeeId);
             
-            mav.addObject("employeeList", empList);
+            //  반환 값을 통한 분기 처리 생략~!!!
+            
             mav.setViewName(viewName);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
         
-        // 확인
-        System.out.println("<<<-- 직원 리스트 조회 -->>>");
-        for (Employee emp : empList) {
-            System.out.println(emp.toString());
-        }
         //-------------------------------------------------------
         return mav;
     }
