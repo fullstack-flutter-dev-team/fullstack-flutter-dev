@@ -18,6 +18,12 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class RegionUpdateController implements Controller
 {
+    private IRegionDAO regionDAO;
+    
+    public void setRegionDAO(IRegionDAO regionDAO)
+    {
+        this.regionDAO = regionDAO;
+    }
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -25,8 +31,23 @@ public class RegionUpdateController implements Controller
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+       String viewName = "redirect:regionlist.action";
+       
+       // 이전 페이지(RegionUpdateForm.jsp)로부터 넘어온 데이터
+       //-- regionId, regionName
+       String regionId = request.getParameter("regionId");
+       String regionName = request.getParameter("regionName");
         
+        try {
+            Region region = new Region();
+            region.setRegionId(regionId);
+            region.setRegionName(regionName);
+            regionDAO.modify(region);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         
+        mav.setViewName(viewName);
         //-------------------------------------------------------
         return mav;
     }

@@ -1,6 +1,6 @@
 /**
  * ========================================
- *   SampleController.java
+ *   RegionDeleteController.java
  *    - 사용자 정의 컨트롤러 클래스
  * ========================================
  */
@@ -18,6 +18,12 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class RegionDeleteController implements Controller
 {
+    private IRegionDAO regionDAO;
+
+    public void setRegionDAO(IRegionDAO regionDAO)
+    {
+        this.regionDAO = regionDAO;
+    }
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -25,8 +31,19 @@ public class RegionDeleteController implements Controller
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+        String viewName = "redirect:/regionlist.action";
         
+        // 이전 페이지(RegionList.jsp)로 부터 넘어온 데이터 수신
+        //-- regionId
+        String regionId = request.getParameter("regionId");
         
+        try {
+            regionDAO.remove(regionId);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        mav.setViewName(viewName);
         //-------------------------------------------------------
         return mav;
     }

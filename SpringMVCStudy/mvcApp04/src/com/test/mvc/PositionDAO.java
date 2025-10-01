@@ -133,4 +133,33 @@ public class PositionDAO implements IPositionDAO
         return result;
     }
 
+    @Override
+    public Position search(String positionId) throws SQLException
+    {
+        Position pos = new Position();
+        Connection conn = dataSource.getConnection();
+        
+        StringBuffer sql = new StringBuffer();
+        sql.append("SELECT POSITIONID, POSITIONNAME, MINBASICPAY, DELCHECK");
+        sql.append(" FROM POSITIONVIEW");
+        sql.append(" WHERE POSITIONID=?");
+        
+        PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+        pstmt.setInt(1, Integer.parseInt(positionId));
+        
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            pos.setPositionId(rs.getString(1));
+            pos.setPositionName(rs.getString(2));
+            pos.setMinBasicPay(rs.getInt(3));
+            pos.setDelCheck(rs.getInt(4));
+        }
+        
+        rs.close();
+        pstmt.close();
+        conn.close();
+        
+        return pos;
+    }
+
 }

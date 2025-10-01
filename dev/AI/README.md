@@ -325,3 +325,7 @@
 - []()
 - []()
 - []()
+- [Spring AI로 RAG 챗봇 만들기 – Ollama, pgvector 부터 API 까지](https://innovation123.tistory.com/282)
+- []()
+- []()
+- []()

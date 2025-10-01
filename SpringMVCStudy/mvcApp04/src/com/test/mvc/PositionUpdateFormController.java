@@ -1,6 +1,6 @@
 /**
  * ========================================
- *   SampleController.java
+ *   PositionUpdateFormController.java
  *    - 사용자 정의 컨트롤러 클래스
  * ========================================
  */
@@ -18,7 +18,13 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class PositionUpdateFormController implements Controller
 {
-
+    private IPositionDAO positionDAO;
+    
+    public void setPositionDAO(IPositionDAO positionDAO)
+    {
+        this.positionDAO = positionDAO;
+    }
+ 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
     {

@@ -1,6 +1,6 @@
 /**
  * ========================================
- *   SampleController.java
+ *   PositionInsertFormController.java
  *    - 사용자 정의 컨트롤러 클래스
  * ========================================
  */
@@ -18,15 +18,22 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class PositionInsertFormController implements Controller
 {
-
+    private IPositionDAO positionDAO;
+    
+    public void setPositionDAO(IPositionDAO positionDAO)
+    {
+        this.positionDAO = positionDAO;
+    }
+ 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+        String viewName = "/WEB-INF/view/PositionInsertForm.jsp";
         
-        
+        mav.setViewName(viewName);
         //-------------------------------------------------------
         return mav;
     }

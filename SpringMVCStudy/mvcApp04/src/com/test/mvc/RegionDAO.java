@@ -139,4 +139,32 @@ public class RegionDAO implements IRegionDAO
         return result;
     }
 
+    // 지역 데이터 검색
+    @Override
+    public Region search(String regionId) throws SQLException
+    {
+        Region region = new Region();
+        Connection conn = dataSource.getConnection();
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT REGIONID, REGIONNAME, DELCHECK");
+        sb.append(" FROM REGIONVIEW");
+        sb.append(" WHERE REGIONID=?");
+        
+        PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+        pstmt.setInt(1, Integer.parseInt(regionId));
+        
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            region.setRegionId(rs.getString(1));
+            region.setRegionName(rs.getString(2));
+            region.setDelCheck(rs.getShort(3));
+        }
+        
+        rs.close();
+        pstmt.close();
+        conn.close();
+        
+        return region;
+    }
+
 }

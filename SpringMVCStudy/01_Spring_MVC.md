@@ -731,6 +731,108 @@
      - 직원 리스트 출력 액션 컨트롤러
      - emplist.action
   
+   - RegionListController.java
+     - 지역 리스트 출력 액션 컨트롤러
+     - regionList.action
+ 
+   - RegionList.jsp
+     -  지역 리스트 뷰
+     -  regionlist.action
+  
+   - RegionInsertFormController.java
+     -  지역 등록 폼 컨트롤러
+     - regionInsertFrom.action
+
+   - RegionInsertForm.jsp
+     -  지역 등록 폼 뷰
+
+   - RegionInsertController.java
+     -  지역 등록 액션 컨트롤러
+     - regionInsert.action
+
+   - RegionUpdateFormController.java
+     -  지역 변경 폼 컨트롤러
+     - regionUpdateForm.action
+
+   - RegionUpdateForm.jsp
+     -  지역 변경 폼 뷰
+
+   - RegionUpdateController.java
+     -  지역 변경 액션 컨트롤러
+     - regionUpdate.action
+
+   - RegionDeleteController.java
+     -  지역 삭제 액션 컨트롤러
+     - regionDelete.action
+
+   - DepartmentListController.java
+     -  부서 리스트 조회 액션 컨트롤러
+     - departmentlist.action
+
+   - DepartmentList.jsp
+     -  부서 리스트 뷰
+     -  departmentlist.action
+
+   - DepartmentInsertFormController.java
+     -  부서 등록 폼 컨트롤러
+     - departInsertForm.action
+
+   - DepartmentInsertForm.jsp
+     -  부서 등록 폼 뷰
+
+   - DepartmentInsertController.java
+     -  부서 등록 액션 컨트롤러
+     - departInsert.action
+
+   - DepartmentUpdateFormController.java
+     -  부서 변경 폼 액션 컨트롤러
+     - departUpdateForm.action
+
+   - DepartmentUpdateForm.jsp
+     -  부서 변경 폼 뷰
+
+   - DepartmentUpdateController.java
+     -  부서 변경 액션 컨트롤러
+     - departUpdate.action
+
+   - DepartmentDeleteController.java
+     -  부서 삭제 액션 컨트롤러
+     - departDelete.action
+
+   - PositionListController.java
+     - 직위 리스트 컨트롤러
+     - positionlist.action
+
+   - PositionList.jsp
+     -  직위 리스트 뷰
+     -  positionlist.action
+
+   - PositionInsertFormController.java
+     - 직위 등록 액션 컨트롤러
+     - positionInsertForm.action
+
+   - PositionInsertForm.jsp
+     - 직위 등록 폼 뷰
+
+   - PositionInsertController.java
+     -  직위 등록 액션 컨트롤러
+     - positionInsert.action
+
+   - PositionUpdateFormController.java
+     -  직위 변경 폼 컨트롤러
+     - positionUpdateForm.action
+
+   - PositionUpdateForm.jsp
+     - 직위 변경 폼 뷰
+
+   - PositionUpdateController.java
+     -  직위 변경 액션 컨트롤러
+     - positionUpdate.action
+
+   - PositionDeleteController.java
+     -  직위 삭제 액션 컨트롤러
+     - positionDelete.action
+  
   - dispatcher-servlet.xml 
       - → 컨트롤러 객체 등록
       - → URL 매핑 주소 등록

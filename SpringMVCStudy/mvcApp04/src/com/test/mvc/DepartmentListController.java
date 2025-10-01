@@ -1,6 +1,6 @@
 /**
  * ========================================
- *   SampleController.java
+ *   DepartmentListController.java
  *    - 사용자 정의 컨트롤러 클래스
  * ========================================
  */
@@ -18,6 +18,12 @@ import org.springframework.web.servlet.mvc.Controller;
 
 public class DepartmentListController implements Controller
 {
+    private IDepartmentDAO departmentDAO;
+    
+    public void setDepartmentDAO(IDepartmentDAO departmentDAO)
+    {
+        this.departmentDAO = departmentDAO;
+    }
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -25,7 +31,15 @@ public class DepartmentListController implements Controller
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+        String viewName = "/WEB-INF/view/DepartmentList.jsp";
         
+        try {
+            mav.addObject("departmentList", departmentDAO.list());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        mav.setViewName(viewName);
         
         //-------------------------------------------------------
         return mav;
