@@ -329,9 +329,36 @@
 - []()
 - []()
 - []()
+- []()
 
 
 
-### CHART
+### [Chart.js](https://github.com/chartjs/Chart.js)
 - [소셜 로그인 플로우 All-in-one](https://brunch.co.kr/@drawhatha/75)
 - [[Spring/Ajax] Chart.js로 차트 만들기](https://cobook.tistory.com/36)
+- [[Javascript] Chart.js로 차트 그리기](https://velog.io/@seoyaon/Javascript-Chart.js%EB%A1%9C-%EC%B0%A8%ED%8A%B8-%EA%B7%B8%EB%A6%AC%EA%B8%B0)
+- [Chart.js 사용법 + DB 연동](https://holdbird.tistory.com/48)
+- [[JS/라이브러리] chart.js - 차트 라이브러리 사용법](https://ziszini.tistory.com/192)
+- [[라이브러리] Chart.js 시작하기](https://ahnanne.tistory.com/31)
+- [Chart.js Samples](https://www.chartjs.org/docs/latest/samples/information.html)
+- [chart js stack line 사용법](https://www.google.com/search?q=chart+js++stack+line+%EC%82%AC%EC%9A%A9%EB%B2%95+&newwindow=1&sca_esv=ee19cbd168e99f6e&ei=RfXdaOnjJ5vm2roPgvzqmQw&ved=0ahUKEwipmrj-zISQAxUbs1YBHQK-OsMQ4dUDCBA&uact=5&oq=chart+js++stack+line+%EC%82%AC%EC%9A%A9%EB%B2%95+&gs_lp=Egxnd3Mtd2l6LXNlcnAiH2NoYXJ0IGpzICBzdGFjayBsaW5lIOyCrOyaqeuylSAyCBAAGIAEGKIEMggQABiABBiiBDIFEAAY7wUyBRAAGO8FMggQABiABBiiBEieHVCqCViXGnABeAGQAQCYAYMCoAHTB6oBAzItNLgBA8gBAPgBAfgBApgCBKAC4QXCAgoQABhHGNYEGLADwgIEEAAYHsICBhAAGAgYHsICBhAAGAUYHsICBhAAGAcYHpgDAIgGAZAGCpIHBTEuMC4zoAeKFLIHAzItM7gH3QXCBwUwLjEuM8gHDA&sclient=gws-wiz-serp)
+- [Usage](https://www.chartjs.org/docs/2.9.4/getting-started/usage.html)
+- []()
+
+### 카카오맵
+- [[Spring] 카카오 지도 API를 통해 정보 가져오기](https://minutemaid.tistory.com/174)
+- [[Spring Boot][토이 프로젝트] 1. KakaoMap API 백엔드처리 및 테스트 코드 작성](https://code-list.tistory.com/75)
+- [[Spring Boot] 카카오 지도 api 활용하여 지도 출력하기](https://ityranno.tistory.com/entry/Spring-Boot-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EC%A7%80%EB%8F%84-api-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EC%A7%80%EB%8F%84-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0)
+- [[Spring] 카카오 지도 API 활용](https://velog.io/@pbk2312/Spring-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EC%A7%80%EB%8F%84-API-%ED%99%9C%EC%9A%A9)
+- [spring 카카오맵 pc 사용법 검색](https://www.google.com/search?q=spring+%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A7%B5+pc+%EC%82%AC%EC%9A%A9%EB%B2%95&newwindow=1&sca_esv=d1d26e03a6da53f6&ei=oDPeaOnvCK6k2roPlMvyYQ&ved=0ahUKEwjpv_m5iIWQAxUuklYBHZSlPAwQ4dUDCBA&uact=5&oq=spring+%EC%B9%B4%EC%B9%B4%EC%98%A4%EB%A7%B5+pc+%EC%82%AC%EC%9A%A9%EB%B2%95&gs_lp=Egxnd3Mtd2l6LXNlcnAiIHNwcmluZyDsubTsubTsmKTrp7UgcGMg7IKs7Jqp67KVMgUQABjvBTIIEAAYiQUYogQyCBAAGIkFGKIEMggQABiABBiiBDIIEAAYgAQYogRIkxlQrwpY1BZwAXgBkAEAmAH3AaAB8gyqAQMyLTe4AQPIAQD4AQGYAgOgAuADwgIKEAAYRxjWBBiwA5gDAIgGAZAGCpIHBTEuMC4yoAeUGbIHAzItMrgH2wPCBwUwLjIuMcgHBg&sclient=gws-wiz-serp)
+- [[Spring] 카카오 지도 / Kakao Map Web API 사용해보기](https://olrlobt.tistory.com/38)
+- []()
+- []()
+- []()
+
+### Spring 푸쉬
+- [Spring Boot에서 웹 푸시 알림 보내기](https://steemit.com/krdev/@kormanocorp/6nycct-spring-boot)
+- [[SpringBoot] SSE를 이용한 실시간 알림 구현하기!](https://back-stead.tistory.com/105)
+- [이메일 전송을 포함한 알림 기능 구현하기(with Spring Boot)](https://velog.io/@kimhalin/%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%A0%84%EC%86%A1%EC%9D%84-%ED%8F%AC%ED%95%A8%ED%95%9C-%EC%95%8C%EB%A6%BC-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0with-Spring-Boot)
+- [spring boot 알림 검색](https://www.google.com/search?q=spring+boot+%EC%9D%BC%EB%A6%BC&newwindow=1&sca_esv=ee19cbd168e99f6e&biw=2271&bih=1198&ei=bPfdaICYHKvk2roPwcGoyAc&ved=0ahUKEwiA_oqFz4SQAxUrslYBHcEgCnkQ4dUDCBA&uact=5&oq=spring+boot+%EC%9D%BC%EB%A6%BC&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnNwcmluZyBib290IOydvOumvDIHEAAYgAQYDTIGEAAYHhgNMgYQABgeGA0yCBAAGAgYHhgNMggQABgIGB4YDTIIEAAYCBgeGA0yCBAAGAgYHhgNMgUQABjvBTIIEAAYgAQYogRI_yFQsA9YrxVwAngBkAEAmAGJAqABxwuqAQMyLTa4AQPIAQD4AQGYAgSgAokEwgIKEAAYRxjWBBiwA8ICBRAhGKABmAMAiAYBkAYKkgcFMi4wLjKgB4sZsgcDMi0yuAeCBMIHBTAuMy4xyAcK&sclient=gws-wiz-serp)
+- []()

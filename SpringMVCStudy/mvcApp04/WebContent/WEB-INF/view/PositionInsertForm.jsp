@@ -84,7 +84,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
                 <tr>
                     <th>최소 기본급</th>
                     <td>
-                        <input type="text" id="minBasicPay" name="minBasicPay" placeholder="직위명">
+                        <input type="text" id="minBasicPay" name="minBasicPay" placeholder="최소 기본급">
                     </td>
                 </tr>
                 
