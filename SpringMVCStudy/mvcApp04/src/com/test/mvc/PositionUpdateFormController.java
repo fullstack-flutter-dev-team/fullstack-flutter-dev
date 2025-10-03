@@ -31,7 +31,22 @@ public class PositionUpdateFormController implements Controller
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+        ModelAndView loginStatusMav= new LoginStatus(request, mav).check();
+        if (loginStatusMav.getViewName() != null) {
+            return loginStatusMav;
+        }//------------[로그인 상태 & 관리자 로그인 상태 체크]
         
+        // 이전 페이지(PositionList.jsp)로부터 넘어온 데이터
+        //-- positionId
+        String positionId = request.getParameter("positionId");
+        
+        String viewName = "/WEB-INF/view/PositionUpdateForm.jsp";
+        try {
+            mav.addObject("position", positionDAO.search(positionId));
+            mav.setViewName(viewName);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         
         //-------------------------------------------------------
         return mav;

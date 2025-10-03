@@ -19,7 +19,12 @@
 ### JSP
 - [[스프링부트 6] Spring MVC View 만들기 (JSP)](https://shallow-learning.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-6-Spring-MVC-View-%EB%A7%8C%EB%93%A4%EA%B8%B0-JSP%EC%99%80-Thymeleaf)
 - [@Controller 검색](https://www.google.com/search?q=%40Controller&oq=%40Controller&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBBzkwMmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
-- []()
+- [spring jsp 검색](https://www.google.com/search?q=spring+jsp&oq=spring+jsp&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGEEyBggDEEUYQdIBCDYzODhqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
+- [spring jsp gradle 검색](https://www.google.com/search?q=spring+jsp+gradle&newwindow=1&sca_esv=c846489d7201f9ae&sxsrf=AE3TifPtEPAst1_pUL25kOQOo0YzGdFmMg%3A1759426185957&ei=ibbeaLaUOsyH2roPj_zuiQs&ved=0ahUKEwj2_MmmhYaQAxXMg1YBHQ--O7EQ4dUDCBA&uact=5&oq=spring+jsp+gradle&gs_lp=Egxnd3Mtd2l6LXNlcnAiEXNwcmluZyBqc3AgZ3JhZGxlMgYQABgIGB4yCBAAGAgYHhgKMgYQABgIGB4yBhAAGAgYHjIFEAAY7wUyCBAAGIkFGKIESJwZULkLWOwWcAF4AZABAJgBdKAB6AWqAQMzLjS4AQPIAQD4AQGYAgigApgGwgIKEAAYRxjWBBiwA8ICBRAAGIAEwgIIEAAYgAQYywHCAgQQABgemAMAiAYBkAYKkgcDMS43oAf0IbIHAzAuN7gHjAbCBwcwLjQuMy4xyAcl&sclient=gws-wiz-serp)
+  - [[스프링부트 6] Spring MVC View 만들기 (JSP)](https://shallow-learning.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-6-Spring-MVC-View-%EB%A7%8C%EB%93%A4%EA%B8%B0-JSP%EC%99%80-Thymeleaf)
+  - []()
+  - [[Spring boot] Spring boot + Gradle + JSP 프로젝트 생성 + 개발환경 세팅](https://velog.io/@cyseok123/Spring-boot-Spring-boot-Gradle-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+  - [[Spring Boot]JSP 파일 생성 및 연결하기](https://hye0-log.tistory.com/22)
 - []()
 - []()
 
@@ -47,5 +52,16 @@
 - [스프링부트 ajax JSON 통신](https://gamma86.tistory.com/11)
 - [서버로부터 메시지 받아서 팝업 띄우기 ](https://jhlblue.tistory.com/5)
 - [[Spring] Model, ModelAndView 차이점](https://backendcode.tistory.com/253)
+- []()
+- []()
+
+
+### KakaoMap
+- [kakaomap api 검색](https://www.google.com/search?q=kakaomap+api&newwindow=1&sca_esv=df6bb7b4e6fcd0a4&sxsrf=AE3TifNxbQ7y_Y9uY-ZywVI52rGgSZ96aA%3A1759429365455&ei=9cLeaOvMG6XO2roPsenF8AU&oq=kakaommap+&gs_lp=Egxnd3Mtd2l6LXNlcnAiCmtha2FvbW1hcCAqAggAMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNMgcQABiABBgNSL4PUKoCWKoCcAF4AZABAJgBcKABcKoBAzAuMbgBAcgBAPgBAZgCAqACigHCAgoQABhHGNYEGLADmAMA4gMFEgExIECIBgGQBgqSBwMxLjGgB7YFsgcDMC4xuAd6wgcFMi0xLjHIBxQ&sclient=gws-wiz-serp)
+  - [[Spring] 카카오 지도 / Kakao Map Web API 여러개의 마커를 클러스터러로 표기해보기](https://olrlobt.tistory.com/40)
+  - []()
+  - []()
+- []()
+- []()
 - []()
 - []()

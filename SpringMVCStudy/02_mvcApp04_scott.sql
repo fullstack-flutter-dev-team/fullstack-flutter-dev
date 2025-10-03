@@ -469,8 +469,6 @@ EMPLOYEEID NAME                           SSN                  BIRTHDAY        L
          1 도우너                         d�;��!y!          1998-01-01          0 010-1123-2233                                       1          2          1    2500000    1000000 980101 =o��ԕ                                           
  */
 
-
-
 -- 기존 주민번호(SSN) 컬럼 제거
 ALTER TABLE EMPLOYEE
 DROP COLUMN SSN;
@@ -478,7 +476,6 @@ DROP COLUMN SSN;
 
 COMMIT;
 --==>> 커밋 완료.
-
 
 DESC EMPLOYEE;
 --==>>
@@ -507,21 +504,18 @@ ALTER TABLE EMPLOYEE
 ADD GRADE NUMBER(1) DEFAULT 1;
 --==>> Table EMPLOYEE이(가) 변경되었습니다.
 
-
 SELECT *
 FROM EMPLOYEE;
 /* 
-
 EMPLOYEEID NAME                           BIRTHDAY        LUNAR TELEPHONE                                DEPARTMENTID POSITIONID   REGIONID   BASICPAY   EXTRAPAY SSN1   SSN2                                                    GRADE
 ---------- ------------------------------ ---------- ---------- ---------------------------------------- ------------ ---------- ---------- ---------- ---------- ------ -------------------------------------------------- ----------
          1 도우너                         1998-01-01          0 010-1123-2233                                       1          2          1    2500000    1000000 980101 =o��ԕ                                                     1
  */
 
-
 -- 도우너 사원을 관리자로 임명
 UPDATE EMPLOYEE
 SET GRADE=0
-WHERE EMPLOYEEID=1;
+WHERE EMPLOYEEID=2;
 --==>> 1 행 이(가) 업데이트되었습니다.
 
 SELECT *
@@ -646,10 +640,10 @@ COMMIT;
 ---------------------------------------------------------------------
 --○ 일반 사원 로그인 쿼리문
 -- 일반 사원 : (ID → EMPLOYEEID / PW → SSN2)
-SELECT NAME
-FROM EMPLOYEE
-WHERE EMPLOYEEID='입력아이디'
-  AND SSN2='암호화된입력패스워드';
+-- SELECT NAME
+-- FROM EMPLOYEE
+-- WHERE EMPLOYEEID='입력아이디'
+--   AND SSN2='암호화된입력패스워드';
 
 SELECT NAME
 FROM EMPLOYEE
@@ -670,13 +664,14 @@ WHERE EMPLOYEEID=2
   AND (SELECT SSN2
        FROM EMPLOYEE
        WHERE EMPLOYEEID=2) = CRYPTPACK.ENCRYPT('1122334', '1122334');
+--==>> 마이콜
 
-SELECT NAME
-FROM EMPLOYEE
-WHERE EMPLOYEEID=[입력ID]
-  AND (SELECT SSN2
-       FROM EMPLOYEE
-       WHERE EMPLOYEEID=[입력ID]) = CRYPTPACK.ENCRYPT([입력PW], [입력PW]);
+-- SELECT NAME
+-- FROM EMPLOYEE
+-- WHERE EMPLOYEEID=[입력ID]
+--   AND (SELECT SSN2
+--        FROM EMPLOYEE
+--        WHERE EMPLOYEEID=[입력ID]) = CRYPTPACK.ENCRYPT([입력PW], [입력PW]);
 
 SELECT NAME
 FROM EMPLOYEE
@@ -729,12 +724,15 @@ DELETE FROM EMPLOYEE WHERE EMPLOYEEID=2
 ROLLBACK;
 --==>> 롤백 완료.
 
+--커밋
+COMMIT;
+--==>> 커밋 완료.
 -------------------------------------------------------------------------------
 --○ 직원 데이터 수정 쿼리문 구성
 -- 사원명, 생년월일, 양음력, 전화번호, 부서, 직위, 지역, 기본급, 수당
 -- , 주민번호앞자리, 주민번호뒷자리
 UPDATE EMPLOYEE
-SET NAME='마이콜'
+SET NAME='희동이'
   , BIRTHDAY=TO_DATE('1992-09-23', 'YYYY-MM-DD')
   , LUNAR=0
   , TELEPHONE='010-9876-9876'
@@ -746,7 +744,7 @@ SET NAME='마이콜'
   , SSN1='920923'
   , SSN2=CRYPTPACK.ENCRYPT('1231234', '1231234')
   , GRADE=0
-WHERE EMPLOYEEID=8; -- 마이콜
+WHERE EMPLOYEEID=2; -- 마이콜
 
 --> 한 줄 구성
 UPDATE EMPLOYEE SET NAME='희동이', BIRTHDAY=TO_DATE('1992-09-23', 'YYYY-MM-DD'), LUNAR=0, TELEPHONE='010-9876-9876', DEPARTMENTID=2, POSITIONID=1, REGIONID=2, BASICPAY=1500000, EXTRAPAY=1500000, SSN1='920923', SSN2=CRYPTPACK.ENCRYPT('1231234', '1231234') WHERE EMPLOYEEID=2
@@ -1008,7 +1006,8 @@ EMPLOYEEID NAME                           SSN1   BIRTHDAY        LUNAR TELEPHONE
          2 희동이                         920923 1992-09-23          0 010-9876-9876                                       2          1          2    1500000    1500000
 */
 
-
+COMMIT;
+--==>> 커밋 완료.
 DESC EMPLOYEEVIEW;
 DESC EMPLOYEE;
 

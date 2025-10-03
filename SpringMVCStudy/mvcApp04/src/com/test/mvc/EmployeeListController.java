@@ -63,9 +63,7 @@ public class EmployeeListController implements Controller
             mav.setViewName("redirect:logout.action");
             return mav;  //-- 메소드 종료
         }   
-
         // -------------------------------------- [자격 검증]
-
         
         String viewName = "/WEB-INF/view/EmployeeList.jsp";
         ArrayList<Employee> empList = new ArrayList<Employee>();

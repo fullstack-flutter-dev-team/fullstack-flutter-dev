@@ -31,6 +31,11 @@ public class DepartmentUpdateController implements Controller
         // Controller 가 수행해야 할 액션 코드
         ModelAndView mav = new ModelAndView();
         //-------------------------------------------------------
+        ModelAndView loginStatusMav= new LoginStatus(request, mav).check();
+        if (loginStatusMav.getViewName() != null) {
+            return loginStatusMav;
+        }//------------[로그인 상태 & 관리자 로그인 상태 체크]
+
         String viewName = "redirect:departmentlist.action";
         
         // 이전 페이지(DepartmentUpdateForm.jsp)로부터 넘어온 데이터
