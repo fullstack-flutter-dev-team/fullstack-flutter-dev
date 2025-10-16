@@ -569,25 +569,23 @@
 ```
 ```
  
-#### ※ 4개의 스테레오(stereo) 타입 어노테이션
-   - @Component
+#### ※ 4개의 스테레오(stereo: 다중) 타입 어노테이션(Annotation)
+   - **@Component**
      - 스테레오 타입 어노테이션의 조상
-   - @Controller
+   - **@Controller**
      - Spring MVC 에서 컨트롤러로 인식
-   - @Service
+   - **@Service**
      - 역할 부여 없이 스캔 대상이 되는데... 비즈니스 클래스에 사용
-   - @Repository
+   - **@Repository**
      - @Repository 어노테이션은 일반적으로 DAO 에 사용되며
        DB Exception 을 DataAccessException 으로 변환
 
-#### ※ Spring Annotation 에서 정리한 내용에... 추가 ++
+#### ※ Spring Annotation 에서 정리한 내용에... 추가되는 Annotation들 ++
 ○ **@Service**
    - 개요
-     - @Service 를 적용한 클래스는 비즈니스 로직이 들어가는 Service 로 등록이 된다.
-     - Controller 에 있는 @Autowired 는 @Service("xxxService")에 등록된
-       『xxxService』와 변수명이 같아야 하며
-     - Service 에 있는 @Autowired 는 @Repository("xxxDao")에 등록된
-       『xxxDao』와 변수명이 같아야 한다.
+     - ⭐**@Service 를 적용한 클래스는 비즈니스 로직이 들어가는 Service 로 등록이 된다.**
+     - **Controller 에 있는 @Autowired 는 @Service("xxxService")에 등록된 『xxxService』와 변수명이 같아야 하며**
+     - ⭐**Service 에 있는 @Autowired 는 @Repository("xxxDao")에 등록된 『xxxDao』와 변수명이 같아야 한다.**
       ```
         @Service("helloService")
         public class HelloServiceImpl implements HelloService
@@ -606,31 +604,28 @@
         // 객체를 활용하여 DAO 객체의 메소드를 호출한다.
       ```
 
-○ @Repository
+○ **@Repository**
    - 패키지
      - org.springframework.stereotype
    - 버전
      - spring 2.0
    - 개요
-     - @Repository 어노테이션은 일반적으로 DAO 에 사용되며
-       DB Exception 을 DataAccessException 으로 변환하는 기능을 수행한다.
+     - **@Repository 어노테이션은 일반적으로 DAO 에 사용되며, DB Exception 을 DataAccessException 으로 변환하는 기능을 수행한다.**
 
-○ @Controller
+○ **@Controller**
    - 패키지
      - org.springframework.stereotype
    - 버전
      - spring 2.5
    - 개요
-     - Spring MVC 의 Controller 클래스 선언을 단순화시켜준다.
-     - 스프링 컨트롤러, 서블릿 등을 상속할 필요가 없으며,
-       @Controller 로 등록된 클래스 파일에 대한 bean 을 자동으로 생성해준다.
-     - @Controller 로 사용하고자 하는 클래스에 @Controller 를 지정해주면
-       Component-scan 으로 자동 등록된다.
-   - 추가 설정(xml)
+     - **Spring MVC 의 Controller 클래스 선언을 단순화시켜준다.**
+     - **스프링 컨트롤러, 서블릿 등을 상속할 필요가 없으며, @Controller 로 등록된 클래스 파일에 대한 빈(bean) 을 자동으로 생성해준다.**
+     - **@Controller 로 사용하고자 하는 클래스에 @Controller 를 지정해주면, Component-scan 으로 자동 등록된다.**
+   - **추가 설정(xml)**
       ```
       『<context:component-scan base-package-"com.*"/>』
       ```
-   - 추가 설정(java)
+   - **추가 설정(java)**
       ```
       package com.test;
 
@@ -643,21 +638,18 @@
       }
       ```
 
-○ @RequestMapping
+○ **@RequestMapping**
    - 개요
-     - @RequestMapping 어노테이션을 URL 을 class 또는 method 와
-       mapping 시켜주는 역할을 수행한다.
-     - Annotation(어노테이션) 을 사용하지 않을 때 지정했던 Controller 등록을 위한 
-       URL bean 설정을 생략할 수 있다.
+     - **@RequestMapping 어노테이션을 URL 을 class 또는 method 와 mapping 시켜주는 역할을 수행한다.**
+     - **Annotation(어노테이션) 을 사용하지 않을 때 지정했던 Controller 등록을 위한 URL bean 설정을 생략할 수 있다.**
      - 클래스에 하나의 url mapping 을 할 경우
        class 위에 『@RequestMapping("/url")』을 지정하며,
        GET 또는 POST 방식 등의 옵션을 부여할 수 있다.
-     - 해당 메소드가 실행된 후, return 페이지가 별도로 정의되어 있지 않으면
-       @RequestMapping("/url")에서 설정된 url 로 다시 돌아간다.
+     - **해당 메소드가 실행된 후, return 페이지가 별도로 정의되어 있지 않으면 @RequestMapping("/url")에서 설정된 url 로 다시 돌아간다.**
 
         ```
           @Controller
-          @RequestMapping("/com/test/*")
+          @RequestMapping("/com/test/mvc/*")
           public class HelloController
           {
               @RequestMapping(method=RequestMethod.GET, value="go1")
@@ -674,7 +666,17 @@
 
           }
         ```
-
+        #### ※ 추후 우리는... 실무 프로젝트를 수행하는 과정에서...
+          - 컨트롤러를 작게 분리된 액션 단위가 아닌(), 업무 단위로 묶어 작업 및 처리하게 될 것이다.
+          - 이후, 어노테이션을 활용하여 컨트롤러를 지정해서 처리하는 방법도 수행하게 될 것이다.
+          - 하지만, 이번 실습 과정에서는 기본 액션 단위의 컨트롤러 구성을 수행해 봄으로써
+            Model-View-Controller 의 기능 및 처리 흐름에 대한 이해와 파악을 제대로 할 수 있도록 한다.
+            - PositionListController.java
+            - PositionInsertFormController.java
+            - PositionUpdateFormController.java
+            - PositionDeleteController.java
+            - --▶▶ PositionController.java
+  
 ○ **@RequestParam**
    - 개요
      - @RequestParam 어노테이션은 key=value 형태로
@@ -751,34 +753,55 @@
 
 ○ **@InitBinder**
    - 개요
-     : WebDataBinder 를 초기화하는 method 를 지정할 수 있는 설정을 제공한다.
-       일반적으로 WebDataBinder 는 Annotation handler 메소드의
-       command 와 form 객체 인자를 조작하는데 사용된다.
-       initBinder 메소드가 필수적으로 변환 값을 가질 필요는 없으며,
-       일반적으로 이런 경우에 void 를 선언한다.
-       특별히 인자는 WebDataBinder 와 WebRequest 또는 Locale 의 조합으로 이루어지며
-       이러한 조건이 만족되면 context-specific editors 를 등록하는 것이 허용된다.
+     - **WebDataBinder 를 초기화하는 method 를 지정할 수 있는 설정을 제공한다.**
+     - 일반적으로 WebDataBinder 는 Annotation handler 메소드의
+        command 와 form 객체 인자를 조작하는데 사용된다.
+     - initBinder 메소드가 필수적으로 변환 값을 가질 필요는 없으며,
+        일반적으로 이런 경우에 void 를 선언한다.
+     - 특별히 인자는 WebDataBinder 와 WebRequest 또는 Locale 의 조합으로 이루어지며
+        이러한 조건이 만족되면 context-specific editors 를 등록하는 것이 허용된다.
 
-       ·WebDataBinder
-         : WebDataBinder 는 web request parameter 를
-           자바 빈 객체에 바인딩하는 특정한 DataBinder 이다.
-           WebDataBinder 는 웹 환경이 필요하지만,
-           Servlet API 에 의존적이지 않다.
-           Servlet API 에 의존적인 ServletRequestDataBinder 와 같이
-           특정한 DataBinder 를 위한 더 많은 bass class 를 제공한다.
-       ·RequestMapping
-         : RequestMapping 어노테이션은 web request 를
-           특정한 handler class 와 handler method 에 mapping 하는 역할을 수행한다.
-           대응하는 handlerMapping(for type level annotation)과
-           handlerAdapter(for method level annotation)가 dispath 에 존재한다면,
-           @RequestMapping 이 처리될 것이다.
-       ·WebRequest
-         : WebRequest 는 웹 요청에 대한 Generic interface 이다.
-           주로 일반 request metadata 에 generic web request interseptors 의
-           접근을 허용하여 metadata 에 대한 처리를 위한 것이지
-           request 자체를 처리하기 위한 것은 아니다.
+     - **WebDataBinder**
+        - WebDataBinder 는 web request parameter 를
+          자바 빈(bean) 객체에 바인딩하는 특정한 DataBinder 이다.
+        - WebDataBinder 는 웹 환경이 필요하지만, Servlet API 에 의존적이지 않다.
+        - Servlet API 에 의존적인 ServletRequestDataBinder 와 같이
+          특정한 DataBinder 를 위해 더 많은 기본 클래스(bass class) 를 제공한다.
+     - **RequestMapping**
+        - RequestMapping 어노테이션은 **web request 를 특정한 handler class 와 handler method 에 mapping 하는 역할을 수행한다.**
+        - 대응하는 handlerMapping(for type level annotation)과
+          handlerAdapter(for method level annotation)가 경로(dispath) 에 존재한다면,
+          **@RequestMapping** 이 처리될 것이다.
+     - **WebRequest**
+        - WebRequest 는 웹 요청에 대한 Generic interface 이다.
+        - 주로 일반 request metadata 에 generic web request interseptors 의
+          접근을 허용하여 metadata 에 대한 처리를 위한 것이지
+          request 자체를 처리하기 위한 것은 아니다.
+#### ※ Annoataion 기반 Controller 에서 ServletContext 구하기
+```
+  // ...
+  
+  @Controller
+  public class downloadController
+  {
+      @Autowired
+      private ServletContext sc;
+
+      @RequestMapping
+      public ModelAndView download(@RequestParam("filePath") String filePath) throws Exception
+      {
+          String path = sc.getRealPath(filePath);
+          return new ModelAndView("common.download", "downloadFile", new File(path));
+      }
+  }      
+```
 
 
+<br>
+<br>
+<br>
 ---
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
+
+---

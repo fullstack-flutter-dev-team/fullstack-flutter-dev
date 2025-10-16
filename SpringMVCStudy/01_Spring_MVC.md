@@ -885,5 +885,16 @@
    - ⑤ 응답 완료
 ---
 
+#### ※ 추후 우리는... 실무 프로젝트를 수행하는 과정에서...
+   - 컨트롤러를 작게 분리된 액션 단위가 아닌(), 업무 단위로 묶어 작업 및 처리하게 될 것이다.
+   - 이후, 어노테이션을 활용하여 컨트롤러를 지정해서 처리하는 방법도 수행하게 될 것이다.
+   - 하지만, 이번 실습 과정에서는 기본 액션 단위의 컨트롤러 구성을 수행해 봄으로써
+     Model-View-Controller 의 기능 및 처리 흐름에 대한 이해와 파악을 제대로 할 수 있도록 한다.
+     - PositionListController.java
+     - PositionInsertFormController.java
+     - PositionUpdateFormController.java
+     - PositionDeleteController.java
+     - --▶▶ PositionController.java
+---
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
