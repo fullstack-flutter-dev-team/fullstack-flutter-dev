@@ -19,9 +19,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-
-
 public class EmployeeDAO implements IEmployeeDAO
 {
     // 주요 속성 구성 → 인터페이스 형태

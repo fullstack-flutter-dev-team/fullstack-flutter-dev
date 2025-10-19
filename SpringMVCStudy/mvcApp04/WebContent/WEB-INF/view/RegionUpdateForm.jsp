@@ -21,6 +21,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <title>RegionUpdateForm.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/jquery-ui.css">
+<style type="text/css">
+    
+</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script> -->
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
@@ -74,7 +77,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
         <hr>
         
         <form action="regionUpdate.action" method="post" id="regionForm">
-            <table>
+            <table class="table">
                 <!-- → 지역 번호 -->
                 <tr>
                     <th>지역번호</th>

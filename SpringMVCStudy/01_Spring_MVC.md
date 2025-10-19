@@ -601,6 +601,7 @@
      - → 인터페이스.
    - #08. IPositionDAO.java
      - → 인터페이스.
+  
    - #09 EmployeeDAO.java 
       - → 데이터베이스 액션 처리 클래스
       - 직원 데이터 CRUD 액션(직원 데이터 출력, 입력, 수정, 삭제 액션)
@@ -833,6 +834,29 @@
      -  직위 삭제 액션 컨트롤러
      - positionDelete.action
   
+   - #62. RegListController.java
+     - 지역 정보 리스트 조회 액션 컨트롤러(직원전용)
+     - reglist.action
+
+   - #63. RegList.jsp
+     - 지역 정보 리스트 뷰(직원전용)
+     - reglist.action
+
+   - #64. DeptListController.java
+     - 부서 정보 리스트 조회 액션 컨트롤러(직원전용)
+     - deptlist.action
+ 
+   - #65. DeptList.jsp
+     - 부서 정보 리스트 뷰(직원전용)
+     - deptlist.action
+
+   - #66. PosListController.java
+     - 직위 정보 리스트 조회 액션 컨트롤러(직원전용)
+     - poslist.action
+
+   - #67. PosList.jsp
+     - 직위 정보 리스트 뷰(직원전용)
+     - poslist.action
 -----------------------------------------------------------------------------------------------------
   - dispatcher-servlet.xml 
       - → 컨트롤러 객체 등록

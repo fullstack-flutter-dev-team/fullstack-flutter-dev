@@ -42,7 +42,6 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <property name="password" value="tiger"></property>
     </bean>
     
-    
     <!-- EmployeeDAO 등록 -->
     <bean id="employeeDAO" class="com.test.mvc.EmployeeDAO">
         <property name="dataSource" ref="localDataSource"></property>
@@ -62,17 +61,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <bean id="positionDAO" class="com.test.mvc.PositionDAO">
         <property name="dataSource" ref="localDataSource"></property>
     </bean>
-    
-    <!-- PositionDAO 등록 -->
-<!--     <bean id="positionDAO" class="com.test.mvc.PositionDAO"> -->
-<!--         <property name="dataSource" ref="localDataSource"></property> -->
-<!--     </bean> -->
 
-    <!-- 테스트 용도 -->
-    <bean name="/test.action" class="com.test.mvc.TestController">
-        <property name="dao" ref="employeeDAO"></property>
-    </bean>
-    
     <!-- Employee 관련 컨트롤러 등록 -->
     <!-- EmployeeListController 등록 → 직원 리스트 조회 -->
     <bean name="/employeelist.action" class="com.test.mvc.EmployeeListController">
@@ -189,28 +178,48 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     </bean>
 
     <!-- Position 관련 컨트롤러 등록 -->
-     <!-- PositionListController 등록 → 직위 리스트 조회 -->
+    <!-- PositionListController 등록 → 직위 리스트 조회 -->
     <bean name="/positionlist.action" class="com.test.mvc.PositionListController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
+    
     <!-- PositionInsertFormController 등록 → 직위 변경폼-->
     <bean name="/positionInsertForm.action" class="com.test.mvc.PositionInsertFormController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
+    
     <!-- PositionInsertController 등록 → 직위 변경폼-->
     <bean name="/positionInsert.action" class="com.test.mvc.PositionInsertController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
+    
     <!-- PositionUpdateFormController 등록 → 직위 변경폼-->
     <bean name="/positionUpdateForm.action" class="com.test.mvc.PositionUpdateFormController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
+    
     <!-- PositionUpdateController 등록 → 직위 변경 -->
     <bean name="/positionUpdate.action" class="com.test.mvc.PositionUpdateController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
+    
     <!-- PositionDeleteController 등록 → 직위 삭제 조회 -->
     <bean name="/positionDelete.action" class="com.test.mvc.PositionDeleteController">
+        <property name="positionDAO" ref="positionDAO"></property>
+    </bean>
+
+    <!-- RegListController 등록 → 지역 정보 리스트 조회 -->
+    <bean name="/reglist.action" class="com.test.mvc.RegListController">
+        <property name="regionDAO" ref="regionDAO"></property>
+    </bean>
+
+    <!-- DeptListController 등록 → 부서 정보 리스트 조회 -->
+    <bean name="/deptlist.action" class="com.test.mvc.DeptListController">
+        <property name="departmentDAO" ref="departmentDAO"></property>
+    </bean>
+
+    <!-- PosListController 등록 → 직위 정보 리스트 조회 -->
+    <bean name="/poslist.action" class="com.test.mvc.PosListController">
         <property name="positionDAO" ref="positionDAO"></property>
     </bean>
 
