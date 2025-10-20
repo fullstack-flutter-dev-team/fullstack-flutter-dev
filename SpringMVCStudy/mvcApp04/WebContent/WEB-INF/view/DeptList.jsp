@@ -40,18 +40,18 @@ String COLOR_BLUE     = "\u001B[34m" ;
         <c:import url="EmployeeMenu.jsp"></c:import>
     </div>
 
+<style type="text/css">
+    .table th {
+        text-align: center;
+    }
+</style>
+
     <!-- 콘텐츠 영역 -->
     <div id="content">
     
         <h1>[ 부서 목록 (직원 전용) ]</h1>
         <hr />
         
-        <div>
-            <form>
-                <input type="button" value="부서 추가" class="btn"
-                       onclick="location.href='departInsertForm.action'">
-            </form>
-        </div>
         <br>
     
         <!------------------------------------------------------- 

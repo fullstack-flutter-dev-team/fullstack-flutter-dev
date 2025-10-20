@@ -22,6 +22,11 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <title>PosList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style type="text/css">
+    .table th {
+        text-align: center;
+    }
+</style>
 </head>
 <body>
 
@@ -39,7 +44,13 @@ String COLOR_BLUE     = "\u001B[34m" ;
     <div>
         <c:import url="EmployeeMenu.jsp"></c:import>
     </div>
-
+    
+<style type="text/css">
+    .table th {
+        text-align: center;
+    }
+</style>
+    
     <!-- 콘텐츠 영역 -->
     <div id="content">
     

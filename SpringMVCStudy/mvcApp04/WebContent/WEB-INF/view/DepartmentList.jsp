@@ -69,6 +69,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
         <c:import url="EmployeeMenu.jsp"></c:import>
     </div>
 
+<style type="text/css">
+    .table th {
+        text-align: center;
+    }
+</style>
+
     <!-- 콘텐츠 영역 -->
     <div id="content">
     

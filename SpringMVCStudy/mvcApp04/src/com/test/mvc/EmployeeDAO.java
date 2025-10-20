@@ -337,8 +337,8 @@ public class EmployeeDAO implements IEmployeeDAO
     @Override
     public String login(String id, String pw) throws SQLException
     {
-        //String resutName = "";
-        String resutName = null;
+        //String resultName = "";
+        String resultName = null;
         // 【check~!!!】
         //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
         // 결과값으로 반환할 값을 절대로 빈 문자열로 하지 말고
@@ -364,22 +364,22 @@ public class EmployeeDAO implements IEmployeeDAO
         ResultSet rs = pstmt.executeQuery();
         
         while (rs.next()) {
-            resutName = rs.getString(1);
+            resultName = rs.getString(1);
         }
         
         rs.close();
         pstmt.close();
         conn.close();
         
-        return resutName;
+        return resultName;
     }
 
     // 관리자 로그인
     @Override
     public String loginAdmin(String id, String pw) throws SQLException
     {
-        //String resutName = "";
-        String resutName = null;
+        //String resultName = "";
+        String resultName = null;
         // 【check~!!!】
         //★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
         // 결과값으로 반환할 값을 절대로 빈 문자열로 하지 말고
@@ -405,14 +405,14 @@ public class EmployeeDAO implements IEmployeeDAO
         ResultSet rs = pstmt.executeQuery();
         
         while (rs.next()) {
-            resutName = rs.getString("NAME");
+            resultName = rs.getString("NAME");
         }
         
         rs.close();
         pstmt.close();
         conn.close();
         
-        return resutName;
+        return resultName;
     }
 
 }
