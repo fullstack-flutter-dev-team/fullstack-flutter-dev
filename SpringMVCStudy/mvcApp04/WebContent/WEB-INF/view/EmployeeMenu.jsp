@@ -33,7 +33,9 @@ String COLOR_BLUE     = "\u001B[34m" ;
 ------------------------------->
 
 <!-- 테스트 -->
+<!-- 
 <span>${sessionScope.admin==null ? "normal" : "admin" }</span>
+-->
 
 <div id="menu">
     <ul>

@@ -28,7 +28,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     
     $(function() {
 
-    	// [지역] 추가 버튼이 클릭되었을 때 수행해야 할 코드 처리
+        // [지역] 추가 버튼이 클릭되었을 때 수행해야 할 코드 처리
         $("#submitBtn").click(function() {
             
             // 데이터 검사

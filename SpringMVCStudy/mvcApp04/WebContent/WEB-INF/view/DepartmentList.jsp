@@ -79,7 +79,8 @@ String COLOR_BLUE     = "\u001B[34m" ;
     <div id="content">
     
         <h1>[ 부서 관리 (관리자 전용) ]</h1>
-        <hr />
+        <hr>
+        <br>
         
         <div>
             <form>

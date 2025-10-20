@@ -81,6 +81,8 @@ String COLOR_BLUE     = "\u001B[34m" ;
         <h1>[ 지역 관리 (관리자 전용) ]</h1>
         <hr />
         
+        <br>
+        
         <div>
             <form>
                 <input type="button" value="지역 추가" class="btn"

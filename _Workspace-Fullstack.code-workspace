@@ -10,9 +10,7 @@
 	"settings": {
 		"java.debug.settings.onBuildFailureProceed": true,
 		"java.project.sourcePaths": [
-			"fullstack-flutter-dev_github/JDBCStudy/JDBC08/src/com/test",
-			"fullstack-flutter-dev_github/JDBCStudy/JDBC07",
-			"fullstack-flutter-dev_github/JDBCStudy"
+			"fullstack_development/MiracleReading/miraclereading_01"
 		],
 		"java.compile.nullAnalysis.mode": "automatic",
 		"liveServer.settings.multiRootWorkspaceName": "_Workspace"

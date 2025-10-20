@@ -54,11 +54,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
     <!-- 콘텐츠 영역 -->
     <div id="content">
     
-        <h1>[ 직위 목록 (직원 전용) ]</h1>
+        <h1>[ 직위 목록 (일반직원 전용) ]</h1>
         <hr />
+        <br>
     
         <!------------------------------------------------------- 
-           POSITIONID, POSITIONNAME, MINBASICPAY, DELCHECK
+           POSITIONID, POSITIONNAME, MINBASICPAY
         -------------------------------------------------------->
         <table id="customers" class="table">
             <tr>

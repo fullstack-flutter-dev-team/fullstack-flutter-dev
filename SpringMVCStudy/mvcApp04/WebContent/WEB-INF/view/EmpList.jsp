@@ -52,6 +52,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     
         <h1>[ 직원 목록 (일반직원 전용) ]</h1>
         <hr />
+        <br>
         
         <%-- 직원 추가 div 제거 --%>
         <%--         
@@ -62,7 +63,6 @@ String COLOR_BLUE     = "\u001B[34m" ;
             </form>
         </div> 
         --%>
-        <br><br>
     
         <!------------------------------------------------------- 
            EMPLOYEEID NAME SSN BIRTHDAY LUNAR LUNARNAME TELEPHONE

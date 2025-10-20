@@ -362,3 +362,39 @@
 - [이메일 전송을 포함한 알림 기능 구현하기(with Spring Boot)](https://velog.io/@kimhalin/%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%A0%84%EC%86%A1%EC%9D%84-%ED%8F%AC%ED%95%A8%ED%95%9C-%EC%95%8C%EB%A6%BC-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0with-Spring-Boot)
 - [spring boot 알림 검색](https://www.google.com/search?q=spring+boot+%EC%9D%BC%EB%A6%BC&newwindow=1&sca_esv=ee19cbd168e99f6e&biw=2271&bih=1198&ei=bPfdaICYHKvk2roPwcGoyAc&ved=0ahUKEwiA_oqFz4SQAxUrslYBHcEgCnkQ4dUDCBA&uact=5&oq=spring+boot+%EC%9D%BC%EB%A6%BC&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnNwcmluZyBib290IOydvOumvDIHEAAYgAQYDTIGEAAYHhgNMgYQABgeGA0yCBAAGAgYHhgNMggQABgIGB4YDTIIEAAYCBgeGA0yCBAAGAgYHhgNMgUQABjvBTIIEAAYgAQYogRI_yFQsA9YrxVwAngBkAEAmAGJAqABxwuqAQMyLTa4AQPIAQD4AQGYAgSgAokEwgIKEAAYRxjWBBiwA8ICBRAhGKABmAMAiAYBkAYKkgcFMi4wLjKgB4sZsgcDMi0yuAeCBMIHBTAuMy4xyAcK&sclient=gws-wiz-serp)
 - []()
+
+
+### Docker Oracle 23c 설치
+- [docker oracle 23c 검색](https://www.google.com/search?q=docker+oracle+23c&oq=docker+oracle+23c&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABgeMgYIAhAAGB4yCAgDEAAYCBgeMgoIBBAAGIAEGKIEMgoIBRAAGIAEGKIEMggIBhAAGAgYHjIICAcQABgIGB4yCAgIEAAYCBgeMggICRAAGAgYHtIBCjExNjQxajBqMTWoAgCwAgA&sourceid=chrome&ie=UTF-8)
+  - ⭐[Docker로 Oracle 버전 23c free 설치 / Oracle-23ai-Free 버전 설치 / Docker로 오라클 설치하기](https://junesker.tistory.com/98)
+    - 이미지 다운로드
+      - ```docker pull container-registry.oracle.com/database/free:latest```
+    - 도커 컨테이너 생성
+      - ```docker run --name oracle-23ai-free -d -p 8521:1521 -p 8500:5500 -e ORACLE_PWD=oracle container-registry.oracle.com/database/free:latest```
+      - ```docker run --name oracle-23ai-free -d -p 8521:1521 -e ORACLE_PWD=oracle container-registry.oracle.com/database/free:latest```
+        - --name : 컨테이너 명을 설정합니다.
+        -  -d : detach, 컨테이너가 백그라운드에서 실행될 수 있게 합니다. (데몬 모드)
+        -  -p : port, 각 포트를 설정합니다. (docker run에서는 포트포워딩을 설정)
+        -  -e : 컨테이너 내에서 사용될 환경변수를 설정합니다.
+     -  현재 가동중인 컨테이너를 확인
+        -  ```docker ps -a```
+    - 
+  - ⭐[Docker로 Oracle 데이터베이스 활용해 SqlDeveloper 접속하기 / Docker로 SqlDeveloper 접속하기 / Docker & SqlDeveloper](https://junesker.tistory.com/99?category=1227797)
+    - USER : sys
+    - PW: oracle
+    - ROLE: SYSDBA
+    - 서비스이름: FREEPDB1
+    - PORT: 8521
+  - ⭐[Oracle 23c 설치하기](https://miracleanddestiny.tistory.com/345)
+    1. 최신 버전을 설치
+       - window에 docker, bash가 다운로드 상태이어야 함
+    2. docker로 이미지 가져오기
+       - docker pull container-registry.oracle.com/database/free:latest
+    3. docker 이미지를 실행하기
+       - docker run -d --name ora23 container-registry.oracle.com/database/free
+       - ora_container 대신 다른 이름 써도 됨
+    4. 부팅 로그 확인하기
+        - docker logs --follow ora23
+  - []()
+- []()
+- []()
