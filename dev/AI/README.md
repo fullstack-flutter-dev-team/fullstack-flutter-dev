@@ -397,4 +397,12 @@
         - docker logs --follow ora23
   - []()
 - []()
+
+### OLLAMA REMOVE
+- [OLLAMA REMOVE 검색](https://www.google.com/search?q=OLLAMA+REMOVE&oq=OLLAMA+REMOVE+&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg70gEINzc0N2owajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
+  - [ollama 모델 삭제하기](https://seulow-down.tistory.com/369)
+    - ```ollama list```
+    - ```ollama rm 모델명```
+  - []()
+  - []()
 - []()
