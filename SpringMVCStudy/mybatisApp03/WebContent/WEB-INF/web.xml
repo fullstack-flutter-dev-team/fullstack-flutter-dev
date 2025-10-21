@@ -39,6 +39,5 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern> <!-- 컨텍스트 패스/* → 모든 요청에 대해서 -->
-        <!-- <url-pattern>.action</url-pattern> -->
     </filter-mapping>
 </web-app>

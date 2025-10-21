@@ -4,4 +4,34 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.test.mybatis.IMemberDAO">
+
+    <!-- 회원 명단 조회 -->
+    <select id="list" resultType="com.test.mybatis.MemberDTO" parameterType="String">
+        SELECT MID, NAME, TELEPHONE
+        FROM TBL_MEMBERLIST
+        ORDER BY MID
+    </select>
+
+    <!-- 회원 수 조회 -->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM TBL_MEMBERLIST
+    </select>
+    
+    <!-- 회원 등록 -->
+    <!-- #{name} -->
+    <!-- #{telephone} -->
+    <!-- resultType 생략 가능 -->
+    <insert id="add">
+        INSERT INTO TBL_MEMBERLIST(MID, NAME, TELEPHONE) 
+        VALUES(MEMBERLISTSEQ.NEXTVAL, #{name}, #{telephone})
+    </insert>
+
+    <!-- 삭제 기능 처리 ③ -->
+    <delete id="remove">
+        DELETE
+        FROM TBL_MEMBERLIST
+        WHERE MID=#{mid}
+    </delete>
+
 </mapper>

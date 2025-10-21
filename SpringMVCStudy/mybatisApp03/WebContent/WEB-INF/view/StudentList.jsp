@@ -18,7 +18,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MemberList.jsp</title>
+<title>StudentList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 
 <!-- 기본 CSS -->
@@ -35,13 +35,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
 
 <!-- 부트스트랩 관련 스크립트 적용 JS -->
 <script type="text/javascript" src="http://maxcdn.bootstrap.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
 
 <div>
-    <h1>회원 정보</h1>
+    <h1>학생 정보</h1>
     <hr>
 </div>
 
@@ -49,7 +48,7 @@ String COLOR_BLUE     = "\u001B[34m" ;
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading" id="title">
-                회원 정보 입력            
+                학생 정보 입력            
             </div>
         
             <div class="panel-body">
@@ -64,12 +63,12 @@ String COLOR_BLUE     = "\u001B[34m" ;
                     
                     <div class="form-group">
                         <label for="telephone">
-                            TELEPHONE :
+                            TEL :
                         </label>
-                        <input type="tel" class="form-control" id="telephone" name="telephone">
+                        <input type="tel" class="form-control" id="tel" name="tel">
                     </div>
                     
-                    <button type="submit" class="btn btn-default btn-sm">SUBMIT</button>
+                    <button type="submit" class="btn btn-primary btn-sm">SUBMIT</button>
                     <button type="button" class="btn btn-default btn-sm btnCancel">CANCEL</button>
                 
                 </form> 
@@ -80,58 +79,33 @@ String COLOR_BLUE     = "\u001B[34m" ;
     
         <div class="panel panel-default">
             <div class="panel-heading">
-                회원 정보 출력
+                학생 정보 출력
             </div>
             
             <div class="panel-body">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>MID</th>
+                            <th>SID</th>
                             <th>NAME</th>
-                            <th>TELEPHONE</th>
-                            <th>수정 / 삭제</th>
+                            <th>TEL</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
-                        <tr>
-                            <td>1</td>
-                            <td>김한국</td>
-                            <td>010-2234-5678</td>
-                            <td>
-                                <button type="button" class="btn btn-default btn-xs btnUpdate">수정</button>
-                                <button type="button" class="btn btn-default btn-xs btnUpdate">삭제</button>
-                            
-                            </td>
-                        </tr> 
-                        <!-- 
-                        <c:forEach var="member" items="${list }">
+                        <c:forEach var="student" items="${list }">
                             <tr>
-                                <td>${member.mid }</td>
-                                <td>${member.name }</td>
-                                <td>${member.telephone }</td>
-                                <td>
-                                    <button type="button" class="btn btn-default btn-xs btnUpdate"
-                                    value="${member.mid }">수정</button>
-                                    <%-- <a href="/memberdelete.action?mid="${member.mid }"> --%> 
-                                    
-                                    <button type="button" class="btn btn-default btn-xs btnDelete"
-                                    <%-- onclick="location.href='memberdelete.action?mid=${member.mid }'" --%>
-                                    value="${member.mid }" >삭제</button>
-                                    
-                                    <!-- </a> --> 
-                                </td>                   
+                                <td>${student.sid }</td>
+                                <td>${student.name }</td>
+                                <td>${student.tel }</td>
                             </tr>
                         </c:forEach>
-                        -->
                         
                     </tbody>
                     </table>
 
-                    <button type="button" class="btn btn-default btn-sm" role="badgeFrame">
-                        Count <span class="badge" role="badge">1</span>
-<%--                         Count <span class="badge" role="badge">${count }</span> --%>
+                    <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
+<!--                         Count <span class="badge" role="badge">1</span> -->
+                        Count <span class="badge" role="badge">${count }</span>
                     </button>
                     
                 </div>

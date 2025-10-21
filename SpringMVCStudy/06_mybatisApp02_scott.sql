@@ -36,6 +36,11 @@ VALUES(MEMBERLISTSEQ.NEXTVAL, '김한국', '010-1111-2222')
 ;
 --==>> 1 행 이(가) 삽입되었습니다.
 
+INSERT INTO TBL_MEMBERLIST(MID, NAME, TELEPHONE) 
+VALUES(MEMBERLISTSEQ.NEXTVAL, '이하나', '010-2222-3333')
+;
+--==>> 1 행 이(가) 삽입되었습니다.
+
 --○ 확인(리스트 조회 쿼리문 구성)
 SELECT MID, NAME, TELEPHONE
 FROM TBL_MEMBERLIST
@@ -43,7 +48,8 @@ ORDER BY MID;
 /* 
        MID NAME                           TELEPHONE                               
 ---------- ------------------------------ ----------------------------------------
-         1 김한국                         010-1111-2222 
+         1 김한국                         010-1111-2222                           
+         2 이하나                         010-2222-3333     
 */
 
 
@@ -56,3 +62,12 @@ SELECT COUNT(*) AS COUNT
 FROM TBL_MEMBERLIST
 ;
 --==>> 1
+
+--○ 데이터 삭제 쿼리문 구성
+DELETE
+FROM TBL_MEMBERLIST
+WHERE MID=1;
+
+--○ 롤백
+ROLLBACK;
+--==>> 롤백 완료.
