@@ -19,7 +19,7 @@ public interface IGradeDAO
     
     /*
      * select
-     * 성적 조회
+     * 성적 레코드 수 조회
      * */
     public int count();
     

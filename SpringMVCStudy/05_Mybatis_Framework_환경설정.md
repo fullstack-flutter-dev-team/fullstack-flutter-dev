@@ -154,55 +154,80 @@
    - 학사관리(성적 처리)
 
 ○ 데이터베이스 관련 객체 준비
-   - 사용 계정 : scott
-   - 테이블 : TBL_STUDENT
-   - 테이블 구조 : SID NUMBER      --PK
-                  , NAME VARCHAR2(30)
-                  , TEL VARCHAR2(40)
-
-   - 테이블 : TBL_GRADE
-   - 테이블 구조 : SID NUMBER      --PK/FK
-               , SUB1 NUMBER(3)
-               , SUB2 NUMBER(3)
-               , SUB3 NUMBER(3)
-
-   - 뷰 : STUDENTVIEW
-      - 뷰 구조 : SID, NAME, TEL, SUB(참조 레코드 수)
-   - 뷰 : GRADEVIEW
-      - 뷰 구조 : SID, NAME, SUB1, SUB2, SUB3, TOT, AVG, CH
+   - **```scott.TBL_STUDENT```** 테이블 
+ 
+         ```
+         (  SID  NUMBER      --PK
+          , NAME VARCHAR2(30)
+          , TEL  VARCHAR2(40)
+         )
+         ```
+   - **```scott.TBL_GRADE```** 테이블 
+      ```
+      (  SID  NUMBER      --PK/FK
+         , SUB1 NUMBER(3)
+         , SUB2 NUMBER(3)
+         , SUB3 NUMBER(3)
+      )
+      ```
+   - **```scott.STUDENTVIEW```** 뷰 
+       - 뷰 구조
+         ```
+         SID, NAME, TEL, SUB(참조 레코드 수)
+         ```
+   - **```scott.GRADEVIEW```** 뷰
+      - 뷰 구조 
+         ```
+         SID, NAME, SUB1, SUB2, SUB3, TOT, AVG, CH
+         ```
         - 총점(TOT), 평균(AVG), 등급(CH)(합격, 과락, 불합격)
 
 ○ 물리적 파일 구성
-   - mybatisApp03_scott.sql → 데이터베이스 관련작업
-  - ``` --*-- ```
-   - StudentDTO.java → 데이터 전송 객체 자료형 클래스(DTO)
+   - **mybatisApp03_scott.sql**
+     - 데이터베이스 관련 작업
+<br>``` --🔹-- ```
+   - **StudentDTO.java**
+     - 데이터 전송 객체 자료형 클래스(DTO)
       - 학생 데이터 저장 및 전송
-   - GradeDTO.java   → 데이터 전송 객체 자료형 클래스(DTO)
+   - **GradeDTO.java**
+     - 데이터 전송 객체 자료형 클래스(DTO)
       - 성적 데이터 저장 및 전송
-  - ``` --*-- ```
-   - IStudentDAO.java → 인터페이스
-      - 학생 데이터 액션 처리 메소드 선언
-   - IGradeDAO.java   → 인터페이스
-      - 성적 데이터 액션 처리 메소드 선언
-  - ``` --*-- ```
-   - StudentDAO.xml → mybatis 환경 설정 파일 활용
-   - GradeDAO.xml   → mybatis 환경 설정 파일 활용
-  - ``` --*-- ```
-   - StudentController.java     → mybatis 객체활용(Controller)
-   - GradeController.java       → mybatis 객체활용(Controller)
-  - ``` --*-- ```
-   - StudentList.jsp            → View 페이지 활용(JSP)
-      - (학생 명단 출력 레이아웃 구성)
-   - StudentInsertForm.jsp → View 페이지 활용(JSP)
-      - (학생 데이터 입력 폼 구성)
-  - ``` --*-- ```
-   - GradeList.jsp  → View 페이지
-       - (성적 리스트 출력 레이아웃 구성)
-   - GradeInsertForm.jsp → View 페이지
-       - (성적 데이터 입력 폼 구성)
-  - ``` --*-- ```
-   - dispatcher-servlet.xml → mybatis 관련 객체 등록 및 활용
-   - web.xml → Front Controller 등록 및 인코딩 필터 설정
+<br>``` --🔹-- ```
+   - **IStudentDAO.java**
+     - 인터페이스
+     - 학생 데이터 액션 처리 메소드 선언
+   - **IGradeDAO.java** 
+     - 인터페이스
+     - 성적 데이터 액션 처리 메소드 선언
+<br>``` --🔹-- ```
+   - **StudentDAO.xml**
+     - mybatis 환경 설정 파일 활용
+   - **GradeDAO.xml**
+     - mybatis 환경 설정 파일 활용
+<br>``` --🔹-- ```
+   - **StudentController.java**
+     - mybatis 객체 활용(Controller)
+   - **GradeController.java**
+     - mybatis 객체 활용(Controller)
+<br>``` --🔹-- ```
+   - **StudentList.jsp**
+     - View 페이지 활용(JSP)
+     - 학생 명단 출력 레이아웃 구성
+   - **StudentInsertForm.jsp**
+     - View 페이지 활용(JSP)
+     - 학생 데이터 입력 폼 구성
+<br>``` --🔹-- ```
+   - **GradeList.jsp**
+     - View 페이지 활용(JSP)
+     - 성적 리스트 출력 레이아웃 구성
+   - **GradeInsertForm.jsp**
+     - View 페이지 활용(JSP)
+     - 성적 데이터 입력 폼 구성
+<br>``` --🔹-- ```
+   - **dispatcher-servlet.xml**
+     - mybatis 관련 객체 등록 및 활용
+   - **web.xml**
+     - Front Controller 등록 및 인코딩 필터 활용
 
 ○ 사용자 최초 요청 주소
    http://localhost:3306/mybatisApp03/studentlist.action

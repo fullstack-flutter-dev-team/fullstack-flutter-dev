@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>StudentList.jsp</title>
+<title>GradeList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 
 <!-- 기본 CSS -->
@@ -34,36 +34,31 @@
     		 window.location.href = "studentinsertform.action";
     	 });
     	 
-    	 $(".btnAddGrade").click(function() {
-             $(location).attr("href", "gradeinsertForm.action?sid=" + $(this).val());
-         });
-    	 
-    	 $("#studentList").click(function() {
+         $("#studentList").click(function() {
              $(location).attr("href", "studentlist.action?sid=" + $(this).val());
          });
-    	 
-    	 $("#gradelist").click(function() {
+         
+         $("#gradelist").click(function() {
              $(location).attr("href", "gradelist.action?sid=" + $(this).val());
          });
-     });//$(function()
+         
+     });//$(function() {
 </script>
 </head>
 <body>
 
 
 <div>
-    <button type="button" id="studentList" class="btn btn-primary btn-sm btnCancel" disabled="disabled">학생정보</button>
-    <button type="button" id="gradelist" class="btn btn-primary btn-sm btnCancel">성적정보</button>
-    <h1>학생 정보</h1>
+    <button type="button" id="studentList" class="btn btn-primary btn-sm btnCancel">학생정보</button>
+    <button type="button" id="gradelist" class="btn btn-primary btn-sm btnCancel" disabled="disabled">성적정보</button>
+    <h1>성적 정보</h1>
     <hr>
 </div>
 <br>
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
-            <div class="panel-heading">학생 정보 출력
-                        <button type="button" id="addStudent" class="btn btn-primary btn-sm btnCancel float-right">학생등록</button>
-            </div>
+            <div class="panel-heading">성적 정보 출력</div>
             
             <div class="panel-body">
                 <table class="table">
@@ -71,27 +66,33 @@
                         <tr>
                             <th>SID</th>
                             <th>NAME</th>
-                            <th>TEL</th>
-                            <th>SUB</th>
+                            <th>SUB1</th>
+                            <th>SUB2</th>
+                            <th>SUB3</th>
+                            <th>TOT</th>
+                            <th>AVG</th>
+                            <th>CH</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="student" items="${list }">
+                        <c:forEach var="grade" items="${list }">
                             <tr>
-                                <td>${student.sid }</td>
-                                <td>${student.name }</td>
-                                <td>${student.tel }</td>
-                                <td>
-                                   <button type="button" class="btn btn-warn btn-xs btnAddGrade"
-                                    ${(student.sub == 0) ? "" : "disabled=\"disabled\"" }
-                                    value="${student.sid }" >${(student.sub == 0) ? "성적 등록" : "완료" }</button>
-                                </td>
+                                <td>${grade.sid }</td>
+                                <td>${grade.name }</td>
+                                <td>${grade.sub1 }</td>
+                                <td>${grade.sub2 }</td>
+                                <td>${grade.sub3 }</td>
+                                <td>${grade.tot }</td>
+                                <td>${grade.avg }</td>
+                                <td>${grade.ch }</td>
                             </tr>
                         </c:forEach>
+                        
                     </tbody>
-                </table>
+                    </table>
 
                     <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
+<!--                         Count <span class="badge" role="badge">1</span> -->
                         Count <span class="badge" role="badge">${count }</span>
                     </button>
                     

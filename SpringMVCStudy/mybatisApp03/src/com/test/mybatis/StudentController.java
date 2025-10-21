@@ -33,5 +33,13 @@ public class StudentController
     public String studentInsertForm(Model model) {
         return "/WEB-INF/view/StudentInsertForm.jsp";
     }
+    
+    @RequestMapping(value = "/studentinsert.action", method = RequestMethod.POST)
+    public String studentInsert(StudentDTO student) {
+    	System.out.println(">>> student : " + student.toString());
+    	IStudentDAO dao = sqlSession.getMapper(IStudentDAO.class);
+    	dao.add(student);
+    	return "redirect:studentlist.action";
+    }
 
 }

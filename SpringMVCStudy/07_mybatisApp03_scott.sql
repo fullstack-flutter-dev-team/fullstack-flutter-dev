@@ -100,7 +100,10 @@ VALUES (STUDENTSEQ.nextval, '강감찬', '010-4444-1111')
 -- 1 row inserted. X 4
 
 --○ 데이터 조회 쿼리문 구성(TBL_STUDENT)
-SELECT * FROM TBL_STUDENT;
+SELECT * 
+FROM TBL_STUDENT
+ORDER BY SID
+;
 /* 
        SID NAME                           TEL                                     
 ---------- ------------------------------ ----------------------------------------
@@ -123,7 +126,9 @@ VALUES (3, 55, 45, 56)
 -- 1 row inserted. X 3
 
 --○ 데이터 조회 쿼리문 구성(TBL_GRADE)
-SELECT * FROM TBL_GRADE
+SELECT * 
+FROM TBL_GRADE
+ORDER BY SID
 ;
 /* 
        SID       SUB1       SUB2       SUB3
@@ -133,8 +138,14 @@ SELECT * FROM TBL_GRADE
          3         55         45         56
 */
 
+--○ 커밋
+COMMIT;
+--==>> Commit complete.
+
 --○ 데이터 조회 쿼리문 구성(STUDENTVIEW)
-SELECT * FROM STUDENTVIEW
+SELECT * 
+FROM STUDENTVIEW
+ORDER BY SID
 ;
 /* 
        SID NAME                           TEL                                             SUB
@@ -146,7 +157,9 @@ SELECT * FROM STUDENTVIEW
 */
 
 --○ 데이터 조회 쿼리문 구성(GRADEVIEW)
-SELECT * FROM GRADEVIEW
+SELECT * 
+FROM GRADEVIEW
+ORDER BY SID
 ;
 /* 
 
@@ -158,16 +171,24 @@ SELECT * FROM GRADEVIEW
 */
 
 --○ 학생수 조회 쿼리문 구성(STUDENTVIEW)
-SELECT COUNT(*) AS STUDENTCOUNT
+SELECT COUNT(*)
 FROM STUDENTVIEW
 ;
 /* 
-
-STUDENTCOUNT
-------------
-           4
+  COUNT(*)
+----------
+         4
 */
 
---○ 커밋
-COMMIT;
---==>> Commit complete.
+--○ 성적 레코드 수 조회 쿼리문 구성(GRADEVIEW)
+SELECT COUNT(*) 
+FROM GRADEVIEW
+;
+/* 
+
+  COUNT(*)
+----------
+         3
+*/
+
+-------------------------
