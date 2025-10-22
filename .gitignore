@@ -23,7 +23,7 @@ dist/
 .mtj.tmp/
 
 # Package files
-*.jar
+# *.jar
 
 # Maven
 target/
