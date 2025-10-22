@@ -9,6 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
 <title>StudentList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 
@@ -21,6 +23,13 @@
 <!-- 부트스트랩 부가 테마 CSS -->
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+<style type="text/css">
+   .scrollable-panel {
+        max-height: 640px;
+        overflow: auto;
+   }
+</style>
+
 <!-- 제이쿼리 적용 JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
@@ -29,43 +38,58 @@
 
 <script type="text/javascript">
      $(function() {
-    	 $("#addStudent").click(function() {
-    		 console.log(">>>>>");
-    		 window.location.href = "studentinsertform.action";
-    	 });
-    	 
-    	 $(".btnAddGrade").click(function() {
-             $(location).attr("href", "gradeinsertForm.action?sid=" + $(this).val());
+         $("#addStudent").click(function() {
+             console.log(">>>>>");
+             window.location.href = "studentinsertform.action";
          });
-    	 
-    	 $("#studentList").click(function() {
-             $(location).attr("href", "studentlist.action?sid=" + $(this).val());
+         
+         $(".btnAddGrade").click(function() {
+             $(location).attr("href", "gradeinsertForm.action?" + $(this).val());
          });
-    	 
-    	 $("#gradelist").click(function() {
-             $(location).attr("href", "gradelist.action?sid=" + $(this).val());
+         
+         // 학생 정보 이동
+         $("#studentList").click(function() {
+             $(location).attr("href", "studentlist.action");
+         });
+         
+         // 성적 정보 이동
+         $("#gradelist").click(function() {
+             $(location).attr("href", "gradelist.action");
          });
      });//$(function()
 </script>
 </head>
 <body>
+<!-- 상단 메뉴 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active">
+                <a href="studentlist.action">학생 리스트</a>
+            </li>
+            <li  role="presentation" >
+                <a href="gradelist.action">성적 리스트</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br><br><br>
 
-
+<%-- 
 <div>
-    <button type="button" id="studentList" class="btn btn-primary btn-sm btnCancel" disabled="disabled">학생정보</button>
-    <button type="button" id="gradelist" class="btn btn-primary btn-sm btnCancel">성적정보</button>
-    <h1>학생 정보</h1>
+    <h1><b>학생 정보</b></h1>
     <hr>
 </div>
-<br>
+ --%>
+
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">학생 정보 출력
-                        <button type="button" id="addStudent" class="btn btn-primary btn-sm btnCancel float-right">학생등록</button>
+                <button type="button" id="addStudent" class="btn btn-success"><b>학생등록</b></button>
             </div>
             
-            <div class="panel-body">
+            <div class="panel-body scrollable-panel">
                 <table class="table">
                     <thead>
                         <tr>
@@ -82,24 +106,34 @@
                                 <td>${student.name }</td>
                                 <td>${student.tel }</td>
                                 <td>
-                                   <button type="button" class="btn btn-warn btn-xs btnAddGrade"
-                                    ${(student.sub == 0) ? "" : "disabled=\"disabled\"" }
-                                    value="${student.sid }" >${(student.sub == 0) ? "성적 등록" : "완료" }</button>
+                                    <c:choose>
+                                        <c:when test="${student.sub == 0}">
+                                            <button type="button" class="btn btn-warning btn-xs btnAddGrade"
+                                                    value="sid=${student.sid }&name=${student.name}">
+                                                    성적 등록 처리
+                                            </button>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button type="button" class="btn btn-success btn-xs btnAddGrade"
+                                                    value="sid=${student.sid }&name=${student.name}" disabled="disabled">
+                                                    성적 등록 완료
+                                            </button>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
 
-                    <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
-                        Count <span class="badge" role="badge">${count }</span>
-                    </button>
+                <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
+                    Count <span class="badge" role="badge">${count }</span>
+                </button>
                     
-                </div>
-            </div> <!-- close .panel .panel-default  -->
-        </div> 
-    
+            </div>
+        </div> <!-- close .panel .panel-default  -->
     </div> 
+</div> 
 
 </body>
 </html>

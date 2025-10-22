@@ -79,60 +79,6 @@
 ○ 기능 구현
   - 마이바티스 환경 구성 후 프로젝트 정상 구동(실행) 여부 확인
 ---
-### ■■■ Spring MVC + Annotation + mybatis 프로젝트 실습 02 ■■■
-
-○ 프로젝트
-   -  mybatisApp02
-
-○ 관련 라이브러리 등록 및 환경구성 (※ 위에서 정리한 내용참조)
-   ..
-
-○ 기능 구현
-  -  이름, 전화번호를 데이터베이스에서 읽어내어 화면에 출력
-  - 이 과정에서 mybatis 활용.
-
-○ 데이터베이스 관련 객체 준비
-   - 사용 계정 : scott
-   - 테이블 : TBL_MEMBERLIST
-   - 테이블 구조 : 
-   - MID NUMBER      --PK
-      , NAME VARCHAR2(30)
-      , TELEPHONE VARCHAR2(40)
-   - 시퀀스 : MEMBERLISTSEQ
-
-○ 페이지 레이아웃 구성
-   회원 관리
- 
-   이름 [ ]
-   전화 [  ]
-
-    < 회원 추가 >
-
-    전체 인원 수 : 2명
-    ----------------------
-     번호  이름     전화
-      1    도우너   010-11..
-      2    마일콜   010-22..
-    ----------------------
-
-○ 물리적 파일 구성
-   - mybatisApp02_scott.sql → 데이터베이스 관련작업
-   
-   - MemberDTO.java   → 데이터 전송 객체 자료형 클래스(DTO)
-   - IMemberDAO.java  → 인터페이스
-   - MemberController → 컨트롤러
-   - MemberDAO.xml    → mybatis 환경 설정 파일 활용
-   - MemberMain.java  → mybatis 객체 활용(Controller)
-   - MemberList.jsp   → view 페이지 활용
-
-   - dispatcher-servlet.xml → mybatis 객체 등록 및 활용
-   - web.xml → front Controller 등록 및 인코딩 설정 (필터활용)
-
-○ 사용자 최초 요청 주소
-   http://localhost:3306/mybatisApp02/memberlist.action
-
-
----
 ### ■■■ Spring MVC + Annotation + mybatis 프로젝트 실습 03 ■■■
 
 ○ 프로젝트
@@ -221,8 +167,4 @@
 
 ○ **```사용자 최초 요청 주소```**
    - **http://localhost:3306/mybatisApp03/studentlist.action**
----
--- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
---/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
-
 ---

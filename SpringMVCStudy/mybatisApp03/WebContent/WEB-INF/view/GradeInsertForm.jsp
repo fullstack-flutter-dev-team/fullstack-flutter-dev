@@ -9,7 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>GadeInsertForm.jsp</title>
+<link rel="shortcut icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
+<title>GradeInsertForm.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 
 <!-- 기본 CSS -->
@@ -33,16 +35,42 @@
              console.log(">>>>>");
              window.location.href = "studentlist.action";
          });
+         
+         // 학생 정보 이동
+         $("#studentList").click(function() {
+             $(location).attr("href", "studentlist.action");
+         });
+         
+         // 성적 정보 이동
+         $("#gradelist").click(function() {
+             $(location).attr("href", "gradelist.action");
+         });
      });
 </script>
 </head>
 <body>
 
+<!-- 상단 메뉴 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="studentlist.action">학생 리스트</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active"  aria-current="page" href="gradelist.action">성적 리스트</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br><br><br>
 
+<%-- 
 <div>
-    <h1>성적 정보</h1>
+    <h1><b>성적 정보</b></h1>
     <hr>
 </div>
+ --%>
 
 <div class="container">
     <div class="panel-group">
@@ -57,6 +85,13 @@
                         </label>
                         <input type="text" class="form-control" id="sid" name="sid"
                                value=${sid } readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">
+                            NAME : 
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               value=${name } readonly="readonly">
                     </div>
                     
                     <div class="form-group">
@@ -82,10 +117,11 @@
                     
                     <button type="submit" class="btn btn-primary btn-sm">SUBMIT</button>
                     <button type="button" id="cancel" class="btn btn-default btn-sm btnCancel">CANCEL</button>
-                
                 </form> 
             </div>
         </div><!-- close .pane .panel-default  -->
+    </div>
+</div>
 
 </body>
 </html>

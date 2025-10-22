@@ -9,6 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="<%=cp %>/images/favicon.png" type="image/x-icon">
 <title>GradeList.jsp</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/main.css">
 
@@ -21,6 +23,13 @@
 <!-- 부트스트랩 부가 테마 CSS -->
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+<style type="text/css">
+   .scrollable-panel {
+        max-height: 640px;
+        overflow: auto;
+   }
+</style>
+
 <!-- 제이쿼리 적용 JS -->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
@@ -29,17 +38,19 @@
 
 <script type="text/javascript">
      $(function() {
-    	 $("#addStudent").click(function() {
-    		 console.log(">>>>>");
-    		 window.location.href = "studentinsertform.action";
-    	 });
-    	 
-         $("#studentList").click(function() {
-             $(location).attr("href", "studentlist.action?sid=" + $(this).val());
+         $("#addStudent").click(function() {
+             console.log(">>>>>");
+             window.location.href = "studentinsertform.action";
          });
          
+         // 학생 정보 이동
+         $("#studentList").click(function() {
+             $(location).attr("href", "studentlist.action");
+         });
+         
+         // 성적 정보 이동
          $("#gradelist").click(function() {
-             $(location).attr("href", "gradelist.action?sid=" + $(this).val());
+             $(location).attr("href", "gradelist.action");
          });
          
      });//$(function() {
@@ -47,20 +58,34 @@
 </head>
 <body>
 
+<!-- 상단 메뉴 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <ul class="nav nav-pills" role="tablist">
+            <li role="presentation">
+                <a href="studentlist.action">학생 리스트</a>
+            </li>
+            <li  role="presentation" class="active">
+                <a href="gradelist.action">성적 리스트</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br><br><br>
 
+<%-- 
 <div>
-    <button type="button" id="studentList" class="btn btn-primary btn-sm btnCancel">학생정보</button>
-    <button type="button" id="gradelist" class="btn btn-primary btn-sm btnCancel" disabled="disabled">성적정보</button>
-    <h1>성적 정보</h1>
+    <h1><b>성적 정보</b></h1>
     <hr>
 </div>
-<br>
+ --%>
+
 <div class="container">
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">성적 정보 출력</div>
             
-            <div class="panel-body">
+            <div class="panel-body scrollable-panel">
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,20 +112,16 @@
                                 <td>${grade.ch }</td>
                             </tr>
                         </c:forEach>
-                        
                     </tbody>
-                    </table>
+                </table>
 
-                    <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
-<!--                         Count <span class="badge" role="badge">1</span> -->
-                        Count <span class="badge" role="badge">${count }</span>
-                    </button>
-                    
-                </div>
-            </div> <!-- close .panel .panel-default  -->
-        </div> 
-    
+                <button type="button" class="btn btn-primary btn-sm" role="badgeFrame">
+                    Count <span class="badge" role="badge">${count }</span>
+                </button>
+            </div>
+        </div> <!-- close .panel .panel-default  -->
     </div> 
+</div> 
 
 </body>
 </html>
