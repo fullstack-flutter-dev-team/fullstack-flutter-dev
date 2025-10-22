@@ -44,10 +44,10 @@ Thumbs.db
 # Applications
 *.app
 *.exe
-*.war
+# *.war
 *.nar
 *.ear
-*.zip
+# *.zip
 *.tar.gz
 *.rar
 
