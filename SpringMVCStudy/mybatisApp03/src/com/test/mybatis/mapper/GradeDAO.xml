@@ -7,7 +7,7 @@
     <!-- 성적 레코드 조회 -->
     <select id="list" resultType="com.test.mybatis.GradeDTO">
         SELECT * FROM GRADEVIEW
-        ORDER BY SID
+         ORDER BY SID
     </select>
     
     <!-- 성적 레코드 수 조회 -->

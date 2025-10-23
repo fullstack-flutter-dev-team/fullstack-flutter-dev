@@ -8,7 +8,7 @@
     <!-- 학생 조회 -->
     <select id="list" resultType="com.test.mybatis.StudentDTO">
         SELECT * FROM STUDENTVIEW
-        ORDER BY SID
+         ORDER BY SID
     </select>
     
     <!-- 학생 수 조회 -->
@@ -16,8 +16,9 @@
         SELECT COUNT(*) FROM TBL_STUDENT
     </select>
     
+    <!-- 학생  정보 삽입 -->
     <insert id="add" parameterType="com.test.mybatis.StudentDTO">
-	    INSERT INTO TBL_STUDENT (SID, NAME, TEL)
+        INSERT INTO TBL_STUDENT (SID, NAME, TEL)
          VALUES (STUDENTSEQ.nextval, #{name}, #{tel})
     </insert>
 </mapper>

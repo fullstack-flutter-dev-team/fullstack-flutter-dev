@@ -1,7 +1,5 @@
 ■■■ Mybatis Framework 환경설정(이클립스 버전) ■■■
-
 1. 『http://blog.mybatis.org/ 』 에서 mybatis 다운로드
-   
    - Products 메뉴 선택(클릭)
      → 『https://blog.mybatis.org/p/products.html 』로 이동
 
@@ -24,23 +22,16 @@
      download 메뉴 선택(클릭)
      → 『https://github.com/mybatis/spring/releases 』 로 이동
 
-
    - 이동한 페이지에서 『mybatis-spring-1.3.2』 항목의
       『▶ Assets』 선택(클릭) → 『▼ Assets』 형태로 노드 확장
-
      
    - 확장된 노드의 목록들 중 『mybatis-spring-1.3.2.zip 52.1 KB Mar 14, 2018』 선택(클릭)
      → 파일 다운로드 진행
 
 2. 다운로드 완료된 파일을 압축 해제하여 아래의 파일을 준비한다.
-
     - mybatis-3.5.10.jar
     - mybatis-spring-1.3.2.jar
------------------------------------------------------------------------------------
-■■■ Spring MVC + Annotation + mybatis 프로젝트 실습 01 ■■■
-○ 프로젝트
-  - mybatisApp01
-  
+-----------------------------------------------------------------------
 ○ SpringMVC + mybatis 프로젝트 관련 라이브러리 등록(16개)
    - org.springframework.aop-3.0.2.RELEASE.jar
    - org.springframework.asm-3.0.2.RELEASE.jar
@@ -52,14 +43,13 @@
    - org.springframework.transaction-3.0.2.RELEASE.jar
    - org.springframework.web-3.0.2.RELEASE.jar
    - org.springframework.web.servlet-3.0.2.RELEASE.jar
-   -
+<br>``` --🔹-- ```
    - com.springsource.org.apache.commons.logging-1.1.1.jar
-   -
+<br>``` --🔹-- ```
    - standard.jar
    - jstl.jar
-   -
+<br>``` --🔹-- ```
    - ojdbc6.jar
-
 <br>   ```+```
    - mybatis-3.5.10.jar
    - mybatis-spring-1.3.2.jar
@@ -69,7 +59,7 @@
   - SampleController.java     → 컨트롤러(Controller, 클래스)
   - SampleDAO.xml             → 매퍼 XML
 
-※ 매퍼 XML 샘플
+#### ※ 매퍼 XML 샘플
    - 다운로드를 수행한 pdf 파일(mybatis-3.5.10.pdf)의 내용 중
    『2.1.5 Exploring Mapped SQL Statements』 항목의
    XML 관련 내용을 확인하여 샘플 DTD 를 구성할 수 있도록 한다.
@@ -165,9 +155,9 @@
    - **```scott.TBL_GRADE```** 테이블 
       ```
       (  SID  NUMBER      --PK/FK
-         , SUB1 NUMBER(3)
-         , SUB2 NUMBER(3)
-         , SUB3 NUMBER(3)
+       , SUB1 NUMBER(3)
+       , SUB2 NUMBER(3)
+       , SUB3 NUMBER(3)
       )
       ```
    - **```scott.STUDENTVIEW```** 뷰 
@@ -227,11 +217,10 @@
    - **dispatcher-servlet.xml**
      - mybatis 관련 객체 등록 및 활용
    - **web.xml**
-     - Front Controller 등록 및 인코딩 필터 활용
+     - Front Controller 등록 및 인코딩 필터 활용 
 
-○ 사용자 최초 요청 주소
-   http://localhost:3306/mybatisApp03/studentlist.action
-
+○ **```사용자 최초 요청 주소```**
+   - **http://localhost:3306/mybatisApp03/studentlist.action**
 ---
 -- ### --▣ --※ ○ ★ 『』 ? ▣ ◀▶ ▼ ▲ ⓐ ⓑ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩  →   ←  ↓  …  ： º↑ /* */  ─ ┃ ┛┯ ┐┘ ￦
 --/*▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼*/
