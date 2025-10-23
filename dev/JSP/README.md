@@ -65,7 +65,7 @@
   - [[JSTL] forEach 인덱스](https://bangyee.tistory.com/12)
 - [jstl fmt 검색](https://www.google.com/search?q=jstl+fmt&oq=jstl+fmt&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBwgBEAAYgAQyBwgCEAAYgAQyBwgDEAAYgAQyBggEEAAYHjIGCAUQABgeMgYIBhAAGB4yBggHEAAYHjIGCAgQABgeMgYICRAAGB7SAQgyODgzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
   - [JSTL fmt 태그 사용하기](https://sinna94.tistory.com/entry/JSTL-fmt-%ED%83%9C%EA%B7%B8-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
-  - []()
+  - [[JSTL] jstl에서 if, else문을 사용하는 방법(c:if, c:choose)](https://ssamdu.tistory.com/14)
   - []()
   - []()
 - [jsp dbcp 문맥 검색](https://www.google.com/search?q=jsp+dbcp+%EB%AC%B8%EB%A7%A5&oq=jsp+dbcp+%EB%AC%B8%EB%A7%A5&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigAdIBCDQ1NDNqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8)
