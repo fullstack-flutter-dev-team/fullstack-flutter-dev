@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ※ <?xml ~ ?> 이후에 주석 사용 가능 -->
+
+<!-- DTD 추가 -->
+<!DOCTYPE memberList 
+[
+<!ELEMENT memberList (memberInfo+)>
+<!ELEMENT memberInfo (name, telephone, hobbies?, zipcode, addr)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT telephone (#PCDATA)>
+<!ELEMENT hobbies (hobby+)>
+<!ELEMENT hobby (#PCDATA)>
+<!ELEMENT zipcode (#PCDATA)>
+<!ELEMENT addr (#PCDATA)>
+<!ATTLIST memberInfo mid CDATA #IMPLIED>
+]>
+<!-- ATTLIST -->
+<!-- #IMPLIED  : 이 속성값은 명시되기도 하고, 명시되지 않기도 한다.(선택적) -->
+<!-- #REQUIRED : 이 속성값은 반드시 명시되어야한다.(필수) -->
+<!-- #FIXED    : 이 속성값은 특정값으로 고정되어 사용된다.(고정)  -->
+
+<memberList>
+    <!-- 루트 엘리먼트는 하나 -->
+    <!-- 루트 엘리먼트의 이름은 『~~~.xml』의 파일 이름과 동일한 이름 사용 -->
+        <!-- + Well-Formed : 파일의 이름과 루트엘리먼트가 이름이 동일한 형태 -->
+    <!-- 스스로(본인)의 정보를 표현할 수 있는 문서 작성 -->
+    <!-- + 팀원들 -->
+
+    <!-- 단일일 때 -->
+<!--
+    <name>KOREA</name>
+    <telephone><![CDATA[010-1234-1234]]></telephone>
+    <hobbies>
+        <hobby>축구</hobby>
+        <hobby>농구</hobby>
+        <hobby><![CDATA[야구&배구]]></hobby>
+    </hobbies>
+    <zipcode>12345</zipcode>
+    <addr>Mapogu, Seoul</addr>
+-->
+    <!-- ※복수(다수)의 데이터를 표현하는 경우 중간에 적절한 부모태그 지정 -->
+    <!-- ※엘리먼트 하위에는 엘리먼트(또는 데이터)만 구성 -->
+    <!-- ※특수문자가 포함된 데이터를 표현해야할 경우 『CDATA 섹션』으로 처리 -->
+    <!--
+        동일한 memberInfo 를 여러개 구성하게 되는 경우 속성과 속성값을 구성하는 것을 권장
+        mid=1~N (mid : member id, 식별자)
+    -->
+    <memberInfo mid="1">
+        <name>SI</name>
+        <telephone><![CDATA[010-1234-1234]]></telephone>
+        <!--
+            엘리먼트 사이의 영역을 PC(Parsed Character) 데이터의 영역
+            PC 데이터에 특수문자가 들어가있는 영역에서는 파싱중에 문제가 생길 수 있으므로
+            파싱을 하지 말라는 의미로 CDATA(씨데이터)섹션으로 구성해주는 것이다.
+            -> 이렇게 되면 문자열로 인식하게 된다고 한다.
+        -->
+        <hobbies>
+            <hobby>독서</hobby>
+            <hobby>운동</hobby>
+            <hobby><![CDATA[등산&수영]]></hobby>
+        </hobbies>
+        <zipcode>12345</zipcode>
+        <addr>Mapogu, Seoul</addr>
+    </memberInfo>
+    
+    <memberInfo mid="2">
+        <name>JB</name>
+        <telephone><![CDATA[010-1234-1234]]></telephone>
+        <hobbies>
+            <hobby>JAVA SE</hobby>
+            <hobby>ORACLE</hobby>
+            <hobby><![CDATA[등산&수영]]></hobby>
+        </hobbies>
+        <zipcode>23455</zipcode>
+        <addr>Gangseo-gu, Seoul</addr>
+    </memberInfo>
+    
+    <memberInfo mid="3">
+        <name>AH</name>
+        <telephone><![CDATA[010-1234-1234]]></telephone>
+        <hobbies>
+            <hobby>JAVA SE</hobby>
+            <hobby>ORACLE</hobby>
+            <hobby><![CDATA[독서&수영]]></hobby>
+        </hobbies>
+        <zipcode>34567</zipcode>
+        <addr>Incheon</addr>
+    </memberInfo>
+        
+    <memberInfo mid="4">
+        <name>JY</name>
+        <telephone><![CDATA[010-1234-1234]]></telephone>
+        <hobbies>
+            <hobby>JAVA SE</hobby>
+            <hobby>ORACLE</hobby>
+            <hobby><![CDATA[등산&마라톤]]></hobby>
+        </hobbies>
+        <zipcode>12345</zipcode>
+        <addr>Mapogu, Seoul</addr>
+    </memberInfo>
+    
+</memberList>
