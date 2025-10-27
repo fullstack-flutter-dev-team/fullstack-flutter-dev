@@ -407,13 +407,68 @@
   - []()
 - []()
 
+### summernote
+- [summernote를 설치시 Jquery 버전으로 Ajax가 안되는 문제](https://velog.io/@hana78786/summernote%EC%99%80-Jquery-%EB%B2%84%EC%A0%84%EC%9C%BC%EB%A1%9C-Ajax%EA%B0%80-%EC%95%88%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C)
+- [jquery summernote 충돌 검색](https://www.google.com/search?q=jquery+summernote+%EC%B6%A9%EB%8F%8C&oq=jquery+summernote+%EC%B6%A9%EB%8F%8C&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYoAEyCQgDECEYChigATIJCAQQIRgKGKAB0gEIODc3NmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+
 
 ### 소셜 로그인(Google, Kakao)
 - [[Spring] 백엔드에서 소셜 로그인 구현하기 🔐 + 프론트에서 해야 할 일 총정리 (feat. OAuth2.0)](https://velog.io/@hsh111366/Spring-Security-%EB%B0%B1%EC%97%94%EB%93%9C%EC%97%90%EC%84%9C-%EC%86%8C%EC%85%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%90%EC%84%9C-%ED%95%B4%EC%95%BC-%ED%95%A0-%EC%9D%BC-%EC%B4%9D%EC%A0%95%EB%A6%AC-feat.-OAuth2.0)
+- [개발일지 싹틔움 프로젝트 Oauth2.0 적용 ( Kakao, Google, NAVER )](https://hanstory33.tistory.com/248)
+- [[Spring] REST API 카카오 로그인 구현하기](https://ddonghyeo.tistory.com/16)
+- [Spring Boot 에서 Kakao, Naver 로그인하기 1편 (OAuth 2.0) - 앱 등록](https://bcp0109.tistory.com/379)
+- [코드로배우는 스프링부트자료실](https://cafe.naver.com/f-e/cafes/28363273/articles/5887?boardtype=L&menuid=47&referrerAllArticles=false)
+  - [github](https://github.com/Zero-Kang?tab=repositories)  
+- [Spring Boot - Oauth2 로그인 붙여보기 (구글, 카카오, 네이버) ](https://blog.naver.com/slayra/223159711745)
+- [[Spring Boot] OAuth 2.0으로 구글 로그인 구현하기](https://velog.io/@alswp006/Spring-OAuth-2.0%EC%9C%BC%EB%A1%9C-%EA%B5%AC%EA%B8%80-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+- [나만의 조각을 찾아 브랜딩하는 공간, 셀피스(SELPIECE)](https://github.com/KUSITMS-29th-TEAM-D/backend?tab=readme-ov-file)
+- [Google 소셜 로그인 구현: OAuth2.0와 Spring Security를 활용한 완벽 가이드](https://blu-blu.tistory.com/105)
 - []()
 - []()
 - []()
+
+### Spring Boot
+- [Annotation 간단 정리](https://velog.io/@chwogus/SpringBoot-Annotation-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC)
+- [스프링부트 Annotation 정리](https://rebornbb.tistory.com/entry/SpringBoot-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-Annotation-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%A0%95%EB%A6%AC)
+- [spring boot annotation](https://www.google.com/search?q=spring+boot+annotation&oq=spring+boot+annotation&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIGCAYQABgeMgYIBxAAGB4yBggIEAAYHjIICAkQABgKGB7SAQg4OTAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+- [알아두면 편리한 Annotation 사용 및 정리](https://iliveinseoul.tistory.com/entry/SpringBoot-Annotation-%EC%82%AC%EC%9A%A9-%EC%A0%95%EB%A6%AC)
+- [[Spring Boot] 어노테이션 정리](https://sddev.tistory.com/225)
+- [이클립스 아이콘 의미](https://joalog.tistory.com/63)
 - []()
+- []()
+
+### SNS 공유
+- [SNS 공유하기 ( Spring Boot, Thymeleaf )](https://catchdream.tistory.com/149)
+- []()
+- []()
+- []()
+
+
+### QR코드
+- [Springboot로 Url을 QR코드로 제작하기](https://velog.io/@nays33/Springboot%EB%A1%9C-Url%EC%9D%84-QR%EC%BD%94%EB%93%9C%EB%A1%9C-%EC%A0%9C%EC%9E%91%ED%95%98%EA%B8%B0)
+- [최종 프로젝트) JS로 소셜 공유 하기(카톡, X, Facebook)](https://hsjoo126.tistory.com/66)
+- [Javascript SNS(Social Media) 공유 방법 (How to share social media in javascript.)](https://subji.github.io/posts/2020/01/17/javascriptsnsshare)
+- [JAVA로 QR 코드 생성하는 웹페이지 만들기](https://web-developer1.tistory.com/4)
+- [QR 코드 생성/저장/출력](https://isshosng.tistory.com/131)
+- [Spring boot QR code 생성 (java, gradle)](https://1545154.tistory.com/116)
+- [QR코드 생성 & Test(링크이동) - zxing](https://lucas-owner.tistory.com/55)
+- []()
+- []()
+
+
+### HTML, CSS, JS
+- [소설처럼 읽는 웹 개발 1 - HTML, CSS, JavaScript로 시작하는 웹의 세계](https://wikidocs.net/book/17968)
+- [Smart Anchor Positioning](https://floating-ui.com/?utm_source=popper.js.org)
+
+### Bootstrap
+- [Get started with Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Components](https://bootstrapdocs.com/v3.3.2/docs/components/)
 - []()
 - []()
 - []()
