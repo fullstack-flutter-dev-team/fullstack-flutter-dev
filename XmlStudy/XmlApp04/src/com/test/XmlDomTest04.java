@@ -72,7 +72,78 @@ public class XmlDomTest04
         System.out.println(COLOR_BLUE + "-------------------------------------------------------------------");
 
         // test
-        test();
+        // test();
+
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            String url = "VEHICLES.XML";
+            // 구현 계속...
+            DocumentBuilder builder = null;
+            Document xmlObj = null;
+        
+            builder = factory.newDocumentBuilder();
+            xmlObj = builder.parse(url);
+
+            Element root = xmlObj.getDocumentElement();
+            //           ------ |-------------------
+            //        문서객체 ← | → XML DOM의 최상위 엘리먼트
+            //--==>> VEHICLE 엘리먼트 목록 수집
+
+            NodeList vehicleNodeList = root.getElementsByTagName("VEHICLE");
+            int vehicleCount = vehicleNodeList.getLength();
+            System.out.println(COLOR_BLUE + "VEHICLES COUNT : " + vehicleCount);
+            System.out.println(COLOR_GREEN + "-------------------------------------------------------------------");
+            System.out.printf(COLOR_GREEN + "%-4s %-8s %-12s %-6s %-18s %s\n",
+                                            "NO", "MAKE", "MODEL", "YEAR", "STYLE", "PRICE"
+            );
+            System.out.println(COLOR_GREEN + "-------------------------------------------------------------------");
+
+            for (int i = 0; i < vehicleCount; i++)
+            {
+                Node vehicleNode = vehicleNodeList.item(i);
+                Element vehicleElement = (Element) vehicleNode;
+
+                System.out.printf(COLOR_GREEN + "%-4s %-8s %-12s %-6s %-18s %s\n"
+                        , getText(vehicleElement, "INVENTORY_NUMBER")
+                        , getText(vehicleElement, "MAKE")
+                        , getText(vehicleElement, "MODEL")
+                        , getText(vehicleElement, "YEAR")
+                        , getText(vehicleElement, "STYLE")
+                        , getText(vehicleElement, "PRICE")
+                );
+
+                //-- OPTIONS 자식 엘리먼트 처리-------------------------------------------------------------------
+                System.out.println(COLOR_YELLOW + "Options------------------------------------------------------");
+ 
+                NodeList optionNodeList = vehicleElement.getElementsByTagName("OPTIONS");
+                int optionCount = optionNodeList.getLength();
+                //System.out.println(COLOR_RED + "optionCount : " + optionCount);
+
+                for (int j = 0; j < optionCount; j++)
+                {
+                    Node optionNode = optionNodeList.item(j);
+                    NodeList optionList = optionNode.getChildNodes(); //-- check~!!!
+                    int optionCount2 = optionList.getLength();
+                    System.out.println(COLOR_RED + "optionCount2 : " + optionCount2);
+
+                    for (int k=0; k < optionCount2; k++) {
+                        Node optNode = optionList.item(k);
+                        if (optNode.getNodeType() == Node.ELEMENT_NODE) { //-- check~!!! , Node.ELEMENT_NODE(1) 상수 활용
+                            Element optElement = (Element) optNode;
+                            System.out.printf("    %s : %s\n",
+                                            optElement.getNodeName(),
+                                            optElement.getChildNodes().item(0).getNodeValue()
+                            );
+                        }
+                    }
+                      
+                }
+                System.out.println(COLOR_BLUE + "-------------------------------------------------------------------");
+            }
+        } catch (Exception e) {
+            System.err.println("XML 처리 중 예외 발생~!!!");
+            System.err.println(e.getMessage());
+            e.printStackTrace();
   
     }
 
