@@ -29,7 +29,7 @@ public class ForecasetShortLand
         String targetUrl = "https://apihub.kma.go.kr/api/typ02/openApi/VilageFcstMsgService/getLandFcst";
         String dataType = "XML";
         String regId = "11B10101";
-        String authKey = "xxx";
+        String authKey = "tBTUglJySVGU1IJSctlR_Q";
 
         StringBuilder sbRequestURL = new StringBuilder();
         sbRequestURL.append(targetUrl);
