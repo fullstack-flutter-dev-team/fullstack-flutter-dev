@@ -1,6 +1,6 @@
 package com.test;
 
-public class ForecasetShortLandDTO
+public class ForecastShortLandDTO
 {
     // <item>
     //     <announceTime>202511051100</announceTime> -- 발표시간
@@ -17,12 +17,21 @@ public class ForecasetShortLandDTO
     //     <wsIt/>
     // </item>
 
+    @Override
+    public String toString()
+    {
+        return "ForecastShortLandDTO [numEf=" + numEf + ", regId=" + regId + ", rnSt=" + rnSt + ", rnYn=" + rnYn
+                + ", ta=" + ta + ", wd1=" + wd1 + ", wf=" + wf + ", wfCd=" + wfCd + ", img=" + img + ", skyImg="
+                + skyImg + "]";
+    }
+
     // 주요 요소 구성
     // numEf(발표번호), regId(예보구역코드), rnSt(강수확률), rnYn(강수형태), ta(예상기온)
     // wd1(풍향), wf(날씨), wfCd(하늘상태)
     // img(날씨이미지), skyImg(하늘상태이미지);
     private String numEf, regId, rnSt, rnYn, ta, wd1, wf, wfCd, img, skyImg;
     //-- numEf   → 발표번호(발표시간기준)
+    //            - 17시부터 ~ 익일 5시 이전
     //-- regId   → 예보구역코드
     //-- rnSt    → 강수확률
     //-- rnYn    → 강수형태

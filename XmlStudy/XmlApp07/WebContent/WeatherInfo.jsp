@@ -1,4 +1,7 @@
-<%@page import="com.test.ForecasetShortSummaryDAO"%>
+<%@page import="com.test.ForecastShortLandDAO"%>
+<%@page import="com.test.ForecastShortLandDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page import="com.test.ForecastShortSummaryDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -7,12 +10,11 @@
 %>
 
 <%
-
-// 이전 페이지로(WeatherInfo.jsp)부터 전달받은 데이터
+    // 이전 페이지로(WeatherInfo.jsp)부터 전달받은 데이터
 //-- stnId
 String stnId = request.getParameter("stnId");
 
-ForecasetShortSummaryDAO dao ;
+ForecastShortSummaryDAO dao ;
 
 if (stnId == null) {
     stnId = "108"; //-- 전국 날씨 정보
@@ -20,7 +22,7 @@ if (stnId == null) {
 
 
 // DAO 생성
-dao = new ForecasetShortSummaryDAO(stnId);
+dao = new ForecastShortSummaryDAO(stnId);
 
 String tmFc = dao.getTmFc();
 String wfSv1 = dao.getWfSv1();
@@ -31,6 +33,77 @@ System.out.println(">--->> wfSv1 : " + wfSv1);
 System.out.println(">--->> wn : " + wn);
 
 System.out.println(">--->> stnId : " + stnId);
+// ---------------------------------------- 기상 개황
+
+//-- 육상 예보
+    //----------------------------------------------
+    // 육상    서울·인천·경기도      서울    11B10101
+    // 육상    서울·인천·경기도      인천    11B20201
+    // 육상    부산.울산.경상남도    부산    11H20201
+    // 육상    대구.경상북도         대구    11H10701
+    // 육상    광주.전라남도         광주    11F20501
+    // 육상    전북자치도            전주    11F10201
+    // 육상    대전.세종.충청남도    대전    11C20401
+    // 육상    충청북도             청주    11C10301
+    // 육상    강원도               철원    11D10101
+    // 육상    제주도               제주    11G00201
+    //----------------------------------------------
+
+    String regId = "11B10101"; //-- 날씨 정보 전국(수도권)
+    switch (Integer.parseInt(stnId)) {
+        case 108: regId = "11B10101"; break;
+        case 109: regId = "11B20201"; break;
+        case 159: regId = "11H20201"; break;
+        case 143: regId = "11H10701"; break;
+        case 156: regId = "11F20501"; break;
+        case 146: regId = "11F10201"; break;
+        case 133: regId = "11C20401"; break;
+        case 131: regId = "11C10301"; break;
+        case 105: regId = "11D10101"; break;
+        case 184: regId = "11G00201"; break;
+    }
+
+    StringBuffer sb = new StringBuffer();
+    ForecastShortLandDAO dao2 = new ForecastShortLandDAO();
+
+    // 날씨 시간별 정보
+    ArrayList<ForecastShortLandDTO> timeList = dao2.shortLandList();
+
+    sb.append("<table class='table'>");
+    sb.append("<thead>");
+    sb.append("<tr>");
+    sb.append("<th>발표번호</th>");
+    sb.append("<th>예보구역 코드</th>");
+    sb.append("<th>강수확률</th>");
+    sb.append("<th>강수형태</th>");
+    sb.append("<th>시</th>");
+    sb.append("<th>풍향</th>");
+    sb.append("<th>날씨</th>");
+    sb.append("<th>하늘상태</th>");
+    sb.append("</tr>");
+    sb.append("</thead>");
+    
+    sb.append("<tbody>");
+    for (ForecastShortLandDTO w : timeList) {
+        sb.append("<tr>");
+        sb.append(String.format("<td>%s</td>", w.getNumEf()));                //-- 발표번호
+        sb.append(String.format("<td>%s</td>", w.getRegId()));                //-- 예보구역코드
+        sb.append(String.format("<td>%s%%</td>", w.getRnSt()));               //-- 강수확률
+        sb.append(String.format("<td>%s</td>", w.getRnYn()));                 //-- 강수형태
+        sb.append(String.format("<td>%s℃</td>", w.getTa()));                   //-- 예상기온
+        sb.append(String.format("<td>%s</td>", w.getWd1()));                  //-- 풍향
+        sb.append("<td>");
+        sb.append(String.format("<img src='images/%s'/> %s", w.getImg(), w.getWf()));   //-- 날씨
+        sb.append("</td>");
+        sb.append("<td>");
+        sb.append(String.format("<img src='images/%s.png'/>", w.getSkyImg()));//-- 하늘상태
+        sb.append("</td>");
+        sb.append("</tr>");
+    }
+    sb.append("</tbody>");
+ 
+ sb.append("</table>");
+//------------------------------------------ 육상 예보
 %>
 
 
@@ -121,6 +194,7 @@ System.out.println(">--->> stnId : " + stnId);
                 </p>
                 <br>
 
+                <%-- 
                 <table class="table">
                     <thead>
                         <tr>
@@ -156,7 +230,9 @@ System.out.println(">--->> stnId : " + stnId);
                             <td><img src="images/DB04.png">흐림</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> 
+                --%>
+                <%=sb.toString()%>
             </div>
         </div>
     </div>

@@ -24,14 +24,14 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ForecasetShortSummaryDAO
+public class ForecastShortSummaryDAO
 {
     // 주요 속성 구성 → 공통 멤버 구성 → 멥버 변수 → 초기화 → 생성자
     private Document xmlObj;
     private XPath xPath;
 
     // 생성자 정의 → 기본 생성자 형태
-    public ForecasetShortSummaryDAO() throws ParserConfigurationException, IOException, SAXException {
+    public ForecastShortSummaryDAO() throws ParserConfigurationException, IOException, SAXException {
         this("108");
         //-----------------------------------------------------------------------------
         // stnId=108    // 전국
@@ -48,13 +48,13 @@ public class ForecasetShortSummaryDAO
     }
 
     // 생성자 정의 → 매개변수 있는 생성자 형태
-    public ForecasetShortSummaryDAO(String stnId) throws ParserConfigurationException, IOException, SAXException {
+    public ForecastShortSummaryDAO(String stnId) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         // DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
         String target = "https://apihub.kma.go.kr/api/typ02/openApi/VilageFcstMsgService/getWthrSituation";
-        String authKey = "tBTUglJySVGU1IJSctlR_Q";//-- 기상청 API Hub 에서 발급받은 키
+        String authKey = "xxx";//-- 기상청 API Hub 에서 발급받은 키
         String dataType = "XML";// JSON
         
         StringBuilder urlBuilder = new StringBuilder(target);

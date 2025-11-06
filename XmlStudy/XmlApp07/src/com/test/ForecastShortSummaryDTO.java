@@ -8,7 +8,7 @@
 
 package com.test;
 
-public class ForecasetShortSummaryDTO
+public class ForecastShortSummaryDTO
 {
     // 주요 속성 구성
     private String tmFc, sfSv1, wn;

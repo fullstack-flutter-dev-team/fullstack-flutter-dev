@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IStudentDAO">
+
+    <!-- 학생 조회 -->
+    <select id="list" resultType="com.test.mybatis.StudentDTO">
+        SELECT * FROM STUDENTVIEW
+         ORDER BY SID
+    </select>
+    
+    <!-- 학생 수 조회 -->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM TBL_STUDENT
+    </select>
+    
+    <!-- 학생  정보 삽입 -->
+    <insert id="add" parameterType="com.test.mybatis.StudentDTO">
+        INSERT INTO TBL_STUDENT (SID, NAME, TEL)
+         VALUES (STUDENTSEQ.nextval, #{name}, #{tel})
+    </insert>
+</mapper>

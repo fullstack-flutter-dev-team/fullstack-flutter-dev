@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mybatis.IGradeDAO">
+    <!-- 성적 레코드 조회 -->
+    <select id="list" resultType="com.test.mybatis.GradeDTO">
+        SELECT * FROM GRADEVIEW
+         ORDER BY SID
+    </select>
+    
+    <!-- 성적 레코드 수 조회 -->
+    <select id="count" resultType="java.lang.Integer">
+         SELECT COUNT(*) 
+          FROM GRADEVIEW
+    </select>
+    
+    <!-- 성적 레코드 삽입 -->
+    <insert id="add" parameterType="com.test.mybatis.GradeDTO">
+         INSERT INTO TBL_GRADE (SID, SUB1, SUB2, SUB3)
+          VALUES (#{sid}, #{sub1}, #{sub2}, #{sub3})
+    </insert>
+</mapper>
