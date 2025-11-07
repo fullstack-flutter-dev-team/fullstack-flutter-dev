@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest04.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키"></script>
+<script type="text/javascript">
+
+    function initialize()
+    {
+        // 전부 전역변수로 선언해 둔 상태
+        container = document.getElementById("map");
+        options =
+        {
+            center: new kakao.maps.LatLng(37.5566126,126.9196347),
+            level: 3,
+        };
+        
+        map = new kakao.maps.Map(container, options);
+    }
+    
+    function setCenter()
+    {
+        // 확인 
+        //alert("함수 호출 확인~!!!");
+        
+        // 중심을 이동할 위도 경도 위치 생성(라인 프렌즈)
+        var moveLatLng = new kakao.maps.LatLng(37.5555359,126.9215387);
+        //--> 아직까지는 객체 구성만 이루어진 상태이다. center 값이 반영되지 않는다.
+        
+        // 지도 중심 이동
+        map.setCenter(moveLatLng);
+        //--> 좌표 값으로 구성된 객체를 매개변수로 넘겨서 지도 중심이 이동된다.
+        
+        
+    }
+    
+    function panTo()
+    {
+        // 중심을 이동할 위도 경도 위치 생성(카카오프렌즈 홍대)
+        var moveLatLng = new kakao.maps.LatLng(37.556680, 126.923819);
+        
+        // 지도 중심 이동
+        //map.setCenter(moveLatLng);
+        
+        // 지도 중심을 부드럽게 이동
+        //-- 이동 과정에서 이동할 거리가 지도에서 표현되는 범위 밖에 있다면
+        //   즉, 이동 거리가 지도 화면보다 크다면
+        //   부드러운 효과가 적용되지 않고 이동하게 된다.
+        map.panTo(moveLatLng);
+        
+    }
+    
+    function panTo2()
+    {
+        // 중심을 이동할 위도 경도 위치 생성(돌마홍대 게스트하우스)
+        var moveLatLng = new kakao.maps.LatLng(37.557518, 126.920148);
+        map.panTo(moveLatLng);
+    }
+    
+    function panTo3()
+    {
+        // 중심을 이동할 위도 경도 위치 생성(여의도 국회의사당)
+        var moveLatLng = new kakao.maps.LatLng(37.5317348,126.9142102);
+        map.panTo(moveLatLng);
+    }
+    
+</script>
+
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appKey=앱키 -->
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.5566126,126.9196347 -->
+
+<div>
+    <h1>Kakao Map 중심 좌표 이동</h1>
+    <ul>
+        <li>지도 객체의 메소드를 통해 지도를 원하는 좌표로 이동시킬 수 있다.</li>
+        <li>표시되고 있는 영역을 벗어나지 않는 거리 내에서
+        애니메이션 효과처럼 지도를 부드럽게 이동시킬 수도 있다.</li> 
+    </ul>
+    <hr>
+</div>
+
+<!-- 지도 그려질 공간 -->
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+<p>
+    <button type="button" onclick="setCenter()">중심 좌표 이동</button>
+    <!-- <button type="button" onclick="panTo()">중심 좌표 다시 이동</button> -->
+    <button type="button" onclick="panTo()">중심 좌표 [카카오프렌즈]로 부드럽게 이동</button>
+    <button type="button" onclick="panTo2()">중심 좌표 [돌마홍대 게스트하우스]로 부드럽게 이동</button>
+    <button type="button" onclick="panTo3()">중심 좌표 [국회의사당]으로 부드럽게 이동</button>
+</p>
+
+
+
+
+</body>
+</html>

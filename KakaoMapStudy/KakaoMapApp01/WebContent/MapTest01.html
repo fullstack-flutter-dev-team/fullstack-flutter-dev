@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest01.html</title>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY 사용"></script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키"></script>
+
+<script type="text/javascript">
+
+    var mapContainer = document.getElementById("map");            // 지도를 표시할 div
+    var mapOption = 
+    {
+        center: new kako.maps.LatLng(37.5566126, 126.9196347),    // 지도의 중심 좌표
+        level: 3,                                                // 지도의 확대축소 레벨
+    };
+    
+    // 지도를 표시할 div 와 지도 옵션을 활용하여 지도 생성
+    var map = new kakako.maps.Map(mapContainer, mapOption);
+
+</script>
+</head>
+<body>
+
+<!-- ○ 발급받은 App Key -->
+<!-- appKey=앱키 -->
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.5566126,126.9196347 -->
+
+
+<div>
+    <h1>Kakao Map 생성 기본 관찰</h1>
+    <p>지도 생성 기본 내용 관찰 → 지도 그려지지 않음~!!!</p>
+    <hr>
+</div>
+
+<!-- 지도를 그릴 (랜더링 할) div 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+
+<!-- check~!!! -->
+<!-- 지도가 그려지지 않음~!!! -->
+
+<!-- <script> 를 실행할만한 트리거와 같은 것을 구성하지 않았기 때문에
+     실행되지 않은 것이다.
+     MapTest00.html 에서는 body를 읽어들이는 과정에서 스크립트가 실행됐기 때문에
+     지도가 그려졌던 것이다.
+-->
+
+</body>
+</html>

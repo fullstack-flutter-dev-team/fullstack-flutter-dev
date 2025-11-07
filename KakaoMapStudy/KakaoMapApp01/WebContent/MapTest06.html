@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest06.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    function initialize()
+    {
+        container = document.getElementById("map");
+        options = 
+        {
+            center: new kakao.maps.LatLng(37.5565334,126.9195265),
+            level: 3,
+        };
+        
+        map = new kakao.maps.Map(container, options);
+        
+        // 지도 타입 컨트롤 생성
+        //-- 일반 지도와 스카이 뷰로 타입 전환
+        mapTypeControl = new kakao.maps.MapTypeControl();
+        //--> 지도 위에 레이어를 두는 형식으로 컨트롤을 구성하게 되는데
+        //    이러한 추가적인 컨트롤은 맵 위에 구성하겠다는 설정을 하지 않으면
+        //    시각적으로 확인이 불가능하다.
+        
+        // 지도 타입 컨트롤을 지도 위에 올리기(즉, 지도에 표시)
+        //map.addControl(mapTypeControl);
+        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+        // 우측 상단에 지도 타입 컨트롤이 위치하도록 설정한 것이다.
+        // 이전에 Positon 을 지정하지 않았을 때와 동일한 것으로 미루어 보아
+        // default 값임을 알 수 있다.
+
+        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+        
+        // 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+        kakao.maps.event.addListener(map, 'zoom_changed', function() {        
+            // 지도의 현재 레벨을 얻어옵니다
+            var level = map.getLevel();
+            
+            var message = '현재 지도 레벨은 ' + level + ' 입니다';
+            var currLevelDiv = document.getElementById('currLevel');  
+            currLevelDiv.innerHTML = message;
+        });
+
+        // 지도가 이동, 확대, 축소로 인해 지도영역이 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+        kakao.maps.event.addListener(map, 'bounds_changed', function() {             
+            
+            // 지도 영역정보를 얻어옵니다 
+            var bounds = map.getBounds();
+            
+            // 영역정보의 남서쪽 정보를 얻어옵니다 
+            var swLatlng = bounds.getSouthWest();
+            
+            // 영역정보의 북동쪽 정보를 얻어옵니다 
+            var neLatlng = bounds.getNorthEast();
+            
+            var message = '<p>영역좌표는 남서쪽 위도, 경도는  ' 
+                           + swLatlng.toString() + '이고 <br>'; 
+            message += '북동쪽 위도, 경도는  ' 
+                           + neLatlng.toString() + '입니다 </p>'; 
+            var resultDiv = document.getElementById('result');   
+            resultDiv.innerHTML = message;
+
+            // 지도 좌표 정보 조회
+            getInfo();
+            
+        });
+    }
+    
+    // 지도 좌표 정보 조회
+    function getInfo()
+    {
+        // 지도의 현재 중심 좌표 얻어오기
+        var center = map.getCenter();
+        
+        // 지도의 현재 레벨 얻어오기
+        var level = map.getLevel();
+        
+        // 지도의 타입 얻어오기
+        var mapType = map.getMapTypeId();
+        
+        // 지도의 현재 영역 얻어오기
+        var bounds =  map.getBounds();
+        
+        // 얻어낸 현재 영역(→ bounds)의 남서쪽 좌표 얻어오기
+        var swLatLng = bounds.getSouthWest();
+        
+        // 얻어낸 현재 영역(→ bounds)의 북동쪽 좌표 얻어오기
+        var neLatLng = bounds.getNorthEast();
+        
+        var message = "지도의 중심 좌표는 " + center + " 입니다.<br>";
+        message += "위도는 " + center.getLat();
+        message += ", 경도는 " + center.getLng() + " 인거죠~<br>";
+        message += "지도 레벨은 " + level + " 이며, ";
+        message += "지도 타입은 " + mapType + " 입니다.<br>";
+        message += "지도의 현재 영역은 " + bounds + " 입니다.<br>";
+        message += "지도의 남서쪽 좌표는 " + swLatLng.getLat();
+        message += ", " + swLatLng.getLng() + " 이고, <br>";
+        message += "지도의 북동쪽 좌표는 " + neLatLng.getLat();
+        message += ", " + neLatLng.getLng() + " 인거죠~<br>";
+        
+        // 결과 출력
+        var typeEl = document.getElementById("mapType");
+        typeEl.innerHTML = message;
+    }
+    
+</script>
+
+</head>
+<body onload="initialize()">
+
+<!-- ○ 발급받은 App Key -->
+<!-- appKey=앱키 -->
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.5566126,126.9196347 -->
+
+<div>
+    <h1>Kakao Map 지도 정보 얻어내기</h1>
+    <hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 500px;"></div>
+<br>
+
+<!-- 현재 레벨 -->
+<div id="currLevel"></div>
+<div id="result"></div>
+<p>
+    <button type="button" onclick="getInfo()">지도 정보 확인</button>
+    <br>
+    <br>
+    
+    
+    <span id="mapType"></span>
+</p>
+</body>
+</html>

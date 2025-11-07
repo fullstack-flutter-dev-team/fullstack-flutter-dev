@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest08.html</title>
+<style type="text/css">
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0
+    }
+
+    .mapWrap {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 450px;
+    }
+
+    .radiusBorder {
+        border: 1px solid #919191;
+        border-radius: 5px;
+    }
+
+    .customTypecontrol {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        overflow: hidden;
+        width: 130px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        font-size: 12px;
+        font-family: 맑은 고딕;
+    }
+
+    .customTypecontrol span {
+        display: block;
+        width: 65px;
+        height: 30px;
+        float: left;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+
+    .customTypecontrol .btn {
+        background: #fff; 
+        background: linear-gradient(#fff, #e6e6e6);
+     }
+
+    .customTypecontrol .btn:hover {
+        background: #f5f5f5; 
+        background: linear-gradient(#f5f5f5, #e3e3e3);
+    }
+
+    .customTypecontrol .btn:active {
+        background: #e6e6e6;
+        background: linear-gradient(#e6e6e6, #fff);
+    }
+
+    .customTypecontrol .selected_btn {
+        color: #fff;
+        background: #425470;
+        background: linear-gradient(#425470, #5b6d8a);
+    }
+
+    .customTypecontrol .selected_btn:hover {
+        color: #e3e3e3;
+    }
+
+    .customZoomcontrol {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        width: 36px;
+        height: 80px;
+        overflow: hidden;
+        z-index: 1;
+        background-color: #f5f5f5;
+    }
+
+    .customZoomcontrol span {
+        display: block;
+        width: 36px;
+        height: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .customZoomcontrol span img {
+        width: 15px;
+        height: 15px;
+        padding: 12px 0;
+        border: none;
+    }
+
+    .customZoomcontrol span:first_child {
+        border-bottom: 1px solid #bfbfbf;
+    }
+    
+    .btnZoom:hover {
+        background-color: rgb(217, 203, 235);
+    }
+    
+    .btnZoom:active {
+        background-color: rgb(100, 28, 194);
+    }
+</style>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    function initialize()
+    {
+        container = document.getElementById("map");
+        options = {
+            center: new kakao.maps.LatLng(37.5565355,126.9195242),
+            level: 3,
+        };
+        
+        map = new kakao.maps.Map(container, options);
+    }
+    
+    // 지도 타입 컨트롤의 타입을 바꾸는 함수 정의
+    //-- 지도 타입 컨트롤의 지도 또는 스카이뷰 버튼 클릭 시
+    //   해당 내용을 넘겨받아 호출되어 지도 타입을 전환할 수 있도록 구성
+    function setMapType(maptype)
+    {
+        // map.setMapTypeId(로드맵 또는 하이브리드);
+        //                  ------      |  ---------
+        // kakao.maps.MapTypeId.ROADMAP |  kakao.maps.MapTypeId.HYBRID      
+        var roadmapControl = document.getElementById("btnRoadmap");
+        var skyviewControl = document.getElementById("btnSkyview");
+        
+        /*
+        if(maptype == 'roadmap')
+            map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+        else
+            map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+         */
+
+         console.log(">>-->> maptype : " + maptype);
+         console.log(">>-->> kakao.maps.MapTypeId.ROADMAP : " + kakao.maps.MapTypeId.ROADMAP);
+         console.log(">>-->> kakao.maps.MapTypeId.HYBRID : " + kakao.maps.MapTypeId.HYBRID);
+        
+
+         // 스타일 전환
+         // selectedBtn 을 btn 으로...
+         // btn 을 selectedBtn 으로 ...
+
+        if (maptype == 'roadmap') {
+            // 클래스 추가하여 클릭한 버튼 색상 변경하기.
+            roadmapControl.className = 'selected_btn';
+            skyviewControl.className = 'btn';
+            map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+        } else {
+            roadmapControl.className = 'btn';
+            skyviewControl.className = 'selected_btn';
+            map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+        }
+
+    }
+    
+    //-- 지도 확대 축소 컨트롤의 확대(+) 버튼 클릭 시 호출되어 지도를 확대하는 함수
+    // → 현재 레벨 기준
+    function zoomIn()
+    {
+        var level = map.getLevel();
+        
+        map.setLevel(level -1);
+        displayLevel();
+    }
+    
+    //-- 지도 확대 축소 컨트롤의 축소(-) 버튼 클릭 시 호출되어 지도를 축소하는 함수
+    // → 현재 레벨 기준
+    function zoomOut()
+    {
+        map.setLevel(map.getLevel() +1);
+        displayLevel();
+    }
+
+    // diplay level
+    function displayLevel() {
+        // 지도의 현재 레벨을 얻어옵니다
+        var level = map.getLevel();
+        
+        var message = '현재 지도 레벨은 ' + level + ' 입니다';
+        var currLevelDiv = document.getElementById('currLevel');  
+        currLevelDiv.innerHTML = message;
+    }
+
+</script>
+
+
+</head>
+<body onload="initialize()">
+
+<!-- ○ 발급받은 App Key  -->
+<!--  3a5829b4a12381f14f6a539bba3c33ba -->
+<!-- ○ 지도의 중심 좌표 -->
+<!--  37.5565355,126.9195242 -->
+
+<div>
+    <h1>Kakao Map 사용자 컨트롤 구성</h1>
+    <hr>
+</div>
+
+<div class="mapWrap">
+
+    <div id="map" style="width: 100%; height: 100%; position: realtive; overflow: hidden;"></div>
+
+    <!--  지도 타입 컨트롤 div -->
+    <div class="customTypecontrol radiusBorder">
+        <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+        <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+    </div>
+    
+    <!-- 지도 확대축소 컨트롤 div -->
+    <div class="customZoomcontrol radiusBorder">
+        <span onclick="zoomIn()" class="btnZoom">
+            <img alt="확대" src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png">
+        </span>
+        <span onclick="zoomOut()" class="btnZoom">
+            <img alt="축소" src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png">
+        </span>
+    </div>
+    <div id="currLevel"></div>
+</div><!-- close .map_wrap -->
+
+</body>
+</html>
