@@ -91,8 +91,31 @@ VS Code의 폰트 설정은 사용자의 취향에 따라 다양하게 변경할
   - []()
   - []()
   - []()
-- []()
-  - []()
-  - []()
+
+### [vscode current line color](https://www.google.com/search?q=vscode+current+line+color&newwindow=1&sca_esv=3f626f5782a50780&sxsrf=AE3TifN-ilRcmuErAGE_ZXKXMwUOFeiIgg%3A1762787805151&ei=3QESacz7CNeu0-kPhbTGsAY&ved=0ahUKEwiM3sKn8OeQAxVX1zQHHQWaEWYQ4dUDCBE&uact=5&oq=vscode+current+line+color&gs_lp=Egxnd3Mtd2l6LXNlcnAiGXZzY29kZSBjdXJyZW50IGxpbmUgY29sb3IyBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBBAAGB4yBRAAGO8FMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESO8hUIYPWJ8gcAJ4AZABAJgBnAGgAfoMqgEEMC4xM7gBA8gBAPgBAZgCC6ACwAnCAgoQABiwAxjWBBhHwgIHEAAYgAQYDcICCBAAGAcYCBgewgIGEAAYCBgewgIIEAAYCBgNGB6YAwCIBgGQBgqSBwMyLjmgB85SsgcDMC45uAelCcIHBzAuMS42LjTIB0w&sclient=gws-wiz-serp)
+- [How do I change the color of the line highlight in vscode when using findNext](https://stackoverflow.com/questions/71028030/how-do-i-change-the-color-of-the-line-highlight-in-vscode-when-using-findnext)
+- [Change highlight text color in Visual Studio Code](https://stackoverflow.com/questions/35926381/change-highlight-text-color-in-visual-studio-code)
+  - Add the following lines into "Editor: Token Color Customizations" setting, inside settings.json file.
+    ```
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#135564",
+        "editor.selectionHighlightBackground": "#135564"
+    },
+    ```
+  - The above answers cover the Selected text and areas with same content as selection, but they miss the Current Search Match and Other Search Matches -- which have the same problem.
+    ```
+    "workbench.colorCustomizations": {
+        "editor.findMatchBackground": "#00cc44a8", //Current SEARCH MATCH
+        "editor.findMatchHighlightBackground": "#ff7b00a1" //Other SEARCH MATCHES
+    }
+    ```
+- [How to highlight current line number in Visual Studio Code / VS Code](https://stackoverflow.com/questions/64880456/how-to-highlight-current-line-number-in-visual-studio-code-vs-code)
+    ```
+    "editor.renderLineHighlight": "all",
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#00000000",
+        "editor.lineHighlightBorder": "#0000ff"
+    }
+    ```
   - []()
 - []()
