@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest15.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9d417da9657973c1df4d1010ee22a28"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+
+    span {
+        font-weight: bold;
+        color: blue;
+    }
+</style>
+<script type="text/javascript">
+    
+    const LAT = 37.5565355;
+    const LNG = 126.9195242;
+
+    // 페이지 요청 시 호출
+    function initialize()
+    {
+        const mapCenter = new kakao.maps.LatLng(LAT, LNG);
+
+        container = document.getElementById("map");
+        options = {
+            center: mapCenter,
+            level: 3.
+        };
+        
+        // 맵 생성
+        map = new kakao.maps.Map(container, options);
+
+        // 마커 생성
+        marker = new kakao.maps.Marker(
+        {
+            position: mapCenter,
+        });
+        
+        // 맵생성
+        // 마커의 속성 구성
+        //imageSrc = "images/markerImg.png";      //-- 마커 이미지 경로
+                                                  //   (또는 웹 상의 주소)
+        //imageSrc = "http://localhost:3306/kakaoMapApp/images/markerImg.png";
+        //imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
+        //imageSrc = "images/markerGif04.gif";
+        //imageSrc = "images/markerGif05.gif";
+        imageSrc = "images/markerGif06.gif";
+        imageSize = new kakao.maps.Size(46, 64);  //-- 마커 이미지 크기
+        
+        //-- 마커 이미지 오프셋(위와 같은 구조)
+        //-- 마커 이미지에 대한 옵션
+        //   마커 좌표와 일치시킬 이미지 내부에서의 좌표 설정
+        imageOption = {
+            offset: new kakao.maps.Point(23, 64)
+        };
+        
+        // 구성한 마커의 속성을 활용하여 마커 이미지 생성
+        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+        //-- 이미지 경로와 크기와 옵션을 전달
+        
+        // 마커 생성
+        marker = new kakao.maps.Marker(
+        {
+            position: mapCenter,            //-- 마커 좌표 설정
+            image: markerImage,             //-- 추가 옵션 : 마커 이미지 설정
+        });
+        
+        // 마커가 지도에 표시될 수 있도록 설정
+        marker.setMap(map);
+    }
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+<!-- ○ 발급받은 App Key  -->
+<!-- appKey=앱키 -->
+<!-- ○ 지도의 중심 좌표 -->
+<!--  37.5565355,126.9195242 -->
+
+<div>
+    <h1>Kakao Map 이동 가능한 마커 생성</h1>
+    <hr>
+</div>
+
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+<div id="result"></div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest14.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+
+    span {
+        font-weight: bold;
+        color: blue;
+    }
+</style>
+<script type="text/javascript">
+    
+    const LAT = 37.5565355;
+    const LNG = 126.9195242;
+
+    // 페이지 요청 시 호출
+    function initialize()
+    {
+        const mapCenter = new kakao.maps.LatLng(LAT, LNG);
+
+        container = document.getElementById("map");
+        options = {
+            center: mapCenter,
+            level: 3.
+        };
+        
+        // 맵 생성
+        map = new kakao.maps.Map(container, options);
+
+        // 마커 생성
+        marker = new kakao.maps.Marker(
+        {
+            position: mapCenter,
+        });
+        
+        // 마커가 지도에 표시될 수 있도록 설정
+        marker.setMap(map);
+        
+        // 마커가 이동이 가능하도록 설정
+        marker.setDraggable(true);
+    }
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+<!-- ○ 발급받은 App Key  -->
+<!-- appKey=앱키 -->
+<!-- ○ 지도의 중심 좌표 -->
+<!--  37.5565355,126.9195242 -->
+
+<div>
+    <h1>Kakao Map 이동 가능한 마커 생성</h1>
+    <hr>
+</div>
+
+<div id="map" style="width: 100%; height: 350px;"></div>
+
+<div id="result"></div>
+
+</body>
+</html>
