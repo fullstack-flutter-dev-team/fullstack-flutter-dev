@@ -1,10 +1,11 @@
-# fullstack-flutter-dev_github  [2025-05-12(MON.) ~ 2025-11-12(WED.)]
+# fullstack-flutter-dev_github  
+- [2025-05-12(MON.) ~ 2025-11-12(WED.)]
 
-한국어 요약
+요약
 ----------------
 이 저장소는 풀스택 및 Flutter 개발 관련 자료, 예제, 학습 노트, 샘플 프로젝트들을 모아둔 개인/팀 학습 자료 모음입니다. 주요 디렉터리는 주제별로 정리되어 있으며, 각 폴더는 관련 문서, 예제 코드, 스크립트 또는 프로젝트 템플릿을 포함합니다. 이 문서는 루트 폴더의 구조와 각 폴더의 목적을 한글과 영어로 상세히 설명합니다.
 
-English Summary
+Summary
 ----------------
 This repository is a curated collection of full-stack and Flutter development resources, examples, study notes, and sample projects. Top-level directories are organized by topic; each contains documentation, example code, scripts, or project templates. This README documents the repository layout and describes each top-level folder in both Korean and English.
 
